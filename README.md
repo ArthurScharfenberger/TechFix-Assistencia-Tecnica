@@ -5,7 +5,7 @@
 **TechFix - Sistema de Assistência Técnica**
 
 ## Integrante(s)
-- Seu nome
+- Arthur Scharfenberger
 
 ---
 
