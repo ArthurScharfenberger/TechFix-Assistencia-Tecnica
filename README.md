@@ -83,36 +83,5 @@ O objetivo deste sistema é centralizar essas informações em uma única plataf
 | Baixa | Acompanhamento do cliente |
 | Baixa | Finalização da ordem de serviço |
 
----
-
 # Repositório GitHub
 
-**Nome sugerido:**
-
-```
-
-assistencia-tecnica
-
-```
-
----
-
-# README.md
-
-## TechFix - Sistema de Assistência Técnica
-
-### Domínio
-Assistência Técnica.
-
-### Descrição
-
-Sistema desenvolvido para gerenciar clientes, equipamentos e ordens de serviço de uma assistência técnica, permitindo acompanhar todo o processo de manutenção, desde a abertura da ordem até a entrega do equipamento.
-
-### Integrante(s)
-
-- Seu nome
-
-### Declaração de uso de IA
-
-Foi utilizada inteligência artificial como ferramenta de apoio para revisão do texto, organização das funcionalidades, elaboração das histórias de usuário e estruturação do planejamento. Todas as decisões sobre o projeto foram revisadas e validadas pelo autor.
-```
