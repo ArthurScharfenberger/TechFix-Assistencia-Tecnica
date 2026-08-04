@@ -1,91 +1,172 @@
-# Atividade Semanal nº 02 - Modelagem Inicial do Projeto TechFix
+# Atividade Semanal nº 02 - Modelagem Inicial do Projeto
 
-## Sobre a atividade
+## Projeto
 
-Nesta etapa do projeto **TechFix - Sistema de Assistência Técnica**, foi realizada a primeira atividade de modelagem do sistema.
+**TechFix - Sistema de Assistência Técnica**
 
-O objetivo foi identificar as principais entidades do domínio e criar um primeiro rascunho do diagrama de classes UML.
+## Integrante(s)
 
----
-
-## O que foi realizado
-
-Durante a atividade foram definidas as quatro primeiras classes de domínio do sistema:
-
-- **Cliente**: representa o usuário que solicita o serviço de assistência técnica.
-- **Equipamento**: representa o aparelho que será levado para reparo.
-- **OrdemDeServico**: representa o registro do atendimento e do conserto realizado.
-- **Tecnico**: representa o profissional responsável pelo reparo.
-
-Também foram definidos os principais relacionamentos entre essas classes.
+- Arthur Scharfenberger
 
 ---
 
-## Relacionamentos definidos
+# Objetivo da Atividade
 
-### Cliente e Equipamento
+Nesta etapa do projeto foi realizada a primeira atividade de modelagem do sistema.
 
-Um cliente pode possuir vários equipamentos cadastrados.
+O objetivo foi identificar as principais entidades do domínio da aplicação e criar um primeiro rascunho do **Diagrama de Classes UML versão 1**, definindo as classes principais e seus relacionamentos.
+
+---
+
+# Classes de Domínio Identificadas
+
+Durante a análise do problema foram identificadas quatro classes principais para representar o funcionamento da assistência técnica.
+
+## Cliente
+
+Representa a pessoa que solicita o serviço de assistência técnica.
+
+Responsabilidade inicial:
+- Possuir equipamentos cadastrados;
+- Representar o cliente atendido pela assistência.
+
+---
+
+## Equipamento
+
+Representa o aparelho que será encaminhado para reparo.
+
+Responsabilidade inicial:
+- Identificar o equipamento;
+- Estar associado a um cliente.
+
+---
+
+## OrdemDeServico
+
+Representa o registro do atendimento realizado pela assistência técnica.
+
+Responsabilidade inicial:
+- Registrar o problema informado pelo cliente;
+- Controlar o andamento do reparo;
+- Armazenar informações do serviço realizado.
+
+---
+
+## Tecnico
+
+Representa o profissional responsável pela realização do reparo.
+
+Responsabilidade inicial:
+- Executar os serviços;
+- Atualizar o andamento das ordens de serviço.
+
+---
+
+# Relacionamentos Definidos
+
+## Cliente e Equipamento
+
+Um cliente pode possuir vários equipamentos cadastrados no sistema.
+
+Relacionamento:
 
 ```
 Cliente (1) -------- (0..*) Equipamento
 ```
 
-Associação: **possui**
+Associação:
 
+**possui**
 
-### Equipamento e OrdemDeServico
+---
 
-Um equipamento pode possuir várias ordens de serviço.
+## Equipamento e OrdemDeServico
+
+Um equipamento pode possuir várias ordens de serviço durante sua utilização.
+
+Relacionamento:
 
 ```
 Equipamento (1) -------- (0..*) OrdemDeServico
 ```
 
-Associação: **gera**
+Associação:
 
+**gera**
 
-### Tecnico e OrdemDeServico
+---
+
+## Tecnico e OrdemDeServico
 
 Um técnico pode ser responsável por várias ordens de serviço.
+
+Relacionamento:
 
 ```
 Tecnico (1) -------- (0..*) OrdemDeServico
 ```
 
-Associação: **é responsável por**
+Associação:
+
+**é responsável por**
 
 ---
 
 # Diagrama de Classes UML - Versão 1
 
-O diagrama abaixo representa o primeiro esboço da estrutura do sistema, contendo as classes identificadas e seus relacionamentos principais.
+O diagrama abaixo representa o primeiro esboço da estrutura do sistema.
 
-![Diagrama de Classes UML - Versão 1](diagrama.png)
+Foram utilizadas apenas as classes principais do domínio, sem implementação de atributos e métodos, pois o objetivo desta etapa foi validar a organização inicial das entidades.
 
----
-
-## Decisões tomadas
-
-Nesta primeira versão foram consideradas apenas as entidades principais do domínio.
-
-Não foram adicionados atributos e métodos, pois o objetivo desta etapa foi validar a estrutura inicial do sistema e os relacionamentos entre as classes.
+![Diagrama de Classes UML](diagrama.png)
 
 ---
 
-## Próximos passos
+# Decisões de Modelagem
 
-As próximas etapas do projeto serão:
+As classes foram escolhidas com base nos principais elementos encontrados na descrição do problema.
+
+Foram priorizados conceitos que representam objetos reais dentro de uma assistência técnica:
+
+- Cliente;
+- Equipamento;
+- Ordem de Serviço;
+- Técnico.
+
+Nesta primeira versão foram definidos apenas os relacionamentos entre as classes.
+
+A inclusão de atributos e métodos será realizada nas próximas etapas do desenvolvimento.
+
+---
+
+# Alterações Realizadas no Projeto
+
+Nesta atividade foram adicionados:
+
+- Primeiro rascunho do diagrama de classes UML;
+- Definição das quatro classes iniciais do domínio;
+- Relacionamentos entre as entidades;
+- Documentação da evolução do projeto.
+
+---
+
+# Próximas Etapas
+
+As próximas etapas previstas são:
 
 - Adicionar atributos às classes;
 - Definir métodos e responsabilidades;
-- Evoluir o diagrama de classes;
-- Iniciar a implementação do sistema.
+- Evoluir o diagrama UML;
+- Implementar as classes do sistema;
+- Desenvolver as funcionalidades do backlog.
 
 ---
 
-## Controle da atividade
+# Controle de Versão
 
-Alteração realizada:
-- Criação do primeiro diagrama de classes UML;
-- Documentação da modelagem inicial do projeto.
+## Commit realizado
+
+```
+Adiciona diagrama de classes UML inicial e documentação da atividade semanal 02
+```
