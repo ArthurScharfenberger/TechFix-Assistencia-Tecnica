@@ -1,87 +1,91 @@
-```md
-# Planejamento do Projeto
+# Atividade Semanal nº 02 - Modelagem Inicial do Projeto TechFix
 
-## Nome do Projeto
-**TechFix - Sistema de Assistência Técnica**
+## Sobre a atividade
 
-## Integrante(s)
-- Arthur Scharfenberger
+Nesta etapa do projeto **TechFix - Sistema de Assistência Técnica**, foi realizada a primeira atividade de modelagem do sistema.
 
----
-
-# Domínio
-
-Assistência Técnica.
-
-## Descrição do Problema
-
-Muitas assistências técnicas ainda realizam o controle de clientes, equipamentos e ordens de serviço em papel ou planilhas, dificultando a organização das informações, o acompanhamento dos reparos e a comunicação com os clientes.
-
-O objetivo deste sistema é centralizar essas informações em uma única plataforma, permitindo um gerenciamento mais eficiente dos atendimentos e dos serviços prestados.
+O objetivo foi identificar as principais entidades do domínio e criar um primeiro rascunho do diagrama de classes UML.
 
 ---
 
-# Público-alvo
+## O que foi realizado
 
-- Atendentes da assistência técnica;
-- Técnicos responsáveis pelos reparos;
-- Clientes que desejam acompanhar o andamento do conserto.
+Durante a atividade foram definidas as quatro primeiras classes de domínio do sistema:
 
----
+- **Cliente**: representa o usuário que solicita o serviço de assistência técnica.
+- **Equipamento**: representa o aparelho que será levado para reparo.
+- **OrdemDeServico**: representa o registro do atendimento e do conserto realizado.
+- **Tecnico**: representa o profissional responsável pelo reparo.
 
-# Funcionalidades
-
-- Cadastro de clientes;
-- Cadastro de equipamentos;
-- Abertura de ordens de serviço;
-- Registro do defeito informado pelo cliente;
-- Atualização do status do reparo;
-- Registro dos serviços realizados;
-- Registro do valor do conserto;
-- Consulta de ordens de serviço;
-- Consulta do histórico de atendimentos;
-- Finalização da ordem de serviço.
+Também foram definidos os principais relacionamentos entre essas classes.
 
 ---
 
-# Histórias de Usuário
+## Relacionamentos definidos
 
-1. Eu, como **atendente**, quero cadastrar clientes, para registrar seus dados e facilitar futuros atendimentos.
+### Cliente e Equipamento
 
-2. Eu, como **atendente**, quero cadastrar equipamentos, para identificar corretamente o aparelho que será consertado.
+Um cliente pode possuir vários equipamentos cadastrados.
 
-3. Eu, como **atendente**, quero abrir uma ordem de serviço, para registrar o problema informado pelo cliente.
+```
+Cliente (1) -------- (0..*) Equipamento
+```
 
-4. Eu, como **técnico**, quero atualizar o status do reparo, para informar o andamento do serviço.
+Associação: **possui**
 
-5. Eu, como **técnico**, quero registrar os serviços realizados, para manter o histórico do conserto.
 
-6. Eu, como **atendente**, quero consultar ordens de serviço, para localizar rapidamente um atendimento.
+### Equipamento e OrdemDeServico
 
-7. Eu, como **cliente**, quero acompanhar o status do meu equipamento, para saber quando ele estará pronto.
+Um equipamento pode possuir várias ordens de serviço.
 
-8. Eu, como **atendente**, quero registrar o valor do conserto, para informar o orçamento ao cliente.
+```
+Equipamento (1) -------- (0..*) OrdemDeServico
+```
 
-9. Eu, como **atendente**, quero finalizar uma ordem de serviço, para registrar a entrega do equipamento ao cliente.
+Associação: **gera**
 
-10. Eu, como **gerente da assistência técnica**, quero consultar o histórico de atendimentos, para acompanhar os serviços realizados e tomar decisões.
+
+### Tecnico e OrdemDeServico
+
+Um técnico pode ser responsável por várias ordens de serviço.
+
+```
+Tecnico (1) -------- (0..*) OrdemDeServico
+```
+
+Associação: **é responsável por**
 
 ---
 
-# Backlog Inicial
+# Diagrama de Classes UML - Versão 1
 
-| Prioridade | Funcionalidade |
-|------------|----------------|
-| Alta | Cadastro de clientes |
-| Alta | Cadastro de equipamentos |
-| Alta | Abertura de ordem de serviço |
-| Alta | Atualização do status da ordem de serviço |
-| Média | Consulta de ordens de serviço |
-| Média | Registro dos serviços realizados |
-| Média | Registro do valor do conserto |
-| Baixa | Histórico de atendimentos |
-| Baixa | Acompanhamento do cliente |
-| Baixa | Finalização da ordem de serviço |
+O diagrama abaixo representa o primeiro esboço da estrutura do sistema, contendo as classes identificadas e seus relacionamentos principais.
 
-# Repositório GitHub
+![Diagrama de Classes UML - Versão 1](diagrama.png)
 
+---
+
+## Decisões tomadas
+
+Nesta primeira versão foram consideradas apenas as entidades principais do domínio.
+
+Não foram adicionados atributos e métodos, pois o objetivo desta etapa foi validar a estrutura inicial do sistema e os relacionamentos entre as classes.
+
+---
+
+## Próximos passos
+
+As próximas etapas do projeto serão:
+
+- Adicionar atributos às classes;
+- Definir métodos e responsabilidades;
+- Evoluir o diagrama de classes;
+- Iniciar a implementação do sistema.
+
+---
+
+## Controle da atividade
+
+Alteração realizada:
+- Criação do primeiro diagrama de classes UML;
+- Documentação da modelagem inicial do projeto.
