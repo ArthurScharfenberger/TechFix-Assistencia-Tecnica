@@ -1,0 +1,145 @@
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+    width: min(280px, calc(100vw - 2rem));
+    height: 100dvh;
+  }
+
+  .sidebar.collapsed { width: min(280px, calc(100vw - 2rem)); }
+  .sidebar-collapse-btn { display: none; }
+  .sidebar.collapsed .sidebar-header { padding: 0.75rem 1.25rem; }
+  .sidebar.collapsed .sidebar-logo img { display: block; }
+  .sidebar.collapsed .sidebar-compact-logo { display: none; }
+  .sidebar.collapsed .sidebar-nav { padding: 1.25rem 0.75rem; }
+  .sidebar.collapsed .nav-item { justify-content: flex-start; gap: .75rem; padding: .75rem 1rem; }
+  .sidebar.collapsed .nav-item.active::before { position: static; height: auto; margin-left: -.45rem; }
+  .sidebar.collapsed .sidebar-item-label, .sidebar.collapsed .options-chevron { display: inline; }
+  .sidebar.collapsed .sidebar-footer { padding: .75rem; padding-bottom: max(.75rem, env(safe-area-inset-bottom)); }
+  .sidebar.collapsed .sidebar-options-trigger { justify-content: flex-start; padding-inline: .8rem; }
+  .sidebar.collapsed .sidebar-options-trigger .options-chevron { margin-left: auto; }
+  .sidebar.collapsed .sidebar-options { left: .75rem; right: .75rem; bottom: calc(100% + .5rem); width: auto; }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+
+  .main-content {
+    padding: 1.25rem;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .executive-stats { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+  .filter-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+  .indicator-cards { grid-template-columns: repeat(2, minmax(200px, 1fr)); }
+  .distribution-grid { grid-template-columns: 1fr 1fr; }
+  .efficiency-grid { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+  .team-stats { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .header {
+    min-height: 72px;
+    padding: 0.7rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1.1rem;
+  }
+
+  .page-description,
+  .breadcrumb-trail {
+    display: none;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid-full {
+    grid-column: span 1;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .executive-stats { grid-template-columns: 1fr; }
+  .executive-summary { align-items: flex-start; flex-direction: column; }
+  .indicators-intro, .filter-actions { align-items: stretch; flex-direction: column; }
+  .indicators-intro .btn { align-self: flex-start; }
+  .filter-grid, .indicator-cards, .analytics-grid, .distribution-grid, .efficiency-grid { grid-template-columns: 1fr; }
+  .custom-date-fields { grid-column: span 1; grid-template-columns: 1fr; }
+  .analytics-chart-card.chart-wide { grid-column: span 1; }
+  .filter-actions > div:last-child { width: 100%; }
+  .filter-actions .btn { flex: 1; }
+  .team-stats, .checkbox-grid { grid-template-columns: 1fr; }
+  .team-filter { width: 100%; }
+
+  .table-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .table-toolbar-left, .table-toolbar-right {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .table-search-input {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  #toast-container {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+
+  .modal-card {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content { padding: 1rem; }
+
+  .table-toolbar .btn,
+  .modal-footer .btn { width: 100%; }
+
+  .modal-footer { flex-direction: column-reverse; }
+
+  .detail-grid { grid-template-columns: 1fr; }
+
+  .stats-grid { gap: 0.85rem; }
+
+  .stat-card { padding: 1rem; }
+
+  .charts-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .chart-card { min-height: 290px; }
+
+  .pagination-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .indicator-filters { padding: .85rem; }
+  .indicators-intro .btn, .filter-actions > div:last-child, .filter-actions .btn { width: 100%; }
+  .filter-actions > div:last-child { flex-direction: column; }
+  .analytics-chart-card { min-height: 300px; padding: .85rem; }
+  .analytics-chart { height: 235px; }
+}
