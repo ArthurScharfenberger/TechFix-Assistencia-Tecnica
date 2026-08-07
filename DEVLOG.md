@@ -63,3 +63,11 @@ Organizar a preparação do projeto para envio ao GitHub, consolidando a documen
 ### Commits relacionados
 
 - Alterações ainda não commitadas.
+
+## 06/08/2026 — Módulo de Relatórios
+
+- Adicionado menu expansível de Relatórios com visão geral e quatro categorias.
+- Implementados filtros por período e entidades, resumos, tabelas, paginação, ordenação e gráficos compactos com dados reais.
+- Incluídas exportação CSV em UTF-8, impressão A4/PDF, documento individual de ordem e logs de visualização/exportação.
+- Integradas novas rotas protegidas, estados vazios, tema claro/escuro e layouts responsivos para desktop, sidebar recolhida e drawer mobile.
+- Verificação executada com `npm run build` (TypeScript e Vite).

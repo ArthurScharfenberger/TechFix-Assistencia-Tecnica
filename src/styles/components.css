@@ -224,9 +224,7 @@
 .executive-table-heading { align-items: flex-start; }
 .empty-table-message { text-align: center; color: var(--subtitle-color); padding: 2rem !important; }
 
-.indicators-intro { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
-.indicators-intro h2 { color: var(--title-color); font-size: 1.45rem; margin-top: .2rem; }
-.indicators-intro p { color: var(--subtitle-color); font-size: .86rem; }
+.indicator-page-actions { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
 .indicator-filters { padding: 1.15rem; margin-bottom: 1.5rem; }
 .filter-grid { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: .85rem; align-items: end; }
 .indicator-filter { display: flex; flex-direction: column; gap: .32rem; min-width: 0; }

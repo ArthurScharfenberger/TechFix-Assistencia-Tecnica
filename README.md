@@ -61,6 +61,20 @@ Principais funcionalidades planejadas:
 - Registro dos serviços realizados;
 - Consulta de ordens de serviço;
 - Histórico de atendimentos.
+- Autenticação local para acesso da equipe interna.
+
+## Relatórios
+
+O módulo **Relatórios** reúne consultas de Ordens de Serviço, Reparos e Custos, Equipe e Clientes e Equipamentos. As páginas utilizam os dados locais já cadastrados, oferecem filtros por período e entidade, pesquisa, ordenação, paginação, exportação CSV e impressão pelo navegador para salvar em PDF.
+
+## Acesso de demonstração
+
+Como o projeto é exclusivamente frontend, ele inclui uma conta administrativa local apenas para demonstração acadêmica:
+
+- Usuário: `Admin` ou `admin@admin.com`
+- Senha de demonstração: `admin`
+
+A senha não é armazenada em texto puro no navegador; somente seu hash SHA-256 é persistido. Ainda assim, autenticação executada inteiramente no navegador pode ser contornada e **não é adequada para produção**. Uma implantação real deve usar backend, conexão segura, hash com salt e fator de custo, controle de sessão no servidor e política de troca da senha inicial.
 
 ---
 

@@ -8,8 +8,14 @@ import { UsuariosPage } from './pages/usuarios';
 import { ChamadosPage } from './pages/chamados';
 import { ManutencoesPage } from './pages/manutencoes';
 import { EquipePage } from './pages/equipe';
+import { RelatoriosPage } from './pages/relatorios/relatorios';
+import { RelatorioOrdensPage } from './pages/relatorios/relatorioOrdens';
+import { RelatorioReparosPage } from './pages/relatorios/relatorioReparos';
+import { RelatorioEquipePage } from './pages/relatorios/relatorioEquipe';
+import { RelatorioClientesEquipamentosPage } from './pages/relatorios/relatorioClientesEquipamentos';
 import { subscribeToStorage } from './services/storage';
 import { initIcons } from './utils/iconHelper';
+import { AuthService } from './services/authService';
 
 export class App {
   private rootElement: HTMLElement;
@@ -92,6 +98,12 @@ export class App {
   }
 
   private renderCurrentRoute(): void {
+    if (!AuthService.isAuthenticated()) {
+      AuthService.preserveIntendedRoute(window.location.hash);
+      window.location.replace(`${window.location.pathname}${window.location.search}#/login`);
+      return;
+    }
+    if (window.location.hash === '#/login') history.replaceState(null, '', '#/dashboard');
     const route = getCurrentRoute();
 
     if (this.currentPageComponent && typeof this.currentPageComponent.destroy === 'function') {
@@ -130,6 +142,21 @@ export class App {
         break;
       case 'equipe':
         this.currentPageComponent = new EquipePage();
+        break;
+      case 'relatorios':
+        this.currentPageComponent = new RelatoriosPage();
+        break;
+      case 'relatorios/ordens':
+        this.currentPageComponent = new RelatorioOrdensPage();
+        break;
+      case 'relatorios/reparos':
+        this.currentPageComponent = new RelatorioReparosPage();
+        break;
+      case 'relatorios/equipe':
+        this.currentPageComponent = new RelatorioEquipePage();
+        break;
+      case 'relatorios/clientes-equipamentos':
+        this.currentPageComponent = new RelatorioClientesEquipamentosPage();
         break;
       default:
         this.currentPageComponent = new DashboardPage();

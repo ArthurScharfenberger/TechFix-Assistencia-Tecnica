@@ -77,8 +77,7 @@
 
   .executive-stats { grid-template-columns: 1fr; }
   .executive-summary { align-items: flex-start; flex-direction: column; }
-  .indicators-intro, .filter-actions { align-items: stretch; flex-direction: column; }
-  .indicators-intro .btn { align-self: flex-start; }
+  .filter-actions { align-items: stretch; flex-direction: column; }
   .filter-grid, .indicator-cards, .analytics-grid, .distribution-grid, .efficiency-grid { grid-template-columns: 1fr; }
   .custom-date-fields { grid-column: span 1; grid-template-columns: 1fr; }
   .analytics-chart-card.chart-wide { grid-column: span 1; }
@@ -138,7 +137,7 @@
   }
 
   .indicator-filters { padding: .85rem; }
-  .indicators-intro .btn, .filter-actions > div:last-child, .filter-actions .btn { width: 100%; }
+  .indicator-page-actions .btn, .filter-actions > div:last-child, .filter-actions .btn { width: 100%; }
   .filter-actions > div:last-child { flex-direction: column; }
   .analytics-chart-card { min-height: 300px; padding: .85rem; }
   .analytics-chart { height: 235px; }

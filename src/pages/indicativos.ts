@@ -44,10 +44,9 @@ export class IndicativosPage {
     this.destroyCharts();
     const result = IndicativosService.analyze(this.filters);
     this.container.innerHTML = `
-      <section class="indicators-intro">
-        <div><span class="executive-eyebrow">Análise gerencial</span><h2>Indicativos</h2><p>Analise o desempenho, o volume de atendimentos e os resultados da assistência técnica.</p></div>
+      <div class="indicator-page-actions">
         <button id="export-report" class="btn btn-primary">${iconHTML('download', '', 17)} Exportar relatório</button>
-      </section>
+      </div>
       ${this.renderFilters(result)}
       ${result.totalRegistros === 0 ? this.renderEmpty() : this.renderContent(result)}
     `;

@@ -1,0 +1,8 @@
+import { ChamadoService } from '../../services/chamadoService';
+import { ManutencaoService } from '../../services/manutencaoService';
+import { FuncionarioService } from '../../services/funcionarioService';
+import { EquipamentoService } from '../../services/equipamentoService';
+import { iconHTML, initIcons } from '../../utils/iconHelper';
+import { logger } from '../../services/logger';
+
+export class RelatoriosPage { public render():HTMLElement { const el=document.createElement('div');el.className='reports-overview';const cards=[['relatorios/ordens','clipboard-list','Ordens de Serviço','Aberturas, conclusões, prioridades e status.',`${ChamadoService.getAll().length} registros disponíveis`],['relatorios/reparos','wrench','Reparos e Custos','Serviços realizados, custos e valores.',`${ManutencaoService.getAll().length} registros disponíveis`],['relatorios/equipe','users','Equipe','Produtividade e atendimentos por técnico.',`${FuncionarioService.getAll().length} integrantes cadastrados`],['relatorios/clientes-equipamentos','laptop','Clientes e Equipamentos','Histórico, recorrência e volume de atendimentos.',`${EquipamentoService.getAll().length} equipamentos cadastrados`]];el.innerHTML=`<section class="report-category-grid">${cards.map(([route,icon,title,description,context])=>`<a class="card report-category-card" href="#/${route}"><span>${iconHTML(icon,'',24)}</span><h2>${title}</h2><p>${description}</p><small>${context}</small><strong>Abrir relatório ${iconHTML('arrow-right','',16)}</strong></a>`).join('')}</section>`;initIcons(el);logger.info('Relatórios visualizados.',{tipoRelatorio:'VISAO_GERAL',quantidade:cards.length});return el;} }
