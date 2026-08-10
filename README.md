@@ -1,146 +1,84 @@
-# TechFix - Sistema de Assistência Técnica
+# TechFix — Sistema de Assistência Técnica
 
-## Índice
+O TechFix é um projeto acadêmico para organizar clientes, equipamentos, ordens de serviço, reparos e o trabalho da equipe de uma assistência técnica.
 
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Problema](#problema)
-- [Objetivos](#objetivos)
-- [Funcionalidades](#funcionalidades)
-- [Modelo Inicial](#modelo-inicial)
-- [Documentação](#documentação)
-- [Diagrama UML](#diagrama-uml)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Integrante](#integrante)
+Atualmente, o repositório reúne duas partes independentes:
 
----
+- um frontend em TypeScript, executado com Vite e com persistência local no navegador;
+- uma atividade de Programação Orientada a Objetos em Java padrão, sem integração com o frontend.
 
-# Sobre o Projeto
+## Funcionalidades do frontend
 
-O **TechFix** é um sistema desenvolvido para auxiliar no gerenciamento de uma assistência técnica.
+- autenticação local para demonstração;
+- dashboard e indicadores;
+- cadastros de clientes, equipamentos e equipe;
+- gerenciamento de ordens de serviço e reparos;
+- relatórios com filtros, paginação, exportação CSV e impressão.
 
-A aplicação tem como objetivo organizar informações de clientes, equipamentos e ordens de serviço, permitindo um melhor controle dos atendimentos e dos reparos realizados.
-
----
-
-# Problema
-
-Muitas assistências técnicas ainda utilizam controles manuais, como papéis ou planilhas, para registrar seus atendimentos.
-
-Esse processo pode gerar dificuldades como:
-
-- Perda de informações;
-- Dificuldade para localizar serviços;
-- Falta de acompanhamento dos reparos;
-- Pouco controle do histórico de atendimentos.
-
-O TechFix busca centralizar essas informações em uma única plataforma.
-
----
-
-# Objetivos
-
-O sistema tem como objetivos:
-
-- Organizar os dados dos clientes;
-- Controlar equipamentos recebidos para manutenção;
-- Gerenciar ordens de serviço;
-- Facilitar o acompanhamento dos reparos;
-- Registrar o histórico dos atendimentos.
-
----
-
-# Funcionalidades
-
-Principais funcionalidades planejadas:
-
-- Cadastro de clientes;
-- Cadastro de equipamentos;
-- Abertura de ordens de serviço;
-- Registro de defeitos;
-- Atualização do status do reparo;
-- Registro dos serviços realizados;
-- Consulta de ordens de serviço;
-- Histórico de atendimentos.
-- Autenticação local para acesso da equipe interna.
-
-## Relatórios
-
-O módulo **Relatórios** reúne consultas de Ordens de Serviço, Reparos e Custos, Equipe e Clientes e Equipamentos. As páginas utilizam os dados locais já cadastrados, oferecem filtros por período e entidade, pesquisa, ordenação, paginação, exportação CSV e impressão pelo navegador para salvar em PDF.
-
-## Acesso de demonstração
-
-Como o projeto é exclusivamente frontend, ele inclui uma conta administrativa local apenas para demonstração acadêmica:
+### Acesso de demonstração
 
 - Usuário: `Admin` ou `admin@admin.com`
-- Senha de demonstração: `admin`
+- Senha: `admin`
 
-A senha não é armazenada em texto puro no navegador; somente seu hash SHA-256 é persistido. Ainda assim, autenticação executada inteiramente no navegador pode ser contornada e **não é adequada para produção**. Uma implantação real deve usar backend, conexão segura, hash com salt e fator de custo, controle de sessão no servidor e política de troca da senha inicial.
+Essa autenticação existe apenas para demonstração acadêmica. Como é executada no navegador, não oferece a segurança necessária para uso em produção.
 
----
+## Atividade Java
 
-# Modelo Inicial
+A implementação Java representa as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico`. A classe `Main` demonstra a criação e associação desses objetos e a alteração do status de uma ordem de `Aberta` para `Em atendimento`.
 
-As primeiras classes identificadas no domínio do sistema foram:
+Esta etapa usa somente Java padrão: não há Spring, Maven, Gradle, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
 
-| Classe         | Descrição                                         |
-| -------------- | ------------------------------------------------- |
-| Cliente        | Representa o cliente que solicita o serviço       |
-| Equipamento    | Representa o aparelho enviado para reparo         |
-| OrdemDeServico | Representa o atendimento realizado                |
-| Tecnico        | Representa o profissional responsável pelo reparo |
+Uma visão geral da área Java está em [`backend/README.md`](backend/README.md). As instruções de compilação e a descrição das classes estão em [`backend/src/README.md`](backend/src/README.md).
 
----
+## Diagramas
 
-# Documentação
+- [`Diagrama-Classes`](Diagrama-Classes/README.md): diagrama correspondente às classes Java implementadas, com atributos, métodos e multiplicidades.
+- [`Diagrama-UML`](Diagrama-UML/README.md): registro da modelagem inicial do domínio.
 
-Os documentos do projeto estão organizados na pasta **docs**.
+## Estrutura principal
 
-## Arquivos disponíveis:
-
-📄 **planejamento.md**  
-Contém o planejamento inicial do projeto, incluindo domínio, problema, público-alvo e funcionalidades.
-
-📄 **atividade-semanal-02.md**  
-Documenta a primeira etapa de modelagem do sistema, incluindo a definição das classes de domínio e decisões tomadas.
-
----
-
-# Diagrama UML
-
-O primeiro diagrama de classes do projeto está localizado na pasta:
-
-```
-Diagrama UML/
-```
-
-Esse diagrama representa a primeira versão da modelagem do sistema, contendo as principais classes e seus relacionamentos.
-
----
-
-# Estrutura do Projeto
-
-```
-TechFix
-│
-├── README.md
-│
-├── Diagrama UML
-│   └── diagrama.png
-│
-└── docs
-    ├── planejamento.md
-    └── atividade-semanal-02.md
+```text
+TechFix/
+├── backend/
+│   ├── README.md
+│   └── src/
+│       ├── Cliente.java
+│       ├── Equipamento.java
+│       ├── Main.java
+│       ├── OrdemServico.java
+│       ├── Tecnico.java
+│       └── README.md
+├── Diagrama-Classes/
+│   ├── DiagramaClasses.png
+│   └── README.md
+├── Diagrama-UML/
+├── docs/
+├── public/
+├── src/                 # frontend TypeScript
+├── DEVLOG.md
+├── PLANEJAMENTO.md
+├── package.json
+└── README.md
 ```
 
----
+## Executando o frontend
 
-## Histórico de desenvolvimento
+```bash
+npm install
+npm run dev
+```
 
-A evolução diária do projeto está registrada no arquivo [DEVLOG.md](DEVLOG.md).
+Os scripts disponíveis e as dependências estão definidos em `package.json`.
 
----
+## Documentação
 
-# Integrante
+- [`DEVLOG.md`](DEVLOG.md): histórico das alterações e verificações do projeto.
+- [`PLANEJAMENTO.md`](PLANEJAMENTO.md): escopo, histórias de usuário e backlog inicial.
+- [`backend/README.md`](backend/README.md): limites e organização da área Java.
+- [`backend/src/README.md`](backend/src/README.md): documentação e execução do código Java.
+- [`Diagrama-Classes/README.md`](Diagrama-Classes/README.md): explicação do diagrama implementado.
+
+## Integrante
 
 - Arthur Scharfenberger
 - Lucas Oliveira da Silva

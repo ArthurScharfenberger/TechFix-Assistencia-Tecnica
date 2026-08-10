@@ -170,3 +170,12 @@ As próximas etapas previstas são:
 ```
 Adiciona diagrama de classes UML inicial e documentação da atividade semanal 02
 ```
+
+---
+
+# Evolução posterior
+
+Esta página permanece como registro da modelagem inicial do projeto. A etapa seguinte foi concluída com a definição de atributos, construtores, métodos e multiplicidades, além da implementação das classes em Java padrão.
+
+- [Diagrama de classes da implementação](../Diagrama-Classes/README.md)
+- [Código Java e instruções de execução](../backend/src/README.md)

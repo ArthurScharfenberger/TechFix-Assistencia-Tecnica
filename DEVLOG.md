@@ -71,3 +71,31 @@ Organizar a preparação do projeto para envio ao GitHub, consolidando a documen
 - Incluídas exportação CSV em UTF-8, impressão A4/PDF, documento individual de ordem e logs de visualização/exportação.
 - Integradas novas rotas protegidas, estados vazios, tema claro/escuro e layouts responsivos para desktop, sidebar recolhida e drawer mobile.
 - Verificação executada com `npm run build` (TypeScript e Vite).
+
+## 10/08/2026 — Estrutura Java e diagrama de classes
+
+### Objetivo
+
+Organizar separadamente a atividade de Programação Orientada a Objetos, mantendo o frontend existente sem integração com Java nesta etapa.
+
+### Alterações realizadas
+
+- Criada a estrutura `backend/src` para o código Java básico.
+- Implementadas as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico` e o ponto de entrada `Main`.
+- Mantido o modelo sem packages, frameworks, banco de dados, API ou gerenciador de dependências.
+- Adicionada a regra `*.class` ao `.gitignore`.
+- Documentados o código Java e o diagrama de classes em READMEs próprios.
+- Incorporada a imagem `DiagramaClasses.png` à documentação do diagrama.
+
+### Verificações realizadas
+
+- JDK identificado: Java e `javac` 17.0.10.
+- Compilação concluída com sucesso usando `javac`.
+- `Main` executado com sucesso, demonstrando o status inicial `Aberta` e a alteração para `Em atendimento`.
+- Artefatos `.class` gerados no teste removidos após a validação.
+
+### Decisões tomadas
+
+- Java e frontend permanecem independentes nesta fase.
+- O diagrama implementado registra atributos, métodos e associações das quatro classes do domínio.
+- A classe `Main` não integra o diagrama de domínio, pois existe apenas para demonstrar o uso das demais classes.

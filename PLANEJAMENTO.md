@@ -85,3 +85,24 @@ O objetivo deste sistema é centralizar essas informações em uma única plataf
 
 # Repositório GitHub
 
+```
+
+---
+
+# Estado atual da implementação
+
+A primeira implementação orientada a objetos foi organizada em `backend/src`, separada do frontend. Ela contém as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico`, além de `Main` para demonstrar o cenário básico.
+
+Nesta etapa não há API, banco de dados ou integração entre Java e TypeScript. A documentação técnica está disponível em `backend/src/README.md`, e o modelo visual atualizado está documentado em `Diagrama-Classes/README.md`.
+
+```text
+backend/
+└── src/
+    ├── Cliente.java
+    ├── Tecnico.java
+    ├── Equipamento.java
+    ├── OrdemServico.java
+    ├── Main.java
+    └── README.md
+```
+
