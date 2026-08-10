@@ -143,3 +143,4 @@ A evolução diária do projeto está registrada no arquivo [DEVLOG.md](DEVLOG.m
 # Integrante
 
 - Arthur Scharfenberger
+- Lucas Oliveira da Silva
