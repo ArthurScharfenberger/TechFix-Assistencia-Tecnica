@@ -91,18 +91,24 @@ O objetivo deste sistema é centralizar essas informações em uma única plataf
 
 # Estado atual da implementação
 
-A primeira implementação orientada a objetos foi organizada em `backend/src`, separada do frontend. Ela contém as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico`, além de `Main` para demonstrar o cenário básico.
+A implementação orientada a objetos está organizada no padrão Maven, separada do frontend. Ela contém as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico`, os enums `StatusOrdemServico` e `TipoEquipamento`, além de `Main` para demonstrar o cenário básico e testes JUnit 5.
 
 Nesta etapa não há API, banco de dados ou integração entre Java e TypeScript. A documentação técnica está disponível em `backend/src/README.md`, e o modelo visual atualizado está documentado em `Diagrama-Classes/README.md`.
 
 ```text
 backend/
+├── pom.xml
 └── src/
-    ├── Cliente.java
-    ├── Tecnico.java
-    ├── Equipamento.java
-    ├── OrdemServico.java
-    ├── Main.java
-    └── README.md
+    ├── README.md
+    ├── main/java/
+    │   ├── Cliente.java
+    │   ├── Tecnico.java
+    │   ├── Equipamento.java
+    │   ├── OrdemServico.java
+    │   ├── StatusOrdemServico.java
+    │   ├── TipoEquipamento.java
+    │   └── Main.java
+    └── test/java/
+        └── OrdemServicoTest.java
 ```
 

@@ -24,9 +24,9 @@ Essa autenticação existe apenas para demonstração acadêmica. Como é execut
 
 ## Atividade Java
 
-A implementação Java representa as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico`. A classe `Main` demonstra a criação e associação desses objetos e a alteração do status de uma ordem de `Aberta` para `Em atendimento`.
+A implementação Java representa as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico`. Seus construtores possuem validações básicas, e os enums `StatusOrdemServico` e `TipoEquipamento` controlam os valores de status e tipo. A classe `Main` demonstra a criação e associação dos objetos e a mudança de `ABERTA` para `EM_ATENDIMENTO`.
 
-Esta etapa usa somente Java padrão: não há Spring, Maven, Gradle, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
+Esta etapa usa Java padrão e Maven apenas para os três testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
 
 Uma visão geral da área Java está em [`backend/README.md`](backend/README.md). As instruções de compilação e a descrição das classes estão em [`backend/src/README.md`](backend/src/README.md).
 
@@ -40,14 +40,20 @@ Uma visão geral da área Java está em [`backend/README.md`](backend/README.md)
 ```text
 TechFix/
 ├── backend/
+│   ├── pom.xml
 │   ├── README.md
 │   └── src/
-│       ├── Cliente.java
-│       ├── Equipamento.java
-│       ├── Main.java
-│       ├── OrdemServico.java
-│       ├── Tecnico.java
-│       └── README.md
+│       ├── README.md
+│       ├── main/java/
+│       │   ├── Cliente.java
+│       │   ├── Equipamento.java
+│       │   ├── Main.java
+│       │   ├── OrdemServico.java
+│       │   ├── StatusOrdemServico.java
+│       │   ├── Tecnico.java
+│       │   └── TipoEquipamento.java
+│       └── test/java/
+│           └── OrdemServicoTest.java
 ├── Diagrama-Classes/
 │   ├── DiagramaClasses.png
 │   └── README.md
@@ -76,6 +82,7 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 - [`PLANEJAMENTO.md`](PLANEJAMENTO.md): escopo, histórias de usuário e backlog inicial.
 - [`backend/README.md`](backend/README.md): limites e organização da área Java.
 - [`backend/src/README.md`](backend/src/README.md): documentação e execução do código Java.
+- [`docs/atividade-semanal-03.md`](docs/atividade-semanal-03.md): registro da Atividade Semanal nº 3.
 - [`Diagrama-Classes/README.md`](Diagrama-Classes/README.md): explicação do diagrama implementado.
 
 ## Integrante

@@ -4,6 +4,16 @@ public class Cliente {
     private String email;
 
     public Cliente(String nome, String telefone, String email) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome inválido");
+        }
+        if (telefone == null || telefone.isBlank()) {
+            throw new IllegalArgumentException("Telefone inválido");
+        }
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("Email inválido");
+        }
+
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;

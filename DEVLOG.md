@@ -99,3 +99,43 @@ Organizar separadamente a atividade de Programação Orientada a Objetos, manten
 - Java e frontend permanecem independentes nesta fase.
 - O diagrama implementado registra atributos, métodos e associações das quatro classes do domínio.
 - A classe `Main` não integra o diagrama de domínio, pois existe apenas para demonstrar o uso das demais classes.
+
+## 10/08/2026 — Início da Atividade Semanal nº 3
+
+### Objetivo
+
+Evoluir as classes Java do TechFix para atender aos requisitos da Atividade Semanal nº 3.
+
+### Alterações
+
+- Adicionadas validações básicas aos construtores.
+- Implementados os enums `StatusOrdemServico` e `TipoEquipamento`.
+- Aplicados os enums em `OrdemServico` e `Equipamento`.
+- Adaptada a mudança de estado da ordem.
+- Preservados os dados de demonstração no `Main`.
+- Criados três testes com JUnit 5.
+- Adicionada configuração mínima do Maven para os testes.
+
+### Verificações
+
+- Compilação dos fontes principais concluída com `javac` 17.0.10.
+- `Main` executado com sucesso, demonstrando a mudança de `ABERTA` para `EM_ATENDIMENTO`.
+- `mvn test` não foi executado porque o Maven não está instalado no ambiente.
+
+## 10/08/2026 — Revisão da documentação da Atividade nº 3
+
+### Atualizações
+
+- Revisadas as estruturas de pastas nos documentos para o padrão Maven (`src/main/java` e `src/test/java`).
+- Atualizado o planejamento com os enums, os testes JUnit e o arquivo `pom.xml`.
+- Adicionado ao documento do diagrama um modelo Mermaid compatível com o código atual.
+- Mantida a imagem anterior como registro histórico, com sua versão identificada claramente.
+- Documentado o requisito de JDK 17 e Maven para os testes.
+- Adicionado `backend/target/` ao `.gitignore` para evitar o versionamento de artefatos Maven.
+
+### Verificações
+
+- Compilação dos fontes Java e execução de `Main` concluídas com sucesso.
+- Build do frontend concluído com `npm run build`.
+- Documentos verificados com `git diff --check`, sem erros de formatação.
+- Testes JUnit não executados porque o Maven permanece indisponível no ambiente.

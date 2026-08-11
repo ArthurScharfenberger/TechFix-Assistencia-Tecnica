@@ -3,6 +3,13 @@ public class Tecnico {
     private String especialidade;
 
     public Tecnico(String nome, String especialidade) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome inválido");
+        }
+        if (especialidade == null || especialidade.isBlank()) {
+            throw new IllegalArgumentException("Especialidade inválida");
+        }
+
         this.nome = nome;
         this.especialidade = especialidade;
     }

@@ -2,11 +2,71 @@
 
 Este documento descreve o diagrama de classes correspondente à implementação básica em Java do TechFix. As classes estão em [`backend/src`](../backend/src/README.md) e utilizam somente recursos da linguagem Java, sem frameworks, banco de dados ou integração com o frontend.
 
-## Diagrama
+## Diagrama atual
+
+O diagrama abaixo corresponde ao código da Atividade Semanal nº 3:
+
+```mermaid
+classDiagram
+    class Cliente {
+        -String nome
+        -String telefone
+        -String email
+        +Cliente(nome, telefone, email)
+        +exibirDados() void
+        +getNome() String
+    }
+    class Tecnico {
+        -String nome
+        -String especialidade
+        +Tecnico(nome, especialidade)
+        +exibirDados() void
+        +getNome() String
+    }
+    class Equipamento {
+        -TipoEquipamento tipo
+        -String marca
+        -String defeito
+        +Equipamento(tipo, marca, defeito)
+        +exibirDados() void
+    }
+    class OrdemServico {
+        -int numero
+        -Cliente cliente
+        -Tecnico tecnico
+        -Equipamento equipamento
+        -StatusOrdemServico status
+        +OrdemServico(numero, cliente, tecnico, equipamento)
+        +alterarStatus(novoStatus) void
+        +getStatus() StatusOrdemServico
+        +exibirOrdemServico() void
+    }
+    class TipoEquipamento {
+        <<enumeration>>
+        NOTEBOOK
+        DESKTOP
+        CELULAR
+        OUTRO
+    }
+    class StatusOrdemServico {
+        <<enumeration>>
+        ABERTA
+        EM_ATENDIMENTO
+        CONCLUIDA
+    }
+
+    Cliente "1" <-- "0..*" OrdemServico : solicita
+    Tecnico "1" <-- "0..*" OrdemServico : atende
+    Equipamento "1" <-- "0..*" OrdemServico : refere-se a
+    Equipamento --> TipoEquipamento : tipo
+    OrdemServico --> StatusOrdemServico : status
+```
+
+## Imagem da etapa anterior
 
 ![Diagrama de Classes do TechFix](./DiagramaClasses.png)
 
-No diagrama, o sinal `-` representa atributos privados e o sinal `+` representa construtores e métodos públicos. As multiplicidades mostram quantas instâncias podem participar de cada associação.
+A imagem foi preservada como registro da etapa anterior, quando `Equipamento.tipo` e `OrdemServico.status` ainda eram textos. No diagrama atual, o sinal `-` representa atributos privados e o sinal `+` representa construtores e métodos públicos. As multiplicidades mostram quantas instâncias podem participar de cada associação.
 
 ## Classes documentadas
 
@@ -24,7 +84,7 @@ Representa o item encaminhado à assistência técnica. Armazena `tipo`, `marca`
 
 ### OrdemServico
 
-Centraliza o atendimento. Armazena o `numero`, as referências para `cliente`, `tecnico` e `equipamento`, além do `status`. Seu construtor define o status inicial como `Aberta`. O método `alterarStatus()` atualiza essa situação e `exibirOrdemServico()` apresenta todos os dados relacionados.
+Centraliza o atendimento. Armazena o `numero`, as referências para `cliente`, `tecnico` e `equipamento`, além do `status`. Seu construtor define o status inicial como `ABERTA`. O método `alterarStatus()` atualiza essa situação, `getStatus()` retorna o estado atual e `exibirOrdemServico()` apresenta todos os dados relacionados.
 
 ## Relacionamentos e multiplicidades
 
@@ -48,13 +108,19 @@ A atividade Java foi isolada do frontend na estrutura abaixo:
 
 ```text
 backend/
+├── pom.xml
 └── src/
-    ├── Cliente.java
-    ├── Equipamento.java
-    ├── Main.java
-    ├── OrdemServico.java
-    ├── Tecnico.java
-    └── README.md
+    ├── README.md
+    ├── main/java/
+    │   ├── Cliente.java
+    │   ├── Equipamento.java
+    │   ├── Main.java
+    │   ├── OrdemServico.java
+    │   ├── StatusOrdemServico.java
+    │   ├── Tecnico.java
+    │   └── TipoEquipamento.java
+    └── test/java/
+        └── OrdemServicoTest.java
 ```
 
-A implementação permanece sem declarações de `package`, dependências externas, Maven, Gradle, Spring ou API. Ela foi validada com JDK 17.0.10 por meio da compilação com `javac` e da execução de `Main`.
+A implementação permanece sem declarações de `package`, Spring, banco de dados ou API. O Maven foi adicionado para compilar o projeto e executar os testes JUnit 5. Os fontes principais foram validados com JDK 17.0.10 por meio da compilação com `javac` e da execução de `Main`.
