@@ -20,8 +20,8 @@ public class Equipamento {
     }
 
     public void exibirDados() {
-        System.out.println("Equipamento: " + tipo);
-        System.out.println("Marca: " + marca);
-        System.out.println("Defeito: " + defeito);
+        System.out.println("  Tipo:    " + tipo);
+        System.out.println("  Marca:   " + marca);
+        System.out.println("  Defeito: " + defeito);
     }
 }

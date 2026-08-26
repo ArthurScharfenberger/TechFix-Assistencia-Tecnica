@@ -15,8 +15,8 @@ public class Tecnico {
     }
 
     public void exibirDados() {
-        System.out.println("Técnico: " + nome);
-        System.out.println("Especialidade: " + especialidade);
+        System.out.println("  Nome:          " + nome);
+        System.out.println("  Especialidade: " + especialidade);
     }
 
     public String getNome() {

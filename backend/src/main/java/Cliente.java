@@ -20,9 +20,9 @@ public class Cliente {
     }
 
     public void exibirDados() {
-        System.out.println("Cliente: " + nome);
-        System.out.println("Telefone: " + telefone);
-        System.out.println("E-mail: " + email);
+        System.out.println("  Nome:     " + nome);
+        System.out.println("  Telefone: " + telefone);
+        System.out.println("  E-mail:   " + email);
     }
 
     public String getNome() {

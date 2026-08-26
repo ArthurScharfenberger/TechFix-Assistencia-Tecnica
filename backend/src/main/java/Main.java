@@ -6,8 +6,10 @@ public class Main {
         OrdemServico os1 = new OrdemServico(1, cliente, tecnico, equipamento);
 
         os1.exibirOrdemServico();
-        System.out.println("Alterando status para EM_ATENDIMENTO...");
+
+        System.out.println();
+        System.out.println("Atualizando ordem: ABERTA -> EM_ATENDIMENTO");
         os1.alterarStatus(StatusOrdemServico.EM_ATENDIMENTO);
-        os1.exibirOrdemServico();
+        System.out.println("Status atualizado com sucesso: " + os1.getStatus());
     }
 }

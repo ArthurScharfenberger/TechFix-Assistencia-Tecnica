@@ -39,10 +39,19 @@ public class OrdemServico {
     }
 
     public void exibirOrdemServico() {
-        System.out.println("Ordem de Serviço nº " + numero);
+        System.out.println("========================================");
+        System.out.println("       ORDEM DE SERVIÇO Nº " + numero);
+        System.out.println("========================================");
+        System.out.println("CLIENTE");
         cliente.exibirDados();
+        System.out.println();
+        System.out.println("TÉCNICO RESPONSÁVEL");
         tecnico.exibirDados();
+        System.out.println();
+        System.out.println("EQUIPAMENTO");
         equipamento.exibirDados();
-        System.out.println("Status: " + status);
+        System.out.println();
+        System.out.println("STATUS: " + status);
+        System.out.println("========================================");
     }
 }
