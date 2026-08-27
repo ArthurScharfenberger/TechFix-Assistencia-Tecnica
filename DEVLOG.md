@@ -139,3 +139,35 @@ Evoluir as classes Java do TechFix para atender aos requisitos da Atividade Sema
 - Build do frontend concluído com `npm run build`.
 - Documentos verificados com `git diff --check`, sem erros de formatação.
 - Testes JUnit não executados porque o Maven permanece indisponível no ambiente.
+
+## 26/08/2026 — Atividade Semanal nº 5
+
+### Objetivo
+
+Validar os requisitos definidos na Atividade A4, elaborar critérios de aceitação testáveis e realizar a priorização final para apresentação da AP1.
+
+### Alterações realizadas
+
+- Revisados e reescritos os requisitos RF1, RF2, RF3, RN1, RNF1, RNF2, HU1 e HU2 para melhorar clareza, completude, consistência e verificabilidade.
+- Elaborados critérios de aceitação no formato Dado/Quando/Então para os três requisitos funcionais.
+- Priorizado todo o conjunto de requisitos com o método MoSCoW e justificativa por item.
+- Organizado um resumo do fluxo e das decisões para apresentação da AP1.
+- Preenchido o documento padrão de entrega da disciplina.
+
+### Uso de Inteligência Artificial
+
+- A IA foi utilizada como auxílio na identificação de ambiguidades e informações incompletas nos requisitos da A4.
+- A IA auxiliou na redação de versões verificáveis dos requisitos, na elaboração inicial dos critérios de aceitação e na organização da priorização MoSCoW.
+- Todo o conteúdo aproveitado foi revisado e adaptado pela equipe, que permaneceu responsável pelas decisões finais.
+
+### Verificações realizadas
+
+- Comparação das versões validadas com os requisitos originais da A4 e com a rastreabilidade da entrevista da A3.
+- Revisão manual da clareza e da testabilidade dos critérios de aceitação.
+- Conferência da estrutura do novo documento com as cinco seções e a tabela de declaração de IA do arquivo padrão.
+
+### Pendências / próximos passos
+
+- Revisar e aprovar o conteúdo com todos os integrantes.
+- Inserir as assinaturas finais.
+- Exportar o documento aprovado para PDF e enviá-lo no AVA até o início do Encontro 6.
