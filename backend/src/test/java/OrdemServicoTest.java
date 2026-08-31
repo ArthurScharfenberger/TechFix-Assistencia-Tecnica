@@ -14,6 +14,16 @@ class OrdemServicoTest {
     }
 
     @Test
+    void naoDeveAdicionarOrdemNulaAoCliente() {
+        Cliente cliente = new Cliente("João Silva", "5199999-9999", "joao@email.com");
+
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> cliente.adicionarOrdemServico(null)
+        );
+    }
+
+    @Test
     void deveIniciarOrdemComStatusAberta() {
         OrdemServico ordem = criarOrdemValida();
 

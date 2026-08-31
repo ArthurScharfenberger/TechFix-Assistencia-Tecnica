@@ -5,7 +5,7 @@ public class Cliente {
     private String nome;
     private String telefone;
     private String email;
-    private List<OrdemServico> ordensServico;
+    private final List<OrdemServico> ordensServico = new ArrayList<>();
 
     public Cliente(String nome, String telefone, String email) {
         if (nome == null || nome.isBlank()) {
@@ -21,10 +21,13 @@ public class Cliente {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        this.ordensServico = new ArrayList<>();
     }
 
     public void adicionarOrdemServico(OrdemServico ordemServico) {
+        if (ordemServico == null) {
+            throw new IllegalArgumentException("Ordem de serviço não pode ser nula");
+        }
+
         ordensServico.add(ordemServico);
     }
 
