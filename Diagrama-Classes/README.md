@@ -4,7 +4,7 @@ Este documento descreve o diagrama de classes correspondente à implementação 
 
 ## Diagrama atual
 
-O diagrama abaixo corresponde ao código da Atividade Semanal nº 3:
+O diagrama abaixo corresponde ao código atualizado no esboço da Atividade Semanal nº 6:
 
 ```mermaid
 classDiagram
@@ -12,7 +12,9 @@ classDiagram
         -String nome
         -String telefone
         -String email
+        -List~OrdemServico~ ordensServico
         +Cliente(nome, telefone, email)
+        +adicionarOrdemServico(ordemServico) void
         +exibirDados() void
         +getNome() String
     }
@@ -72,7 +74,7 @@ A imagem foi preservada como registro da etapa anterior, quando `Equipamento.tip
 
 ### Cliente
 
-Representa a pessoa que solicita o atendimento. Armazena `nome`, `telefone` e `email`. O método `exibirDados()` apresenta essas informações, enquanto `getNome()` retorna o nome do cliente.
+Representa a pessoa que solicita o atendimento. Armazena `nome`, `telefone`, `email` e uma `List<OrdemServico>` inicializada na declaração. O método `adicionarOrdemServico()` rejeita valores nulos e inclui uma ordem na coleção; `exibirDados()` apresenta os dados e `getNome()` retorna o nome do cliente.
 
 ### Tecnico
 
@@ -94,7 +96,7 @@ Cada `OrdemServico` está associada exatamente a:
 - um `Tecnico`;
 - um `Equipamento`.
 
-Ao longo do tempo, cada cliente, técnico ou equipamento pode estar associado a zero ou várias ordens de serviço (`0..*`). Isso expressa uma associação entre os objetos, implementada pelas referências armazenadas dentro de `OrdemServico`.
+Ao longo do tempo, cada cliente, técnico ou equipamento pode estar associado a zero ou várias ordens de serviço (`0..*`). Na associação principal da Atividade 6, essa multiplicidade é implementada pela coleção `List<OrdemServico>` mantida por `Cliente`. A referência `cliente` de `OrdemServico` representa o outro sentido dessa associação.
 
 O diagrama usa os verbos **solicita**, **atende** e **refere-se a** para esclarecer o papel de cada classe na relação com a ordem.
 

@@ -7,14 +7,13 @@ Um `Cliente` tem várias `OrdemServico`, pois o mesmo cliente pode solicitar dif
 ## Trecho de código
 
 ```java
-private List<OrdemServico> ordensServico;
-
-public Cliente(String nome, String telefone, String email) {
-    // validações e demais atribuições
-    this.ordensServico = new ArrayList<>();
-}
+private final List<OrdemServico> ordensServico = new ArrayList<>();
 
 public void adicionarOrdemServico(OrdemServico ordemServico) {
+    if (ordemServico == null) {
+        throw new IllegalArgumentException("Ordem de serviço não pode ser nula");
+    }
+
     ordensServico.add(ordemServico);
 }
 ```
@@ -22,5 +21,8 @@ public void adicionarOrdemServico(OrdemServico ordemServico) {
 ## Links
 
 - Repositório: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica
-- Commit do código: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/commit/439281e
+- Commit atualizado do código: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/commit/ff608fb
 
+## Diagrama e validação
+
+O diagrama de classes registra a cardinalidade `Cliente 1` para `0..* OrdemServico`, o atributo `List<OrdemServico>` e o método de inclusão. O método rejeita valores nulos com `IllegalArgumentException`, comportamento coberto por um teste JUnit.

@@ -8,6 +8,10 @@ Neste momento, o termo `backend` identifica apenas a área reservada ao código 
 
 ```text
 backend/
+├── docs/
+│   ├── atividade-semanal-06-esboco.md
+│   ├── Ficha_Padrao_Entrega_Atividade_06_Esboco.docx
+│   └── Ficha_Padrao_Entrega_Atividade_06_Esboco.pdf
 ├── pom.xml
 ├── README.md
 └── src/
@@ -27,6 +31,12 @@ backend/
 Consulte a [documentação do código-fonte](src/README.md) para conhecer as classes e os comandos de compilação, teste e execução.
 
 O modelo visual correspondente está na [documentação do diagrama de classes](../Diagrama-Classes/README.md).
+
+O esboço e a Ficha Padrão da Atividade Semanal nº 6 estão em [`docs`](docs/atividade-semanal-06-esboco.md).
+
+## Associação da Atividade 6
+
+Um `Cliente` mantém uma `List<OrdemServico>`, representando que um cliente pode solicitar zero ou várias ordens de serviço. A coleção é declarada pelo tipo de interface, inicializada no próprio atributo e modificada pelo método de domínio `adicionarOrdemServico`, que rejeita valores nulos.
 
 ## Organização da apresentação
 
