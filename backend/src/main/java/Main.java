@@ -4,6 +4,7 @@ public class Main {
         Tecnico tecnico = new Tecnico("Carlos Souza", "Manutenção de computadores");
         Equipamento equipamento = new Equipamento(TipoEquipamento.NOTEBOOK, "Dell", "Não liga");
         OrdemServico os1 = new OrdemServico(1, cliente, tecnico, equipamento);
+        cliente.adicionarOrdemServico(os1);
 
         os1.exibirOrdemServico();
 

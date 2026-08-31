@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
     private String nome;
     private String telefone;
     private String email;
+    private List<OrdemServico> ordensServico;
 
     public Cliente(String nome, String telefone, String email) {
         if (nome == null || nome.isBlank()) {
@@ -17,6 +21,11 @@ public class Cliente {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+        this.ordensServico = new ArrayList<>();
+    }
+
+    public void adicionarOrdemServico(OrdemServico ordemServico) {
+        ordensServico.add(ordemServico);
     }
 
     public void exibirDados() {
