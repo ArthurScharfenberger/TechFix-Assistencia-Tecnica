@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class Main {
     public static void main(String[] args) {
         Cliente cliente = new Cliente("João Silva", "5199999-9999", "joao@email.com");
@@ -5,6 +7,7 @@ public class Main {
         Equipamento equipamento = new Equipamento(TipoEquipamento.NOTEBOOK, "Dell", "Não liga");
         OrdemServico os1 = new OrdemServico(1, cliente, tecnico, equipamento);
         cliente.adicionarOrdemServico(os1);
+        os1.adicionarItemServico("Diagnóstico técnico", new BigDecimal("80.00"));
 
         os1.exibirOrdemServico();
 

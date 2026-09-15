@@ -1,9 +1,14 @@
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 public class OrdemServico {
     private int numero;
     private Cliente cliente;
     private Tecnico tecnico;
     private Equipamento equipamento;
     private StatusOrdemServico status;
+    private final List<ItemServico> itensServico = new ArrayList<>();
 
     public OrdemServico(int numero, Cliente cliente, Tecnico tecnico, Equipamento equipamento) {
         if (numero <= 0) {
@@ -24,6 +29,14 @@ public class OrdemServico {
         this.tecnico = tecnico;
         this.equipamento = equipamento;
         this.status = StatusOrdemServico.ABERTA;
+    }
+
+    public void adicionarItemServico(String descricao, BigDecimal valor) {
+        itensServico.add(new ItemServico(descricao, valor));
+    }
+
+    public List<ItemServico> getItensServico() {
+        return List.copyOf(itensServico);
     }
 
     public void alterarStatus(StatusOrdemServico novoStatus) {
@@ -53,5 +66,30 @@ public class OrdemServico {
         System.out.println();
         System.out.println("STATUS: " + status);
         System.out.println("========================================");
+    }
+
+    public static final class ItemServico {
+        private final String descricao;
+        private final BigDecimal valor;
+
+        private ItemServico(String descricao, BigDecimal valor) {
+            if (descricao == null || descricao.isBlank()) {
+                throw new IllegalArgumentException("Descrição inválida");
+            }
+            if (valor == null || valor.signum() < 0) {
+                throw new IllegalArgumentException("Valor inválido");
+            }
+
+            this.descricao = descricao;
+            this.valor = valor;
+        }
+
+        public String getDescricao() {
+            return descricao;
+        }
+
+        public BigDecimal getValor() {
+            return valor;
+        }
     }
 }
