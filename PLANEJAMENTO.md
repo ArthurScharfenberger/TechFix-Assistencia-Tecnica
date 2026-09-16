@@ -1,114 +1,77 @@
-```md
 # Planejamento do Projeto
 
-## Nome do Projeto
-**TechFix - Sistema de Assistência Técnica**
+## Identificação
 
-## Integrante(s)
-- Arthur Scharfenberger
+- **Projeto:** TechFix — Sistema de Gestão de Manutenção de Equipamentos
+- **Domínio:** assistência técnica
+- **Equipe:** Arthur Scharfenberger e Lucas Oliveira da Silva
+- **Semestre:** 2026/2
 
----
+## Problema e público-alvo
 
-# Domínio
+Muitas assistências técnicas ainda controlam clientes, equipamentos e ordens de serviço em papel ou planilhas. Isso dificulta a organização das informações, o acompanhamento dos reparos e a comunicação com os clientes. O TechFix centraliza essas informações e atende clientes, técnicos e responsáveis pela gestão da assistência.
 
-Assistência Técnica.
+## Backlog priorizado
 
-## Descrição do Problema
+O planejamento incremental abaixo foi definido na Atividade 08. Os tamanhos usam a escala relativa P (pequeno), M (médio) e G (grande).
 
-Muitas assistências técnicas ainda realizam o controle de clientes, equipamentos e ordens de serviço em papel ou planilhas, dificultando a organização das informações, o acompanhamento dos reparos e a comunicação com os clientes.
+| ID | Item de backlog | Prioridade | Tamanho | Incremento |
+|---|---|---:|:---:|:---:|
+| B01 | Cadastro e login de cliente | 1 | M | I1 |
+| B02 | Registrar solicitação de conserto e detalhes do equipamento | 2 | M | I1 |
+| B03 | Consultar status da solicitação pelo cliente | 3 | P | I1 |
+| B04 | Login do painel do técnico | 4 | P | I2 |
+| B05 | Listar chamados em aberto para o técnico assumir | 5 | M | I2 |
+| B06 | Registrar diagnóstico, peças utilizadas e valor | 6 | G | I2 |
+| B07 | Finalizar chamado gerando valor total | 7 | M | I2 |
+| B08 | Pagar conserto online (Cartão/Pix) | 8 | G | I3 |
+| B09 | Avaliar o atendimento ao final | 9 | P | I3 |
+| B10 | Relatório gerencial de chamados concluídos | 10 | M | I3 |
 
-O objetivo deste sistema é centralizar essas informações em uma única plataforma, permitindo um gerenciamento mais eficiente dos atendimentos e dos serviços prestados.
+## Incrementos definidos
 
----
+### I1 — Solicitar Conserto
 
-# Público-alvo
+- **Itens:** B01, B02 e B03.
+- **Valor entregue:** o cliente consegue abrir uma conta, registrar seu aparelho com defeito e verificar que a solicitação está no sistema.
+- **Demonstração:** cadastrar um cliente de teste, preencher os dados de um equipamento quebrado, confirmar a solicitação e visualizar o status inicial “Em Análise”.
 
-- Atendentes da assistência técnica;
-- Técnicos responsáveis pelos reparos;
-- Clientes que desejam acompanhar o andamento do conserto.
+### I2 — Orçamento e Conclusão
 
----
+- **Itens:** B04, B05, B06 e B07.
+- **Valor entregue:** o técnico consegue assumir a solicitação criada no I1, registrar o diagnóstico e as peças usadas e encerrar o pedido, gerando o valor do conserto.
+- **Demonstração:** entrar como técnico, selecionar o chamado aberto no I1, adicionar uma peça, como “Placa Base”, com seu valor e finalizar o atendimento, mostrando a mudança de status e o valor final.
 
-# Funcionalidades
+### I3 — Itens postergados
 
-- Cadastro de clientes;
-- Cadastro de equipamentos;
-- Abertura de ordens de serviço;
-- Registro do defeito informado pelo cliente;
-- Atualização do status do reparo;
-- Registro dos serviços realizados;
-- Registro do valor do conserto;
-- Consulta de ordens de serviço;
-- Consulta do histórico de atendimentos;
-- Finalização da ordem de serviço.
+O backlog atribui B08, B09 e B10 ao I3. A Atividade 08 não detalha o valor entregue nem a demonstração desse incremento. A decisão atual é postergar a funcionalidade financeira para priorizar o fluxo principal de manutenção nos incrementos I1 e I2.
 
----
+## Riscos
 
-# Histórias de Usuário
+| ID | Evento e consequência | Probabilidade | Impacto | Mitigação |
+|---|---|:---:|:---:|---|
+| R1 | Falta de definição prévia da lista de peças, causando atraso ou retrabalho no desenvolvimento do B06. | Alta | Médio | Solicitar ao especialista de hardware ou cliente uma lista simplificada de peças padrão antes de iniciar o I2. |
+| R2 | Indisponibilidade da API de pagamento durante a validação, bloqueando a demonstração do I3 e reduzindo a confiança na entrega. | Média | Alto | Preparar uma simulação interna (mock) de aprovação e validar separadamente no ambiente sandbox. |
 
-1. Eu, como **atendente**, quero cadastrar clientes, para registrar seus dados e facilitar futuros atendimentos.
+### Matriz de riscos
 
-2. Eu, como **atendente**, quero cadastrar equipamentos, para identificar corretamente o aparelho que será consertado.
+| Probabilidade / Impacto | Baixo | Médio | Alto |
+|---|:---:|:---:|:---:|
+| Alta | — | R1 | — |
+| Média | — | — | R2 |
+| Baixa | — | — | — |
 
-3. Eu, como **atendente**, quero abrir uma ordem de serviço, para registrar o problema informado pelo cliente.
+## Decisões e pendências
 
-4. Eu, como **técnico**, quero atualizar o status do reparo, para informar o andamento do serviço.
+- **Decisão:** concentrar as funcionalidades primárias de manutenção em I1 e I2. A funcionalidade financeira fica para I3, reduzindo incertezas técnicas no fluxo principal.
+- **Pendência:** obter a aprovação do dono do produto para os nomes dos status “Em Análise”, “Em Conserto” e “Concluído”.
 
-5. Eu, como **técnico**, quero registrar os serviços realizados, para manter o histórico do conserto.
+## Estado atual da implementação
 
-6. Eu, como **atendente**, quero consultar ordens de serviço, para localizar rapidamente um atendimento.
+O repositório contém um frontend TypeScript executado com Vite e uma implementação acadêmica orientada a objetos em Java/Maven. Essas partes ainda não se comunicam por API. O planejamento representa a evolução pretendida do produto e não significa que todos os itens do backlog estejam implementados.
 
-7. Eu, como **cliente**, quero acompanhar o status do meu equipamento, para saber quando ele estará pronto.
+O documento original da atividade está em [`docs/Atividade_A8.pdf`](docs/Atividade_A8.pdf), e sua versão consultável em Markdown está em [`docs/atividade-semanal-08.md`](docs/atividade-semanal-08.md).
 
-8. Eu, como **atendente**, quero registrar o valor do conserto, para informar o orçamento ao cliente.
+## Repositório
 
-9. Eu, como **atendente**, quero finalizar uma ordem de serviço, para registrar a entrega do equipamento ao cliente.
-
-10. Eu, como **gerente da assistência técnica**, quero consultar o histórico de atendimentos, para acompanhar os serviços realizados e tomar decisões.
-
----
-
-# Backlog Inicial
-
-| Prioridade | Funcionalidade |
-|------------|----------------|
-| Alta | Cadastro de clientes |
-| Alta | Cadastro de equipamentos |
-| Alta | Abertura de ordem de serviço |
-| Alta | Atualização do status da ordem de serviço |
-| Média | Consulta de ordens de serviço |
-| Média | Registro dos serviços realizados |
-| Média | Registro do valor do conserto |
-| Baixa | Histórico de atendimentos |
-| Baixa | Acompanhamento do cliente |
-| Baixa | Finalização da ordem de serviço |
-
-# Repositório GitHub
-
-```
-
----
-
-# Estado atual da implementação
-
-A implementação orientada a objetos está organizada no padrão Maven, separada do frontend. Ela contém as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico`, os enums `StatusOrdemServico` e `TipoEquipamento`, além de `Main` para demonstrar o cenário básico e testes JUnit 5.
-
-Nesta etapa não há API, banco de dados ou integração entre Java e TypeScript. A documentação técnica está disponível em `backend/src/README.md`, e o modelo visual atualizado está documentado em `Diagrama-Classes/README.md`.
-
-```text
-backend/
-├── pom.xml
-└── src/
-    ├── README.md
-    ├── main/java/
-    │   ├── Cliente.java
-    │   ├── Tecnico.java
-    │   ├── Equipamento.java
-    │   ├── OrdemServico.java
-    │   ├── StatusOrdemServico.java
-    │   ├── TipoEquipamento.java
-    │   └── Main.java
-    └── test/java/
-        └── OrdemServicoTest.java
-```
-
+[github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica)

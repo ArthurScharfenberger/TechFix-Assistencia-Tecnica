@@ -171,3 +171,28 @@ Validar os requisitos definidos na Atividade A4, elaborar critérios de aceitaç
 - Revisar e aprovar o conteúdo com todos os integrantes.
 - Inserir as assinaturas finais.
 - Exportar o documento aprovado para PDF e enviá-lo no AVA até o início do Encontro 6.
+
+## 16/09/2026 — Atividade 08: planejamento incremental, estimativas e riscos
+
+### Objetivo
+
+Consolidar no repositório o planejamento incremental definido pela equipe para o Sistema de Gestão de Manutenção de Equipamentos.
+
+### Atualizações
+
+- Organizado o backlog B01–B10 por prioridade, tamanho relativo e incremento.
+- Documentados o valor e a demonstração previstos para I1 e I2.
+- Registrada a distribuição de B08, B09 e B10 em I3 sem acrescentar um detalhamento ausente no documento original.
+- Documentados os riscos R1 e R2, suas mitigações e posições na matriz de riscos.
+- Atualizado o índice de documentação e criada uma versão Markdown consultável da Atividade 08.
+- Adicionado ao repositório o PDF original fornecido pela equipe.
+
+### Decisões e pendências
+
+- O fluxo principal de manutenção permanece priorizado em I1 e I2; as funcionalidades financeiras foram postergadas para I3.
+- Os nomes “Em Análise”, “Em Conserto” e “Concluído” ainda dependem da aprovação do dono do produto.
+
+### Verificação
+
+- O conteúdo publicado foi comparado com `docs/Atividade_A8.pdf`.
+- Escopo, prioridades, estimativas e riscos foram preservados conforme as decisões registradas pela equipe.

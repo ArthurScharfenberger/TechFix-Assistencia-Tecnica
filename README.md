@@ -79,7 +79,9 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 ## Documentação
 
 - [`DEVLOG.md`](DEVLOG.md): histórico das alterações e verificações do projeto.
-- [`PLANEJAMENTO.md`](PLANEJAMENTO.md): escopo, histórias de usuário e backlog inicial.
+- [`PLANEJAMENTO.md`](PLANEJAMENTO.md): backlog priorizado, incrementos, estimativas e riscos definidos na Atividade 08.
+- [`docs/atividade-semanal-08.md`](docs/atividade-semanal-08.md): versão consultável da Atividade 08.
+- [`docs/Atividade_A8.pdf`](docs/Atividade_A8.pdf): documento original entregue na Atividade 08.
 - [`backend/README.md`](backend/README.md): limites e organização da área Java.
 - [`backend/src/README.md`](backend/src/README.md): documentação e execução do código Java.
 - [`docs/atividade-semanal-03.md`](docs/atividade-semanal-03.md): registro da Atividade Semanal nº 3.
