@@ -42,7 +42,7 @@ class OrdemServicoTest {
     private OrdemServico criarOrdemValida() {
         Cliente cliente = new Cliente("João Silva", "5199999-9999", "joao@email.com");
         Tecnico tecnico = new Tecnico("Carlos Souza", "Manutenção de computadores");
-        Equipamento equipamento = new Equipamento(TipoEquipamento.NOTEBOOK, "Dell", "Não liga");
+        Equipamento equipamento = new Notebook("Dell", "Não liga", 16);
         return new OrdemServico(1, cliente, tecnico, equipamento);
     }
 }

@@ -18,13 +18,16 @@ backend/
     ├── README.md
     ├── main/java/
     │   ├── Cliente.java
+    │   ├── Celular.java
     │   ├── Equipamento.java
     │   ├── Main.java
+    │   ├── Notebook.java
     │   ├── OrdemServico.java
     │   ├── StatusOrdemServico.java
     │   ├── Tecnico.java
     │   └── TipoEquipamento.java
     └── test/java/
+        ├── EquipamentoTest.java
         └── OrdemServicoTest.java
 ```
 
@@ -52,3 +55,7 @@ A classe `Main` será utilizada para demonstrar a criação dos objetos e o func
 A saída no terminal também foi organizada em seções para facilitar a leitura durante a demonstração. Os dados do cliente, do técnico e do equipamento são exibidos em blocos separados, seguidos pelo status da ordem de serviço. Depois, o programa apresenta de forma resumida a mudança de `ABERTA` para `EM_ATENDIMENTO`, evitando repetir todas as informações.
 
 O uso de inteligência artificial durante a preparação está registrado em [IA.md](IA.md).
+
+## Herança da Atividade 8
+
+`Equipamento` é a superclasse abstrata de `Notebook` e `Celular`. As subclasses reutilizam as validações, os dados comuns, os getters e `exibirDados()`, e ambas sobrescrevem `descreverAtendimento()` para apresentar suas características específicas. A entrega completa está documentada em [`docs/atividade-semanal-08-poo-entrega-final.md`](../docs/atividade-semanal-08-poo-entrega-final.md).

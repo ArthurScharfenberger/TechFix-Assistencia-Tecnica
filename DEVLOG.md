@@ -196,3 +196,33 @@ Consolidar no repositório o planejamento incremental definido pela equipe para 
 
 - O conteúdo publicado foi comparado com `docs/Atividade_A8.pdf`.
 - Escopo, prioridades, estimativas e riscos foram preservados conforme as decisões registradas pela equipe.
+
+## 28/09/2026 — Atividade Semanal nº 8 de POO: entrega final
+
+### Objetivo
+
+Concluir a hierarquia de equipamentos com duas subclasses, sobrescrita, demonstração polimórfica, testes e justificativa de modelagem.
+
+### Implementação
+
+- Transformada `Equipamento` em superclasse abstrata com validações e comportamentos comuns.
+- Criadas as subclasses `Notebook` e `Celular`.
+- Sobrescrito `descreverAtendimento()` nas duas subclasses com uso da implementação da superclasse.
+- Atualizado `Main` para tratar objetos diferentes por uma `List<Equipamento>` e demonstrar o comportamento especializado.
+- Criados quatro testes em `EquipamentoTest`, cobrindo as duas especializações, os dados herdados e a validação herdada.
+- Atualizados os READMEs, o diagrama Mermaid, a declaração de IA e a documentação específica da entrega.
+- Preenchida a Ficha Padrão de Entrega da Atividade Semanal nº 8 — entrega final.
+
+### Justificativa
+
+Notebook e celular são tipos de equipamento e compartilham dados, validações e operações. A superclasse concentra essas responsabilidades, enquanto as subclasses acrescentam características e comportamentos específicos, evitando duplicação e permitindo uso polimórfico.
+
+### Verificações
+
+- `mvn clean test`: 8 testes executados, sem falhas ou erros.
+- `java -cp target/classes Main`: cenário executado com descrições diferentes para notebook e celular.
+- Documentação comparada com os requisitos do enunciado da entrega final.
+
+### Uso de inteligência artificial
+
+A IA apoiou a revisão da hierarquia, a organização dos testes, a conferência dos requisitos, a atualização da documentação e o preenchimento da ficha padrão. O resultado foi validado por compilação, testes automatizados e execução do cenário; a equipe permanece responsável pela decisão final.

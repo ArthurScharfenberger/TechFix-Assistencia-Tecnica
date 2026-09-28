@@ -4,7 +4,7 @@ Este documento descreve o diagrama de classes correspondente à implementação 
 
 ## Diagrama atual
 
-O diagrama abaixo corresponde ao código atualizado no esboço da Atividade Semanal nº 6:
+O diagrama abaixo corresponde ao código atualizado na entrega final da Atividade Semanal nº 8 de POO:
 
 ```mermaid
 classDiagram
@@ -26,11 +26,28 @@ classDiagram
         +getNome() String
     }
     class Equipamento {
+        <<abstract>>
         -TipoEquipamento tipo
         -String marca
         -String defeito
-        +Equipamento(tipo, marca, defeito)
+        #Equipamento(tipo, marca, defeito)
         +exibirDados() void
+        +descreverAtendimento() String
+        +getTipo() TipoEquipamento
+        +getMarca() String
+        +getDefeito() String
+    }
+    class Notebook {
+        -int memoriaRamGb
+        +Notebook(marca, defeito, memoriaRamGb)
+        +descreverAtendimento() String
+        +getMemoriaRamGb() int
+    }
+    class Celular {
+        -boolean dualChip
+        +Celular(marca, defeito, dualChip)
+        +descreverAtendimento() String
+        +isDualChip() boolean
     }
     class OrdemServico {
         -int numero
@@ -38,10 +55,20 @@ classDiagram
         -Tecnico tecnico
         -Equipamento equipamento
         -StatusOrdemServico status
+        -List~ItemServico~ itensServico
         +OrdemServico(numero, cliente, tecnico, equipamento)
+        +adicionarItemServico(descricao, valor) void
+        +getItensServico() List~ItemServico~
         +alterarStatus(novoStatus) void
         +getStatus() StatusOrdemServico
         +exibirOrdemServico() void
+    }
+    class ItemServico {
+        -String descricao
+        -BigDecimal valor
+        -ItemServico(descricao, valor)
+        +getDescricao() String
+        +getValor() BigDecimal
     }
     class TipoEquipamento {
         <<enumeration>>
@@ -60,8 +87,11 @@ classDiagram
     Cliente "1" <-- "0..*" OrdemServico : solicita
     Tecnico "1" <-- "0..*" OrdemServico : atende
     Equipamento "1" <-- "0..*" OrdemServico : refere-se a
+    Equipamento <|-- Notebook
+    Equipamento <|-- Celular
     Equipamento --> TipoEquipamento : tipo
     OrdemServico --> StatusOrdemServico : status
+    OrdemServico "1" *-- "0..*" ItemServico : compõe
 ```
 
 ## Imagem da etapa anterior
@@ -82,11 +112,11 @@ Representa o profissional responsável pelo atendimento. Armazena `nome` e `espe
 
 ### Equipamento
 
-Representa o item encaminhado à assistência técnica. Armazena `tipo`, `marca` e `defeito`. O método `exibirDados()` apresenta os dados do equipamento.
+É a superclasse abstrata dos itens encaminhados à assistência. Centraliza `tipo`, `marca`, `defeito`, suas validações, getters e a exibição. `Notebook` e `Celular` herdam esses comportamentos e sobrescrevem `descreverAtendimento()` para acrescentar, respectivamente, memória RAM e configuração de chips.
 
 ### OrdemServico
 
-Centraliza o atendimento. Armazena o `numero`, as referências para `cliente`, `tecnico` e `equipamento`, além do `status`. Seu construtor define o status inicial como `ABERTA`. O método `alterarStatus()` atualiza essa situação, `getStatus()` retorna o estado atual e `exibirOrdemServico()` apresenta todos os dados relacionados.
+Centraliza o atendimento. Armazena o `numero`, as referências para `cliente`, `tecnico` e `equipamento`, além do `status`. Também compõe uma lista de `ItemServico`, cujos objetos nascem internamente. Seu construtor define o status inicial como `ABERTA`; `alterarStatus()` atualiza a situação e `exibirOrdemServico()` apresenta os dados relacionados.
 
 ## Relacionamentos e multiplicidades
 
@@ -100,9 +130,11 @@ Ao longo do tempo, cada cliente, técnico ou equipamento pode estar associado a 
 
 O diagrama usa os verbos **solicita**, **atende** e **refere-se a** para esclarecer o papel de cada classe na relação com a ordem.
 
+As setas de generalização mostram que `Notebook` e `Celular` são especializações de `Equipamento`. O losango preenchido registra a composição entre `OrdemServico` e `ItemServico`.
+
 ## Classe Main
 
-`Main` não aparece no diagrama porque não representa uma entidade do domínio. Ela serve como ponto de entrada para demonstrar a criação de um cliente, um técnico, um equipamento e uma ordem, além da consulta e alteração de status.
+`Main` não aparece no diagrama porque não representa uma entidade do domínio. Ela demonstra a ordem e percorre um notebook e um celular por meio de referências `Equipamento`, evidenciando o comportamento polimórfico das sobrescritas.
 
 ## Organização realizada
 
@@ -115,13 +147,16 @@ backend/
     ├── README.md
     ├── main/java/
     │   ├── Cliente.java
+    │   ├── Celular.java
     │   ├── Equipamento.java
     │   ├── Main.java
+    │   ├── Notebook.java
     │   ├── OrdemServico.java
     │   ├── StatusOrdemServico.java
     │   ├── Tecnico.java
     │   └── TipoEquipamento.java
     └── test/java/
+        ├── EquipamentoTest.java
         └── OrdemServicoTest.java
 ```
 

@@ -24,9 +24,9 @@ Essa autenticação existe apenas para demonstração acadêmica. Como é execut
 
 ## Atividade Java
 
-A implementação Java representa as classes `Cliente`, `Tecnico`, `Equipamento` e `OrdemServico`. Seus construtores possuem validações básicas, e os enums `StatusOrdemServico` e `TipoEquipamento` controlam os valores de status e tipo. Na Atividade Semanal nº 6, `Cliente` passou a manter uma `List<OrdemServico>` com método de inclusão e validação de valor nulo. A classe `Main` demonstra a criação e associação dos objetos e a mudança de `ABERTA` para `EM_ATENDIMENTO`.
+A implementação Java representa clientes, técnicos, equipamentos e ordens de serviço. Na entrega final da Atividade Semanal nº 8 de POO, `Equipamento` tornou-se uma superclasse abstrata de `Notebook` e `Celular`. As duas subclasses reutilizam validações e comportamentos comuns e sobrescrevem a descrição do atendimento; `Main` demonstra o polimorfismo em execução.
 
-Esta etapa usa Java padrão e Maven apenas para os três testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
+Esta etapa usa Java padrão e Maven para oito testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
 
 Uma visão geral da área Java está em [`backend/README.md`](backend/README.md). As instruções de compilação e a descrição das classes estão em [`backend/src/README.md`](backend/src/README.md), e o esboço da Atividade 6 está em [`backend/docs/atividade-semanal-06-esboco.md`](backend/docs/atividade-semanal-06-esboco.md).
 
@@ -46,13 +46,16 @@ TechFix/
 │       ├── README.md
 │       ├── main/java/
 │       │   ├── Cliente.java
+│       │   ├── Celular.java
 │       │   ├── Equipamento.java
 │       │   ├── Main.java
+│       │   ├── Notebook.java
 │       │   ├── OrdemServico.java
 │       │   ├── StatusOrdemServico.java
 │       │   ├── Tecnico.java
 │       │   └── TipoEquipamento.java
 │       └── test/java/
+│           ├── EquipamentoTest.java
 │           └── OrdemServicoTest.java
 ├── Diagrama-Classes/
 │   ├── DiagramaClasses.png
@@ -82,6 +85,7 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 - [`PLANEJAMENTO.md`](PLANEJAMENTO.md): backlog priorizado, incrementos, estimativas e riscos definidos na Atividade 08.
 - [`docs/atividade-semanal-08.md`](docs/atividade-semanal-08.md): versão consultável da Atividade 08.
 - [`docs/Atividade_A8.pdf`](docs/Atividade_A8.pdf): documento original entregue na Atividade 08.
+- [`docs/atividade-semanal-08-poo-entrega-final.md`](docs/atividade-semanal-08-poo-entrega-final.md): implementação, demonstração, testes e justificativa da herança.
 - [`backend/README.md`](backend/README.md): limites e organização da área Java.
 - [`backend/src/README.md`](backend/src/README.md): documentação e execução do código Java.
 - [`docs/atividade-semanal-03.md`](docs/atividade-semanal-03.md): registro da Atividade Semanal nº 3.

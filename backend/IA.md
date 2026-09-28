@@ -10,3 +10,5 @@ Durante o desenvolvimento deste projeto, utilizamos ferramentas de inteligência
 A inteligência artificial foi utilizada apenas como ferramenta de suporte. Todas as sugestões geradas foram analisadas e validadas pela equipe, que permaneceu responsável pelas decisões, pela implementação e pelo resultado final do projeto.
 
 Na Atividade Semanal nº 6, a IA também apoiou a revisão do material da aula, a adequação da sintaxe da coleção já definida no modelo, a validação de valor nulo, a criação do teste correspondente e a atualização da documentação. A associação `Cliente` para várias `OrdemServico` e a escolha de `List` permanecem decisões de modelagem que devem ser compreendidas e defendidas pela equipe.
+
+Na entrega final da Atividade Semanal nº 8, a IA apoiou a revisão da hierarquia `Equipamento`, `Notebook` e `Celular`, a organização dos testes de sobrescrita e validação herdada, a execução das verificações e a atualização das documentações e da ficha padrão. A equipe deve revisar o resultado e permanece responsável pelas decisões e pela apresentação do código.

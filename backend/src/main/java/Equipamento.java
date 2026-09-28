@@ -1,9 +1,9 @@
-public class Equipamento {
-    private TipoEquipamento tipo;
-    private String marca;
-    private String defeito;
+public abstract class Equipamento {
+    private final TipoEquipamento tipo;
+    private final String marca;
+    private final String defeito;
 
-    public Equipamento(TipoEquipamento tipo, String marca, String defeito) {
+    protected Equipamento(TipoEquipamento tipo, String marca, String defeito) {
         if (tipo == null) {
             throw new IllegalArgumentException("Tipo inválido");
         }
@@ -20,8 +20,22 @@ public class Equipamento {
     }
 
     public void exibirDados() {
-        System.out.println("  Tipo:    " + tipo);
-        System.out.println("  Marca:   " + marca);
-        System.out.println("  Defeito: " + defeito);
+        System.out.println("  " + descreverAtendimento());
+    }
+
+    public String descreverAtendimento() {
+        return "Tipo: " + tipo + " | Marca: " + marca + " | Defeito: " + defeito;
+    }
+
+    public TipoEquipamento getTipo() {
+        return tipo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getDefeito() {
+        return defeito;
     }
 }
