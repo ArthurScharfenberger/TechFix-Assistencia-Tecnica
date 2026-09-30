@@ -7,8 +7,11 @@ Arquivos para revisão e envio no AVA:
 | A8 — entrega final | [DOCX](A8-Entrega-Final.docx) | [PDF](A8-Entrega-Final.pdf) | [Markdown](A8-Entrega-Final-Revisada.md) |
 | Modelagem — esboço | [DOCX](Modelagem-Esboco.docx) | [PDF](Modelagem-Esboco.pdf) | [Markdown](Modelagem-Esboco.md) |
 | Modelagem — entrega final | [DOCX](Modelagem-Entrega-Final.docx) | [PDF](Modelagem-Entrega-Final.pdf) | [Markdown](Modelagem-Entrega-Final.md) |
+| Arquitetura e rastreabilidade — esboço | [DOCX](Arquitetura-Rastreabilidade-Esboco.docx) | [PDF](Arquitetura-Rastreabilidade-Esboco.pdf) | [Markdown](Arquitetura-Rastreabilidade-Esboco.md) |
 
-Todos seguem a estrutura e preservam o cabeçalho do documento padrão local. As versões Markdown e imagens permitem consultar o conteúdo sem Word. A A8 original permanece preservada; os IDs A8R pertencem à revisão. Os modelos referenciam essa revisão, não o backlog antigo B01–B10.
+As entregas de A8 e modelagem seguem a estrutura e preservam o cabeçalho do documento padrão local. As versões Markdown e imagens permitem consultar o conteúdo sem Word. A A8 original permanece preservada; os IDs A8R pertencem à revisão. Os modelos referenciam essa revisão, não o backlog antigo B01–B10.
+
+O esboço de arquitetura e rastreabilidade usa o formato simples permitido no enunciado da oficina. Descreve os componentes propostos, sua comunicação e três requisitos ligados às origens da entrevista A3 registradas na A4, ao backlog A8 e aos modelos existentes. As lacunas de documentação estão identificadas no rascunho. Seu DOCX foi preparado separadamente, e seu PDF foi exportado pelo Microsoft Word; o gerador abaixo não recria essa entrega.
 
 A preparação não comprova consenso, assinatura, oficina passada ou implementação. Antes do envio, os integrantes devem revisar as estimativas e decisões propostas e preencher etapa, data efetiva e código da atividade de modelagem conforme o AVA.
 

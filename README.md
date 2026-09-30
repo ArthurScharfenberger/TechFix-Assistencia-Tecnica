@@ -81,7 +81,8 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 
 ## Documentação
 
-- [`docs/entregas-processos/README.md`](docs/entregas-processos/README.md): três entregas de Processos em DOCX e PDF, modelos visuais e fontes editáveis.
+- [`docs/entregas-processos/README.md`](docs/entregas-processos/README.md): entregas de Processos em DOCX e PDF, modelos visuais e fontes editáveis.
+- [`docs/entregas-processos/Arquitetura-Rastreabilidade-Esboco.pdf`](docs/entregas-processos/Arquitetura-Rastreabilidade-Esboco.pdf): esboço da arquitetura conceitual e matriz inicial com três requisitos rastreados; versões Word e Markdown na mesma pasta.
 - [`docs/entregas-processos/A8-Entrega-Final-Revisada.md`](docs/entregas-processos/A8-Entrega-Final-Revisada.md): revisão da A8 vinculada à A5, com nove itens, dois incrementos e quatro riscos; estimativas propostas para validação da equipe.
 
 - [`DEVLOG.md`](DEVLOG.md): histórico das alterações e verificações do projeto.

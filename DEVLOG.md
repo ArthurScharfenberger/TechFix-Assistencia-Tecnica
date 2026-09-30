@@ -246,3 +246,13 @@ Notebook e celular são tipos de equipamento e compartilham dados, validações 
 ### Uso de inteligência artificial
 
 A IA apoiou a revisão da hierarquia, a organização dos testes, a conferência dos requisitos, a atualização da documentação e o preenchimento da ficha padrão. O resultado foi validado por compilação, testes automatizados e execução do cenário; a equipe permanece responsável pela decisão final.
+
+
+## 30/09/2026 ? Esbo?o da arquitetura e rastreabilidade
+
+- Criados rascunhos em Markdown, DOCX e PDF em `docs/entregas-processos/Arquitetura-Rastreabilidade-Esboco.*`; PDF exportado pelo Microsoft Word e assinatura do formato conferida.
+- Atualizados o README principal e o índice das entregas com links para a nova atividade e indicação de seu formato simples.
+- Descritos interface, API/l?gica, autoriza??o, persist?ncia e comunica??o; integra??es externas sem requisito ficaram fora do escopo.
+- Relacionados RF1, RF2 e RNF2 ?s origens RE1, RE2 e RE4 documentadas na A4, ao backlog A8 e aos modelos existentes.
+- Distinguida a arquitetura proposta da implementa??o atual. Registradas as lacunas de A3 original, A7 e identifica??o da A9.
+- Uso de IA: ChatGPT/Codex organizou o rascunho a pedido do usu?rio. Conferidos os v?nculos documentais, a exist?ncia dos modelos e a estrutura do DOCX (duas tabelas e tr?s requisitos rastreados). Revis?o final da equipe pendente.
