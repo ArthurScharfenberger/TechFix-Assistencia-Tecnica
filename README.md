@@ -81,8 +81,11 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 
 ## Documentação
 
+- [`docs/entregas-processos/README.md`](docs/entregas-processos/README.md): três entregas de Processos em DOCX e PDF, modelos visuais e fontes editáveis.
+- [`docs/entregas-processos/A8-Entrega-Final-Revisada.md`](docs/entregas-processos/A8-Entrega-Final-Revisada.md): revisão da A8 vinculada à A5, com nove itens, dois incrementos e quatro riscos; estimativas propostas para validação da equipe.
+
 - [`DEVLOG.md`](DEVLOG.md): histórico das alterações e verificações do projeto.
-- [`PLANEJAMENTO.md`](PLANEJAMENTO.md): backlog priorizado, incrementos, estimativas e riscos definidos na Atividade 08.
+- [`PLANEJAMENTO.md`](PLANEJAMENTO.md): referência para o planejamento revisado e registro histórico da A8 original.
 - [`docs/atividade-semanal-08.md`](docs/atividade-semanal-08.md): versão consultável da Atividade 08.
 - [`docs/Atividade_A8.pdf`](docs/Atividade_A8.pdf): documento original entregue na Atividade 08.
 - [`docs/atividade-semanal-08-poo-entrega-final.md`](docs/atividade-semanal-08-poo-entrega-final.md): implementação, demonstração, testes e justificativa da herança.

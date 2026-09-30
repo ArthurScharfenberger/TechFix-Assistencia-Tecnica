@@ -3,7 +3,6 @@ import { iconHTML, initIcons } from '../utils/iconHelper';
 import { clearTechFixData, getStorageItem, setStorageItem, KEYS, AppConfiguration } from '../services/storage';
 import { ConfirmDialog } from './confirmDialog';
 import { Toast } from './toast';
-import techFixLogoUrl from '../img/techfix-logo-transparent.png';
 import { exportLogs } from '../services/logger';
 import { AuthService } from '../services/authService';
 
@@ -56,49 +55,97 @@ export class SidebarComponent {
     const currentUser = AuthService.getCurrentUser();
     const initials = currentUser?.nome.split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase() ?? 'TF';
     const cargoLabel = currentUser ? currentUser.cargo.charAt(0) + currentUser.cargo.slice(1).toLowerCase() : '';
-    const links: Array<[Route, string, string]> = [
-      ['dashboard', 'layout-dashboard', 'Dashboard'], ['equipamentos', 'laptop', 'Equipamentos'],
-      ['usuarios', 'users', 'Clientes'], ['chamados', 'clipboard-list', 'Ordens de Serviço'],
-      ['manutencoes', 'wrench', 'Reparos'], ['indicativos', 'bar-chart-3', 'Indicativos'],
+
+    const navSections: Array<{ title: string; items: Array<[Route, string, string]> }> = [
+      {
+        title: 'Visão Geral',
+        items: [
+          ['dashboard', 'layout-dashboard', 'Dashboard'],
+          ['indicativos', 'bar-chart-3', 'Indicativos'],
+        ],
+      },
+      {
+        title: 'Operação',
+        items: [
+          ['chamados', 'clipboard-list', 'Ordens de Serviço'],
+          ['manutencoes', 'wrench', 'Reparos'],
+        ],
+      },
+      {
+        title: 'Cadastros',
+        items: [
+          ['usuarios', 'users', 'Clientes'],
+          ['equipamentos', 'laptop', 'Equipamentos'],
+          ['equipe', 'user-cog', 'Equipe'],
+        ],
+      },
     ];
+
     this.element.className = `sidebar${this.collapsed ? ' collapsed' : ''}`;
     this.element.setAttribute('aria-label', 'Navegação principal');
     this.element.innerHTML = `
       <div class="sidebar-header">
-        <a href="#/dashboard" class="sidebar-logo" aria-label="TechFix — ir para a visão geral">
-          <img src="${techFixLogoUrl}" alt="TechFix — Assistência Técnica" />
-          <span class="sidebar-compact-logo" aria-hidden="true">${iconHTML('monitor-cog', '', 25)}</span>
+        <a href="#/dashboard" class="sidebar-brand-link" aria-label="TechFix — Dashboard">
+          <span class="sidebar-brand-badge" aria-hidden="true">${iconHTML('wrench', '', 18)}</span>
+          <span class="sidebar-brand-text">
+            <strong class="sidebar-brand-title">TechFix</strong>
+            <small class="sidebar-brand-subtitle">Gestão Técnica</small>
+          </span>
         </a>
       </div>
       <button id="sidebar-collapse-btn" class="sidebar-collapse-btn" type="button" aria-label="${this.collapsed ? 'Expandir' : 'Recolher'} barra lateral" title="${this.collapsed ? 'Expandir' : 'Recolher'} barra lateral">
-        ${iconHTML(this.collapsed ? 'chevron-right' : 'chevron-left', '', 18)}
+        ${iconHTML(this.collapsed ? 'chevron-right' : 'chevron-left', '', 16)}
       </button>
       <nav class="sidebar-nav" aria-label="Páginas do TechFix">
-        ${links.map(([route, icon, label]) => `<a href="#/${route}" class="nav-item ${currentRoute === route ? 'active' : ''}" data-route="${route}" aria-label="${label}" data-tooltip="${label}">${iconHTML(icon, '', 20)}<span class="sidebar-item-label">${label}</span></a>`).join('')}
-        <div class="sidebar-report-group ${this.reportsOpen ? 'open' : ''} ${reportRouteActive ? 'active' : ''}">
-          <button id="reports-menu-trigger" class="nav-item reports-menu-trigger" type="button" aria-expanded="${this.reportsOpen}" aria-controls="sidebar-reports-submenu" aria-label="Relatórios" data-tooltip="Relatórios">${iconHTML('file-bar-chart', '', 20)}<span class="sidebar-item-label">Relatórios</span>${iconHTML(this.reportsOpen ? 'chevron-down' : 'chevron-right', 'reports-chevron', 16)}</button>
-          <div id="sidebar-reports-submenu" class="reports-submenu" ${this.reportsOpen ? '' : 'hidden'}>
-            <strong class="reports-popover-title">Relatórios</strong>
-            ${([['relatorios','Visão geral'],['relatorios/ordens','Ordens de Serviço'],['relatorios/reparos','Reparos e Custos'],['relatorios/equipe','Equipe'],['relatorios/clientes-equipamentos','Clientes e Equipamentos']] as Array<[Route,string]>).map(([route,label])=>`<a href="#/${route}" class="nav-item report-subitem ${currentRoute===route?'active':''}" data-route="${route}" ${currentRoute===route?'aria-current="page"':''}>${label}</a>`).join('')}
+        ${navSections.map((section) => `
+          <div class="nav-section">
+            <span class="nav-section-title">${section.title}</span>
+            <div class="nav-section-items">
+              ${section.items.map(([route, icon, label]) => `
+                <a href="#/${route}" class="nav-item ${currentRoute === route ? 'active' : ''}" data-route="${route}" aria-label="${label}" data-tooltip="${label}">
+                  ${iconHTML(icon, '', 18)}
+                  <span class="sidebar-item-label">${label}</span>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+
+        <div class="nav-section">
+          <span class="nav-section-title">Análise</span>
+          <div class="nav-section-items">
+            <div class="sidebar-report-group ${this.reportsOpen ? 'open' : ''} ${reportRouteActive ? 'active' : ''}">
+              <button id="reports-menu-trigger" class="nav-item reports-menu-trigger" type="button" aria-expanded="${this.reportsOpen}" aria-controls="sidebar-reports-submenu" aria-label="Relatórios" data-tooltip="Relatórios">
+                ${iconHTML('file-bar-chart', '', 18)}
+                <span class="sidebar-item-label">Relatórios</span>
+                ${iconHTML(this.reportsOpen ? 'chevron-down' : 'chevron-right', 'reports-chevron', 14)}
+              </button>
+              <div id="sidebar-reports-submenu" class="reports-submenu" ${this.reportsOpen ? '' : 'hidden'}>
+                <strong class="reports-popover-title">Relatórios</strong>
+                ${([['relatorios','Visão geral'],['relatorios/ordens','Ordens de Serviço'],['relatorios/reparos','Reparos e Custos'],['relatorios/equipe','Equipe'],['relatorios/clientes-equipamentos','Clientes e Equipamentos']] as Array<[Route,string]>).map(([route,label])=>`<a href="#/${route}" class="nav-item report-subitem ${currentRoute===route?'active':''}" data-route="${route}" ${currentRoute===route?'aria-current="page"':''}>${label}</a>`).join('')}
+              </div>
+            </div>
           </div>
         </div>
-        <a href="#/equipe" class="nav-item ${currentRoute === 'equipe' ? 'active' : ''}" data-route="equipe" aria-label="Equipe" data-tooltip="Equipe">${iconHTML('user-cog', '', 20)}<span class="sidebar-item-label">Equipe</span></a>
       </nav>
       <div class="sidebar-footer">
         <div class="sidebar-user" data-tooltip="${currentUser?.nome ?? 'Usuário'}">
           <span class="sidebar-user-avatar" aria-hidden="true">${initials}</span>
-          <span class="sidebar-user-info"><strong>${currentUser?.nome ?? 'Usuário'}</strong><small>${cargoLabel}</small></span>
+          <span class="sidebar-user-info">
+            <strong>${currentUser?.nome ?? 'Usuário'}</strong>
+            <small>${cargoLabel || 'Administrador'}</small>
+          </span>
         </div>
         <div id="sidebar-options" class="sidebar-options" hidden>
-          <div class="sidebar-options-heading">${iconHTML('graduation-cap', '', 15)} <span>Projeto acadêmico</span></div>
-          <button id="theme-toggle-btn" class="sidebar-option" type="button">${iconHTML(isLight ? 'moon' : 'sun', '', 18)}<span>Tema ${isLight ? 'escuro' : 'claro'}</span></button>
-          <button id="export-logs-btn" class="sidebar-option" type="button">${iconHTML('file-down', '', 18)}<span>Exportar logs</span></button>
-          <button id="logout-btn" class="sidebar-option" type="button">${iconHTML('log-out', '', 18)}<span>Sair</span></button>
+          <div class="sidebar-options-heading">${iconHTML('graduation-cap', '', 14)} <span>Sistema TechFix</span></div>
+          <button id="theme-toggle-btn" class="sidebar-option" type="button">${iconHTML(isLight ? 'moon' : 'sun', '', 16)}<span>Tema ${isLight ? 'escuro' : 'claro'}</span></button>
+          <button id="export-logs-btn" class="sidebar-option" type="button">${iconHTML('file-down', '', 16)}<span>Exportar logs</span></button>
+          <button id="logout-btn" class="sidebar-option" type="button">${iconHTML('log-out', '', 16)}<span>Sair da conta</span></button>
           <div class="sidebar-options-separator"></div>
-          <button id="clear-data-btn" class="sidebar-option danger" type="button">${iconHTML('trash-2', '', 18)}<span>Limpar dados</span></button>
+          <button id="clear-data-btn" class="sidebar-option danger" type="button">${iconHTML('trash-2', '', 16)}<span>Limpar dados locais</span></button>
         </div>
         <button id="sidebar-options-btn" class="sidebar-options-trigger" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="sidebar-options" aria-label="Mais opções" data-tooltip="Mais opções">
-          ${iconHTML('settings', '', 19)}<span class="sidebar-item-label">Mais opções</span>${iconHTML('chevron-up', 'options-chevron', 16)}
+          ${iconHTML('settings', '', 17)}<span class="sidebar-item-label">Configurações</span>${iconHTML('chevron-up', 'options-chevron', 14)}
         </button>
       </div>`;
     initIcons(this.element); this.attachEvents(); return this.element;

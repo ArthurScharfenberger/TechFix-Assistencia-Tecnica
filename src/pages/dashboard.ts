@@ -50,83 +50,82 @@ export class DashboardPage {
     const ultimasManutencoes = [...manutencoes].sort((a, b) => new Date(b.criadoEm).getTime() - new Date(a.criadoEm).getTime()).slice(0, 5);
 
     this.container.innerHTML = `
-      <!-- Stat Cards Grid -->
-      <div class="stats-grid">
-        <div class="card stat-card">
-          <div class="stat-info">
-            <div class="stat-label">Equipamentos cadastrados</div>
-            <div class="stat-value">${totalEquipamentos}</div>
-            <div class="stat-description">Aparelhos no cadastro</div>
+      <!-- Executive KPI Cards (4 clean high-level metrics) -->
+      <div class="dashboard-kpi-grid">
+        <div class="card kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-label">Ordens Ativas</span>
+            <span class="kpi-icon ${chamadosUrgentes > 0 ? 'amber' : 'green'}">${iconHTML('clipboard-list', '', 18)}</span>
           </div>
-          <div class="stat-icon blue">${iconHTML('laptop', '', 24)}</div>
+          <div class="kpi-main">
+            <span class="kpi-value">${chamadosAbertos}</span>
+            <div class="kpi-meta">
+              ${chamadosUrgentes > 0 ? `<span class="kpi-tag danger">${chamadosUrgentes} urgente(s)</span>` : `<span class="kpi-tag neutral">Nenhuma urgente</span>`}
+              <span class="kpi-sub">${chamadosSemTecnico} sem técnico</span>
+            </div>
+          </div>
         </div>
 
-        <div class="card stat-card">
-          <div class="stat-info">
-            <div class="stat-label">Disponíveis</div>
-            <div class="stat-value">${eqDisponiveis}</div>
-            <div class="stat-description">Prontos para atendimento</div>
+        <div class="card kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-label">Reparos Técnicos</span>
+            <span class="kpi-icon green">${iconHTML('wrench', '', 18)}</span>
           </div>
-          <div class="stat-icon green">${iconHTML('check-circle-2', '', 24)}</div>
+          <div class="kpi-main">
+            <span class="kpi-value">${eqEmManutencao}</span>
+            <div class="kpi-meta">
+              <span class="kpi-tag neutral">${manutencoes.filter((m) => m.status === 'CONCLUIDA').length} concluído(s)</span>
+              <span class="kpi-sub">Em bancada</span>
+            </div>
+          </div>
         </div>
 
-        <div class="card stat-card">
-          <div class="stat-info">
-            <div class="stat-label">Com clientes</div>
-            <div class="stat-value">${eqEmUso}</div>
-            <div class="stat-description">Equipamentos atribuídos</div>
+        <div class="card kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-label">Equipamentos</span>
+            <span class="kpi-icon green">${iconHTML('laptop', '', 18)}</span>
           </div>
-          <div class="stat-icon purple">${iconHTML('user-check', '', 24)}</div>
+          <div class="kpi-main">
+            <span class="kpi-value">${totalEquipamentos}</span>
+            <div class="kpi-meta">
+              <span class="kpi-tag success">${eqDisponiveis} disponíveis</span>
+              <span class="kpi-sub">${eqEmUso} com clientes</span>
+            </div>
+          </div>
         </div>
 
-        <div class="card stat-card">
-          <div class="stat-info">
-            <div class="stat-label">Em reparo</div>
-            <div class="stat-value">${eqEmManutencao}</div>
-            <div class="stat-description">Em atendimento técnico</div>
+        <div class="card kpi-card">
+          <div class="kpi-top">
+            <span class="kpi-label">Faturamento Total</span>
+            <span class="kpi-icon amber">${iconHTML('dollar-sign', '', 18)}</span>
           </div>
-          <div class="stat-icon amber">${iconHTML('wrench', '', 24)}</div>
+          <div class="kpi-main">
+            <span class="kpi-value kpi-currency">${formatCurrency(custoTotalManutencao)}</span>
+            <div class="kpi-meta">
+              <span class="kpi-tag neutral">${tecnicosAtivos} técnicos ativos</span>
+              <span class="kpi-sub">Total de serviços</span>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="card stat-card">
-          <div class="stat-info">
-            <div class="stat-label">Ordens abertas</div>
-            <div class="stat-value">${chamadosAbertos}</div>
-            <div class="stat-description">Pendentes ou em andamento</div>
-          </div>
-          <div class="stat-icon blue">${iconHTML('ticket', '', 24)}</div>
+      <!-- Quick Action / Status Ribbon -->
+      <div class="dashboard-ribbon">
+        <div class="ribbon-item">
+          <span class="ribbon-dot success"></span>
+          <span class="ribbon-text"><strong>${tecnicosAtivos}</strong> técnicos disponíveis</span>
         </div>
-
-        <div class="card stat-card" style="${chamadosUrgentes > 0 ? 'border-color: rgba(239, 68, 68, 0.4);' : ''}">
-          <div class="stat-info">
-            <div class="stat-label">Ordens urgentes</div>
-            <div class="stat-value" style="${chamadosUrgentes > 0 ? 'color: var(--color-danger);' : ''}">${chamadosUrgentes}</div>
-          </div>
-          <div class="stat-icon red">${iconHTML('alert-triangle', '', 24)}</div>
+        <div class="ribbon-item">
+          <span class="ribbon-dot info"></span>
+          <span class="ribbon-text"><strong>${chamadosConcluidos}</strong> ordens finalizadas</span>
         </div>
-
-        <div class="card stat-card">
-          <div class="stat-info">
-            <div class="stat-label">Ordens concluídas</div>
-            <div class="stat-value">${chamadosConcluidos}</div>
-          </div>
-          <div class="stat-icon green">${iconHTML('check-square', '', 24)}</div>
+        <div class="ribbon-item">
+          <span class="ribbon-dot ${chamadosSemTecnico > 0 ? 'warning' : 'neutral'}"></span>
+          <span class="ribbon-text"><strong>${chamadosSemTecnico}</strong> ordens aguardando atribuição</span>
         </div>
-
-        <div class="card stat-card">
-          <div class="stat-info">
-            <div class="stat-label">Valor dos serviços</div>
-            <div class="stat-value" style="font-size: 1.35rem;">${formatCurrency(custoTotalManutencao)}</div>
-          </div>
-          <div class="stat-icon amber">${iconHTML('dollar-sign', '', 24)}</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-info"><div class="stat-label">Técnicos ativos</div><div class="stat-value">${tecnicosAtivos}</div><div class="stat-description">Disponíveis para atribuição</div></div>
-          <div class="stat-icon green">${iconHTML('user-cog', '', 24)}</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-info"><div class="stat-label">Ordens sem técnico</div><div class="stat-value">${chamadosSemTecnico}</div><div class="stat-description">Abertas e sem responsável</div></div>
-          <div class="stat-icon amber">${iconHTML('user-x', '', 24)}</div>
+        <div class="ribbon-actions">
+          <a href="#/chamados" class="btn btn-secondary btn-sm">${iconHTML('plus', '', 14)} Nova ordem</a>
+          <a href="#/indicativos" class="btn btn-secondary btn-sm">${iconHTML('bar-chart-3', '', 14)} Ver indicativos</a>
         </div>
       </div>
 
@@ -134,7 +133,10 @@ export class DashboardPage {
       <div class="charts-grid">
         <div class="card chart-card">
           <div class="chart-header">
-            <h3 class="chart-title">Ordens por status</h3>
+            <div>
+              <h3 class="chart-title">Distribuição de Ordens</h3>
+              <p class="chart-desc">Status atual dos atendimentos</p>
+            </div>
           </div>
           <div class="chart-container">
             <canvas id="chart-chamados-status"></canvas>
@@ -143,7 +145,10 @@ export class DashboardPage {
 
         <div class="card chart-card">
           <div class="chart-header">
-            <h3 class="chart-title">Equipamentos por Tipo</h3>
+            <div>
+              <h3 class="chart-title">Equipamentos por Tipo</h3>
+              <p class="chart-desc">Volume cadastrado por categoria</p>
+            </div>
           </div>
           <div class="chart-container">
             <canvas id="chart-equipamentos-tipo"></canvas>
@@ -152,20 +157,21 @@ export class DashboardPage {
       </div>
 
       <!-- Tables and Lists Section -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem;">
+      <div class="dashboard-tables-grid">
         <!-- Recent Tickets -->
         <div class="table-container">
           <div class="table-toolbar">
-            <h3 class="chart-title" style="display: flex; align-items: center; gap: 0.5rem;">
-              ${iconHTML('clock', '', 18)} Ordens recentes
-            </h3>
-            <a href="#/chamados" class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">Ver todos</a>
+            <div class="table-toolbar-title">
+              <h3>Ordens Recentes</h3>
+              <small>Últimos chamados abertos</small>
+            </div>
+            <a href="#/chamados" class="btn btn-secondary btn-sm">Ver todas</a>
           </div>
           <div class="table-responsive">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>Título</th>
+                  <th>Ordem</th>
                   <th>Cliente</th>
                   <th>Prioridade</th>
                   <th>Status</th>
@@ -174,7 +180,7 @@ export class DashboardPage {
               <tbody>
                 ${
                   ultimosChamados.length === 0
-                    ? `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Nenhuma ordem de serviço registrada.</td></tr>`
+                    ? `<tr><td colspan="4" class="empty-table-message">Nenhuma ordem de serviço registrada.</td></tr>`
                     : ultimosChamados
                         .map((c) => {
                           const sol = UsuarioService.getById(c.clienteId);
@@ -197,10 +203,11 @@ export class DashboardPage {
         <!-- Recent Maintenances -->
         <div class="table-container">
           <div class="table-toolbar">
-            <h3 class="chart-title" style="display: flex; align-items: center; gap: 0.5rem;">
-              ${iconHTML('wrench', '', 18)} Reparos recentes
-            </h3>
-            <a href="#/manutencoes" class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">Ver todas</a>
+            <div class="table-toolbar-title">
+              <h3>Reparos Recentes</h3>
+              <small>Últimas manutenções na bancada</small>
+            </div>
+            <a href="#/manutencoes" class="btn btn-secondary btn-sm">Ver todos</a>
           </div>
           <div class="table-responsive">
             <table class="data-table">
@@ -215,15 +222,15 @@ export class DashboardPage {
               <tbody>
                 ${
                   ultimasManutencoes.length === 0
-                    ? `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Nenhum reparo registrado.</td></tr>`
+                    ? `<tr><td colspan="4" class="empty-table-message">Nenhum reparo registrado.</td></tr>`
                     : ultimasManutencoes
                         .map((m) => {
                           const eq = EquipamentoService.getById(m.equipamentoId);
                           return `
                       <tr>
-                        <td style="font-weight: 600;">${eq ? `${eq.modelo} (${eq.codigo})` : 'N/A'}</td>
+                        <td style="font-weight: 600;">${eq ? `${eq.modelo}` : 'N/A'}</td>
                         <td>${FuncionarioService.resolveName(m.tecnicoResponsavelId, m.tecnicoResponsavelNomeLegado)}</td>
-                        <td style="font-weight: 700; color: var(--color-warning);">${formatCurrency(m.custo)}</td>
+                        <td style="font-weight: 600;">${formatCurrency(m.custo)}</td>
                         <td>${getStatusManutencaoBadge(m.status)}</td>
                       </tr>
                     `;
@@ -235,7 +242,6 @@ export class DashboardPage {
           </div>
         </div>
       </div>
-
     `;
 
     setTimeout(() => {
@@ -251,8 +257,8 @@ export class DashboardPage {
     if (this.tipoChart) this.tipoChart.destroy();
 
     const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-    const textColor = isDark ? '#9ca3af' : '#4b5563';
-    const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)';
+    const textColor = isDark ? '#9ea8b3' : '#575e57';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)';
 
     // Status Chamados Chart Data
     const statusCounts: Record<string, number> = {
@@ -272,7 +278,7 @@ export class DashboardPage {
           datasets: [
             {
               data: Object.values(statusCounts),
-              backgroundColor: ['#06b6d4', '#f59e0b', '#8b5cf6', '#10b981', '#6b7280'],
+              backgroundColor: ['#4ea8de', '#e5a33c', '#9d8cd7', '#4ec986', '#6f7883'],
               borderWidth: 0,
             },
           ],
@@ -310,7 +316,7 @@ export class DashboardPage {
             {
               label: 'Quantidade',
               data: Object.values(tipoCounts),
-              backgroundColor: '#3b82f6',
+              backgroundColor: isDark ? '#d4ea27' : '#3d5e16',
               borderRadius: 6,
             },
           ],

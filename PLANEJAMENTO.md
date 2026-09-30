@@ -1,5 +1,13 @@
 # Planejamento do Projeto
 
+## Revisão atual — 30/09/2026
+
+A proposta revisada está em [A8 — planejamento completo](docs/entregas-processos/A8-Entrega-Final-Revisada.md), com versões [DOCX](docs/entregas-processos/A8-Entrega-Final.docx) e [PDF](docs/entregas-processos/A8-Entrega-Final.pdf). Ela relaciona todos os requisitos priorizados da A5 aos itens A8R01–A8R09, define dois incrementos por valor e registra quatro riscos com mitigação. Estimativas e decisões propostas aguardam validação dos integrantes.
+
+O primeiro incremento cobre acesso, cadastro, abertura, consulta por número e histórico inicial. O segundo cobre atribuição ao técnico, andamento e conclusão, buscas complementares e desempenho. Pagamento online, avaliação e relatório gerencial não integram essa linha de base derivada da A5.
+
+As seções abaixo preservam o planejamento anterior B01–B10, para comparação histórica. Os novos modelos usam os IDs A8R da revisão. Consulte o [índice das entregas](docs/entregas-processos/README.md) para os modelos e as correções documentadas.
+
 ## Identificação
 
 - **Projeto:** TechFix — Sistema de Gestão de Manutenção de Equipamentos

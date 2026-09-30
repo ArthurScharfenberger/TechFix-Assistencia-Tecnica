@@ -2,6 +2,26 @@
 
 Este documento registra a evolução do projeto TechFix durante o semestre.
 
+## 30/09/2026 — Preparação das entregas de Processos
+
+### Consolidação da documentação e das alterações locais
+
+- Exportadas pelo Microsoft Word as três entregas para PDF, na mesma pasta: A8 final (5 páginas), modelagem esboço (3) e modelagem final (6). DOCX preservados para edição; documento padrão mantido junto das entregas.
+- Índices atualizados em README.md, PLANEJAMENTO.md e na página histórica da A8, distinguindo a revisão A8R01–A8R09 do planejamento original B01–B10. Links corrigidos para o nome atual `A8-Entrega-Final.docx` e PDFs adicionados ao índice das entregas.
+- Gerador ajustado para usar o documento padrão da pasta de entregas e produzir o nome atual do DOCX da A8. Não foi reexecutado nesta consolidação para evitar sobrescrever eventuais edições posteriores no Word. Fontes Markdown são referências da preparação, não sincronização automática de edições manuais.
+- Incluídas as alterações de interface já presentes no workspace: cabeçalho com navegação e controles de tema/sessão, barra lateral agrupada por área, dashboard com quatro indicadores principais e atalhos, revisão dos temas claro/escuro, cores dos gráficos, favicon e estilos de formulários, tabelas, login e responsividade.
+- Validação: `npm run build` aprovado (TypeScript e Vite). O Vite emitiu aviso de bundle acima de 500 kB; não houve erro de compilação. Não foi realizada validação visual interativa do frontend nesta consolidação, nem novos testes Java, pois o backend não foi alterado.
+- Solicitação do usuário: documentar tudo, atualizar os registros, criar commit e enviar ao remoto. Apoio de ChatGPT/Codex na revisão dos diffs, atualização dos índices e execução das verificações.
+
+- Ajuste solicitado posteriormente: os três DOCX foram refeitos preenchendo diretamente `docs/entregas-processos/Documento_Padrao_Entrega_Atividades.docx`, preservando seções, campos, margens, cabeçalhos, declaração institucional e tabela de IA com quatro colunas. Conteúdo e imagens inseridos na seção 2; decisões, pendências e responsáveis preenchidos nos respectivos campos. Estrutura verificada por reabertura dos arquivos e comparação com o modelo fornecido.
+
+- Apoio de IA (ChatGPT/Codex) para confrontar a A5 com a A8 original e preparar três documentos no modelo institucional: A8 final revisada, esboço de modelagem e modelagem final.
+- Arquivos em `docs/entregas-processos/`, com fontes Markdown, fluxogramas e wireframe. Gerador: `docs/gerar_entregas_processos.py`.
+- Revisão proposta do backlog com rastreabilidade para todos os itens priorizados da A5, estimativas P/M/G, dois incrementos por valor, matriz de riscos e comparação com a versão anterior.
+- Modelagem ligada a A8R02 e A8R03. O esboço foi preparado nesta sessão, sem afirmar realização anterior em oficina. Estimativas e decisões ainda dependem de validação dos integrantes; não foi registrado consenso ou assinatura fictícia.
+- Verificação documental: leitura dos arquivos A5/A8, conferência de cobertura dos requisitos, geração e reabertura dos DOCX e conferência das imagens incorporadas. Documentos originais e código preservados.
+- Prompt resumido: preparar a entrega final de planejamento e as duas etapas de modelagem conforme os critérios apresentados pelo usuário. Resultado aproveitado: documentos e modelos para revisão; responsáveis finais: Arthur Scharfenberger e Lucas Oliveira da Silva.
+
 Os registros são organizados por data e apresentam as principais alterações,
 decisões, verificações e pendências de cada etapa do desenvolvimento.
 

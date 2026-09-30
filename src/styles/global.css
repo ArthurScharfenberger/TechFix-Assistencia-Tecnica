@@ -1,55 +1,61 @@
 :root {
-  /* Dark Mode - TechFix Reference Tokens */
-  --background: #07111f;
-  --background-secondary: #0a1628;
+  /* Dark Mode - Basalt Monolith & Electric Wasabi (Atelier Concept) */
+  --background: #0d0e10;
+  --background-secondary: #131517;
 
-  --surface: #0d1b2a;
-  --surface-secondary: #12243a;
-  --surface-hover: #172d47;
+  --surface: #181a1d;
+  --surface-secondary: #202327;
+  --surface-hover: #282c32;
 
-  --border: #20364f;
-  --border-light: #2b4664;
+  --border: #2c3036;
+  --border-light: #3a4048;
 
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --primary-soft: rgba(37, 99, 235, 0.14);
+  /* The Unprecedented Wasabi Lime Accent */
+  --primary: #d4ea27;
+  --primary-hover: #c2d820;
+  --primary-contrast: #0d0e10;
+  --primary-soft: rgba(212, 234, 39, 0.12);
+  --primary-light: #e0f252;
 
-  --accent: #14b8a6;
-  --accent-soft: rgba(20, 184, 166, 0.14);
+  /* Secondary Accents */
+  --accent: #e58a47;
+  --accent-hover: #d27735;
+  --accent-soft: rgba(229, 138, 71, 0.12);
 
-  --success: #22c55e;
-  --success-bg: rgba(34, 197, 94, 0.14);
-  --warning: #f59e0b;
-  --warning-bg: rgba(245, 158, 11, 0.14);
-  --danger: #ef4444;
-  --danger-bg: rgba(239, 68, 68, 0.14);
-  --info: #38bdf8;
-  --info-bg: rgba(56, 189, 248, 0.14);
-  --purple: #8b5cf6;
-  --purple-bg: rgba(139, 92, 246, 0.14);
+  --success: #4ec986;
+  --success-bg: rgba(78, 201, 134, 0.12);
+  --warning: #e5a33c;
+  --warning-bg: rgba(229, 163, 60, 0.12);
+  --danger: #eb5757;
+  --danger-bg: rgba(235, 87, 87, 0.12);
+  --info: #4ea8de;
+  --info-bg: rgba(78, 168, 222, 0.12);
+  --purple: #9d8cd7;
+  --purple-bg: rgba(157, 140, 215, 0.12);
 
-  --text-primary: #edf4fc;
-  --text-secondary: #a8b7c9;
-  --text-muted: #718399;
+  --text-primary: #f0f2f5;
+  --text-secondary: #9ea8b3;
+  --text-muted: #6f7883;
   --title-color: #ffffff;
-  --subtitle-color: #c7d7e9;
+  --subtitle-color: #bcc6d1;
 
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-full: 9999px;
 
-  --font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.25s ease;
+  --font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --transition-fast: 0.12s ease;
+  --transition-normal: 0.18s ease;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
-  --glass-bg: rgba(13, 27, 42, 0.85);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(24, 26, 29, 0.88);
   --glass-border: rgba(255, 255, 255, 0.08);
 
-  /* Compatibility aliases used by the existing pages. */
+  /* Compatibility aliases */
   --bg-surface: var(--surface);
   --bg-card: var(--surface-secondary);
   --bg-card-hover: var(--surface-hover);
@@ -66,44 +72,48 @@
 }
 
 [data-theme='light'] {
-  --background: #f1f5f9;
+  /* Light Mode - Japanese Washi Paper & Sumi Ink (Glare-Free) */
+  --background: #f3f0ea;
   --background-secondary: #ffffff;
 
   --surface: #ffffff;
-  --surface-secondary: #f8fafc;
-  --surface-hover: #f1f5f9;
+  --surface-secondary: #ebe7df;
+  --surface-hover: #e2ddd3;
 
-  --border: #e2e8f0;
-  --border-light: #cbd5e1;
+  --border: #dcd7cb;
+  --border-light: #cec7b9;
 
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --primary-soft: rgba(37, 99, 235, 0.1);
+  --primary: #3d5e16;
+  --primary-hover: #2f4a0f;
+  --primary-contrast: #ffffff;
+  --primary-soft: rgba(61, 94, 22, 0.1);
+  --primary-light: #527a22;
 
-  --accent: #0d9488;
-  --accent-soft: rgba(13, 148, 136, 0.1);
+  --accent: #bd5c1b;
+  --accent-hover: #a14b12;
+  --accent-soft: rgba(189, 92, 27, 0.1);
 
-  --success: #16a34a;
-  --success-bg: rgba(22, 163, 74, 0.12);
-  --warning: #d97706;
-  --warning-bg: rgba(217, 119, 6, 0.12);
-  --danger: #dc2626;
-  --danger-bg: rgba(220, 38, 38, 0.12);
-  --info: #0284c7;
-  --info-bg: rgba(2, 132, 199, 0.12);
-  --purple: #7c3aed;
-  --purple-bg: rgba(124, 58, 237, 0.12);
+  --success: #2d8252;
+  --success-bg: rgba(45, 130, 82, 0.1);
+  --warning: #c2811a;
+  --warning-bg: rgba(194, 129, 26, 0.1);
+  --danger: #c93b3b;
+  --danger-bg: rgba(201, 59, 59, 0.1);
+  --info: #27779d;
+  --info-bg: rgba(39, 119, 157, 0.1);
+  --purple: #6a5796;
+  --purple-bg: rgba(106, 87, 150, 0.1);
 
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --title-color: #0b1220;
-  --subtitle-color: #334155;
+  --text-primary: #171917;
+  --text-secondary: #575e57;
+  --text-muted: #7d857d;
+  --title-color: #0d0f0d;
+  --subtitle-color: #383d38;
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
-  --glass-bg: rgba(255, 255, 255, 0.9);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.09);
+  --glass-bg: rgba(255, 255, 255, 0.92);
   --glass-border: rgba(0, 0, 0, 0.08);
 }
 
@@ -124,9 +134,8 @@ html, body {
 }
 
 body {
-  background-image:
-    radial-gradient(circle at 82% 6%, rgba(37, 99, 235, 0.09), transparent 28rem),
-    radial-gradient(circle at 12% 88%, rgba(20, 184, 166, 0.06), transparent 24rem);
+  /* Solid, clean background for zero eye-strain and no artificial glows */
+  background-color: var(--background);
 }
 
 button:disabled,
@@ -150,7 +159,7 @@ a:hover {
 
 /* Accessibility Focus Indicator */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -161,8 +170,8 @@ button, input, select, textarea {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: var(--background);

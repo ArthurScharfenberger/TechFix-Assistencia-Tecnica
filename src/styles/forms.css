@@ -33,7 +33,7 @@
 
 .form-control:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  box-shadow: 0 0 0 2px var(--primary-soft);
 }
 
 .form-control.is-invalid {
@@ -41,7 +41,7 @@
 }
 
 .form-control.is-invalid:focus {
-  box-shadow: 0 0 0 3px var(--color-danger-bg);
+  box-shadow: 0 0 0 2px var(--color-danger-bg);
 }
 
 select.form-control {

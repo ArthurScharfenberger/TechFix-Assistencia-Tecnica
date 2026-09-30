@@ -1,5 +1,7 @@
 # Atividade Semanal 08 — Planejamento Incremental, Estimativas e Riscos
 
+> Registro histórico da A8 original. A entrega revisada, alinhada à A5, está em [A8 final](entregas-processos/A8-Entrega-Final-Revisada.md), disponível também em [DOCX](entregas-processos/A8-Entrega-Final.docx) e [PDF](entregas-processos/A8-Entrega-Final.pdf). Os modelos da nova entrega referenciam os itens A8R01–A8R09.
+
 Esta página registra em formato consultável o planejamento entregue no documento [`Atividade_A8.pdf`](Atividade_A8.pdf). O conteúdo de planejamento foi definido pela equipe TechFix; esta versão organiza as mesmas informações para navegação no repositório.
 
 ## Identificação
