@@ -1,4 +1,4 @@
-public abstract class Equipamento {
+public abstract class Equipamento implements RoteiroDiagnostico {
     private final TipoEquipamento tipo;
     private final String marca;
     private final String defeito;

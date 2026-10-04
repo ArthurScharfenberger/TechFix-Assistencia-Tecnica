@@ -256,3 +256,9 @@ A IA apoiou a revisão da hierarquia, a organização dos testes, a conferência
 - Relacionados RF1, RF2 e RNF2 ?s origens RE1, RE2 e RE4 documentadas na A4, ao backlog A8 e aos modelos existentes.
 - Distinguida a arquitetura proposta da implementa??o atual. Registradas as lacunas de A3 original, A7 e identifica??o da A9.
 - Uso de IA: ChatGPT/Codex organizou o rascunho a pedido do usu?rio. Conferidos os v?nculos documentais, a exist?ncia dos modelos e a estrutura do DOCX (duas tabelas e tr?s requisitos rastreados). Revis?o final da equipe pendente.
+
+## 04/10/2026 - Atividade 9 - Comportamento polimórfico
+
+OpenAI Codex participou diretamente da implementação de `RoteiroDiagnostico`, dos roteiros distintos de Notebook e Celular, da integração em OrdemServico e Main, dos seis novos testes e da ficha final. O contrato possui Javadoc, lista imutável e consulta sem efeitos colaterais. O cliente usa a interface sem verificação de tipo.
+
+Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execução de `java -cp target/classes Main`; revisão visual das quatro páginas do PDF. Foram preparados somente a entrega final em PDF, sua fonte Markdown e o gerador reproduzível. A aprovação pessoal dos integrantes e a submissão no AVA não são presumidas.

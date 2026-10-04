@@ -51,6 +51,12 @@ public class OrdemServico {
         return status;
     }
 
+    /** Consulta o contrato de diagnóstico sem selecionar o tipo concreto. */
+    public List<String> getRoteiroDiagnostico() {
+        RoteiroDiagnostico roteiro = equipamento;
+        return roteiro.gerarRoteiroDiagnostico();
+    }
+
     public void exibirOrdemServico() {
         System.out.println("========================================");
         System.out.println("       ORDEM DE SERVIÇO Nº " + numero);
@@ -63,6 +69,8 @@ public class OrdemServico {
         System.out.println();
         System.out.println("EQUIPAMENTO");
         equipamento.exibirDados();
+        System.out.println("ROTEIRO DE DIAGNÓSTICO");
+        getRoteiroDiagnostico().forEach(etapa -> System.out.println("  - " + etapa));
         System.out.println();
         System.out.println("STATUS: " + status);
         System.out.println("========================================");

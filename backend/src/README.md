@@ -30,16 +30,15 @@ mvn test
 
 É necessário ter JDK 17 ou superior e Maven instalados.
 
-Os oito testes verificam as regras anteriores de cliente e ordem, as especializações de notebook e celular, a herança dos dados comuns e a herança da validação de marca.
+Os oito testes anteriores verificam as regras anteriores de cliente e ordem, as especializações de notebook e celular, a herança dos dados comuns e a herança da validação de marca.
 
 ## Execução do cenário
 
 Sem plugin adicional do Maven, o cenário pode ser executado diretamente:
 
 ```bash
-cd src/main/java
-javac Cliente.java Tecnico.java Equipamento.java OrdemServico.java StatusOrdemServico.java TipoEquipamento.java Main.java
-java Main
+mvn compile
+java -cp target/classes Main
 ```
 
 Ao final, a execução percorre uma `List<Equipamento>` com um `Notebook` e um `Celular`. O mesmo método herdado produz descrições diferentes por meio das sobrescritas de `descreverAtendimento()`.
@@ -53,3 +52,7 @@ A herança é adequada porque notebook e celular são tipos de equipamento receb
 ## Documentação da atividade
 
 Consulte a [entrega final da Atividade Semanal nº 8](../../docs/atividade-semanal-08-poo-entrega-final.md) e a [documentação do diagrama de classes](../../Diagrama-Classes/README.md).
+
+## Incremento da Atividade 9
+
+`RoteiroDiagnostico.java` define o contrato de diagnóstico implementado por Notebook e Celular. A OS consulta a interface sem verificar tipos, e Main demonstra uma coleção polimórfica. `RoteiroDiagnosticoTest.java` acrescenta seis testes: cada implementação com valores conhecidos, celular de um slot, despacho pela interface, imutabilidade e integração. Total: 14 testes sem falhas. [Entrega final](../../docs/atividade-semanal-09-poo-entrega-final.md).

@@ -26,7 +26,7 @@ Essa autenticação existe apenas para demonstração acadêmica. Como é execut
 
 A implementação Java representa clientes, técnicos, equipamentos e ordens de serviço. Na entrega final da Atividade Semanal nº 8 de POO, `Equipamento` tornou-se uma superclasse abstrata de `Notebook` e `Celular`. As duas subclasses reutilizam validações e comportamentos comuns e sobrescrevem a descrição do atendimento; `Main` demonstra o polimorfismo em execução.
 
-Esta etapa usa Java padrão e Maven para oito testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
+Esta etapa usa Java padrão e Maven para 14 testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
 
 Uma visão geral da área Java está em [`backend/README.md`](backend/README.md). As instruções de compilação e a descrição das classes estão em [`backend/src/README.md`](backend/src/README.md), e o esboço da Atividade 6 está em [`backend/docs/atividade-semanal-06-esboco.md`](backend/docs/atividade-semanal-06-esboco.md).
 
@@ -99,3 +99,7 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 
 - Arthur Scharfenberger
 - Lucas Oliveira da Silva
+
+## Entrega final de polimorfismo da Atividade 9
+
+A interface `RoteiroDiagnostico` define etapas ordenadas e imutáveis, com implementações distintas em `Notebook` e `Celular`, integradas à ordem de serviço. [Ficha final PDF](docs/Ficha_Padrao_Entrega_Atividade_09_Final.pdf) e [documentação](docs/atividade-semanal-09-poo-entrega-final.md). Para reproduzir o PDF: `python docs/gerar_entrega_polimorfismo.py` (requer `reportlab`).

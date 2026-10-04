@@ -20,4 +20,14 @@ public class Notebook extends Equipamento {
     public int getMemoriaRamGb() {
         return memoriaRamGb;
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public java.util.List<String> gerarRoteiroDiagnostico() {
+        return java.util.List.of(
+            "Verificar fonte e conector de alimentação",
+            "Testar os " + memoriaRamGb + " GB de memória RAM",
+            "Verificar armazenamento e refrigeração"
+        );
+    }
 }

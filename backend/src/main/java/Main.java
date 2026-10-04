@@ -22,5 +22,10 @@ public class Main {
         System.out.println("DEMONSTRAÇÃO DA HIERARQUIA DE EQUIPAMENTOS");
         List<Equipamento> equipamentos = List.of(notebook, celular);
         equipamentos.forEach(Equipamento::exibirDados);
+        System.out.println("ROTEIROS POR CONTRATO POLIMÓRFICO");
+        List<RoteiroDiagnostico> roteiros = List.of(notebook, celular);
+        for (RoteiroDiagnostico roteiro : roteiros) {
+            roteiro.gerarRoteiroDiagnostico().forEach(System.out::println);
+        }
     }
 }

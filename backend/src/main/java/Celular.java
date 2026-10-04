@@ -16,4 +16,14 @@ public class Celular extends Equipamento {
     public boolean isDualChip() {
         return dualChip;
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public java.util.List<String> gerarRoteiroDiagnostico() {
+        return java.util.List.of(
+            "Verificar bateria e conector de carga",
+            "Testar tela e resposta ao toque",
+            dualChip ? "Testar os dois slots de chip" : "Testar o slot de chip"
+        );
+    }
 }
