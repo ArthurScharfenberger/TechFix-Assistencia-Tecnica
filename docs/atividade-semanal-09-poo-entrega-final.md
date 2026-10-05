@@ -18,9 +18,9 @@ Referência de entrega: branch main. Tag: não utilizada nesta entrega.
 
 ### Ponto de variação e solução integrada
 
-O roteiro inicial de diagnóstico varia conforme o equipamento recebido pela assistência. Um notebook exige verificações de fonte, memória, armazenamento e refrigeração; um celular exige verificações de bateria, tela e slots de chip. Centralizar essas diferenças na ordem de serviço exigiria selecionar o tipo do equipamento para decidir quais etapas apresentar.
+O roteiro inicial de diagnóstico varia conforme o equipamento recebido pela assistência. Um notebook exige verificações de fonte, memória, armazenamento e refrigeração; um desktop exige verificações de fonte, placa-mãe e vídeo. Centralizar essas diferenças na ordem de serviço exigiria selecionar o tipo do equipamento para decidir quais etapas apresentar.
 
-O incremento introduz a interface RoteiroDiagnostico, implementada pela hierarquia Equipamento. Notebook e Celular fornecem as duas implementações concretas. OrdemServico consulta o contrato e apresenta o roteiro junto aos dados do atendimento. Main demonstra tanto essa integração quanto uma coleção declarada pelo tipo da interface.
+O incremento introduz a interface RoteiroDiagnostico, implementada pela hierarquia Equipamento. Notebook e Desktop fornecem as duas implementações concretas. OrdemServico consulta o contrato e apresenta o roteiro junto aos dados do atendimento. Main demonstra tanto essa integração quanto uma coleção declarada pelo tipo da interface.
 
 O roteiro orienta o técnico; não executa testes físicos nem atesta o defeito. As etapas são decisões de modelagem acadêmica do incremento. A integração ocorre no programa Java existente; não há comunicação com o frontend TypeScript, API ou persistência nesta entrega.
 
@@ -44,7 +44,7 @@ Equipamento é abstrata e declara implements RoteiroDiagnostico. Ela mantém os 
 
 Notebook.gerarRoteiroDiagnostico retorna, nesta ordem: verificar fonte e conector de alimentação; testar a quantidade de memória RAM cadastrada; verificar armazenamento e refrigeração. Para um notebook de 16 GB, a segunda etapa é exatamente "Testar os 16 GB de memória RAM". A memória precisa ser positiva, conforme a validação existente.
 
-Celular.gerarRoteiroDiagnostico retorna: verificar bateria e conector de carga; testar tela e resposta ao toque; testar um slot ou os dois slots de chip, conforme dualChip. O condicional local trata a configuração do celular, sem verificar a classe do objeto. As implementações diferem nos procedimentos e nos dados que determinam o roteiro.
+Desktop.gerarRoteiroDiagnostico retorna: verificar fonte e cabos internos; testar placa-mãe, memória e armazenamento; testar vídeo integrado ou dedicado, conforme placaVideoDedicada. O condicional local trata a configuração do desktop, sem verificar a classe do objeto. As implementações diferem nos procedimentos e nos dados que determinam o roteiro.
 
 ### Código cliente usando o tipo abstrato
 
@@ -62,7 +62,7 @@ exibirOrdemServico chama esse método e imprime as etapas. O cliente não usa in
 Trecho executável de Main.java:
 
 ```java
-List<RoteiroDiagnostico> roteiros = List.of(notebook, celular);
+List<RoteiroDiagnostico> roteiros = List.of(notebook, desktop);
 for (RoteiroDiagnostico roteiro : roteiros) {
     roteiro.gerarRoteiroDiagnostico().forEach(System.out::println);
 }
@@ -90,8 +90,8 @@ Resultado Maven: BUILD SUCCESS. 14 testes executados, 0 falhas, 0 erros e 0 igno
 Os seis novos testes em backend/src/test/java/RoteiroDiagnosticoTest.java verificam:
 
 - notebookRetornaEtapasConhecidasNaOrdem: compara a lista completa para um notebook de 16 GB com três valores esperados explícitos.
-- celularDualChipRetornaEtapasConhecidasNaOrdem: compara a lista completa para um celular dual chip com três valores esperados explícitos.
-- celularSimplesOrientaApenasUmSlot: verifica a alternativa de um único slot.
+- desktopComPlacaVideoRetornaEtapasConhecidasNaOrdem: compara a lista completa para um desktop com placa de vídeo dedicada com três valores esperados explícitos.
+- desktopComVideoIntegradoOrientaDiagnostico: verifica a alternativa de vídeo integrado.
 - mesmaReferenciaAbstrataDespachaParaImplementacoesDiferentes: percorre List<RoteiroDiagnostico> e compara os resultados específicos das duas implementações.
 - contratoMantemListaImutavelEConsultaSemEfeitosColaterais: verifica conteúdo válido, rejeição de alteração da lista, repetibilidade e preservação dos dados para ambos os equipamentos.
 - ordemServicoIntegraAmbosOsRoteirosSemAlterarStatus: verifica a delegação nos dois casos e a manutenção do status ABERTA.
@@ -105,12 +105,12 @@ ROTEIRO DE DIAGNÓSTICO
   - Verificar armazenamento e refrigeração
 ```
 
-A demonstração pela coleção também apresenta bateria e carga, tela e toque e os dois slots para o celular Samsung. As saídas são conferidas por valores conhecidos nos testes; não dependem de entrada interativa ou de serviços externos.
+A demonstração pela coleção também apresenta fonte e cabos, placa-mãe e vídeo dedicado para o desktop Dell. As saídas são conferidas por valores conhecidos nos testes; não dependem de entrada interativa ou de serviços externos.
 
 ### Rastreabilidade dos critérios da entrega
 
 - Abstração expressiva e Javadoc: RoteiroDiagnostico.java.
-- Duas implementações distintas: Notebook.java e Celular.java.
+- Duas implementações distintas: Notebook.java e Desktop.java.
 - Cliente com referência abstrata: OrdemServico.getRoteiroDiagnostico e coleção em Main.
 - Justificativa: seção Por que é polimorfismo desta ficha e README do backend.
 - Testes por implementação e pelo contrato: RoteiroDiagnosticoTest.java.
@@ -130,7 +130,7 @@ Os requisitos de código e testes desta entrega foram implementados e verificado
 
 Objetivo e resumo da interação: analisar os enunciados fornecidos, completar o incremento de comportamento polimórfico no projeto, implementar contrato e duas lógicas concretas, integrar a ordem de serviço, criar e executar testes e preparar somente a documentação final, seguida de commit e push.
 
-Resultado aproveitado: implementação de RoteiroDiagnostico, métodos de Notebook e Celular, integração em OrdemServico e Main, seis novos testes JUnit, documentação e geração desta ficha. A IA participou diretamente da produção do código e do texto, além da revisão.
+Resultado aproveitado: implementação de RoteiroDiagnostico, métodos de Notebook e Desktop, integração em OrdemServico e Main, seis novos testes JUnit, documentação e geração desta ficha. A IA participou diretamente da produção do código e do texto, além da revisão.
 
 Verificação realizada durante a preparação: execução de mvn test, execução do Main, conferência do diff e revisão visual do PDF. Registro complementar: DEVLOG.md e backend/IA.md. A verificação automatizada não representa aprovação pessoal dos integrantes.
 

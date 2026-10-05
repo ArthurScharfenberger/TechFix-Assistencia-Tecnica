@@ -40,6 +40,8 @@ export class EquipamentoService {
 
     if (!isNotEmpty(dto.tipo)) {
       errors.push('O tipo de equipamento é obrigatório.');
+    } else if (dto.tipo !== 'NOTEBOOK' && dto.tipo !== 'DESKTOP') {
+      errors.push('A assistência atende apenas notebooks e PCs (desktops).');
     }
 
     if (!isNotEmpty(dto.fabricante)) {

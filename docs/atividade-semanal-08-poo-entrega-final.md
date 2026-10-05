@@ -2,9 +2,9 @@
 
 ## Hierarquia implementada
 
-`Equipamento` é a superclasse abstrata da hierarquia. `Notebook` e `Celular` são subclasses e chamam o construtor da superclasse com `super(...)`, reutilizando a validação de tipo, marca e defeito. As duas também herdam os getters e o método `exibirDados()`.
+`Equipamento` é a superclasse abstrata da hierarquia. `Notebook` e `Desktop` são subclasses e chamam o construtor da superclasse com `super(...)`, reutilizando a validação de tipo, marca e defeito. As duas também herdam os getters e o método `exibirDados()`.
 
-Ambas sobrescrevem `descreverAtendimento()` com `@Override`. A implementação especializada chama `super.descreverAtendimento()` para preservar os dados comuns e acrescenta uma característica própria: memória RAM para notebook e configuração de chips para celular.
+Ambas sobrescrevem `descreverAtendimento()` com `@Override`. A implementação especializada chama `super.descreverAtendimento()` para preservar os dados comuns e acrescenta uma característica própria: memória RAM para notebook e configuração de vídeo para desktop.
 
 ## Demonstração em execução
 
@@ -13,7 +13,7 @@ O `Main` armazena objetos das duas subclasses em uma `List<Equipamento>` e chama
 ```text
 DEMONSTRAÇÃO DA HIERARQUIA DE EQUIPAMENTOS
   Tipo: NOTEBOOK | Marca: Dell | Defeito: Não liga | Especialização: notebook com 16 GB de RAM
-  Tipo: CELULAR | Marca: Samsung | Defeito: Tela quebrada | Especialização: celular com dual chip
+  Tipo: DESKTOP | Marca: Dell | Defeito: Sem imagem | Especialização: desktop com placa de vídeo dedicada
 ```
 
 ## Testes JUnit
@@ -21,7 +21,7 @@ DEMONSTRAÇÃO DA HIERARQUIA DE EQUIPAMENTOS
 A classe `EquipamentoTest` contém quatro testes:
 
 - especialização da descrição de `Notebook`;
-- especialização da descrição de `Celular`;
+- especialização da descrição de `Desktop`;
 - herança dos dados e getters comuns;
 - herança da validação de marca pelas duas subclasses.
 
@@ -29,13 +29,13 @@ Somados aos quatro testes anteriores de `OrdemServicoTest`, são oito testes exe
 
 ## Justificativa da herança
 
-A herança é adequada porque notebook e celular são tipos de equipamento recebidos pela assistência técnica. Ambos compartilham identidade, marca, defeito, validações e forma básica de exibição, evitando duplicação na superclasse. Cada subtipo acrescenta seus próprios dados e especializa a descrição do atendimento sem perder o contrato comum de `Equipamento`.
+A herança é adequada porque notebook e desktop são tipos de equipamento recebidos pela assistência técnica. Ambos compartilham identidade, marca, defeito, validações e forma básica de exibição, evitando duplicação na superclasse. Cada subtipo acrescenta seus próprios dados e especializa a descrição do atendimento sem perder o contrato comum de `Equipamento`.
 
 ## Arquivos principais
 
 - [`Equipamento.java`](../backend/src/main/java/Equipamento.java)
 - [`Notebook.java`](../backend/src/main/java/Notebook.java)
-- [`Celular.java`](../backend/src/main/java/Celular.java)
+- [`Desktop.java`](../backend/src/main/java/Desktop.java)
 - [`Main.java`](../backend/src/main/java/Main.java)
 - [`EquipamentoTest.java`](../backend/src/test/java/EquipamentoTest.java)
 

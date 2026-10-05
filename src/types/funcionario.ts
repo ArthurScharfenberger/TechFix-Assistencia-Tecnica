@@ -2,7 +2,7 @@ export type CargoFuncionario = 'ATENDENTE' | 'TECNICO' | 'SUPERVISOR' | 'ADMINIS
 export type StatusFuncionario = 'ATIVO' | 'INATIVO';
 
 export const ESPECIALIDADES_FUNCIONARIO = [
-  'NOTEBOOKS', 'DESKTOPS', 'CELULARES', 'IMPRESSORAS', 'REDES',
+  'NOTEBOOKS', 'DESKTOPS', 'REDES',
   'SOFTWARE', 'RECUPERACAO_DADOS', 'ELETRONICA', 'OUTROS',
 ] as const;
 

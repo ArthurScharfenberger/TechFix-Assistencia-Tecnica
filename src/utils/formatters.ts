@@ -38,10 +38,6 @@ export function getTipoEquipamentoLabel(tipo: TipoEquipamento): string {
   const map: Record<TipoEquipamento, string> = {
     NOTEBOOK: 'Notebook',
     DESKTOP: 'Desktop',
-    MONITOR: 'Monitor',
-    IMPRESSORA: 'Impressora',
-    CELULAR: 'Celular',
-    OUTRO: 'Outro',
   };
   return map[tipo] || tipo;
 }

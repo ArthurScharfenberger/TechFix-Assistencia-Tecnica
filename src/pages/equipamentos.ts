@@ -93,10 +93,6 @@ export class EquipamentosPage {
               <option value="">Todos os Tipos</option>
               <option value="NOTEBOOK" ${this.filterTipo === 'NOTEBOOK' ? 'selected' : ''}>Notebook</option>
               <option value="DESKTOP" ${this.filterTipo === 'DESKTOP' ? 'selected' : ''}>Desktop</option>
-              <option value="MONITOR" ${this.filterTipo === 'MONITOR' ? 'selected' : ''}>Monitor</option>
-              <option value="IMPRESSORA" ${this.filterTipo === 'IMPRESSORA' ? 'selected' : ''}>Impressora</option>
-              <option value="CELULAR" ${this.filterTipo === 'CELULAR' ? 'selected' : ''}>Celular</option>
-              <option value="OUTRO" ${this.filterTipo === 'OUTRO' ? 'selected' : ''}>Outro</option>
             </select>
 
             <select id="filter-status" class="form-control" style="width: auto;">
@@ -303,10 +299,6 @@ export class EquipamentosPage {
             <option value="">Selecione...</option>
             <option value="NOTEBOOK" ${item && item.tipo === 'NOTEBOOK' ? 'selected' : ''}>Notebook</option>
             <option value="DESKTOP" ${item && item.tipo === 'DESKTOP' ? 'selected' : ''}>Desktop</option>
-            <option value="MONITOR" ${item && item.tipo === 'MONITOR' ? 'selected' : ''}>Monitor</option>
-            <option value="IMPRESSORA" ${item && item.tipo === 'IMPRESSORA' ? 'selected' : ''}>Impressora</option>
-            <option value="CELULAR" ${item && item.tipo === 'CELULAR' ? 'selected' : ''}>Celular</option>
-            <option value="OUTRO" ${item && item.tipo === 'OUTRO' ? 'selected' : ''}>Outro</option>
           </select>
           <div class="field-error" id="err-tipo"></div>
         </div>

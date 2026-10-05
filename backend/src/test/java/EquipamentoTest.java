@@ -14,19 +14,19 @@ class EquipamentoTest {
     }
 
     @Test
-    void celularDeveEspecializarDescricaoDoAtendimento() {
-        Equipamento equipamento = new Celular("Samsung", "Tela quebrada", true);
+    void desktopDeveEspecializarDescricaoDoAtendimento() {
+        Equipamento equipamento = new Desktop("Dell", "Sem imagem", true);
 
-        assertTrue(equipamento.descreverAtendimento().contains("celular com dual chip"));
+        assertTrue(equipamento.descreverAtendimento().contains("desktop com placa de vídeo dedicada"));
     }
 
     @Test
     void subclassesDevemHerdarDadosComuns() {
         Equipamento notebook = new Notebook("Lenovo", "Superaquecimento", 8);
-        Equipamento celular = new Celular("Motorola", "Não carrega", false);
+        Equipamento desktop = new Desktop("HP", "Não liga", false);
 
         assertEquals("Lenovo", notebook.getMarca());
-        assertEquals("Não carrega", celular.getDefeito());
+        assertEquals("Não liga", desktop.getDefeito());
     }
 
     @Test
@@ -37,7 +37,7 @@ class EquipamentoTest {
         );
         assertThrows(
             IllegalArgumentException.class,
-            () -> new Celular(" ", "Tela quebrada", true)
+            () -> new Desktop(" ", "Sem imagem", true)
         );
     }
 }

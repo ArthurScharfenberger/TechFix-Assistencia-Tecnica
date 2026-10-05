@@ -11,7 +11,7 @@ import { iconHTML, initIcons } from '../utils/iconHelper';
 import { bindDebouncedSearch, escapeHtml } from '../utils/inputBehavior';
 
 const CARGOS: Record<CargoFuncionario, string> = { ATENDENTE: 'Atendente', TECNICO: 'Técnico', SUPERVISOR: 'Supervisor', ADMINISTRADOR: 'Administrador' };
-const ESPECIALIDADES: Record<EspecialidadeFuncionario, string> = { NOTEBOOKS: 'Notebooks', DESKTOPS: 'Desktops', CELULARES: 'Celulares', IMPRESSORAS: 'Impressoras', REDES: 'Redes', SOFTWARE: 'Software', RECUPERACAO_DADOS: 'Recuperação de dados', ELETRONICA: 'Eletrônica', OUTROS: 'Outros' };
+const ESPECIALIDADES: Record<EspecialidadeFuncionario, string> = { NOTEBOOKS: 'Notebooks', DESKTOPS: 'Desktops', REDES: 'Redes', SOFTWARE: 'Software', RECUPERACAO_DADOS: 'Recuperação de dados', ELETRONICA: 'Eletrônica', OUTROS: 'Outros' };
 
 export class EquipePage {
   private container = document.createElement('div');

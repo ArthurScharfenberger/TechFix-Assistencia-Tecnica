@@ -1,10 +1,6 @@
 export type TipoEquipamento =
   | 'NOTEBOOK'
-  | 'DESKTOP'
-  | 'MONITOR'
-  | 'IMPRESSORA'
-  | 'CELULAR'
-  | 'OUTRO';
+  | 'DESKTOP';
 
 export type StatusEquipamento =
   | 'DISPONIVEL'

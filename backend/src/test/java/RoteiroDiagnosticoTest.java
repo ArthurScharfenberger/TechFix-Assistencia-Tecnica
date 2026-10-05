@@ -13,32 +13,32 @@ class RoteiroDiagnosticoTest {
     }
 
     @Test
-    void celularDualChipRetornaEtapasConhecidasNaOrdem() {
-        RoteiroDiagnostico roteiro = new Celular("Samsung", "Tela quebrada", true);
-        assertEquals(List.of("Verificar bateria e conector de carga",
-            "Testar tela e resposta ao toque", "Testar os dois slots de chip"),
+    void desktopComPlacaVideoRetornaEtapasConhecidasNaOrdem() {
+        RoteiroDiagnostico roteiro = new Desktop("Dell", "Sem imagem", true);
+        assertEquals(List.of("Verificar fonte de alimentação e cabos internos",
+            "Testar placa-mãe, memória e armazenamento", "Testar placa de vídeo dedicada"),
             roteiro.gerarRoteiroDiagnostico());
     }
 
     @Test
-    void celularSimplesOrientaApenasUmSlot() {
-        RoteiroDiagnostico roteiro = new Celular("Motorola", "Não carrega", false);
-        assertEquals("Testar o slot de chip", roteiro.gerarRoteiroDiagnostico().get(2));
+    void desktopComVideoIntegradoOrientaDiagnostico() {
+        RoteiroDiagnostico roteiro = new Desktop("HP", "Não liga", false);
+        assertEquals("Testar vídeo integrado", roteiro.gerarRoteiroDiagnostico().get(2));
     }
 
     @Test
     void mesmaReferenciaAbstrataDespachaParaImplementacoesDiferentes() {
         List<RoteiroDiagnostico> roteiros = List.of(
-            new Notebook("Dell", "Não liga", 8), new Celular("Samsung", "Tela quebrada", true));
+            new Notebook("Dell", "Não liga", 8), new Desktop("Dell", "Sem imagem", true));
         assertEquals(List.of("Verificar fonte e conector de alimentação",
-            "Verificar bateria e conector de carga"), roteiros.stream()
+            "Verificar fonte de alimentação e cabos internos"), roteiros.stream()
             .map(roteiro -> roteiro.gerarRoteiroDiagnostico().get(0)).toList());
     }
 
     @Test
     void contratoMantemListaImutavelEConsultaSemEfeitosColaterais() {
         for (Equipamento equipamento : List.of(new Notebook("Dell", "Não liga", 16),
-                new Celular("Samsung", "Tela quebrada", false))) {
+                new Desktop("Dell", "Sem imagem", false))) {
             String descricao = equipamento.descreverAtendimento();
             RoteiroDiagnostico roteiro = equipamento;
             List<String> etapas = roteiro.gerarRoteiroDiagnostico();
@@ -53,7 +53,7 @@ class RoteiroDiagnosticoTest {
     @Test
     void ordemServicoIntegraAmbosOsRoteirosSemAlterarStatus() {
         for (Equipamento equipamento : List.of(new Notebook("Dell", "Não liga", 16),
-                new Celular("Samsung", "Tela quebrada", true))) {
+                new Desktop("Dell", "Sem imagem", true))) {
             OrdemServico ordem = new OrdemServico(1,
                 new Cliente("Ana", "51999999999", "ana@example.com"),
                 new Tecnico("Carlos", "Manutenção"), equipamento);

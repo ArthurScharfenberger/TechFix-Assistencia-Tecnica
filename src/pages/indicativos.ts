@@ -73,7 +73,7 @@ export class IndicativosPage {
         ${this.select('statusChamado', 'Status da ordem', [['','Todos'],['ABERTO','Aberta'],['EM_ATENDIMENTO','Em atendimento'],['AGUARDANDO_USUARIO','Aguardando cliente'],['CONCLUIDO','Concluída'],['CANCELADO','Cancelada']], this.filters.statusChamado)}
         ${this.select('prioridade', 'Prioridade', [['','Todas'],['BAIXA','Baixa'],['NORMAL','Normal'],['ALTA','Alta'],['URGENTE','Urgente']], this.filters.prioridade)}
         ${this.select('tecnico', 'Técnico responsável', [['','Todos'], ...technicians.map((item) => [item.id, item.nome])], this.filters.tecnico)}
-        ${this.select('tipoEquipamento', 'Tipo de equipamento', [['','Todos'],['NOTEBOOK','Notebook'],['DESKTOP','Desktop'],['MONITOR','Monitor'],['IMPRESSORA','Impressora'],['CELULAR','Celular'],['OUTRO','Outro']], this.filters.tipoEquipamento)}
+        ${this.select('tipoEquipamento', 'Tipo de equipamento', [['','Todos'],['NOTEBOOK','Notebook'],['DESKTOP','Desktop']], this.filters.tipoEquipamento)}
         ${this.select('clienteId', 'Cliente', [['','Todos'], ...users.map((user) => [user.id, user.nome])], this.filters.clienteId)}
         ${this.select('statusManutencao', 'Status do reparo', [['','Todos'],['AGENDADA','Agendada'],['EM_ANDAMENTO','Em andamento'],['CONCLUIDA','Concluída'],['CANCELADA','Cancelada']], this.filters.statusManutencao)}
       </div>

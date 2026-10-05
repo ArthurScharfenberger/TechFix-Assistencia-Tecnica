@@ -300,10 +300,6 @@ export class DashboardPage {
     const tipoCounts: Record<string, number> = {
       Notebook: equipamentos.filter((e) => e.tipo === 'NOTEBOOK').length,
       Desktop: equipamentos.filter((e) => e.tipo === 'DESKTOP').length,
-      Monitor: equipamentos.filter((e) => e.tipo === 'MONITOR').length,
-      Impressora: equipamentos.filter((e) => e.tipo === 'IMPRESSORA').length,
-      Celular: equipamentos.filter((e) => e.tipo === 'CELULAR').length,
-      Outro: equipamentos.filter((e) => e.tipo === 'OUTRO').length,
     };
 
     const tipoCtx = (this.container.querySelector('#chart-equipamentos-tipo') as HTMLCanvasElement)?.getContext('2d');

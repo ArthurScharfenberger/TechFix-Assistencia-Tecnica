@@ -226,7 +226,7 @@ Concluir a hierarquia de equipamentos com duas subclasses, sobrescrita, demonstr
 ### Implementação
 
 - Transformada `Equipamento` em superclasse abstrata com validações e comportamentos comuns.
-- Criadas as subclasses `Notebook` e `Celular`.
+- Criadas as subclasses `Notebook` e `Desktop`.
 - Sobrescrito `descreverAtendimento()` nas duas subclasses com uso da implementação da superclasse.
 - Atualizado `Main` para tratar objetos diferentes por uma `List<Equipamento>` e demonstrar o comportamento especializado.
 - Criados quatro testes em `EquipamentoTest`, cobrindo as duas especializações, os dados herdados e a validação herdada.
@@ -235,12 +235,12 @@ Concluir a hierarquia de equipamentos com duas subclasses, sobrescrita, demonstr
 
 ### Justificativa
 
-Notebook e celular são tipos de equipamento e compartilham dados, validações e operações. A superclasse concentra essas responsabilidades, enquanto as subclasses acrescentam características e comportamentos específicos, evitando duplicação e permitindo uso polimórfico.
+Notebook e desktop são tipos de equipamento e compartilham dados, validações e operações. A superclasse concentra essas responsabilidades, enquanto as subclasses acrescentam características e comportamentos específicos, evitando duplicação e permitindo uso polimórfico.
 
 ### Verificações
 
 - `mvn clean test`: 8 testes executados, sem falhas ou erros.
-- `java -cp target/classes Main`: cenário executado com descrições diferentes para notebook e celular.
+- `java -cp target/classes Main`: cenário executado com descrições diferentes para notebook e desktop.
 - Documentação comparada com os requisitos do enunciado da entrega final.
 
 ### Uso de inteligência artificial
@@ -259,6 +259,18 @@ A IA apoiou a revisão da hierarquia, a organização dos testes, a conferência
 
 ## 04/10/2026 - Atividade 9 - Comportamento polimórfico
 
-OpenAI Codex participou diretamente da implementação de `RoteiroDiagnostico`, dos roteiros distintos de Notebook e Celular, da integração em OrdemServico e Main, dos seis novos testes e da ficha final. O contrato possui Javadoc, lista imutável e consulta sem efeitos colaterais. O cliente usa a interface sem verificação de tipo.
+OpenAI Codex participou diretamente da implementação de `RoteiroDiagnostico`, dos roteiros distintos de Notebook e Desktop, da integração em OrdemServico e Main, dos seis novos testes e da ficha final. O contrato possui Javadoc, lista imutável e consulta sem efeitos colaterais. O cliente usa a interface sem verificação de tipo.
 
 Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execução de `java -cp target/classes Main`; revisão visual das quatro páginas do PDF. Foram preparados somente a entrega final em PDF, sua fonte Markdown e o gerador reproduzível. A aprovação pessoal dos integrantes e a submissão no AVA não são presumidas.
+
+## 05/10/2026 - Escopo de atendimento e apresentação de POO
+
+- Consolidado o atendimento exclusivamente de notebooks e PCs (desktops), com `NOTEBOOK` e `DESKTOP` como tipos aceitos.
+- Atualizadas a hierarquia Java, as demonstrações e os testes para `Notebook` e `Desktop`. A especialização do desktop usa a configuração de vídeo dedicado ou integrado.
+- Ajustados cadastros, filtros, gráficos e especialidades da interface web. Os serviços bloqueiam novos cadastros e reparos de tipos fora do escopo, preservando os dados anteriores.
+- Atualizados o diagrama de classes, o roadmap e as fichas das atividades 08 e 09. Os ícones da aplicação passaram a ser importados explicitamente conforme o uso.
+- Incorporada a apresentação revisada em `docs/Apresentacao-POO-TechFix.pptx`. Os dez slides foram conferidos com o código e os testes; os diagramas distinguem herança e realização de interface, e o texto explicita que a integração demonstrada ocorre entre objetos Java, separadamente da interface web.
+- Preservados os GIFs e as demais imagens da apresentação: arquivos de mídia e posições das imagens mantidas foram comparados com o original.
+- Criado `docs/Roteiro-Apresentacao-POO-Arthur-Lucas.md`, com Lucas nos slides 2 a 5 e Arthur na abertura e nos slides 6 a 10. O roteiro contém 571 palavras de fala e reserva aproximadamente seis minutos.
+- Verificações: build TypeScript/Vite aprovado; `mvn clean test` com 14 testes, zero falhas, erros ou ignorados; saídas do slide de polimorfismo comparadas com a execução de `Main`; apresentação aberta no PowerPoint, dez slides renderizados e conferidos visualmente; estrutura do PPTX validada sem ocorrências.
+- Uso de IA: Codex realizou a correção de escopo, a revisão documental e da apresentação e a preparação do roteiro a pedido do usuário. A equipe permanece responsável pela apresentação e pela submissão acadêmica.

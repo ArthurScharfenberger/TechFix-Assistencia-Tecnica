@@ -44,7 +44,7 @@ const statusLabels: Record<string, string> = {
   CONCLUIDO: 'Concluída', CANCELADO: 'Cancelada',
 };
 const prioridadeLabels: Record<string, string> = { BAIXA: 'Baixa', NORMAL: 'Normal', ALTA: 'Alta', URGENTE: 'Urgente' };
-const tipoLabels: Record<string, string> = { NOTEBOOK: 'Notebook', DESKTOP: 'Desktop', MONITOR: 'Monitor', IMPRESSORA: 'Impressora', CELULAR: 'Celular', OUTRO: 'Outro' };
+const tipoLabels: Record<string, string> = { NOTEBOOK: 'Notebook', DESKTOP: 'Desktop' };
 
 function average(values: number[]): number | null {
   const valid = values.filter(Number.isFinite);

@@ -60,8 +60,6 @@ Os construtores agora impedem a criação de objetos incompletos por meio de val
 
 - `NOTEBOOK`
 - `DESKTOP`
-- `CELULAR`
-- `OUTRO`
 
 Os enums evitam textos livres e limitam esses atributos aos valores definidos pelo sistema.
 

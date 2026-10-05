@@ -17,7 +17,7 @@ export class ManutencaoService {
   public static validate(dto: Partial<CriarManutencaoDTO>, currentTechnicianId: string | null = null): string[] {
     const errors: string[] = [];
     if (!isNotEmpty(dto.equipamentoId)) errors.push('O equipamento é obrigatório.');
-    else { const equipment = EquipamentoService.getById(dto.equipamentoId!); if (!equipment) errors.push('O equipamento selecionado não foi encontrado.'); else if (equipment.status === 'DESCARTADO') errors.push('Um equipamento descartado não pode entrar em reparo.'); }
+    else { const equipment = EquipamentoService.getById(dto.equipamentoId!); if (!equipment) errors.push('O equipamento selecionado não foi encontrado.'); else if (equipment.tipo !== 'NOTEBOOK' && equipment.tipo !== 'DESKTOP') errors.push('A assistência atende apenas notebooks e PCs (desktops).'); else if (equipment.status === 'DESCARTADO') errors.push('Um equipamento descartado não pode entrar em reparo.'); }
     if (!isNotEmpty(dto.descricao)) errors.push('A descrição do reparo é obrigatória.');
     if (dto.tecnicoResponsavelId && dto.tecnicoResponsavelId !== currentTechnicianId && !FuncionarioService.getAssignable().some((item) => item.id === dto.tecnicoResponsavelId)) errors.push('O técnico selecionado não está ativo ou não pode receber serviços.');
     if (dto.custo === undefined || dto.custo === null || Number.isNaN(dto.custo)) errors.push('O custo é obrigatório.'); else if (!isNonNegativeNumber(dto.custo)) errors.push('O custo não pode ser negativo.');

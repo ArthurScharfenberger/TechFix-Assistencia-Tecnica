@@ -24,7 +24,7 @@ Essa autenticação existe apenas para demonstração acadêmica. Como é execut
 
 ## Atividade Java
 
-A implementação Java representa clientes, técnicos, equipamentos e ordens de serviço. Na entrega final da Atividade Semanal nº 8 de POO, `Equipamento` tornou-se uma superclasse abstrata de `Notebook` e `Celular`. As duas subclasses reutilizam validações e comportamentos comuns e sobrescrevem a descrição do atendimento; `Main` demonstra o polimorfismo em execução.
+A implementação Java representa clientes, técnicos, equipamentos e ordens de serviço. Na entrega final da Atividade Semanal nº 8 de POO, `Equipamento` tornou-se uma superclasse abstrata de `Notebook` e `Desktop`. As duas subclasses reutilizam validações e comportamentos comuns e sobrescrevem a descrição do atendimento; `Main` demonstra o polimorfismo em execução.
 
 Esta etapa usa Java padrão e Maven para 14 testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
 
@@ -46,7 +46,7 @@ TechFix/
 │       ├── README.md
 │       ├── main/java/
 │       │   ├── Cliente.java
-│       │   ├── Celular.java
+│       │   ├── Desktop.java
 │       │   ├── Equipamento.java
 │       │   ├── Main.java
 │       │   ├── Notebook.java
@@ -90,6 +90,8 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 - [`docs/atividade-semanal-08.md`](docs/atividade-semanal-08.md): versão consultável da Atividade 08.
 - [`docs/Atividade_A8.pdf`](docs/Atividade_A8.pdf): documento original entregue na Atividade 08.
 - [`docs/atividade-semanal-08-poo-entrega-final.md`](docs/atividade-semanal-08-poo-entrega-final.md): implementação, demonstração, testes e justificativa da herança.
+- [`docs/Apresentacao-POO-TechFix.pptx`](docs/Apresentacao-POO-TechFix.pptx): apresentação revisada de POO, com exemplos de Notebook e Desktop e mídias preservadas.
+- [`docs/Roteiro-Apresentacao-POO-Arthur-Lucas.md`](docs/Roteiro-Apresentacao-POO-Arthur-Lucas.md): roteiro por apresentador e slide, planejado para aproximadamente seis minutos.
 - [`backend/README.md`](backend/README.md): limites e organização da área Java.
 - [`backend/src/README.md`](backend/src/README.md): documentação e execução do código Java.
 - [`docs/atividade-semanal-03.md`](docs/atividade-semanal-03.md): registro da Atividade Semanal nº 3.
@@ -102,4 +104,8 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 
 ## Entrega final de polimorfismo da Atividade 9
 
-A interface `RoteiroDiagnostico` define etapas ordenadas e imutáveis, com implementações distintas em `Notebook` e `Celular`, integradas à ordem de serviço. [Ficha final PDF](docs/Ficha_Padrao_Entrega_Atividade_09_Final.pdf) e [documentação](docs/atividade-semanal-09-poo-entrega-final.md). Para reproduzir o PDF: `python docs/gerar_entrega_polimorfismo.py` (requer `reportlab`).
+A interface `RoteiroDiagnostico` define etapas ordenadas e imutáveis, com implementações distintas em `Notebook` e `Desktop`, integradas à ordem de serviço. [Ficha final PDF](docs/Ficha_Padrao_Entrega_Atividade_09_Final.pdf) e [documentação](docs/atividade-semanal-09-poo-entrega-final.md). Para reproduzir o PDF: `python docs/gerar_entrega_polimorfismo.py` (requer `reportlab`).
+
+## Escopo de atendimento
+
+A TechFix realiza manutenção exclusivamente de notebooks e PCs (desktops). Os tipos de equipamento aceitos são `NOTEBOOK` e `DESKTOP`.

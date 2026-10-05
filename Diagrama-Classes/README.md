@@ -43,11 +43,11 @@ classDiagram
         +descreverAtendimento() String
         +getMemoriaRamGb() int
     }
-    class Celular {
-        -boolean dualChip
-        +Celular(marca, defeito, dualChip)
+    class Desktop {
+        -boolean placaVideoDedicada
+        +Desktop(marca, defeito, placaVideoDedicada)
         +descreverAtendimento() String
-        +isDualChip() boolean
+        +isPlacaVideoDedicada() boolean
     }
     class OrdemServico {
         -int numero
@@ -74,8 +74,6 @@ classDiagram
         <<enumeration>>
         NOTEBOOK
         DESKTOP
-        CELULAR
-        OUTRO
     }
     class StatusOrdemServico {
         <<enumeration>>
@@ -88,7 +86,7 @@ classDiagram
     Tecnico "1" <-- "0..*" OrdemServico : atende
     Equipamento "1" <-- "0..*" OrdemServico : refere-se a
     Equipamento <|-- Notebook
-    Equipamento <|-- Celular
+    Equipamento <|-- Desktop
     Equipamento --> TipoEquipamento : tipo
     OrdemServico --> StatusOrdemServico : status
     OrdemServico "1" *-- "0..*" ItemServico : compõe
@@ -112,7 +110,7 @@ Representa o profissional responsável pelo atendimento. Armazena `nome` e `espe
 
 ### Equipamento
 
-É a superclasse abstrata dos itens encaminhados à assistência. Centraliza `tipo`, `marca`, `defeito`, suas validações, getters e a exibição. `Notebook` e `Celular` herdam esses comportamentos e sobrescrevem `descreverAtendimento()` para acrescentar, respectivamente, memória RAM e configuração de chips.
+É a superclasse abstrata dos itens encaminhados à assistência. Centraliza `tipo`, `marca`, `defeito`, suas validações, getters e a exibição. `Notebook` e `Desktop` herdam esses comportamentos e sobrescrevem `descreverAtendimento()` para acrescentar, respectivamente, memória RAM e configuração de vídeo.
 
 ### OrdemServico
 
@@ -130,11 +128,11 @@ Ao longo do tempo, cada cliente, técnico ou equipamento pode estar associado a 
 
 O diagrama usa os verbos **solicita**, **atende** e **refere-se a** para esclarecer o papel de cada classe na relação com a ordem.
 
-As setas de generalização mostram que `Notebook` e `Celular` são especializações de `Equipamento`. O losango preenchido registra a composição entre `OrdemServico` e `ItemServico`.
+As setas de generalização mostram que `Notebook` e `Desktop` são especializações de `Equipamento`. O losango preenchido registra a composição entre `OrdemServico` e `ItemServico`.
 
 ## Classe Main
 
-`Main` não aparece no diagrama porque não representa uma entidade do domínio. Ela demonstra a ordem e percorre um notebook e um celular por meio de referências `Equipamento`, evidenciando o comportamento polimórfico das sobrescritas.
+`Main` não aparece no diagrama porque não representa uma entidade do domínio. Ela demonstra a ordem e percorre um notebook e um desktop por meio de referências `Equipamento`, evidenciando o comportamento polimórfico das sobrescritas.
 
 ## Organização realizada
 
@@ -147,7 +145,7 @@ backend/
     ├── README.md
     ├── main/java/
     │   ├── Cliente.java
-    │   ├── Celular.java
+    │   ├── Desktop.java
     │   ├── Equipamento.java
     │   ├── Main.java
     │   ├── Notebook.java

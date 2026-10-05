@@ -181,7 +181,7 @@ Substituir textos livres pelos mesmos estados controlados utilizados pelo fronte
 Criar:
 
 - `StatusCliente`: `ATIVO`, `INATIVO`;
-- `TipoEquipamento`: `NOTEBOOK`, `DESKTOP`, `MONITOR`, `IMPRESSORA`, `CELULAR`, `OUTRO`;
+- `TipoEquipamento`: `NOTEBOOK`, `DESKTOP`;
 - `StatusEquipamento`: `DISPONIVEL`, `EM_USO`, `EM_MANUTENCAO`, `DESCARTADO`;
 - `PrioridadeOrdem`: `BAIXA`, `NORMAL`, `ALTA`, `URGENTE`;
 - `StatusOrdem`: `ABERTO`, `EM_ATENDIMENTO`, `AGUARDANDO_USUARIO`, `CONCLUIDO`, `CANCELADO`.

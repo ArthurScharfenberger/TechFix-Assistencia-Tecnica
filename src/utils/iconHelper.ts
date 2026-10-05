@@ -1,4 +1,6 @@
-import { createIcons, icons } from 'lucide';
+import { createIcons, AlertCircle, AlertTriangle, ArrowRight, Award, BadgeInfo, BarChart3, CalendarRange, CheckCircle, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, CircleCheck, CircleX, ClipboardList, Cpu, Crown, Currency, DollarSign, Download, Edit3, Eye, EyeOff, FileBarChart, FileDown, FileSearch, FileSpreadsheet, GraduationCap, Headphones, HelpCircle, Hourglass, Inbox, Info, Laptop, LayoutDashboard, LineChart, ListFilter, LoaderCircle, LockKeyhole, LogIn, LogOut, Menu, Moon, Plus, Printer, Receipt, RotateCcw, Search, Settings, Siren, Sparkles, Sun, Text, Ticket, Timer, Trash2, TrendingDown, TrendingUp, User, UserCheck, UserCog, UserPlus, UserX, Users, Wrench, X } from 'lucide';
+
+const icons = { AlertCircle, AlertTriangle, ArrowRight, Award, BadgeInfo, BarChart3, CalendarRange, CheckCircle, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, CircleCheck, CircleX, ClipboardList, Cpu, Crown, Currency, DollarSign, Download, Edit3, Eye, EyeOff, FileBarChart, FileDown, FileSearch, FileSpreadsheet, GraduationCap, Headphones, HelpCircle, Hourglass, Inbox, Info, Laptop, LayoutDashboard, LineChart, ListFilter, LoaderCircle, LockKeyhole, LogIn, LogOut, Menu, Moon, Plus, Printer, Receipt, RotateCcw, Search, Settings, Siren, Sparkles, Sun, Text, Ticket, Timer, Trash2, TrendingDown, TrendingUp, User, UserCheck, UserCog, UserPlus, UserX, Users, Wrench, X };
 
 export function initIcons(container?: HTMLElement | Document): void {
   createIcons({
