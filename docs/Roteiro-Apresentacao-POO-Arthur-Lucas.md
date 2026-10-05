@@ -2,17 +2,17 @@
 
 Apresentadores: Arthur Scharfenberger e Lucas Oliveira da Silva.
 
-Duração planejada: aproximadamente 6 minutos, incluindo pequenas pausas e a troca de apresentador. Limite: 7 minutos. As falas somam 571 palavras. Ensaiem com cronômetro; os tempos abaixo são referências, não garantias.
+Duração planejada: 6 minutos e 20 segundos, incluindo um minuto para testes e demonstração Java ao vivo. Reservem os 40 segundos restantes do limite de sete minutos para pequenas pausas ou demora de execução. Ensaiem no computador da apresentação; os tempos são referências.
 
-Lucas apresenta os slides 2, 3, 4 e 5. Arthur apresenta os slides 6, 7, 8, 9 e 10 e faz a abertura do slide 1.
+Lucas apresenta os slides 2 a 5. Arthur faz a abertura e apresenta os slides 6 a 10.
 
 ## Arthur — abertura
 
 ### Slide 1 — Apresentação do projeto
 
-Tempo reservado: 20 segundos.
+Tempo reservado: 15 segundos.
 
-“Boa tarde. Eu sou o Arthur e este é o Lucas. Nosso projeto é o TechFix, uma assistência técnica para notebooks e PCs. Vamos apresentar a evolução do modelo Java e os conceitos de orientação a objetos usados em cada etapa. O Lucas começa explicando a estrutura inicial.”
+“Boa tarde. Eu sou o Arthur e este é o Lucas. O TechFix representa uma assistência técnica para notebooks e PCs. Vamos mostrar a evolução do modelo Java, os conceitos de POO e uma execução ao vivo.”
 
 ## Lucas — slides 2 a 5
 
@@ -20,65 +20,76 @@ Tempo reservado: 20 segundos.
 
 Tempo reservado: 25 segundos.
 
-“Começamos com quatro classes principais: Cliente, Técnico, Equipamento e OrdemServico. O cliente solicita o atendimento, o técnico realiza o serviço e o equipamento representa o notebook ou PC recebido. A ordem de serviço relaciona esses objetos e registra o status do atendimento. Essa foi a base dos próximos incrementos.”
+“A base tem Cliente, Técnico, Equipamento e OrdemServico. O cliente solicita o atendimento, o técnico executa o serviço e o equipamento recebe o reparo. A ordem relaciona esses objetos e registra o status. Essa estrutura foi ampliada nas atividades seguintes.”
 
 ### Slide 3 — Evolução do projeto
 
-Tempo reservado: 25 segundos.
+Tempo reservado: 20 segundos.
 
-“A evolução seguiu as necessidades do projeto. Na atividade 6, usamos coleções para organizar as ordens dos clientes. Na 7, trabalhamos a composição dos itens de serviço. Na 8, aplicamos herança aos equipamentos. Na 9, introduzimos interface e polimorfismo nos roteiros de diagnóstico. A AP2 reúne esses incrementos.”
+“Na atividade 6, organizamos as ordens em coleções. Na 7, modelamos a composição dos itens. Na 8, especializamos os equipamentos com herança. Na 9, usamos interface e polimorfismo para variar o roteiro de diagnóstico. A AP2 reúne esses incrementos.”
 
 ### Slide 4 — Coleções
 
-Tempo reservado: 35 segundos.
+Tempo reservado: 30 segundos.
 
-“Um cliente pode ter vários atendimentos. Por isso, Cliente possui uma List de ordens de serviço, implementada com ArrayList. A coleção é inicializada no atributo, e o método adicionarOrdemServico inclui novas ordens. Antes da inclusão, ele rejeita uma referência nula com IllegalArgumentException. Essa rejeição é verificada por um teste automatizado. Assim, representamos a multiplicidade de atendimentos do cliente.”
+“Cliente mantém uma List de ordens, implementada com ArrayList. Isso permite representar vários atendimentos sem criar um atributo para cada ordem. A coleção começa vazia, por isso a multiplicidade é zero ou muitas ordens. O método de inclusão rejeita null, e um teste verifica essa regra.”
 
 ### Slide 5 — Composição
 
-Tempo reservado: 40 segundos, incluindo a passagem para Arthur.
+Tempo reservado: 35 segundos, incluindo a troca de apresentador.
 
-“Na composição, OrdemServico representa o todo, e ItemServico representa cada serviço com descrição e valor. A ordem controla a criação dos itens. No código atual, ItemServico é uma classe aninhada estática com construtor privado. O método adicionarItemServico cria os itens, e getItensServico retorna uma cópia imutável da lista. Agora o Arthur explica a herança e o polimorfismo.”
+“OrdemServico é o todo e ItemServico representa cada serviço, com descrição e valor. A ordem controla a criação dos itens. ItemServico é uma classe aninhada estática com construtor privado, e a consulta devolve uma lista imutável. Isso protege a coleção contra alterações externas. Agora o Arthur explica os equipamentos.”
 
 ## Arthur — slides 6 a 10
 
 ### Slide 6 — Herança
 
-Tempo reservado: 45 segundos.
+Tempo reservado: 35 segundos.
 
-“Notebook e Desktop compartilham tipo, marca e defeito. Esses dados e suas validações ficam na superclasse abstrata Equipamento. As subclasses usam extends e chamam super no construtor para reutilizar essa estrutura. Notebook acrescenta a quantidade de RAM; Desktop informa se possui vídeo dedicado. Ambos sobrescrevem descreverAtendimento com Override para acrescentar sua característica à descrição comum. Nos exemplos, temos um notebook de 16 GB e um desktop com vídeo dedicado.”
+“Notebook e Desktop são tipos de Equipamento. A superclasse abstrata centraliza tipo, marca, defeito e validações. As subclasses reutilizam essa estrutura com extends e super. Notebook acrescenta RAM, e Desktop acrescenta a configuração de vídeo. Ambos sobrescrevem descreverAtendimento para incluir sua característica na descrição.”
 
 ### Slide 7 — Interface e roteiro de diagnóstico
 
-Tempo reservado: 45 segundos.
+Tempo reservado: 35 segundos.
 
-“O roteiro precisa variar conforme o equipamento. A interface RoteiroDiagnostico define gerarRoteiroDiagnostico, que retorna uma lista de etapas. Equipamento implementa o contrato, e Notebook e Desktop fornecem as implementações concretas. O notebook orienta verificações de fonte, RAM, armazenamento e refrigeração. O desktop inclui fonte, cabos internos, placa-mãe e configuração de vídeo. O método fornece orientações ao técnico; ele não executa o diagnóstico físico.”
+“RoteiroDiagnostico define o contrato gerarRoteiroDiagnostico. Equipamento implementa a interface e as subclasses fornecem as etapas concretas. O notebook orienta verificações de fonte, RAM e armazenamento. O desktop inclui cabos internos, placa-mãe e vídeo. São orientações ao técnico; o programa não executa o diagnóstico físico.”
 
 ### Slide 8 — Polimorfismo em execução
 
-Tempo reservado: 45 segundos.
+Tempo reservado: 35 segundos.
 
-“Aqui usamos uma List de RoteiroDiagnostico com um notebook e um desktop. O laço faz a mesma chamada para os dois, mas cada objeto executa sua própria implementação. Isso demonstra polimorfismo. OrdemServico também consulta o contrato sem usar instanceof para escolher o roteiro. Neste exemplo, o desktop retorna a etapa de vídeo dedicado. Para vídeo integrado, a última etapa muda conforme a configuração do objeto.”
+“A lista usa referências RoteiroDiagnostico para notebook e desktop. Fazemos a mesma chamada, mas cada objeto executa sua implementação. OrdemServico também consulta esse contrato, sem escolher o tipo com instanceof. Isso permite variar o comportamento mantendo a mesma forma de uso.”
 
 ### Slide 9 — Testes
 
-Tempo reservado: 45 segundos.
+Tempo reservado: 35 segundos de fala e 60 segundos de execução ao vivo.
 
-“A versão atual passou em 14 testes: quatro em EquipamentoTest, quatro em OrdemServicoTest e seis em RoteiroDiagnosticoTest. Eles verificam descrições, dados herdados, validações, status da ordem e etapas dos roteiros. Também verificam o despacho polimórfico, a lista imutável, a repetição da consulta e a integração com a ordem sem alterar seu status. Após recompilar o projeto, tivemos zero falhas e zero erros.”
+“São 14 testes Java: quatro de equipamentos, quatro de cliente e ordem e seis de roteiros. Eles verificam herança, validações, status, etapas, despacho polimórfico, lista imutável e consulta sem efeitos colaterais. Agora vamos recompilar e executar os testes, e depois demonstrar o cenário integrado.”
+
+Arthur executa os comandos abaixo na raiz do projeto, um de cada vez. Lucas deixa o terminal preparado antes da apresentação.
+
+```powershell
+.\Testar-POO.cmd --sem-pausa
+java -cp backend/target/classes Main
+```
+
+Após os testes passarem, Arthur diz: “Nesta execução, os 14 testes passaram. A Main cria os objetos, consulta o roteiro pela ordem, muda o status e percorre notebook e desktop pela mesma interface.” Apontem os resultados por grupo e os roteiros; não leiam todas as linhas. Se houver falha, leiam o erro e não anunciem aprovação.
 
 ### Slide 10 — Encerramento
 
-Tempo reservado: 35 segundos.
+Tempo reservado: 20 segundos.
 
-“As coleções organizaram as ordens, a composição estruturou os itens, a herança compartilhou dados e validações, e o polimorfismo permitiu consultar diferentes roteiros pelo mesmo contrato. A integração apresentada acontece entre os objetos Java; a interface web é uma implementação separada. Essa é a evolução do TechFix que reunimos na AP2. Obrigado.”
+“Coleções organizaram as ordens, composição estruturou os itens, herança compartilhou dados e polimorfismo variou os roteiros. O cenário demonstrado integra objetos Java. A interface web é uma implementação separada. Essa é a evolução do TechFix na AP2. Obrigado.”
 
 ## Controle do tempo
 
 | Apresentador | Slides | Tempo reservado |
 | --- | --- | --- |
-| Arthur | 1 — abertura | 20 segundos |
-| Lucas | 2, 3, 4 e 5 | 2 minutos e 5 segundos |
-| Arthur | 6, 7, 8, 9 e 10 | 3 minutos e 35 segundos |
-| Total | 10 slides | 6 minutos |
+| Arthur | 1 — abertura | 15 segundos |
+| Lucas | 2 a 5 | 1 minuto e 50 segundos |
+| Arthur | 6 a 10 — falas | 2 minutos e 40 segundos |
+| Arthur e Lucas | Slide 9 — execução ao vivo | 1 minuto |
+| Ambos | Trocas de tela e pequenas pausas | 35 segundos |
+| Total | Slides e demonstração | 6 minutos e 20 segundos |
 
-Não leiam o código linha por linha nem repitam todos os textos dos diagramas. Apontem o elemento citado e continuem a fala. Ao terminar o slide 5, o cronômetro deve estar próximo de 2 minutos e 25 segundos. Se estiverem atrasados, reduzam as pausas e omitam os exemplos de configuração de vídeo dos slides 6 e 8.
+Ao terminar o slide 5, o cronômetro deve estar próximo de dois minutos. Não leiam o código linha por linha. Preparem o Maven com internet e testem o modo offline antes da aula, conforme `docs/Executar-Testes-Na-Apresentacao.md`. Mantenham slides, terminal e projeto abertos. Os testes e a Main usam Java; não é necessário abrir o site para demonstrar esses conceitos.

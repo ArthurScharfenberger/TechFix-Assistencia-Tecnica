@@ -173,16 +173,16 @@ export class IndicativosPage {
 
   private initCharts(result: ResultadoIndicativos): void {
     const dark = document.documentElement.getAttribute('data-theme') !== 'light';
-    const text = dark ? '#9ea8b3' : '#575e57'; const grid = dark ? 'rgba(255,255,255,.06)' : 'rgba(0,0,0,.06)';
+    const text = dark ? '#9ea8b3' : '#575e57'; const grid = dark ? '#34465a' : '#d8dde3';
     const axis = { x: { ticks: { color: text }, grid: { color: grid } }, y: { ticks: { color: text }, grid: { color: grid }, beginAtZero: true } };
     const legend = { labels: { color: text, usePointStyle: true } };
     const labels = result.serieTemporal.map((item) => item.rotulo);
-    this.addChart('orders-flow-chart', { type: 'line', data: { labels, datasets: [{ label: 'Abertas', data: result.serieTemporal.map((item) => item.abertas), borderColor: '#4ea8de', backgroundColor: 'rgba(78,168,222,.12)', tension: .3 }, { label: 'Concluídas', data: result.serieTemporal.map((item) => item.concluidas), borderColor: '#4ec986', backgroundColor: 'rgba(78,201,134,.12)', tension: .3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend }, scales: axis } });
-    this.addChart('service-value-chart', { type: 'bar', data: { labels, datasets: [{ label: 'Valor', data: result.serieTemporal.map((item) => item.valor), backgroundColor: '#e58a47', borderRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (context: TooltipItem<'bar'>) => formatCurrency(Number(context.raw)) } } }, scales: axis } });
-    this.addChart('resolution-chart', { type: 'line', data: { labels, datasets: [{ label: 'Horas', data: result.serieTemporal.map((item) => item.tempoMedioHoras), borderColor: '#9d8cd7', backgroundColor: 'rgba(157,140,215,.12)', fill: true, tension: .3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend }, scales: axis } });
-    this.distributionChart('status-chart', result.status, ['#4ea8de','#e5a33c','#9d8cd7','#4ec986','#6f7883'], text);
+    this.addChart('orders-flow-chart', { type: 'line', data: { labels, datasets: [{ label: 'Abertas', data: result.serieTemporal.map((item) => item.abertas), borderColor: '#4ea8de', backgroundColor: '#edf9ff', tension: .3 }, { label: 'Concluídas', data: result.serieTemporal.map((item) => item.concluidas), borderColor: '#4ec986', backgroundColor: '#edf7f0', tension: .3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend }, scales: axis } });
+    this.addChart('service-value-chart', { type: 'bar', data: { labels, datasets: [{ label: 'Valor', data: result.serieTemporal.map((item) => item.valor), backgroundColor: '#009bee', borderRadius: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (context: TooltipItem<'bar'>) => formatCurrency(Number(context.raw)) } } }, scales: axis } });
+    this.addChart('resolution-chart', { type: 'line', data: { labels, datasets: [{ label: 'Horas', data: result.serieTemporal.map((item) => item.tempoMedioHoras), borderColor: '#006da8', backgroundColor: '#edf9ff', fill: true, tension: .3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend }, scales: axis } });
+    this.distributionChart('status-chart', result.status, ['#4ea8de','#e5a33c','#006da8','#4ec986','#6f7883'], text);
     this.distributionChart('priority-chart', result.prioridades, ['#4ea8de','#4ec986','#e5a33c','#eb5757'], text);
-    this.addChart('equipment-chart', { type: 'bar', data: { labels: result.tiposEquipamento.map((item) => item.rotulo), datasets: [{ label: 'Atendimentos', data: result.tiposEquipamento.map((item) => item.quantidade), backgroundColor: dark ? '#d4ea27' : '#3d5e16', borderRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } }, scales: axis } });
+    this.addChart('equipment-chart', { type: 'bar', data: { labels: result.tiposEquipamento.map((item) => item.rotulo), datasets: [{ label: 'Atendimentos', data: result.tiposEquipamento.map((item) => item.quantidade), backgroundColor: '#009bee', borderRadius: 0 }] }, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } }, scales: axis } });
   }
 
   private distributionChart(id: string, data: ResultadoIndicativos['status'], colors: string[], text: string): void {

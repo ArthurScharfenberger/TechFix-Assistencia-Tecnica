@@ -39,7 +39,7 @@ export function navigateTo(route: Route): void {
 
 export function getRouteTitle(route: Route): string {
   const titles: Record<Route, string> = {
-    dashboard: 'Visão geral',
+    dashboard: 'Oficina',
     indicativos: 'Indicativos',
     equipamentos: 'Equipamentos',
     usuarios: 'Clientes',

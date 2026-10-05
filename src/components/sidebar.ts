@@ -5,6 +5,7 @@ import { ConfirmDialog } from './confirmDialog';
 import { Toast } from './toast';
 import { exportLogs } from '../services/logger';
 import { AuthService } from '../services/authService';
+import logoUrl from '../img/logo.png';
 
 export class SidebarComponent {
   private element: HTMLElement;
@@ -47,6 +48,11 @@ export class SidebarComponent {
 
   public isCollapsed(): boolean { return this.collapsed; }
 
+  public openSettings(): void {
+    const menu = this.element.querySelector<HTMLElement>('#sidebar-options');
+    if (menu) { menu.hidden = false; this.element.querySelector('#sidebar-options-btn')?.setAttribute('aria-expanded', 'true'); menu.querySelector<HTMLButtonElement>('button')?.focus(); }
+  }
+
   public render(): HTMLElement {
     const currentRoute = getCurrentRoute();
     const reportRouteActive = currentRoute === 'relatorios' || currentRoute.startsWith('relatorios/');
@@ -85,12 +91,8 @@ export class SidebarComponent {
     this.element.setAttribute('aria-label', 'Navegação principal');
     this.element.innerHTML = `
       <div class="sidebar-header">
-        <a href="#/dashboard" class="sidebar-brand-link" aria-label="TechFix — Dashboard">
-          <span class="sidebar-brand-badge" aria-hidden="true">${iconHTML('wrench', '', 18)}</span>
-          <span class="sidebar-brand-text">
-            <strong class="sidebar-brand-title">TechFix</strong>
-            <small class="sidebar-brand-subtitle">Gestão Técnica</small>
-          </span>
+        <a href="#/dashboard" class="sidebar-brand-link" aria-label="TechFix — Oficina">
+          <span class="official-logo-crop"><img src="${logoUrl}" alt="TechFix — Assistência Técnica"></span>
         </a>
       </div>
       <button id="sidebar-collapse-btn" class="sidebar-collapse-btn" type="button" aria-label="${this.collapsed ? 'Expandir' : 'Recolher'} barra lateral" title="${this.collapsed ? 'Expandir' : 'Recolher'} barra lateral">
@@ -197,7 +199,10 @@ export class SidebarComponent {
       document.documentElement.setAttribute('data-theme', newTheme);
       const configs = getStorageItem<AppConfiguration>(KEYS.CONFIGURACOES, {});
       setStorageItem(KEYS.CONFIGURACOES, { ...configs, theme: newTheme });
+      const drawerOpen = this.element.classList.contains('open');
       this.closeOptions(); Toast.info(`Modo ${newTheme === 'light' ? 'claro' : 'escuro'} ativado.`); this.render();
+      this.element.classList.toggle('open', drawerOpen);
+      this.element.querySelector<HTMLButtonElement>('#sidebar-options-btn')?.focus();
     });
     this.element.querySelector('#logout-btn')?.addEventListener('click', () => {
       this.closeOptions();

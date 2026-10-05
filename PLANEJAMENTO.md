@@ -1,5 +1,11 @@
 # Planejamento do Projeto
 
+## Consolidação AP2 — 05/10/2026
+
+Na área Java, A6–A9 estão implementadas: coleções, composição de itens, herança e interface/polimorfismo. A demonstração integra os objetos em `Main`, com 14 testes JUnit. O frontend permanece separado, com armazenamento local, sem API Java. Os requisitos da apresentação e suas evidências estão em [Entrega AP2](docs/Entrega-AP2.md).
+
+O backlog abaixo registra a evolução pretendida do produto; não representa a lista de requisitos de POO nem comprova que todos os recursos estejam disponíveis. Pagamento, orçamento detalhado por peças e integração Java/web continuam fora da entrega implementada. O visual aprovado e seus mapeamentos estão em [Interface da oficina](docs/Interface-Oficina.md).
+
 ## Revisão atual — 30/09/2026
 
 A proposta revisada está em [A8 — planejamento completo](docs/entregas-processos/A8-Entrega-Final-Revisada.md), com versões [DOCX](docs/entregas-processos/A8-Entrega-Final.docx) e [PDF](docs/entregas-processos/A8-Entrega-Final.pdf). Ela relaciona todos os requisitos priorizados da A5 aos itens A8R01–A8R09, define dois incrementos por valor e registra quatro riscos com mitigação. Estimativas e decisões propostas aguardam validação dos integrantes.

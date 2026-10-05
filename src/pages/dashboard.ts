@@ -1,341 +1,148 @@
-import { Chart, registerables } from 'chart.js';
 import { EquipamentoService } from '../services/equipamentoService';
 import { ChamadoService } from '../services/chamadoService';
 import { ManutencaoService } from '../services/manutencaoService';
 import { UsuarioService } from '../services/usuarioService';
 import { FuncionarioService } from '../services/funcionarioService';
+import { ChamadosPage } from './chamados';
 import { iconHTML, initIcons } from '../utils/iconHelper';
-import { formatCurrency, getStatusChamadoBadge, getPrioridadeChamadoBadge, getStatusManutencaoBadge } from '../utils/formatters';
+import { formatCurrency, formatDate } from '../utils/formatters';
+import { bindDebouncedSearch, escapeHtml as esc } from '../utils/inputBehavior';
+import { calculatePagination, renderPaginationControls } from '../components/pagination';
+import { Chamado, StatusChamado } from '../types/chamado';
 
-Chart.register(...registerables);
+const stages: Record<StatusChamado, string> = {
+  ABERTO: 'Aberta', EM_ATENDIMENTO: 'Em atendimento', AGUARDANDO_USUARIO: 'Aguardando cliente',
+  CONCLUIDO: 'Concluída', CANCELADO: 'Cancelada',
+};
+const active = (order: Chamado) => !['CONCLUIDO', 'CANCELADO'].includes(order.status);
 
 export class DashboardPage {
-  private container: HTMLElement;
-  private statusChart: Chart | null = null;
-  private tipoChart: Chart | null = null;
+  private container = document.createElement('div');
+  private search = '';
+  private status = '';
+  private technician = '';
+  private priority = '';
+  private sort = 'recent';
+  private filtersOpen = false;
+  private onlyActive = false;
+  private currentPage = 1;
+  private ordersPage = new ChamadosPage();
 
-  constructor() {
-    this.container = document.createElement('div');
-    this.container.className = 'dashboard-page';
-  }
-
-  public destroy(): void {
-    this.statusChart?.destroy();
-    this.tipoChart?.destroy();
-    this.statusChart = null;
-    this.tipoChart = null;
-  }
+  constructor() { this.container.className = 'workshop-page'; }
 
   public render(): HTMLElement {
-    const equipamentos = EquipamentoService.getAll();
-    const chamados = ChamadoService.getAll();
-    const manutencoes = ManutencaoService.getAll();
-
-    // Calculations
-    const totalEquipamentos = equipamentos.length;
-    const eqDisponiveis = equipamentos.filter((e) => e.status === 'DISPONIVEL').length;
-    const eqEmUso = equipamentos.filter((e) => e.status === 'EM_USO').length;
-    const eqEmManutencao = equipamentos.filter((e) => e.status === 'EM_MANUTENCAO').length;
-
-    const chamadosAbertos = chamados.filter((c) => c.status === 'ABERTO' || c.status === 'EM_ATENDIMENTO' || c.status === 'AGUARDANDO_USUARIO').length;
-    const chamadosUrgentes = chamados.filter((c) => c.prioridade === 'URGENTE' && c.status !== 'CONCLUIDO' && c.status !== 'CANCELADO').length;
-    const chamadosConcluidos = chamados.filter((c) => c.status === 'CONCLUIDO').length;
-    const tecnicosAtivos = FuncionarioService.getAssignable().length;
-    const chamadosSemTecnico = chamados.filter((c) => !c.tecnicoResponsavelId && !['CONCLUIDO', 'CANCELADO'].includes(c.status)).length;
-
-    const custoTotalManutencao = ManutencaoService.getCustoTotal();
-
-    // Recent items
-    const ultimosChamados = [...chamados].sort((a, b) => new Date(b.criadoEm).getTime() - new Date(a.criadoEm).getTime()).slice(0, 5);
-    const ultimasManutencoes = [...manutencoes].sort((a, b) => new Date(b.criadoEm).getTime() - new Date(a.criadoEm).getTime()).slice(0, 5);
-
+    const orders = ChamadoService.getAll();
+    const equipment = new Map(EquipamentoService.getAll().map(item => [item.id, item]));
+    const clients = new Map(UsuarioService.getAll().map(item => [item.id, item]));
+    const team = FuncionarioService.getAll();
+    const now = new Date();
+    const dateLabel = new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: '2-digit', month: 'short', year: 'numeric' }).format(now).replace(/ de /g, ' ').replace(/\./g, '').toUpperCase();
+    const recent = [...orders].sort((a,b) => b.atualizadoEm.localeCompare(a.atualizadoEm)).slice(0,2);
+    const open = orders.filter(active);
+    const urgent = open.filter(item => item.prioridade === 'URGENTE');
+    const unassigned = open.filter(item => !item.tecnicoResponsavelId && !item.tecnicoResponsavelNomeLegado);
+    const waiting = open.filter(item => item.status === 'AGUARDANDO_USUARIO');
+    const repairs = ManutencaoService.getAll();
+    // Existing total-cost rule, narrowed to repairs created in the local calendar month.
+    const monthlyCost = repairs.filter(item => {
+      const date = new Date(item.criadoEm);
+      return date.getFullYear() === now.getFullYear() && date.getMonth() === now.getMonth();
+    }).reduce((sum,item) => sum + (item.custo || 0), 0);
+    const query = this.search.trim().toLocaleLowerCase('pt-BR');
+    let list = orders.filter(item => (!this.onlyActive || active(item)) && (!this.status || item.status === this.status) &&
+      (!this.technician || (this.technician === 'unassigned' ? unassigned.some(order => order.id === item.id) : item.tecnicoResponsavelId === this.technician)) &&
+      (!this.priority || item.prioridade === this.priority) &&
+      (!query || [item.id, item.titulo, clients.get(item.clienteId)?.nome, equipment.get(item.equipamentoId)?.codigo, equipment.get(item.equipamentoId)?.fabricante, equipment.get(item.equipamentoId)?.modelo].some(value => value?.toLocaleLowerCase('pt-BR').includes(query))));
+    list = [...list].sort((a,b) => this.sort === 'oldest' ? a.criadoEm.localeCompare(b.criadoEm) : b.criadoEm.localeCompare(a.criadoEm));
+    const totalPages = Math.max(1, Math.ceil(list.length / 6));
+    this.currentPage = Math.min(this.currentPage, totalPages);
+    const page = calculatePagination(list, this.currentPage, 6);
+    const option = (value: string, label: string, selected: string) => `<option value="${esc(value)}" ${value === selected ? 'selected' : ''}>${esc(label)}</option>`;
+    const tabs = [['','Todas'],['ABERTO','Abertas'],['EM_ATENDIMENTO','Em atendimento'],['AGUARDANDO_USUARIO','Aguardando']];
+    const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    monday.setDate(monday.getDate() - (monday.getDay() + 6) % 7);
+    const days = ['SEG','TER','QUA','QUI','SEX','SÁB','DOM'].map((label,index) => {
+      const start = new Date(monday); start.setDate(start.getDate()+index);
+      const end = new Date(start); end.setDate(end.getDate()+1);
+      return { label, count: orders.filter(item => { const date = new Date(item.criadoEm); return date >= start && date < end; }).length };
+    });
+    const maximum = Math.max(1,...days.map(day => day.count));
     this.container.innerHTML = `
-      <!-- Executive KPI Cards (4 clean high-level metrics) -->
-      <div class="dashboard-kpi-grid">
-        <div class="card kpi-card">
-          <div class="kpi-top">
-            <span class="kpi-label">Ordens Ativas</span>
-            <span class="kpi-icon ${chamadosUrgentes > 0 ? 'amber' : 'green'}">${iconHTML('clipboard-list', '', 18)}</span>
-          </div>
-          <div class="kpi-main">
-            <span class="kpi-value">${chamadosAbertos}</span>
-            <div class="kpi-meta">
-              ${chamadosUrgentes > 0 ? `<span class="kpi-tag danger">${chamadosUrgentes} urgente(s)</span>` : `<span class="kpi-tag neutral">Nenhuma urgente</span>`}
-              <span class="kpi-sub">${chamadosSemTecnico} sem técnico</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card kpi-card">
-          <div class="kpi-top">
-            <span class="kpi-label">Reparos Técnicos</span>
-            <span class="kpi-icon green">${iconHTML('wrench', '', 18)}</span>
-          </div>
-          <div class="kpi-main">
-            <span class="kpi-value">${eqEmManutencao}</span>
-            <div class="kpi-meta">
-              <span class="kpi-tag neutral">${manutencoes.filter((m) => m.status === 'CONCLUIDA').length} concluído(s)</span>
-              <span class="kpi-sub">Em bancada</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card kpi-card">
-          <div class="kpi-top">
-            <span class="kpi-label">Equipamentos</span>
-            <span class="kpi-icon green">${iconHTML('laptop', '', 18)}</span>
-          </div>
-          <div class="kpi-main">
-            <span class="kpi-value">${totalEquipamentos}</span>
-            <div class="kpi-meta">
-              <span class="kpi-tag success">${eqDisponiveis} disponíveis</span>
-              <span class="kpi-sub">${eqEmUso} com clientes</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card kpi-card">
-          <div class="kpi-top">
-            <span class="kpi-label">Faturamento Total</span>
-            <span class="kpi-icon amber">${iconHTML('dollar-sign', '', 18)}</span>
-          </div>
-          <div class="kpi-main">
-            <span class="kpi-value kpi-currency">${formatCurrency(custoTotalManutencao)}</span>
-            <div class="kpi-meta">
-              <span class="kpi-tag neutral">${tecnicosAtivos} técnicos ativos</span>
-              <span class="kpi-sub">Total de serviços</span>
-            </div>
-          </div>
-        </div>
+      <div class="workshop-search-row">
+        <label class="workshop-search">${iconHTML('search','',22)}<span class="sr-only">Buscar ordem, cliente ou equipamento</span><input id="workshop-search" type="search" placeholder="Buscar ordem, cliente ou equipamento" value="${esc(this.search)}"></label>
+        <button id="workshop-new" class="btn btn-primary">${iconHTML('plus','',24)} Abrir ordem</button>
       </div>
-
-      <!-- Quick Action / Status Ribbon -->
-      <div class="dashboard-ribbon">
-        <div class="ribbon-item">
-          <span class="ribbon-dot success"></span>
-          <span class="ribbon-text"><strong>${tecnicosAtivos}</strong> técnicos disponíveis</span>
-        </div>
-        <div class="ribbon-item">
-          <span class="ribbon-dot info"></span>
-          <span class="ribbon-text"><strong>${chamadosConcluidos}</strong> ordens finalizadas</span>
-        </div>
-        <div class="ribbon-item">
-          <span class="ribbon-dot ${chamadosSemTecnico > 0 ? 'warning' : 'neutral'}"></span>
-          <span class="ribbon-text"><strong>${chamadosSemTecnico}</strong> ordens aguardando atribuição</span>
-        </div>
-        <div class="ribbon-actions">
-          <a href="#/chamados" class="btn btn-secondary btn-sm">${iconHTML('plus', '', 14)} Nova ordem</a>
-          <a href="#/indicativos" class="btn btn-secondary btn-sm">${iconHTML('bar-chart-3', '', 14)} Ver indicativos</a>
-        </div>
+      <section class="workshop-overview" aria-label="Resumo da oficina">
+        <div class="workshop-heading"><h1>Oficina</h1><p>${dateLabel}</p></div>
+        <dl class="workshop-metrics">
+          <div><dt>Ordens ativas</dt><dd>${open.length}</dd></div>
+          <div><dt>Em bancada</dt><dd>${repairs.filter(item => item.status === 'EM_ANDAMENTO').length}</dd></div>
+          <div><dt>Ordens concluídas</dt><dd>${orders.filter(item => item.status === 'CONCLUIDO').length}</dd></div>
+          <div><dt>Custos do mês</dt><dd class="metric-currency">${formatCurrency(monthlyCost)}</dd></div>
+        </dl>
+      </section>
+      <div class="workshop-main-grid">
+        <section class="workshop-queue" aria-labelledby="queue-title">
+          <div class="workshop-section-heading"><h2 id="queue-title">Fila de trabalho</h2><button id="workshop-filter" class="btn btn-secondary" aria-expanded="${this.filtersOpen}" aria-controls="workshop-filters">${iconHTML('filter','',18)} Filtrar</button></div>
+          <div class="workshop-tabs" aria-label="Filtrar por etapa">${tabs.map(([value,label]) => `<button type="button" data-status="${value}" class="${this.status === value ? 'active' : ''}" aria-pressed="${this.status === value}">${label} <span>${value ? orders.filter(item => item.status === value).length : orders.length}</span></button>`).join('')}</div>
+          <div id="workshop-filters" class="workshop-filters" ${this.filtersOpen ? '' : 'hidden'}>
+            ${this.onlyActive ? '<p class="workshop-filter-note">Exibindo somente ordens ativas.</p>' : ''}
+            <label>Responsável<select id="workshop-technician" class="form-control"><option value="">Todos</option>${option('unassigned','Sem responsável',this.technician)}${team.map(item => option(item.id,item.nome,this.technician)).join('')}</select></label>
+            <label>Etapa<select id="workshop-status" class="form-control"><option value="">Todas</option>${Object.entries(stages).map(([value,label]) => option(value,label,this.status)).join('')}</select></label>
+            <label>Prioridade<select id="workshop-priority" class="form-control"><option value="">Todas</option>${[['BAIXA','Baixa'],['NORMAL','Normal'],['ALTA','Alta'],['URGENTE','Urgente']].map(([v,l]) => option(v,l,this.priority)).join('')}</select></label>
+            <label>Ordenação<select id="workshop-sort" class="form-control">${option('recent','Mais recentes',this.sort)}${option('oldest','Mais antigas',this.sort)}</select></label>
+            <button id="workshop-clear" class="btn btn-secondary">Limpar filtros</button>
+          </div>
+          <div class="table-responsive"><table class="workshop-table"><thead><tr><th>Ordem / Cliente</th><th>Equipamento</th><th>Etapa</th><th>Responsável</th><th>Abertura</th><th>Ação</th></tr></thead><tbody>
+            ${page.paginatedItems.length ? page.paginatedItems.map(item => {
+              const eq = equipment.get(item.equipamentoId);
+              const eqLabel = eq ? `${eq.tipo === 'NOTEBOOK' ? 'Notebook' : eq.tipo === 'DESKTOP' ? 'PC' : eq.tipo} ${eq.fabricante} ${eq.modelo}` : 'Equipamento removido';
+              return `<tr><td><strong title="${esc(item.id)}">${esc(item.id)}</strong><small>${esc(clients.get(item.clienteId)?.nome ?? 'Cliente removido')}</small></td><td>${esc(eqLabel)}</td><td><span class="workshop-stage stage-${item.status}"><i aria-hidden="true"></i>${stages[item.status]}</span>${item.prioridade === 'URGENTE' ? '<small class="workshop-urgent">Urgente</small>' : ''}</td><td>${esc(item.tecnicoResponsavelId || item.tecnicoResponsavelNomeLegado ? FuncionarioService.resolveName(item.tecnicoResponsavelId,item.tecnicoResponsavelNomeLegado) : 'Sem responsável')}</td><td>${formatDate(item.criadoEm)}</td><td><button class="workshop-link order-action" data-id="${esc(item.id)}" data-action="${active(item) && !item.tecnicoResponsavelId && !item.tecnicoResponsavelNomeLegado ? 'assign' : 'view'}">${active(item) && !item.tecnicoResponsavelId && !item.tecnicoResponsavelNomeLegado ? 'Atribuir' : 'Abrir'} ${iconHTML('arrow-up-right','',16)}<span class="sr-only"> ${esc(item.titulo)}</span></button></td></tr>`;
+            }).join('') : '<tr><td colspan="6" class="workshop-empty">Nenhuma ordem encontrada. Ajuste os filtros ou abra uma nova ordem.</td></tr>'}
+          </tbody></table></div>
+          ${renderPaginationControls(this.currentPage,page.totalPages,page.startItem,page.endItem,page.totalItems)}
+        </section>
+        <aside class="workshop-aside">
+          <section aria-labelledby="attention-title"><h2 id="attention-title">Atenção hoje</h2><ol class="workshop-attention">
+            ${[
+              urgent.length ? { title:'Ordens urgentes', description:`${urgent.length} atendimento(s) ativo(s) com prioridade urgente`, action:'Ver ordens', filter:'urgent' } : null,
+              unassigned.length ? { title:'Sem responsável', description:`${unassigned.length} ordem(ns) aguarda(m) atribuição`, action:'Atribuir técnico', filter:'unassigned' } : null,
+              waiting.length ? { title:'Aguardando cliente', description:`${waiting.length} ordem(ns) aguarda(m) retorno`, action:'Ver ordens', filter:'waiting' } : null,
+            ].filter(item => item !== null).map((item,index) => `<li><span class="attention-number">${String(index+1).padStart(2,'0')}</span><div><strong>${item!.title}</strong><small>${item!.description}</small></div><button class="workshop-link attention-action" data-filter="${item!.filter}">${item!.action} ${iconHTML('arrow-right','',16)}</button></li>`).join('') || '<li class="workshop-empty">Sem pendências para hoje.</li>'}
+          </ol></section>
+          <section class="workshop-team"><div class="workshop-section-heading"><h2>Na bancada</h2><a href="#/equipe" class="workshop-link">Ver equipe</a></div><ul>
+            ${team.filter(item => item.status === 'ATIVO' && ['TECNICO','SUPERVISOR','ADMINISTRADOR'].includes(item.cargo)).map(item => {
+              const count = open.filter(order => order.tecnicoResponsavelId === item.id).length;
+              return `<li><i aria-hidden="true"></i><div><strong>${esc(item.nome)}</strong><small>${count} ordem(ns) ativa(s) atribuída(s)</small></div><span>Ativo</span></li>`;
+            }).join('') || '<li class="workshop-empty">Nenhum técnico ativo cadastrado.</li>'}
+          </ul></section>
+        </aside>
       </div>
-
-      <!-- Charts Section -->
-      <div class="charts-grid">
-        <div class="card chart-card">
-          <div class="chart-header">
-            <div>
-              <h3 class="chart-title">Distribuição de Ordens</h3>
-              <p class="chart-desc">Status atual dos atendimentos</p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-chamados-status"></canvas>
-          </div>
-        </div>
-
-        <div class="card chart-card">
-          <div class="chart-header">
-            <div>
-              <h3 class="chart-title">Equipamentos por Tipo</h3>
-              <p class="chart-desc">Volume cadastrado por categoria</p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-equipamentos-tipo"></canvas>
-          </div>
-        </div>
+      <div class="workshop-bottom-grid">
+        <section class="workshop-week" aria-labelledby="week-title"><h2 id="week-title">Ritmo da semana</h2><p>Ordens abertas nesta semana · segunda a domingo</p><div class="workshop-bars" role="img" aria-label="${days.map(day => `${day.label}: ${day.count} ordens abertas`).join('; ')}">${days.map(day => `<div><span>${day.count}</span><i style="height:${day.count / maximum * 72}px" aria-hidden="true"></i><small>${day.label}</small></div>`).join('')}</div>${days.every(day => !day.count) ? '<small>Nenhuma ordem aberta nesta semana.</small>' : ''}</section>
+        <section class="workshop-updates"><h2>Últimas atualizações</h2><p>Atualização mais recente de cada ordem</p><ul>${recent.map(item => `<li><div><time datetime="${esc(item.atualizadoEm)}">${new Date(item.atualizadoEm).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</time><small>${esc(item.id)}</small></div><div><button class="workshop-link order-action" data-action="view" data-id="${esc(item.id)}">${esc(item.titulo)} · ${stages[item.status]}</button><small>${esc(clients.get(item.clienteId)?.nome ?? 'Cliente removido')}</small></div></li>`).join('') || '<li class="workshop-empty">Nenhuma ordem registrada.</li>'}</ul></section>
       </div>
-
-      <!-- Tables and Lists Section -->
-      <div class="dashboard-tables-grid">
-        <!-- Recent Tickets -->
-        <div class="table-container">
-          <div class="table-toolbar">
-            <div class="table-toolbar-title">
-              <h3>Ordens Recentes</h3>
-              <small>Últimos chamados abertos</small>
-            </div>
-            <a href="#/chamados" class="btn btn-secondary btn-sm">Ver todas</a>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Ordem</th>
-                  <th>Cliente</th>
-                  <th>Prioridade</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${
-                  ultimosChamados.length === 0
-                    ? `<tr><td colspan="4" class="empty-table-message">Nenhuma ordem de serviço registrada.</td></tr>`
-                    : ultimosChamados
-                        .map((c) => {
-                          const sol = UsuarioService.getById(c.clienteId);
-                          return `
-                      <tr>
-                        <td style="font-weight: 600;">${c.titulo}</td>
-                        <td>${sol ? sol.nome : 'N/A'}</td>
-                        <td>${getPrioridadeChamadoBadge(c.prioridade)}</td>
-                        <td>${getStatusChamadoBadge(c.status)}</td>
-                      </tr>
-                    `;
-                        })
-                        .join('')
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Recent Maintenances -->
-        <div class="table-container">
-          <div class="table-toolbar">
-            <div class="table-toolbar-title">
-              <h3>Reparos Recentes</h3>
-              <small>Últimas manutenções na bancada</small>
-            </div>
-            <a href="#/manutencoes" class="btn btn-secondary btn-sm">Ver todos</a>
-          </div>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Equipamento</th>
-                  <th>Técnico</th>
-                  <th>Custo</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${
-                  ultimasManutencoes.length === 0
-                    ? `<tr><td colspan="4" class="empty-table-message">Nenhum reparo registrado.</td></tr>`
-                    : ultimasManutencoes
-                        .map((m) => {
-                          const eq = EquipamentoService.getById(m.equipamentoId);
-                          return `
-                      <tr>
-                        <td style="font-weight: 600;">${eq ? `${eq.modelo}` : 'N/A'}</td>
-                        <td>${FuncionarioService.resolveName(m.tecnicoResponsavelId, m.tecnicoResponsavelNomeLegado)}</td>
-                        <td style="font-weight: 600;">${formatCurrency(m.custo)}</td>
-                        <td>${getStatusManutencaoBadge(m.status)}</td>
-                      </tr>
-                    `;
-                        })
-                        .join('')
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    `;
-
-    setTimeout(() => {
-      this.initCharts(chamados, equipamentos);
-    }, 50);
-
+      <footer class="workshop-footer"><p><strong>TechFix</strong><span>/</span> Oficina organizada, atendimento direto.</p><small>Notebooks e PCs</small></footer>`;
     initIcons(this.container);
+    this.attachEvents();
     return this.container;
   }
 
-  private initCharts(chamados: any[], equipamentos: any[]): void {
-    if (this.statusChart) this.statusChart.destroy();
-    if (this.tipoChart) this.tipoChart.destroy();
-
-    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-    const textColor = isDark ? '#9ea8b3' : '#575e57';
-    const gridColor = isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)';
-
-    // Status Chamados Chart Data
-    const statusCounts: Record<string, number> = {
-      Aberta: chamados.filter((c) => c.status === 'ABERTO').length,
-      'Em Atendimento': chamados.filter((c) => c.status === 'EM_ATENDIMENTO').length,
-      'Aguardando cliente': chamados.filter((c) => c.status === 'AGUARDANDO_USUARIO').length,
-      Concluída: chamados.filter((c) => c.status === 'CONCLUIDO').length,
-      Cancelada: chamados.filter((c) => c.status === 'CANCELADO').length,
-    };
-
-    const statusCtx = (this.container.querySelector('#chart-chamados-status') as HTMLCanvasElement)?.getContext('2d');
-    if (statusCtx) {
-      this.statusChart = new Chart(statusCtx, {
-        type: 'doughnut',
-        data: {
-          labels: Object.keys(statusCounts),
-          datasets: [
-            {
-              data: Object.values(statusCounts),
-              backgroundColor: ['#4ea8de', '#e5a33c', '#9d8cd7', '#4ec986', '#6f7883'],
-              borderWidth: 0,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              position: 'bottom',
-              labels: { color: textColor, font: { family: 'Plus Jakarta Sans', size: 12 } },
-            },
-          },
-        },
-      });
-    }
-
-    // Tipo Equipamentos Chart Data
-    const tipoCounts: Record<string, number> = {
-      Notebook: equipamentos.filter((e) => e.tipo === 'NOTEBOOK').length,
-      Desktop: equipamentos.filter((e) => e.tipo === 'DESKTOP').length,
-    };
-
-    const tipoCtx = (this.container.querySelector('#chart-equipamentos-tipo') as HTMLCanvasElement)?.getContext('2d');
-    if (tipoCtx) {
-      this.tipoChart = new Chart(tipoCtx, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(tipoCounts),
-          datasets: [
-            {
-              label: 'Quantidade',
-              data: Object.values(tipoCounts),
-              backgroundColor: isDark ? '#d4ea27' : '#3d5e16',
-              borderRadius: 6,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-          },
-          scales: {
-            x: {
-              ticks: { color: textColor },
-              grid: { color: gridColor },
-            },
-            y: {
-              ticks: { color: textColor, stepSize: 1 },
-              grid: { color: gridColor },
-              beginAtZero: true,
-            },
-          },
-        },
-      });
-    }
+  private attachEvents(): void {
+    bindDebouncedSearch({ input:this.container.querySelector<HTMLInputElement>('#workshop-search')!,root:this.container,selector:'#workshop-search',onValue:value => { this.search=value;this.currentPage=1; },render:()=>this.render() });
+    this.container.querySelector('#workshop-new')?.addEventListener('click',()=>this.ordersPage.openFormModal());
+    this.container.querySelector('#workshop-filter')?.addEventListener('click',()=> { this.filtersOpen=!this.filtersOpen; this.render(); this.container.querySelector<HTMLElement>(this.filtersOpen ? '#workshop-technician' : '#workshop-filter')?.focus(); });
+    this.container.querySelectorAll<HTMLButtonElement>('[data-status]').forEach(button=>button.addEventListener('click',()=> { this.status=button.dataset.status!;this.onlyActive=false;this.currentPage=1;this.render();this.container.querySelector<HTMLElement>(`[data-status="${this.status}"]`)?.focus(); }));
+    const selectors = [['workshop-technician','technician'],['workshop-status','status'],['workshop-priority','priority'],['workshop-sort','sort']] as const;
+    selectors.forEach(([id,key]) => this.container.querySelector(`#${id}`)?.addEventListener('change',event=> { this[key]=(event.target as HTMLSelectElement).value;this.currentPage=1;this.render();this.container.querySelector<HTMLElement>(`#${id}`)?.focus(); }));
+    this.container.querySelector('#workshop-clear')?.addEventListener('click',()=> { this.onlyActive=false;this.search='';this.status='';this.technician='';this.priority='';this.sort='recent';this.currentPage=1;this.render();this.container.querySelector<HTMLElement>('#workshop-clear')?.focus(); });
+    this.container.querySelectorAll<HTMLButtonElement>('.order-action').forEach(button => button.addEventListener('click',()=>button.dataset.action === 'assign' ? this.ordersPage.openFormModal(button.dataset.id) : this.ordersPage.openDetailsModal(button.dataset.id!)));
+    this.container.querySelectorAll<HTMLButtonElement>('.attention-action').forEach(button => button.addEventListener('click',()=> { this.onlyActive=true;this.status='';this.priority='';this.technician='';this.search='';this.currentPage=1;this.filtersOpen=true;
+      if(button.dataset.filter==='urgent') this.priority='URGENTE';
+      if(button.dataset.filter==='waiting') this.status='AGUARDANDO_USUARIO';
+      if(button.dataset.filter==='unassigned') this.technician='unassigned';
+      this.render();this.container.querySelector<HTMLElement>('#queue-title')?.scrollIntoView({block:'start'});this.container.querySelector<HTMLElement>('#workshop-technician')?.focus();
+    }));
+    this.container.querySelectorAll<HTMLButtonElement>('.pagination-btn[data-page]').forEach(button => button.addEventListener('click',()=> { this.currentPage=Number(button.dataset.page);this.render();this.container.querySelector<HTMLElement>(`.pagination-btn[data-page="${this.currentPage}"]`)?.focus(); }));
   }
 }

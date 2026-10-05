@@ -24,3 +24,7 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 A pedido do usuário, Codex ajustou a hierarquia e os testes para manutenção exclusiva de notebooks e PCs, com `Desktop` especializado pela configuração de vídeo. Também revisou os documentos, os dez slides da apresentação e o roteiro de Arthur e Lucas para seis a sete minutos. A integração descrita na apresentação ocorre entre os objetos Java; a interface web permanece uma implementação separada.
 
 Foram conferidos a compilação, os 14 testes JUnit, as saídas reais de `Main`, os diagramas e a preservação das mídias da apresentação. A equipe permanece responsável por compreender e apresentar o conteúdo e por sua submissão acadêmica.
+
+## 05/10/2026 — Consolidação AP2
+
+Codex atualizou o diagrama com a interface da A9 e multiplicidades coerentes com as listas inicialmente vazias, consolidou os requisitos em `docs/Entrega-AP2.md`, ajustou o roteiro e seu PDF para reservar a execução ao vivo e preparou a publicação da versão `ap2`. O registro solicitado com a nomenclatura `AI.md` está na raiz do repositório. As verificações incluem testes, build e execução de `Main`; ensaio e defesa pessoal continuam a cargo da dupla.

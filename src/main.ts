@@ -7,8 +7,9 @@ import './styles/responsive.css';
 import './styles/login.css';
 import './styles/reports.css';
 import './styles/report-charts.css';
+import './styles/workshop.css';
 
-import { getStorageItem, KEYS } from './services/storage';
+import { getStorageItem, setStorageItem, KEYS, AppConfiguration } from './services/storage';
 import { App } from './app';
 import { installGlobalErrorHandlers, logger } from './services/logger';
 import { EquipamentoService } from './services/equipamentoService';
@@ -30,12 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
   ManutencaoService.migrateLegacyData();
 
   // Load theme preference or match media system default
-  const configs = getStorageItem<{ theme?: string }>(KEYS.CONFIGURACOES, {});
+  const configs = getStorageItem<AppConfiguration>(KEYS.CONFIGURACOES, {});
+  // Introduce the approved white workspace once; subsequent theme choices remain saved.
+  if (configs.visualVersion !== 'workshop-v1') {
+    configs.theme = 'light';
+    configs.visualVersion = 'workshop-v1';
+    setStorageItem(KEYS.CONFIGURACOES, configs);
+  }
   let theme = configs.theme;
 
   if (!theme) {
-    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    theme = prefersLight ? 'light' : 'dark';
+    theme = 'light';
   }
 
   document.documentElement.setAttribute('data-theme', theme);

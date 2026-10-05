@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="1000" viewBox="0 0 1220 1000" role="img" aria-labelledby="title desc">
+<title id="title">TechFix — Diagrama de classes AP2</title>
+<desc id="desc">Associações de um para muitos, composição, herança e realização de RoteiroDiagnostico.</desc>
+<rect width="1220" height="1000" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#172b40}.line{fill:none;stroke:#172b40;stroke-width:2}.dashed{stroke-dasharray:7 5}</style>
+<text x="40" y="32" font-size="23" font-weight="bold">TechFix — Classes e relacionamentos da AP2</text>
+<rect x="40" y="65" width="290" height="128" fill="#f8fbff" stroke="#172b40"/>
+<text x="185.0" y="84" text-anchor="middle" font-size="12"></text>
+<text x="185.0" y="105" text-anchor="middle" font-size="17" font-weight="bold">Cliente</text>
+<path d="M40 115 H330" class="line"/>
+<text x="52" y="137" font-size="12">- nome, telefone, email</text>
+<text x="52" y="159" font-size="12">- List&lt;OrdemServico&gt; ordensServico</text>
+<text x="52" y="181" font-size="12">+ adicionarOrdemServico(os)</text>
+<rect x="400" y="65" width="360" height="106" fill="#f8fbff" stroke="#172b40"/>
+<text x="580.0" y="84" text-anchor="middle" font-size="12"></text>
+<text x="580.0" y="105" text-anchor="middle" font-size="17" font-weight="bold">Tecnico</text>
+<path d="M400 115 H760" class="line"/>
+<text x="412" y="137" font-size="12">- nome, especialidade</text>
+<text x="412" y="159" font-size="12">+ exibirDados()</text>
+<rect x="835" y="65" width="345" height="84" fill="#f8fbff" stroke="#172b40"/>
+<text x="1007.5" y="84" text-anchor="middle" font-size="12">«interface»</text>
+<text x="1007.5" y="105" text-anchor="middle" font-size="17" font-weight="bold">RoteiroDiagnostico</text>
+<path d="M835 115 H1180" class="line"/>
+<text x="847" y="137" font-size="12">+ gerarRoteiroDiagnostico(): List&lt;String&gt;</text>
+<rect x="400" y="325" width="360" height="216" fill="#f8fbff" stroke="#172b40"/>
+<text x="580.0" y="344" text-anchor="middle" font-size="12"></text>
+<text x="580.0" y="365" text-anchor="middle" font-size="17" font-weight="bold">OrdemServico</text>
+<path d="M400 375 H760" class="line"/>
+<text x="412" y="397" font-size="12">- numero, cliente, tecnico, equipamento</text>
+<text x="412" y="419" font-size="12">- status: StatusOrdemServico</text>
+<text x="412" y="441" font-size="12">- List&lt;ItemServico&gt; itensServico</text>
+<text x="412" y="463" font-size="12">+ adicionarItemServico(descricao, valor)</text>
+<text x="412" y="485" font-size="12">+ getItensServico(): List&lt;ItemServico&gt;</text>
+<text x="412" y="507" font-size="12">+ getRoteiroDiagnostico(): List&lt;String&gt;</text>
+<text x="412" y="529" font-size="12">+ alterarStatus(novoStatus)</text>
+<rect x="835" y="325" width="345" height="128" fill="#f8fbff" stroke="#172b40"/>
+<text x="1007.5" y="344" text-anchor="middle" font-size="12">«abstract»</text>
+<text x="1007.5" y="365" text-anchor="middle" font-size="17" font-weight="bold">Equipamento</text>
+<path d="M835 375 H1180" class="line"/>
+<text x="847" y="397" font-size="12">- tipo, marca, defeito</text>
+<text x="847" y="419" font-size="12">+ descreverAtendimento(): String</text>
+<text x="847" y="441" font-size="12">+ gerarRoteiroDiagnostico(): List&lt;String&gt;</text>
+<rect x="40" y="325" width="290" height="106" fill="#f8fbff" stroke="#172b40"/>
+<text x="185.0" y="344" text-anchor="middle" font-size="12">«enumeration»</text>
+<text x="185.0" y="365" text-anchor="middle" font-size="17" font-weight="bold">StatusOrdemServico</text>
+<path d="M40 375 H330" class="line"/>
+<text x="52" y="397" font-size="12">ABERTA / EM_ATENDIMENTO</text>
+<text x="52" y="419" font-size="12">CONCLUIDA</text>
+<rect x="40" y="690" width="290" height="84" fill="#f8fbff" stroke="#172b40"/>
+<text x="185.0" y="709" text-anchor="middle" font-size="12">«enumeration»</text>
+<text x="185.0" y="730" text-anchor="middle" font-size="17" font-weight="bold">TipoEquipamento</text>
+<path d="M40 740 H330" class="line"/>
+<text x="52" y="762" font-size="12">NOTEBOOK / DESKTOP</text>
+<rect x="400" y="690" width="360" height="128" fill="#f8fbff" stroke="#172b40"/>
+<text x="580.0" y="709" text-anchor="middle" font-size="12">«static nested»</text>
+<text x="580.0" y="730" text-anchor="middle" font-size="17" font-weight="bold">OrdemServico.ItemServico</text>
+<path d="M400 740 H760" class="line"/>
+<text x="412" y="762" font-size="12">- descricao: String; valor: BigDecimal</text>
+<text x="412" y="784" font-size="12">- ItemServico(descricao, valor)</text>
+<text x="412" y="806" font-size="12">+ getDescricao(); getValor()</text>
+<rect x="815" y="690" width="175" height="128" fill="#f8fbff" stroke="#172b40"/>
+<text x="902.5" y="709" text-anchor="middle" font-size="12"></text>
+<text x="902.5" y="730" text-anchor="middle" font-size="17" font-weight="bold">Notebook</text>
+<path d="M815 740 H990" class="line"/>
+<text x="827" y="762" font-size="12">- memoriaRamGb</text>
+<text x="827" y="784" font-size="12">+ descreverAtendimento()</text>
+<text x="827" y="806" font-size="12">+ gerarRoteiroDiagnostico()</text>
+<rect x="1005" y="690" width="195" height="128" fill="#f8fbff" stroke="#172b40"/>
+<text x="1102.5" y="709" text-anchor="middle" font-size="12"></text>
+<text x="1102.5" y="730" text-anchor="middle" font-size="17" font-weight="bold">Desktop</text>
+<path d="M1005 740 H1200" class="line"/>
+<text x="1017" y="762" font-size="12">- placaVideoDedicada</text>
+<text x="1017" y="784" font-size="12">+ descreverAtendimento()</text>
+<text x="1017" y="806" font-size="12">+ gerarRoteiroDiagnostico()</text>
+<path d="M185 193 V270 H480 V325" class="line "/>
+<text x="194" y="218" font-size="14">1</text>
+<text x="490" y="311" font-size="14">0..*</text>
+<text x="240" y="260" font-size="14">solicita</text>
+<path d="M580 171 V325" class="line "/>
+<text x="590" y="195" font-size="14">1</text>
+<text x="590" y="310" font-size="14">0..*</text>
+<text x="592" y="255" font-size="14">atende</text>
+<path d="M760 400 H835" class="line "/>
+<text x="766" y="389" font-size="14">0..*</text>
+<text x="818" y="389" font-size="14">1</text>
+<path d="M400 405 H330" class="line dashed"/>
+<text x="337" y="392" font-size="14">status</text>
+<path d="M580 541 V690" class="line "/>
+<polygon points="580,541 590,554 580,567 570,554" fill="#172b40"/>
+<text x="595" y="580" font-size="14">1</text>
+<text x="595" y="675" font-size="14">0..*</text>
+<text x="595" y="622" font-size="14">compõe</text>
+<path d="M1007 325 V161" class="line dashed"/>
+<polygon points="1007,149 997,165 1017,165" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="1020" y="250" font-size="14">implementa</text>
+<path d="M740 325 V225 H870 V149" class="line dashed"/>
+<path d="M864 158 L870 149 L876 158" class="line "/>
+<text x="750" y="215" font-size="14">consulta contrato</text>
+<path d="M902 690 V590 H1007 V465" class="line "/>
+<path d="M1102 690 V590 H1007" class="line "/>
+<polygon points="1007,453 997,469 1017,469" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="1020" y="550" font-size="14">extends</text>
+<path d="M1180 433 H1208 V860 H185 V774" class="line dashed"/>
+<text x="210" y="850" font-size="14">tipo</text>
+<text x="40" y="910" font-size="14">Multiplicidades: cada OS exige 1 cliente, 1 técnico e 1 equipamento; cada um pode ter 0..* ordens.</text>
+<text x="40" y="935" font-size="14">Uma OS compõe 0..* itens. As setas de herança/interface não recebem multiplicidades.</text>
+<text x="40" y="960" font-size="14">Visão resumida. Atributos, métodos e justificativas completos: Diagrama-Classes/README.md.</text>
+</svg>

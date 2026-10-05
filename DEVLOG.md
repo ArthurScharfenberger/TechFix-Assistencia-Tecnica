@@ -296,3 +296,19 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 - O lançador utiliza `scripts/apresentar-testes-poo.ps1`, com cores, agrupamento por conceito e explicação individual dos testes. As contagens são calculadas a partir dos relatórios reais do JUnit.
 - A execução offline recompila com `clean test`, grava o log completo e retorna erro quando o Maven falha, sem apresentar relatórios anteriores como aprovação.
 - Validada a execução real: 14 testes aprovados. Validado também o retorno de erro do lançador com Maven simulado em falha.
+
+## 05/10/2026 - Interface da oficina conforme referência aprovada
+
+- Reorganizada a oficina com cabeçalho preto, logo oficial, área branca, destaques ciano e tabela como elemento central. Removidos sombras, blur e estilos decorativos; identidade compartilhada com os demais módulos.
+- Reutilizados os serviços, a autenticação, os formulários de ordens e a persistência existentes. Busca, filtros, paginação, detalhes, atribuição e criação permanecem funcionais.
+- Indicadores e listas utilizam dados reais. Campos ausentes na modelagem foram adaptados explicitamente: custos em vez de faturamento, abertura em vez de prazo e conclusões em vez de retirada. Mapeamentos documentados em `docs/Interface-Oficina.md`.
+- Validado o build e os cinco testes do site. Verificados fluxos em Chromium temporário e capturas nas larguras de 1586, 1280, 768 e 390 pixels, sem incluir dados de teste na aplicação.
+- Uso de IA: Codex implementou a interface e executou as verificações a pedido do usuário.
+
+## 05/10/2026 — Consolidação da entrega AP2
+
+- Atualizado o diagrama Mermaid com `RoteiroDiagnostico`, métodos da A9, realização da interface e multiplicidades de associações e composição. Criada uma versão visual em SVG e seu gerador.
+- Consolidada a conferência dos nove requisitos em `docs/Entrega-AP2.md`, corrigido o acesso de demonstração no README e atualizado o planejamento. Criado `AI.md` na raiz, preservando `backend/IA.md`.
+- Ajustado o roteiro para 6 minutos e 20 segundos, incluindo um minuto de execução ao vivo. Atualizado e conferido visualmente o PDF de três páginas; gerador incluído em `scripts/`.
+- Reexecutados build TypeScript/Vite, cinco testes do site, 14 testes JUnit offline e `Main`, com sucesso. Slides preservados: já cobrem A6–A9, com mídias intactas.
+- A entrega inclui o visual aprovado da oficina e será identificada por commit publicado e tag anotada `ap2`. A apresentação e a submissão no AVA permanecem sob responsabilidade da equipe.

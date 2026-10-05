@@ -33,7 +33,10 @@ export class App {
     this.rootElement = root;
 
     this.sidebar = new SidebarComponent((collapsed) => this.applyDesktopSidebarState(collapsed));
-    this.header = new HeaderComponent(() => this.toggleMobileSidebar());
+    this.header = new HeaderComponent(() => this.toggleMobileSidebar(), () => {
+      this.toggleMobileSidebar();
+      if (document.getElementById('app-sidebar')?.classList.contains('open')) this.sidebar.openSettings();
+    });
 
     this.mainContentElement = document.createElement('main');
     this.mainContentElement.className = 'main-content';
@@ -72,7 +75,7 @@ export class App {
     this.appContainer = appContainer;
 
     const sidebarEl = this.sidebar.render();
-    if (window.matchMedia('(max-width: 1024px)').matches) sidebarEl.setAttribute('aria-hidden', 'true');
+    sidebarEl.setAttribute('aria-hidden', 'true');
     const headerEl = this.header.render();
 
     const mainWrapper = document.createElement('div');
@@ -165,6 +168,12 @@ export class App {
 
     if (this.currentPageComponent) {
       const pageEl = this.currentPageComponent.render();
+      if (route !== 'dashboard' && !pageEl.querySelector('h1')) {
+        const title = document.createElement('h1');
+        title.className = 'module-title';
+        title.textContent = getRouteTitle(route);
+        this.mainContentElement.appendChild(title);
+      }
       this.mainContentElement.appendChild(pageEl);
       // Pages are rendered dynamically after route and storage changes.
       // Convert every newly inserted Lucide placeholder only after it is in the DOM.
@@ -181,6 +190,7 @@ export class App {
         document.body.classList.add('sidebar-drawer-open');
         sidebarEl.setAttribute('aria-hidden', 'false');
         this.mobileMenuTrigger?.setAttribute('aria-expanded', 'true');
+        document.getElementById('header-settings-btn')?.setAttribute('aria-expanded', 'true');
         (sidebarEl.querySelector('.nav-item') as HTMLElement | null)?.focus();
       } else {
         this.closeMobileSidebar(true);
@@ -195,9 +205,12 @@ export class App {
       this.overlayElement.classList.remove('show');
       document.body.classList.remove('sidebar-drawer-open');
       this.mobileMenuTrigger?.setAttribute('aria-expanded', 'false');
-      const mobile = window.matchMedia('(max-width: 1024px)').matches;
-      if (mobile) sidebarEl.setAttribute('aria-hidden', 'true'); else sidebarEl.removeAttribute('aria-hidden');
-      if (restoreFocus && mobile) this.mobileMenuTrigger?.focus();
+      document.getElementById('header-settings-btn')?.setAttribute('aria-expanded', 'false');
+      sidebarEl.setAttribute('aria-hidden', 'true');
+      if (restoreFocus) {
+        const target = window.matchMedia('(max-width: 1024px)').matches ? this.mobileMenuTrigger : document.getElementById('header-settings-btn');
+        target?.focus();
+      }
     }
   }
 

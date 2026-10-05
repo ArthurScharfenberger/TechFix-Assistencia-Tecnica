@@ -23,12 +23,14 @@ backend/
     │   ├── Main.java
     │   ├── Notebook.java
     │   ├── OrdemServico.java
+    │   ├── RoteiroDiagnostico.java
     │   ├── StatusOrdemServico.java
     │   ├── Tecnico.java
     │   └── TipoEquipamento.java
     └── test/java/
         ├── EquipamentoTest.java
-        └── OrdemServicoTest.java
+        ├── OrdemServicoTest.java
+        └── RoteiroDiagnosticoTest.java
 ```
 
 Consulte a [documentação do código-fonte](src/README.md) para conhecer as classes e os comandos de compilação, teste e execução.

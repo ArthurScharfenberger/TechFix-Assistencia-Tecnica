@@ -1,6 +1,6 @@
 import { AuthService } from '../services/authService';
 import { iconHTML, initIcons } from '../utils/iconHelper';
-import techFixLogoUrl from '../img/techfix-logo-transparent.png';
+import techFixLogoUrl from '../img/logo.png';
 
 const LOGIN_MESSAGES = {
   INVALID_CREDENTIALS: 'Email, usuário ou senha incorretos.',
@@ -19,14 +19,14 @@ export class LoginPage {
     this.container.innerHTML = `
       <section class="login-brand-panel" aria-label="TechFix Assistência Técnica">
         <div class="login-brand-content">
-          <img src="${techFixLogoUrl}" alt="TechFix — Assistência Técnica" class="login-brand-logo" />
+          <span class="login-brand-logo official-logo-crop"><img src="${techFixLogoUrl}" alt="TechFix — Assistência Técnica"></span>
           <h2>Sua assistência técnica, organizada.</h2>
           <p>Gestão de clientes, ordens de serviço e reparos de notebooks e PCs.</p>
         </div>
       </section>
       <section class="login-form-panel">
         <div class="login-card">
-          <img src="${techFixLogoUrl}" alt="TechFix" class="login-mobile-logo" />
+          <span class="login-mobile-logo official-logo-crop"><img src="${techFixLogoUrl}" alt="TechFix — Assistência Técnica"></span>
           <div class="login-card-heading"><span class="login-card-icon" aria-hidden="true">${iconHTML('log-in', '', 24)}</span><div><h1>Entrar</h1><p>Acesse o TechFix</p></div></div>
           <form id="login-form" novalidate>
             <div id="login-general-error" class="login-general-error" role="alert" hidden></div>

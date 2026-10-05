@@ -17,14 +17,14 @@ Atualmente, o repositório reúne duas partes independentes:
 
 ### Acesso de demonstração
 
-- Usuário: `Admin` ou `admin@admin.com`
+- Usuário: `admin` ou `admin@techfix.local`
 - Senha: `admin`
 
 Essa autenticação existe apenas para demonstração acadêmica. Como é executada no navegador, não oferece a segurança necessária para uso em produção.
 
 ## Atividade Java
 
-A implementação Java representa clientes, técnicos, equipamentos e ordens de serviço. Na entrega final da Atividade Semanal nº 8 de POO, `Equipamento` tornou-se uma superclasse abstrata de `Notebook` e `Desktop`. As duas subclasses reutilizam validações e comportamentos comuns e sobrescrevem a descrição do atendimento; `Main` demonstra o polimorfismo em execução.
+A implementação Java representa clientes, técnicos, equipamentos e ordens de serviço. A AP2 reúne coleções de ordens por cliente (A6), composição de itens (A7), herança entre Equipamento, Notebook e Desktop (A8) e interface/polimorfismo de roteiros de diagnóstico (A9). `Main` demonstra o cenário integrado entre os objetos Java.
 
 Esta etapa usa Java padrão e Maven para 14 testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
 
@@ -115,3 +115,14 @@ A TechFix realiza manutenção exclusivamente de notebooks e PCs (desktops). Os 
 Para executar os testes Java durante a apresentação, use `Testar-POO.cmd` na raiz do projeto. O resultado fica visível no terminal, e o Maven roda em modo offline. Veja a [preparação para a aula](docs/Executar-Testes-Na-Apresentacao.md), incluindo os requisitos de JDK/Maven e a distinção entre os 14 testes de POO e os cinco testes do site.
 
 Execute `npm test` para conferir datas civis, validações de equipamentos e a sincronização do status quando há reparos simultâneos, troca de equipamento, cancelamento ou exclusão. Execute `npm run build` para verificar os tipos e gerar a versão de produção.
+
+## Entrega AP2
+
+- [Conferência dos requisitos e demonstração](docs/Entrega-AP2.md).
+- [Slides atualizados](docs/Apresentacao-POO-TechFix.pptx).
+- [Diagrama atual com multiplicidades](Diagrama-Classes/README.md) e [versão visual](Diagrama-Classes/Diagrama-AP2.svg).
+- [Roteiro de Arthur e Lucas](docs/Roteiro-Apresentacao-POO-Arthur-Lucas.md), também em [PDF](docs/Roteiro-Apresentacao-POO-Arthur-Lucas.pdf).
+- [Registro de uso de IA na AP2](AI.md) e [histórico Java](backend/IA.md).
+- [Backlog e planejamento](PLANEJAMENTO.md), com funcionalidades futuras distinguidas da implementação atual.
+
+A versão de entrega é identificada pela tag Git `ap2`. A interface segue o [layout da oficina](docs/Interface-Oficina.md); usa armazenamento local e não se comunica com o Java.

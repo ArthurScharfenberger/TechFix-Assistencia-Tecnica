@@ -11,6 +11,7 @@ export const KEYS = {
 } as const;
 
 export interface AppConfiguration {
+  visualVersion?: string;
   theme?: string;
   sidebarCollapsed?: boolean;
 }

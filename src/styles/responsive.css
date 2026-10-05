@@ -5,7 +5,7 @@
     bottom: 0;
     left: 0;
     transform: translateX(-100%);
-    box-shadow: var(--shadow-lg);
+
     width: min(280px, calc(100vw - 2rem));
     height: 100dvh;
     z-index: 200;
