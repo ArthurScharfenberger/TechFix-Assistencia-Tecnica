@@ -9,7 +9,7 @@ export function isNotEmpty(value: string | null | undefined): boolean {
 }
 
 export function isNonNegativeNumber(value: number): boolean {
-  return typeof value === 'number' && !isNaN(value) && value >= 0;
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0;
 }
 
 export interface ValidationError {

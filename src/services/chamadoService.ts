@@ -31,6 +31,8 @@ export class ChamadoService {
     else {
       const equipment = EquipamentoService.getById(dto.equipamentoId!);
       if (!equipment) errors.push('O equipamento selecionado não existe.');
+      else if (equipment.tipo !== 'NOTEBOOK' && equipment.tipo !== 'DESKTOP') errors.push('A assistência atende apenas notebooks e PCs (desktops).');
+      else if (equipment.status === 'DESCARTADO') errors.push('Um equipamento descartado não pode receber uma ordem de serviço.');
       else if (equipment.clienteId !== dto.clienteId) errors.push('O equipamento selecionado não pertence ao cliente informado.');
     }
     if (!dto.prioridade) errors.push('A prioridade da ordem é obrigatória.');

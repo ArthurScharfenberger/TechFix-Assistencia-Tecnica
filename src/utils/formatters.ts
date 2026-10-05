@@ -2,10 +2,12 @@ import { StatusEquipamento, TipoEquipamento } from '../types/equipamento';
 import { PrioridadeChamado, StatusChamado } from '../types/chamado';
 import { StatusManutencao } from '../types/manutencao';
 import { StatusUsuario } from '../types/usuario';
+import { parseDateOnly } from './dates';
 
 export function formatDate(dateString: string | null | undefined): string {
   if (!dateString) return '-';
-  const date = new Date(dateString);
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(dateString) ? parseDateOnly(dateString) : new Date(dateString);
+  if (!date) return dateString;
   if (isNaN(date.getTime())) return dateString;
   return date.toLocaleDateString('pt-BR', {
     day: '2-digit',
@@ -37,7 +39,7 @@ export function formatCurrency(value: number): string {
 export function getTipoEquipamentoLabel(tipo: TipoEquipamento): string {
   const map: Record<TipoEquipamento, string> = {
     NOTEBOOK: 'Notebook',
-    DESKTOP: 'Desktop',
+    DESKTOP: 'PC (Desktop)',
   };
   return map[tipo] || tipo;
 }

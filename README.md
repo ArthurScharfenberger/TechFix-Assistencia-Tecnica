@@ -109,3 +109,9 @@ A interface `RoteiroDiagnostico` define etapas ordenadas e imutáveis, com imple
 ## Escopo de atendimento
 
 A TechFix realiza manutenção exclusivamente de notebooks e PCs (desktops). Os tipos de equipamento aceitos são `NOTEBOOK` e `DESKTOP`.
+
+## Verificações da interface web
+
+Para executar os testes Java durante a apresentação, use `Testar-POO.cmd` na raiz do projeto. O resultado fica visível no terminal, e o Maven roda em modo offline. Veja a [preparação para a aula](docs/Executar-Testes-Na-Apresentacao.md), incluindo os requisitos de JDK/Maven e a distinção entre os 14 testes de POO e os cinco testes do site.
+
+Execute `npm test` para conferir datas civis, validações de equipamentos e a sincronização do status quando há reparos simultâneos, troca de equipamento, cancelamento ou exclusão. Execute `npm run build` para verificar os tipos e gerar a versão de produção.

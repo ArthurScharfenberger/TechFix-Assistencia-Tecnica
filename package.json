@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "test": "node --test tests/site.test.mjs",
+    "test:poo": "mvn -B -o -f backend/pom.xml test",
+    "test:all": "npm run test:poo && npm test",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"

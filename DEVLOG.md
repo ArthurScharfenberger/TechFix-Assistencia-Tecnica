@@ -274,3 +274,25 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 - Criado `docs/Roteiro-Apresentacao-POO-Arthur-Lucas.md`, com Lucas nos slides 2 a 5 e Arthur na abertura e nos slides 6 a 10. O roteiro contém 571 palavras de fala e reserva aproximadamente seis minutos.
 - Verificações: build TypeScript/Vite aprovado; `mvn clean test` com 14 testes, zero falhas, erros ou ignorados; saídas do slide de polimorfismo comparadas com a execução de `Main`; apresentação aberta no PowerPoint, dez slides renderizados e conferidos visualmente; estrutura do PPTX validada sem ocorrências.
 - Uso de IA: Codex realizou a correção de escopo, a revisão documental e da apresentação e a preparação do roteiro a pedido do usuário. A equipe permanece responsável pela apresentação e pela submissão acadêmica.
+
+## 05/10/2026 - Revisão dos fluxos da interface web
+
+- Explicitado o atendimento de notebooks e PCs na entrada e no cadastro, com a identificação de desktop como PC.
+- Filtrados os seletores de ordens e reparos para equipamentos do escopo que não estejam descartados. A validação de ordens também aplica essas regras.
+- Corrigida a exibição de datas civis para evitar o recuo de um dia por conversão UTC. Datas de início e conclusão de reparos usam o calendário local.
+- O status do equipamento considera todos os reparos em andamento; concluir um deles não libera o equipamento enquanto houver outro ativo. Troca de equipamento, cancelamento e exclusão também recalculam os estados afetados.
+- Rejeitados custos infinitos, datas de início inexistentes e status de reparo desconhecidos.
+- Adicionados cinco testes de regressão da interface web, executáveis por `npm test`. Testes e `npm run build` aprovados. A inspeção visual em navegador não foi realizada porque não há navegador conectado nesta sessão.
+
+## 05/10/2026 - Execução dos testes na apresentação
+
+- Criado `Testar-POO.cmd` para executar o Maven/JUnit em modo offline a partir da pasta do próprio script, com verificação de Java, javac e Maven e pausa para leitura do resultado.
+- Adicionados `npm run test:poo` e `npm run test:all`, mantendo os 14 testes Java separados dos cinco testes da interface web.
+- Documentados preparação com internet, requisitos, resultado esperado e execução de `Main` em `docs/Executar-Testes-Na-Apresentacao.md`.
+- Verificada a execução offline neste computador: 14 testes, zero falhas, erros ou ignorados e `BUILD SUCCESS`. Verificado também que a ausência de JDK retorna erro sem anunciar aprovação.
+
+## 05/10/2026 - Saída explicativa dos testes de POO
+
+- O lançador utiliza `scripts/apresentar-testes-poo.ps1`, com cores, agrupamento por conceito e explicação individual dos testes. As contagens são calculadas a partir dos relatórios reais do JUnit.
+- A execução offline recompila com `clean test`, grava o log completo e retorna erro quando o Maven falha, sem apresentar relatórios anteriores como aprovação.
+- Validada a execução real: 14 testes aprovados. Validado também o retorno de erro do lançador com Maven simulado em falha.

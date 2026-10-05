@@ -21,6 +21,7 @@ export class LoginPage {
         <div class="login-brand-content">
           <img src="${techFixLogoUrl}" alt="TechFix — Assistência Técnica" class="login-brand-logo" />
           <h2>Sua assistência técnica, organizada.</h2>
+          <p>Gestão de clientes, ordens de serviço e reparos de notebooks e PCs.</p>
         </div>
       </section>
       <section class="login-form-panel">

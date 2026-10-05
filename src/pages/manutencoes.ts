@@ -1,4 +1,5 @@
 import { ManutencaoService } from '../services/manutencaoService';
+import { todayDate } from '../utils/dates';
 import { EquipamentoService } from '../services/equipamentoService';
 import { FuncionarioService } from '../services/funcionarioService';
 import { StatusManutencao, CriarManutencaoDTO } from '../types/manutencao';
@@ -270,7 +271,7 @@ export class ManutencoesPage {
   private openFormModal(idEdicao?: string): void {
     const isEdit = !!idEdicao;
     const item = isEdit ? ManutencaoService.getById(idEdicao!) : null;
-    const equipamentosValidos = EquipamentoService.getAll().filter((eq) => eq.status !== 'DESCARTADO' || (item && item.equipamentoId === eq.id));
+    const equipamentosValidos = EquipamentoService.getAll().filter((eq) => (eq.tipo === 'NOTEBOOK' || eq.tipo === 'DESKTOP') && eq.status !== 'DESCARTADO');
     const tecnicos = FuncionarioService.getAssignable();
     const tecnicoAtual = item?.tecnicoResponsavelId ? FuncionarioService.getById(item.tecnicoResponsavelId) : null;
     if (tecnicoAtual && !tecnicos.some((tecnico) => tecnico.id === tecnicoAtual.id)) tecnicos.push(tecnicoAtual);
@@ -312,7 +313,7 @@ export class ManutencoesPage {
 
         <div class="form-group">
           <label class="form-label">Data de Início <span class="required">*</span></label>
-          <input type="date" name="dataInicio" class="form-control" value="${item ? item.dataInicio : new Date().toISOString().split('T')[0]}" required />
+          <input type="date" name="dataInicio" class="form-control" value="${item ? item.dataInicio : todayDate()}" required />
         </div>
 
         <div class="form-group">

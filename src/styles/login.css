@@ -1,6 +1,7 @@
 .login-page { min-height: 100dvh; width: 100%; display: grid; grid-template-columns: minmax(340px, 1fr) minmax(400px, 1fr); overflow-x: hidden; background: var(--background); }
 .login-brand-panel { position: relative; display: flex; align-items: center; justify-content: center; padding: clamp(2.5rem, 5vw, 5rem); background: var(--surface); border-right: 1px solid var(--border); }
 .login-brand-content { position: relative; z-index: 1; width: min(100%, 420px); }
+.login-brand-content > p { margin-top: 1rem; max-width: 360px; color: var(--text-secondary); line-height: 1.6; }
 .login-brand-logo { display: block; width: min(260px, 70%); height: auto; margin-bottom: 1.5rem; }
 .login-brand-content h2 { max-width: 360px; color: var(--title-color); font-size: clamp(1.5rem, 2.2vw, 2rem); font-weight: 700; line-height: 1.25; letter-spacing: -.025em; }
 .login-form-panel { display: grid; place-items: center; padding: clamp(1.5rem, 4vw, 3rem); background: var(--background); }

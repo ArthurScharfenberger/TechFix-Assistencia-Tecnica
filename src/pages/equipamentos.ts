@@ -92,7 +92,7 @@ export class EquipamentosPage {
             <select id="filter-tipo" class="form-control" style="width: auto;">
               <option value="">Todos os Tipos</option>
               <option value="NOTEBOOK" ${this.filterTipo === 'NOTEBOOK' ? 'selected' : ''}>Notebook</option>
-              <option value="DESKTOP" ${this.filterTipo === 'DESKTOP' ? 'selected' : ''}>Desktop</option>
+              <option value="DESKTOP" ${this.filterTipo === 'DESKTOP' ? 'selected' : ''}>PC (Desktop)</option>
             </select>
 
             <select id="filter-status" class="form-control" style="width: auto;">
@@ -298,8 +298,9 @@ export class EquipamentosPage {
           <select name="tipo" class="form-control" required>
             <option value="">Selecione...</option>
             <option value="NOTEBOOK" ${item && item.tipo === 'NOTEBOOK' ? 'selected' : ''}>Notebook</option>
-            <option value="DESKTOP" ${item && item.tipo === 'DESKTOP' ? 'selected' : ''}>Desktop</option>
+            <option value="DESKTOP" ${item && item.tipo === 'DESKTOP' ? 'selected' : ''}>PC (Desktop)</option>
           </select>
+          <small>Atendimento exclusivo de notebooks e PCs.</small>
           <div class="field-error" id="err-tipo"></div>
         </div>
 
