@@ -321,3 +321,10 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 - Ficha institucional preparada em DOCX/PDF com link da apresentação e declaração de IA. Estimativas continuam propostas até consenso; revisão, validação de negócio e assinaturas não foram presumidas.
 - Verificação: exportação nativa no PowerPoint, inspeção visual de todos os slides e páginas PDF, verificadores de estrutura/geometria, 16 notas de fala, IDs/valores e exposição de 660 segundos. DOCX segue o modelo; paginação do Word não foi verificada visualmente devido à falha local de renderização. Código de aplicação não foi alterado por esta tarefa.
 - A apresentação está em `docs/apresentacao-processos-ap2/`; fontes consultadas e instruções de reprodução acompanham os arquivos. A publicação usa a branch `docs/ap2-processos-2026-10-07`.
+
+## 07/10/2026 — Revisão visual da AP2 a partir do Gamma
+
+- Reconstruídos 13 slides editáveis com as fontes, cores e disposição da apresentação fornecida. O PDF original foi preservado.
+- Corrigidas conexões do fluxo e acrescentados caminho A3 até arquitetura, matriz de oito requisitos/histórias e fechamento AS. Roteiro de 11 minutos dividido entre Arthur e Lucas, com quatro minutos para perguntas.
+- Gerados PowerPoint com fontes incorporadas, PDF, roteiro e ficha institucional com link da versão revisada. Inspeção visual e validação de geometria: 13 slides, nenhum problema ou aviso.
+- Uso de IA: Gamma gerou a referência e Codex reconstruiu e completou o material; revisão humana e assinaturas permanecem com a equipe.

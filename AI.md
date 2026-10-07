@@ -13,3 +13,5 @@ O histórico anterior de uso de IA está em [backend/IA.md](backend/IA.md) e [DE
 A equipe é responsável por revisar o material, compreender as decisões e defender o código ao vivo. A execução das verificações não comprova ensaio, apresentação ou submissão no ambiente acadêmico.
 
 Em 07/10/2026, Codex preparou também a apresentação AP2 de Processos: slides editáveis, notas de fala, roteiro da dupla, perguntas de ensaio e ficha institucional. Conferiu a A3 fornecida (entrevista simulada), completou a origem da matriz A10 por página/seção/ID e verificou os slides e PDFs. Revisão humana, consenso das estimativas, validação do PO e assinaturas não foram inventados. Materiais e fontes em [apresentação de Processos](docs/apresentacao-processos-ap2/README.md).
+
+Em 07/10/2026, a pedido da equipe, Codex reconstruiu a versão visual do Gamma em 13 slides editáveis, corrigiu conexões do fluxo e acrescentou rastreabilidade explícita, matriz e fechamento AS. Atualizou roteiro e ficha, preservando o PDF original. Gamma foi usado pela equipe para criar a referência inicial. Materiais em [versão Gamma revisada](docs/apresentacao-processos-ap2/gamma-revisada/README.md).

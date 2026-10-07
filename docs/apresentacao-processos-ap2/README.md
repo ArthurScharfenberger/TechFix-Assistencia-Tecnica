@@ -1,5 +1,7 @@
 # TechFix — AP2 de Processos de Engenharia de Software
 
+**Versão atual: [apresentação refeita no visual do Gamma](gamma-revisada/README.md)** — 13 slides, com rastreabilidade, matriz e fechamento completos. Inclui PDF, PowerPoint editável, roteiro e ficha atualizada.
+
 Apresentação de Arthur Scharfenberger e Lucas Oliveira da Silva, preparada em 07/10/2026. São 13 slides principais, com 11 minutos planejados de exposição, mais 4 minutos para perguntas. Os slides 14–16 são apoio.
 
 - [Slides em PowerPoint, com notas de fala](TechFix-AP2-Processos.pptx)
