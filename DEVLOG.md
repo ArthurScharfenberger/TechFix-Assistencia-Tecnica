@@ -312,3 +312,12 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 - Ajustado o roteiro para 6 minutos e 20 segundos, incluindo um minuto de execução ao vivo. Atualizado e conferido visualmente o PDF de três páginas; gerador incluído em `scripts/`.
 - Reexecutados build TypeScript/Vite, cinco testes do site, 14 testes JUnit offline e `Main`, com sucesso. Slides preservados: já cobrem A6–A9, com mídias intactas.
 - A entrega inclui o visual aprovado da oficina e será identificada por commit publicado e tag anotada `ap2`. A apresentação e a submissão no AVA permanecem sob responsabilidade da equipe.
+
+## 07/10/2026 — Apresentação AP2 de Processos de Engenharia de Software
+
+- A pedido do usuário, Codex preparou 13 slides principais e 3 de apoio em PowerPoint/PDF, com notas, roteiro de 11 minutos e reserva de 4 minutos para perguntas, dividido entre Arthur e Lucas.
+- Conteúdo: A7 processo/papéis/fluxo; A8 backlog/estimativas/riscos; A9 fluxo e wireframe; A10 componentes e rastreabilidade; AS com testes e evolução. Tabelas e diagramas editáveis.
+- A A3 adicionada pelo usuário foi lida: entrevista simulada com Marcos Almeida. As referências por página, seção e IDs RF03–RF05 passaram aos slides e à matriz A10, sem inventar respostas literais. A1 excluída conforme orientação.
+- Ficha institucional preparada em DOCX/PDF com link da apresentação e declaração de IA. Estimativas continuam propostas até consenso; revisão, validação de negócio e assinaturas não foram presumidas.
+- Verificação: exportação nativa no PowerPoint, inspeção visual de todos os slides e páginas PDF, verificadores de estrutura/geometria, 16 notas de fala, IDs/valores e exposição de 660 segundos. DOCX segue o modelo; paginação do Word não foi verificada visualmente devido à falha local de renderização. Código de aplicação não foi alterado por esta tarefa.
+- A apresentação está em `docs/apresentacao-processos-ap2/`; fontes consultadas e instruções de reprodução acompanham os arquivos. A publicação usa a branch `docs/ap2-processos-2026-10-07`.

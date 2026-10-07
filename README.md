@@ -126,3 +126,7 @@ Execute `npm test` para conferir datas civis, validações de equipamentos e a s
 - [Backlog e planejamento](PLANEJAMENTO.md), com funcionalidades futuras distinguidas da implementação atual.
 
 A versão de entrega é identificada pela tag Git `ap2`. A interface segue o [layout da oficina](docs/Interface-Oficina.md); usa armazenamento local e não se comunica com o Java.
+
+## AP2 — Processos de Engenharia de Software
+
+[Apresentação, roteiro e ficha de entrega](docs/apresentacao-processos-ap2/README.md), com origem na A3 e conexão entre A7–A10. Exposição planejada de 11 minutos e 4 minutos para perguntas.

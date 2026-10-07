@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/></marker></defs>
+  <rect width="1200" height="700" fill="white"/>
+  <g font-family="Arial, sans-serif" fill="#111827" text-anchor="middle">
+    <text x="600" y="42" font-size="28" font-weight="bold">Arquitetura conceitual do TechFix</text>
+    <text x="365" y="95" font-size="22">Atendente · Técnico · Administrador</text>
+    <path d="M365 110 V155" fill="none" stroke="#334155" stroke-width="3"/>
+    <g stroke="#64748b" stroke-width="2" fill="#f1f5f9">
+      <rect x="110" y="160" width="510" height="105" rx="10"/>
+      <rect x="110" y="360" width="510" height="110" rx="10"/>
+      <rect x="785" y="360" width="355" height="110" rx="10"/>
+      <rect x="110" y="575" width="510" height="100" rx="10"/>
+    </g>
+    <text x="365" y="199" font-size="24" font-weight="bold">C1 · Interface web</text>
+    <text x="365" y="236" font-size="21">Formulários, consulta e feedback</text>
+    <path d="M365 265 V360" fill="none" stroke="#334155" stroke-width="3"/>
+    <text x="495" y="318" font-size="19">HTTPS / JSON</text>
+    <text x="365" y="401" font-size="24" font-weight="bold">C2 · API e lógica de negócio</text>
+    <text x="365" y="440" font-size="21">Validações, estados e histórico</text>
+    <path d="M620 416 H785" fill="none" stroke="#334155" stroke-width="3"/>
+    <text x="700" y="389" font-size="18">Autorizar</text>
+    <text x="962" y="402" font-size="23" font-weight="bold">C3 · Autenticação</text>
+    <text x="962" y="439" font-size="23" font-weight="bold">e autorização</text>
+    <path d="M365 470 V575" fill="none" stroke="#334155" stroke-width="3"/>
+    <text x="493" y="529" font-size="18">Consultar / gravar</text>
+    <path d="M962 470 V625 H620" fill="none" stroke="#334155" stroke-width="3"/>
+    <text x="806" y="600" font-size="19">Usuários e perfis</text>
+    <text x="365" y="615" font-size="24" font-weight="bold">C4 · Persistência e banco</text>
+    <text x="365" y="651" font-size="21">Dados e transações OS + histórico</text>
+  </g>
+<g fill="#334155"><polygon points="365,155 356,139 374,139"/><polygon points="365,360 356,344 374,344"/><polygon points="785,416 769,407 769,425"/><polygon points="365,575 356,559 374,559"/><polygon points="620,625 636,616 636,634"/></g></svg>
