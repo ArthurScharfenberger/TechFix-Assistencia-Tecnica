@@ -4,8 +4,9 @@ from html import escape
 from PIL import Image, ImageDraw, ImageFont
 import subprocess
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'docs'
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / 'docs' / 'atividade-11'
+OUT.mkdir(parents=True, exist_ok=True)
 im = Image.new('RGB', (1700, 1370), 'white')
 d = ImageDraw.Draw(im)
 font = ImageFont.truetype('C:/Windows/Fonts/arial.ttf', 19)

@@ -3,7 +3,7 @@
 ## Atividade 11 — Entrega final (`v11`)
 
 Entrega: [versão v11 no GitHub](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v11).
-Documentos: [cinco regras de negócio](docs/especificacao.md), [diagrama PNG](docs/uml.png), [SVG editável](docs/uml.svg) e [Ficha de Entrega preenchida](docs/ficha-entrega-v11.md).
+Documentos: [cinco regras de negócio](docs/atividade-11/especificacao.md), [diagrama PNG](docs/atividade-11/uml.png), [SVG editável](docs/atividade-11/uml.svg) e [Ficha de Entrega preenchida](docs/atividade-11/ficha-entrega-v11.md).
 
 O diagnóstico custa R$ 80,00 para notebook e R$ 60,00 para desktop. `PoliticasCobranca.para()` concentra a seleção por tipo, e `OrdemServico` guarda uma `PoliticaCobranca` para somar o diagnóstico aos itens adicionais. A ordem cria suas partes e expõe uma cópia não modificável da lista. O responsável técnico é opcional (`0..1`). A herança e o contrato de diagnóstico das etapas anteriores continuam no cenário integrado.
 
@@ -16,9 +16,9 @@ java -cp backend/target/classes Main
 
 Os 19 testes incluem cinco da reciclagem: valores por tipo, soma de item adicional, lista não modificável, cópia independente e rejeição de valor negativo. `Main` abre a ordem, registra o serviço, consulta o roteiro, calcula R$ 120,00 para notebook com limpeza e conclui o atendimento; também demonstra R$ 60,00 para desktop sem técnico.
 
-Registro gráfico gerado a partir da saída real do processo Java (também disponível como [texto](docs/saida-terminal-v11.txt)):
+Registro gráfico gerado a partir da saída real do processo Java (também disponível como [texto](docs/atividade-11/saida-terminal-v11.txt)):
 
-![Saída real de Main — TechFix v11](docs/terminal-v11.png)
+![Saída real de Main — TechFix v11](docs/atividade-11/terminal-v11.png)
 
 Trabalho desenvolvido com apoio do OpenAI Codex na implementação, nos testes e na documentação.
 
