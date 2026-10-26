@@ -8,6 +8,7 @@ public class OrdemServico {
     private Tecnico tecnico;
     private Equipamento equipamento;
     private StatusOrdemServico status;
+    private final PoliticaCobranca politicaCobranca;
     private final List<ItemServico> itensServico = new ArrayList<>();
 
     public OrdemServico(int numero, Cliente cliente, Tecnico tecnico, Equipamento equipamento) {
@@ -17,9 +18,6 @@ public class OrdemServico {
         if (cliente == null) {
             throw new IllegalArgumentException("Cliente inválido");
         }
-        if (tecnico == null) {
-            throw new IllegalArgumentException("Técnico inválido");
-        }
         if (equipamento == null) {
             throw new IllegalArgumentException("Equipamento inválido");
         }
@@ -28,6 +26,7 @@ public class OrdemServico {
         this.cliente = cliente;
         this.tecnico = tecnico;
         this.equipamento = equipamento;
+        this.politicaCobranca = PoliticasCobranca.para(equipamento);
         this.status = StatusOrdemServico.ABERTA;
     }
 
@@ -51,6 +50,14 @@ public class OrdemServico {
         return status;
     }
 
+    public BigDecimal calcularTotal() {
+        BigDecimal total = politicaCobranca.calcularDiagnostico();
+        for (ItemServico item : itensServico) {
+            total = total.add(item.getValor());
+        }
+        return total;
+    }
+
     /** Consulta o contrato de diagnóstico sem selecionar o tipo concreto. */
     public List<String> getRoteiroDiagnostico() {
         RoteiroDiagnostico roteiro = equipamento;
@@ -65,7 +72,11 @@ public class OrdemServico {
         cliente.exibirDados();
         System.out.println();
         System.out.println("TÉCNICO RESPONSÁVEL");
-        tecnico.exibirDados();
+        if (tecnico == null) {
+            System.out.println("  Ainda não atribuído");
+        } else {
+            tecnico.exibirDados();
+        }
         System.out.println();
         System.out.println("EQUIPAMENTO");
         equipamento.exibirDados();
@@ -73,6 +84,7 @@ public class OrdemServico {
         getRoteiroDiagnostico().forEach(etapa -> System.out.println("  - " + etapa));
         System.out.println();
         System.out.println("STATUS: " + status);
+        System.out.println("TOTAL: R$ " + calcularTotal().toPlainString());
         System.out.println("========================================");
     }
 
