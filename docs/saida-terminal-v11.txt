@@ -1,0 +1,39 @@
+========================================
+       ORDEM DE SERVIÇO Nº 1
+========================================
+CLIENTE
+  Nome:     João Silva
+  Telefone: 5199999-9999
+  E-mail:   joao@email.com
+
+TÉCNICO RESPONSÁVEL
+  Nome:          Carlos Souza
+  Especialidade: Manutenção de computadores
+
+EQUIPAMENTO
+  Tipo: NOTEBOOK | Marca: Dell | Defeito: Não liga | Especialização: notebook com 16 GB de RAM
+ROTEIRO DE DIAGNÓSTICO
+  - Verificar fonte e conector de alimentação
+  - Testar os 16 GB de memória RAM
+  - Verificar armazenamento e refrigeração
+
+STATUS: ABERTA
+TOTAL: R$ 120.00
+========================================
+
+Atualizando ordem: ABERTA -> EM_ATENDIMENTO
+Status atualizado com sucesso: EM_ATENDIMENTO
+Ordem finalizada: CONCLUIDA
+Notebook: diagnóstico + limpeza = R$ 120.00
+Desktop sem técnico, apenas diagnóstico = R$ 60.00
+
+DEMONSTRAÇÃO DA HIERARQUIA DE EQUIPAMENTOS
+  Tipo: NOTEBOOK | Marca: Dell | Defeito: Não liga | Especialização: notebook com 16 GB de RAM
+  Tipo: DESKTOP | Marca: Dell | Defeito: Sem imagem | Especialização: desktop com placa de vídeo dedicada
+ROTEIROS POR CONTRATO POLIMÓRFICO
+Verificar fonte e conector de alimentação
+Testar os 16 GB de memória RAM
+Verificar armazenamento e refrigeração
+Verificar fonte de alimentação e cabos internos
+Testar placa-mãe, memória e armazenamento
+Testar placa de vídeo dedicada

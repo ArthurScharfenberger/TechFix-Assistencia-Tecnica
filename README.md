@@ -1,5 +1,28 @@
 # TechFix — Sistema de Assistência Técnica
 
+## Atividade 11 — Entrega final (`v11`)
+
+Entrega: [versão v11 no GitHub](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v11).
+Documentos: [cinco regras de negócio](docs/especificacao.md), [diagrama PNG](docs/uml.png), [SVG editável](docs/uml.svg) e [Ficha de Entrega preenchida](docs/ficha-entrega-v11.md).
+
+O diagnóstico custa R$ 80,00 para notebook e R$ 60,00 para desktop. `PoliticasCobranca.para()` concentra a seleção por tipo, e `OrdemServico` guarda uma `PoliticaCobranca` para somar o diagnóstico aos itens adicionais. A ordem cria suas partes e expõe uma cópia não modificável da lista. O responsável técnico é opcional (`0..1`). A herança e o contrato de diagnóstico das etapas anteriores continuam no cenário integrado.
+
+Com Java 25 e Maven instalados, execute na raiz:
+
+```sh
+mvn -f backend/pom.xml clean test
+java -cp backend/target/classes Main
+```
+
+Os 19 testes incluem cinco da reciclagem: valores por tipo, soma de item adicional, lista não modificável, cópia independente e rejeição de valor negativo. `Main` abre a ordem, registra o serviço, consulta o roteiro, calcula R$ 120,00 para notebook com limpeza e conclui o atendimento; também demonstra R$ 60,00 para desktop sem técnico.
+
+Registro gráfico gerado a partir da saída real do processo Java (também disponível como [texto](docs/saida-terminal-v11.txt)):
+
+![Saída real de Main — TechFix v11](docs/terminal-v11.png)
+
+O apoio de OpenAI Codex incluiu código, testes e documentação. A equipe precisa revisar a entrega e treinar a explicação para a microdefesa. A publicação da tag não envia a tarefa na plataforma Aula.
+
+
 O TechFix é um projeto acadêmico para organizar clientes, equipamentos, ordens de serviço, reparos e o trabalho da equipe de uma assistência técnica.
 
 Atualmente, o repositório reúne duas partes independentes:
@@ -26,7 +49,7 @@ Essa autenticação existe apenas para demonstração acadêmica. Como é execut
 
 A implementação Java representa clientes, técnicos, equipamentos e ordens de serviço. A AP2 reúne coleções de ordens por cliente (A6), composição de itens (A7), herança entre Equipamento, Notebook e Desktop (A8) e interface/polimorfismo de roteiros de diagnóstico (A9). `Main` demonstra o cenário integrado entre os objetos Java.
 
-Esta etapa usa Java padrão e Maven para 14 testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
+Esta etapa usa Java 25 e Maven para 19 testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
 
 Uma visão geral da área Java está em [`backend/README.md`](backend/README.md). As instruções de compilação e a descrição das classes estão em [`backend/src/README.md`](backend/src/README.md), e o esboço da Atividade 6 está em [`backend/docs/atividade-semanal-06-esboco.md`](backend/docs/atividade-semanal-06-esboco.md).
 

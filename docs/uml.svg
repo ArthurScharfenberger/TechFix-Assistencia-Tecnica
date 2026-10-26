@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1370">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="37" font-family="Arial" font-size="17" fill="#172b40">TechFix | Atividade 11 | Diagrama de classes (visão das responsabilidades principais)</text>
+<rect x="35" y="100" width="320" height="112" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="47" y="129" font-family="Arial" font-size="17" fill="#172b40">Cliente</text>
+<polyline points="35,144 355,144" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="47" y="170" font-family="Arial" font-size="17" fill="#172b40">- ordensServico: List&lt;OrdemServico&gt;</text>
+<text x="47" y="196" font-family="Arial" font-size="17" fill="#172b40">+ adicionarOrdemServico(os)</text>
+<rect x="650" y="100" width="310" height="112" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="662" y="129" font-family="Arial" font-size="17" fill="#172b40">Tecnico</text>
+<polyline points="650,144 960,144" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="662" y="170" font-family="Arial" font-size="17" fill="#172b40">- nome: String</text>
+<text x="662" y="196" font-family="Arial" font-size="17" fill="#172b40">- especialidade: String</text>
+<rect x="1100" y="100" width="520" height="86" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="1112" y="129" font-family="Arial" font-size="17" fill="#172b40">«interface» PoliticaCobranca</text>
+<polyline points="1100,144 1620,144" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1112" y="170" font-family="Arial" font-size="17" fill="#172b40">+ calcularDiagnostico(): BigDecimal</text>
+<rect x="1040" y="320" width="290" height="86" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="1052" y="349" font-family="Arial" font-size="17" fill="#172b40">CobrancaNotebook</text>
+<polyline points="1040,364 1330,364" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1052" y="390" font-family="Arial" font-size="17" fill="#172b40">+ calcularDiagnostico()</text>
+<rect x="1370" y="320" width="290" height="86" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="1382" y="349" font-family="Arial" font-size="17" fill="#172b40">CobrancaDesktop</text>
+<polyline points="1370,364 1660,364" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1382" y="390" font-family="Arial" font-size="17" fill="#172b40">+ calcularDiagnostico()</text>
+<rect x="430" y="500" width="540" height="268" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="442" y="529" font-family="Arial" font-size="17" fill="#172b40">OrdemServico</text>
+<polyline points="430,544 970,544" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="442" y="570" font-family="Arial" font-size="17" fill="#172b40">- politicaCobranca: PoliticaCobranca</text>
+<text x="442" y="596" font-family="Arial" font-size="17" fill="#172b40">- itensServico: List&lt;ItemServico&gt;</text>
+<text x="442" y="622" font-family="Arial" font-size="17" fill="#172b40">- status: StatusOrdemServico</text>
+<text x="442" y="648" font-family="Arial" font-size="17" fill="#172b40">+ adicionarItemServico(descricao, valor)</text>
+<text x="442" y="674" font-family="Arial" font-size="17" fill="#172b40">+ getItensServico(): List&lt;ItemServico&gt;</text>
+<text x="442" y="700" font-family="Arial" font-size="17" fill="#172b40">+ calcularTotal(): BigDecimal</text>
+<text x="442" y="726" font-family="Arial" font-size="17" fill="#172b40">+ getRoteiroDiagnostico(): List&lt;String&gt;</text>
+<text x="442" y="752" font-family="Arial" font-size="17" fill="#172b40">+ alterarStatus(status)</text>
+<rect x="35" y="530" width="330" height="138" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="47" y="559" font-family="Arial" font-size="17" fill="#172b40">OrdemServico.ItemServico</text>
+<polyline points="35,574 365,574" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="47" y="600" font-family="Arial" font-size="17" fill="#172b40">- descricao: String</text>
+<text x="47" y="626" font-family="Arial" font-size="17" fill="#172b40">- valor: BigDecimal</text>
+<text x="47" y="652" font-family="Arial" font-size="17" fill="#172b40">- ItemServico(descricao, valor)</text>
+<rect x="1120" y="520" width="490" height="112" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="1132" y="549" font-family="Arial" font-size="17" fill="#172b40">PoliticasCobranca</text>
+<polyline points="1120,564 1610,564" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1132" y="590" font-family="Arial" font-size="17" fill="#172b40">+ para(equipamento): PoliticaCobranca</text>
+<text x="1132" y="616" font-family="Arial" font-size="17" fill="#172b40">switch único: NOTEBOOK / DESKTOP</text>
+<rect x="1040" y="800" width="580" height="138" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="1052" y="829" font-family="Arial" font-size="17" fill="#172b40">«abstract» Equipamento</text>
+<polyline points="1040,844 1620,844" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1052" y="870" font-family="Arial" font-size="17" fill="#172b40">- tipo: TipoEquipamento</text>
+<text x="1052" y="896" font-family="Arial" font-size="17" fill="#172b40">- marca, defeito: String</text>
+<text x="1052" y="922" font-family="Arial" font-size="17" fill="#172b40">+ descreverAtendimento(): String</text>
+<rect x="1040" y="1050" width="260" height="112" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="1052" y="1079" font-family="Arial" font-size="17" fill="#172b40">Notebook</text>
+<polyline points="1040,1094 1300,1094" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1052" y="1120" font-family="Arial" font-size="17" fill="#172b40">- memoriaRamGb: int</text>
+<text x="1052" y="1146" font-family="Arial" font-size="17" fill="#172b40">+ gerarRoteiroDiagnostico()</text>
+<rect x="1360" y="1050" width="300" height="112" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="1372" y="1079" font-family="Arial" font-size="17" fill="#172b40">Desktop</text>
+<polyline points="1360,1094 1660,1094" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1372" y="1120" font-family="Arial" font-size="17" fill="#172b40">- placaVideoDedicada: boolean</text>
+<text x="1372" y="1146" font-family="Arial" font-size="17" fill="#172b40">+ gerarRoteiroDiagnostico()</text>
+<rect x="430" y="1060" width="520" height="86" fill="#f4f7fb" stroke="#172b40" stroke-width="2"/>
+<text x="442" y="1089" font-family="Arial" font-size="17" fill="#172b40">«interface» RoteiroDiagnostico</text>
+<polyline points="430,1104 950,1104" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="442" y="1130" font-family="Arial" font-size="17" fill="#172b40">+ gerarRoteiroDiagnostico(): List&lt;String&gt;</text>
+<polyline points="355,155 500,155 500,500" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="365" y="144" font-family="Arial" font-size="17" fill="#172b40">1</text>
+<text x="505" y="477" font-family="Arial" font-size="17" fill="#172b40">0..*</text>
+<polyline points="800,500 800,212" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="810" y="252" font-family="Arial" font-size="17" fill="#172b40">0..1</text>
+<text x="810" y="477" font-family="Arial" font-size="17" fill="#172b40">0..*</text>
+<polyline points="430,600 365,600" fill="none" stroke="#172b40" stroke-width="2"/>
+<polygon points="430,600 414,590 398,600 414,610" fill="#172b40" stroke="#172b40" stroke-width="2"/>
+<text x="395" y="582" font-family="Arial" font-size="17" fill="#172b40">1</text>
+<text x="365" y="632" font-family="Arial" font-size="17" fill="#172b40">0..*</text>
+<polyline points="970,700 1005,700 1005,870 1040,870" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="970" y="682" font-family="Arial" font-size="17" fill="#172b40">0..*</text>
+<text x="1015" y="897" font-family="Arial" font-size="17" fill="#172b40">1</text>
+<polyline points="970,530 990,530 990,270 1350,270 1350,186" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1000" y="297" font-family="Arial" font-size="17" fill="#172b40">0..*</text>
+<text x="1358" y="227" font-family="Arial" font-size="17" fill="#172b40">1</text>
+<polyline points="1175,320 1175,255 1230,255 1230,206" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polygon points="1230,186 1219,206 1241,206" fill="white" stroke="#172b40" stroke-width="2"/>
+<polyline points="1515,320 1515,206" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polygon points="1515,186 1504,206 1526,206" fill="white" stroke="#172b40" stroke-width="2"/>
+<polyline points="970,580 1120,580" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="980" y="567" font-family="Arial" font-size="17" fill="#172b40">usa</text>
+<polyline points="1170,1050 1170,1000 1320,1000 1320,958" fill="none" stroke="#172b40" stroke-width="2"/>
+<polygon points="1320,938 1309,958 1331,958" fill="white" stroke="#172b40" stroke-width="2"/>
+<polyline points="1510,1050 1510,1000 1320,1000" fill="none" stroke="#172b40" stroke-width="2"/>
+<polyline points="1040,900 700,900 700,1040" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polygon points="700,1060 689,1040 711,1040" fill="white" stroke="#172b40" stroke-width="2"/>
+<polyline points="690,768 690,1060" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="705" y="977" font-family="Arial" font-size="17" fill="#172b40">consulta via interface</text>
+<text x="35" y="1257" font-family="Arial" font-size="17" fill="#172b40">Triângulo vazio: herança; tracejado + triângulo: realização; losango preenchido: composição.</text>
+<text x="35" y="1292" font-family="Arial" font-size="17" fill="#172b40">Os itens são criados pela ordem; a lista retornada usa List.copyOf; o técnico pode estar ausente.</text>
+<text x="35" y="1327" font-family="Arial" font-size="17" fill="#172b40">Tipos auxiliares: TipoEquipamento {NOTEBOOK, DESKTOP}; StatusOrdemServico {ABERTA, EM_ATENDIMENTO, CONCLUIDA}.</text>
+</svg>
