@@ -31,10 +31,7 @@ Equipamento concentra marca, defeito e tipo; Notebook e Desktop especializam os 
 
 As tarifas são regras propostas para este exercício acadêmico, sem representar uma tabela comercial real. O código anterior foi reaproveitado e ampliado, sem simular uma reconstrução histórica do zero.
 
-## Validação e apoio de IA
+## Validação
 
 Validação realizada em 26/10/2026 com Temurin OpenJDK 25.0.5: `mvn -f backend/pom.xml clean test`, 19 testes executados, zero falhas, zero erros e nenhum teste ignorado; `Main` também executado com Java 25. As imagens foram geradas localmente e conferidas visualmente.
 
-Trabalho desenvolvido com apoio do OpenAI Codex na implementação, nos testes e na documentação.
-
-Para a entrega na plataforma Aula, utilizar o link da versão e esta ficha.
