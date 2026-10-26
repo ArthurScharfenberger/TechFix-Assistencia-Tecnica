@@ -20,7 +20,7 @@ Registro gráfico gerado a partir da saída real do processo Java (também dispo
 
 ![Saída real de Main — TechFix v11](docs/terminal-v11.png)
 
-O apoio de OpenAI Codex incluiu código, testes e documentação. A equipe precisa revisar a entrega e treinar a explicação para a microdefesa. A publicação da tag não envia a tarefa na plataforma Aula.
+Trabalho desenvolvido com apoio do OpenAI Codex na implementação, nos testes e na documentação.
 
 
 O TechFix é um projeto acadêmico para organizar clientes, equipamentos, ordens de serviço, reparos e o trabalho da equipe de uma assistência técnica.
