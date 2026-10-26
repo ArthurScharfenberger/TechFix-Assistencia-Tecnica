@@ -66,16 +66,7 @@ p('<b>Próximos passos:</b> apresentação individual do código e envio da fich
 story.append(PageBreak())
 h('4. Declaração de uso de Inteligência Artificial')
 p('(X) A equipe utilizou ferramenta de IA nesta atividade.<br/>( ) A equipe não utilizou ferramenta de IA nesta atividade.')
-p('Trabalho desenvolvido com apoio do OpenAI Codex na implementação, nos testes e na documentação.')
-table([
-['Campo','Registro'],
-['Data e ferramenta','26/10/2026 - OpenAI Codex.'],
-['Objetivo do uso','Apoiar a aplicação dos conceitos de orientação a objetos no domínio TechFix e preparar os artefatos da Atividade 11.'],
-['Resumo da interação','Adequação do projeto ao enunciado, políticas de cobrança, testes JUnit, diagrama de classes, organização da documentação e ficha de entrega.'],
-['Resultado aproveitado','Incremento Java com cobrança por tipo, testes automatizados e materiais da entrega.'],
-['Verificação adotada','Execução de testes Maven e de Main em Java 25; conferência da correspondência entre código, regras e UML; inspeção visual dos documentos.'],
-['Responsáveis pela decisão final','Arthur Scharfenberger e Lucas Oliveira da Silva.']
-],[135,364])
+p('<b>Ferramenta:</b> OpenAI Codex.<br/><b>Uso:</b> auxílio na implementação, nos testes e na documentação, com sugestões de melhoria.')
 h('5. Responsabilidade e autoria')
 p('Declaração para confirmação no ato da entrega: ao submeter esta ficha, os integrantes confirmam a leitura e a compreensão do conteúdo e assumem responsabilidade por sua correção e coerência, inclusive pelas partes desenvolvidas com apoio de IA.')
 p('Nomes dos integrantes: Arthur Scharfenberger e Lucas Oliveira da Silva.')
