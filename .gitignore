@@ -64,3 +64,7 @@ Desktop.ini
 
 # Testes e ferramentas
 .nyc_output/
+
+# Histórico local do cenário Java (Atividade 12)
+/dados/
+/backend/dados/

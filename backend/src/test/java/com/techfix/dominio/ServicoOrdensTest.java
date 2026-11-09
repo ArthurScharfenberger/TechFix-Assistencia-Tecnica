@@ -6,6 +6,22 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ServicoOrdensTest {
+    @Test
+    void falhaAoSalvarNaoConcluiOrdemEPropagaAMesmaExcecao() {
+        var falha = new java.io.UncheckedIOException("Falha de gravação simulada",
+            new java.io.IOException("Disco indisponível"));
+        RepositorioOrdens indisponivel = new RepositorioOrdens() {
+            public void salvar(RegistroOrdem registro) { throw falha; }
+            public java.util.List<RegistroOrdem> listar() { return java.util.List.of(); }
+        };
+        var servico = new ServicoOrdens(indisponivel);
+        var ordem = ordem(1);
+        ordem.alterarStatus(StatusOrdemServico.EM_ATENDIMENTO);
+
+        assertSame(falha, assertThrows(java.io.UncheckedIOException.class, () -> servico.concluir(ordem)));
+        assertEquals(StatusOrdemServico.EM_ATENDIMENTO, ordem.getStatus());
+    }
+
     private OrdemServico ordem(int numero) {
         var ordem = new OrdemServico(numero, new Cliente("Ana", "51999999999", "ana@example.com"),
             null, new Notebook("Dell", "Aquece", 8));
