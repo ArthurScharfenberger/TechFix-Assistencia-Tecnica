@@ -1,0 +1,9 @@
+Testes reais | Maven Surefire | Atividade 12
+com.techfix.dominio.EquipamentoTest: 4 testes; falhas=0, erros=0, ignorados=0
+com.techfix.dominio.OrdemServicoTest: 4 testes; falhas=0, erros=0, ignorados=0
+com.techfix.dominio.ReciclagemTest: 5 testes; falhas=0, erros=0, ignorados=0
+com.techfix.dominio.RoteiroDiagnosticoTest: 6 testes; falhas=0, erros=0, ignorados=0
+com.techfix.dominio.ServicoOrdensTest: 5 testes; falhas=0, erros=0, ignorados=0
+com.techfix.repositorio.RepositorioOrdensEmArquivoTest: 6 testes; falhas=0, erros=0, ignorados=0
+com.techfix.repositorio.RepositorioOrdensEmMemoriaTest: 1 testes; falhas=0, erros=0, ignorados=0
+TOTAL: 31 testes; falhas=0, erros=0, ignorados=0

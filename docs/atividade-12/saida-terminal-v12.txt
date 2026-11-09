@@ -1,0 +1,26 @@
+EXECUCAO 1
+> java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
+TECHFIX | Historico de ordens concluidas
+Arquivo: dados\ordens.tsv
+Registros antes: 0
+OS 1: ABERTA -> EM_ATENDIMENTO
+  - Verificar fonte e conector de alimentação
+  - Testar os 16 GB de memória RAM
+  - Verificar armazenamento e refrigeração
+OS 1 salva: CONCLUIDA
+Registros depois: 1
+OS 1 | João Silva | NOTEBOOK | CONCLUIDA | R$ 120.00
+
+EXECUCAO 2
+> java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
+TECHFIX | Historico de ordens concluidas
+Arquivo: dados\ordens.tsv
+Registros antes: 1
+OS 2: ABERTA -> EM_ATENDIMENTO
+  - Verificar fonte e conector de alimentação
+  - Testar os 16 GB de memória RAM
+  - Verificar armazenamento e refrigeração
+OS 2 salva: CONCLUIDA
+Registros depois: 2
+OS 1 | João Silva | NOTEBOOK | CONCLUIDA | R$ 120.00
+OS 2 | João Silva | NOTEBOOK | CONCLUIDA | R$ 120.00

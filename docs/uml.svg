@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1490" viewBox="0 0 2000 1490">
+<rect width="100%" height="100%" fill="white"/>
+<text x="40" y="46" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">TechFix | Atividade 12 | Arquitetura e persistência</text>
+<rect x="40" y="90" width="1920" height="210" fill="#eef6fc" stroke="#172b40" stroke-width="2"/>
+<text x="60" y="128" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">«package» com.techfix.app</text>
+<rect x="40" y="350" width="1920" height="670" fill="#eff9f4" stroke="#172b40" stroke-width="2"/>
+<text x="60" y="388" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">«package» com.techfix.dominio</text>
+<rect x="40" y="1080" width="1920" height="290" fill="#fff7e9" stroke="#172b40" stroke-width="2"/>
+<text x="60" y="1118" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">«package» com.techfix.repositorio</text>
+<rect x="710" y="145" width="530" height="129" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="725" y="183" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">Main</text>
+<polyline points="710,197 1240,197" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="725" y="228" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ main(args: String[]): void</text>
+<text x="725" y="260" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">Escolhe arquivo e injeta a interface</text>
+<rect x="90" y="425" width="500" height="225" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="105" y="463" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">ServicoOrdens</text>
+<polyline points="90,477 590,477" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="105" y="508" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">- repositorio: RepositorioOrdens</text>
+<text x="105" y="540" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ ServicoOrdens(repositorio)</text>
+<text x="105" y="572" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ concluir(ordem): RegistroOrdem</text>
+<text x="105" y="604" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ listar(): List&lt;RegistroOrdem&gt;</text>
+<text x="105" y="636" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ proximoNumero(): int</text>
+<rect x="710" y="425" width="530" height="129" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="725" y="463" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">«interface» RepositorioOrdens</text>
+<polyline points="710,477 1240,477" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="725" y="508" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ salvar(registro: RegistroOrdem): void</text>
+<text x="725" y="540" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ listar(): List&lt;RegistroOrdem&gt;</text>
+<rect x="90" y="745" width="500" height="225" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="105" y="783" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">OrdemServico</text>
+<polyline points="90,797 590,797" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="105" y="828" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">- status: StatusOrdemServico</text>
+<text x="105" y="860" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ calcularTotal(): BigDecimal</text>
+<text x="105" y="892" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ alterarStatus(status): void</text>
+<text x="105" y="924" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ getNumero() / getNomeCliente()</text>
+<text x="105" y="956" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ getTipoEquipamento()</text>
+<rect x="1360" y="745" width="510" height="225" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="1375" y="783" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">«record» RegistroOrdem</text>
+<polyline points="1360,797 1870,797" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1375" y="828" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">numero: int</text>
+<text x="1375" y="860" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">cliente: String</text>
+<text x="1375" y="892" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">equipamento: TipoEquipamento</text>
+<text x="1375" y="924" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">status: StatusOrdemServico</text>
+<text x="1375" y="956" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">total: BigDecimal</text>
+<rect x="370" y="1150" width="640" height="161" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="385" y="1188" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">RepositorioOrdensEmMemoria</text>
+<polyline points="370,1202 1010,1202" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="385" y="1233" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">- registros: List&lt;RegistroOrdem&gt;</text>
+<text x="385" y="1265" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ salvar(registro): void</text>
+<text x="385" y="1297" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ listar(): List&lt;RegistroOrdem&gt;</text>
+<rect x="1210" y="1150" width="650" height="161" fill="white" stroke="#172b40" stroke-width="2"/>
+<text x="1225" y="1188" font-family="Arial" font-size="26" font-weight="bold" fill="#172b40">RepositorioOrdensEmArquivo</text>
+<polyline points="1210,1202 1860,1202" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1225" y="1233" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">- arquivo: Path</text>
+<text x="1225" y="1265" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ salvar(registro): void</text>
+<text x="1225" y="1297" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">+ listar(): List&lt;RegistroOrdem&gt;</text>
+<polyline points="710,220 530,220 530,425" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polyline points="520.0,405.0 530,425 540.0,405.0" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="550" y="335" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">cria e injeta</text>
+<polyline points="590,500 710,500" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polyline points="690.0,510.0 710,500 690.0,490.0" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="602" y="485" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">usa</text>
+<polyline points="340,650 340,745" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polyline points="330.0,725.0 340,745 350.0,725.0" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="355" y="700" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">conclui</text>
+<polyline points="1240,480 1630,480 1630,745" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polyline points="1620.0,725.0 1630,745 1640.0,725.0" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1380" y="463" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">salva / lista dados</text>
+<polyline points="590,620 1460,620 1460,745" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polyline points="1450.0,725.0 1460,745 1470.0,725.0" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1030" y="650" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">cria registro</text>
+<polyline points="690,1150 690,1050 1290,1050 1290,575 1000,575 1000,554" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polygon points="1000,554 1010.0,574.0 990.0,574.0" fill="white" stroke="#172b40" stroke-width="2"/>
+<polyline points="1535,1150 1535,1050 1290,1050" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="740" y="1080" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">realizam o contrato</text>
+<polyline points="1240,220 1910,220 1910,1240 1860,1240" fill="none" stroke="#172b40" stroke-width="2" stroke-dasharray="8 6"/>
+<polyline points="1880.0,1230.0 1860,1240 1880.0,1250.0" fill="none" stroke="#172b40" stroke-width="2"/>
+<text x="1350" y="205" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">cria implementação concreta</text>
+<text x="710" y="795" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">Modelo anterior mantido no domínio:</text>
+<text x="710" y="832" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">Cliente, Tecnico, Equipamento, Notebook, Desktop,</text>
+<text x="710" y="864" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">RoteiroDiagnostico, PoliticaCobranca, PoliticasCobranca,</text>
+<text x="710" y="896" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">CobrancaNotebook, CobrancaDesktop e os dois enums.</text>
+<text x="710" y="928" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">As relações internas desse modelo estão no UML da A11.</text>
+<text x="40" y="1420" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">Seta tracejada: dependência. Triângulo vazio tracejado: realização de interface.</text>
+<text x="40" y="1455" font-family="Arial" font-size="20" font-weight="normal" fill="#172b40">Recorte da A12: app → domínio e repositório; repositório → domínio. Domínio não importa implementações.</text>
+</svg>

@@ -1,8 +1,26 @@
 # Código Java — TechFix
 
+## Estado atual - Atividade 12
+
+O código está em três pacotes sob `com.techfix`: `dominio` (entidades, `ServicoOrdens`, `RegistroOrdem` e interface `RepositorioOrdens`), `repositorio` (memória e arquivo TSV) e `app` (`Main`). A escolha do repositório fica no `Main`; o serviço recebe a interface pelo construtor. São **31 testes JUnit**, incluindo 12 novos de serviço e persistência. Requer **JDK 25 e Maven**.
+
+Na raiz do repositório:
+
+```sh
+mvn -B -f backend/pom.xml clean test
+java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
+java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
+```
+
+[Documentação e evidências da A12](../../docs/atividade-12/README.md) · [UML atual](../../docs/uml.png).
+
+## Histórico das etapas anteriores
+
+As descrições e contagens abaixo registram as atividades anteriores. Os arquivos Java foram movidos para os pacotes da A12; a estrutura e os comandos vigentes estão acima.
+
 Esta pasta contém a implementação Java das atividades semanais de Programação Orientada a Objetos. Na entrega final da Atividade Semanal nº 8, `Equipamento` passou a ser uma superclasse abstrata de `Notebook` e `Desktop`. O código utiliza Java 17, dois enums, herança, polimorfismo e validações básicas. Maven foi configurado para compilar o projeto e executar os testes JUnit 5.
 
-Não há API, Spring, banco de dados, packages ou integração com o frontend.
+Não há API, Spring, banco de dados ou integração com o frontend.
 
 ## Arquivos principais
 
@@ -38,7 +56,7 @@ Sem plugin adicional do Maven, o cenário pode ser executado diretamente:
 
 ```bash
 mvn compile
-java -cp target/classes Main
+java -cp target/classes com.techfix.app.Main
 ```
 
 Ao final, a execução percorre uma `List<Equipamento>` com um `Notebook` e um `Desktop`. O mesmo método herdado produz descrições diferentes por meio das sobrescritas de `descreverAtendimento()`.

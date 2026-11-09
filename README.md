@@ -1,27 +1,41 @@
 # TechFix — Sistema de Assistência Técnica
 
-## Atividade 11 — Entrega final (`v11`)
+## Atividade 12 - Entrega final (`v12`)
 
-Entrega: [versão v11 no GitHub](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v11).
-Documentos: [cinco regras de negócio](docs/atividade-11/especificacao.md), [diagrama PNG](docs/atividade-11/uml.png), [SVG editável](docs/atividade-11/uml.svg) e [Ficha de Entrega preenchida](docs/atividade-11/ficha-entrega-v11.md).
+**Link de entrega:** [versão v12 no GitHub](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v12).
+**Ficha:** [PDF preenchido](docs/atividade-12/Ficha_Padrao_Entrega_Atividade_12_Final.pdf) e [texto](docs/atividade-12/ficha-entrega-v12.md).
 
-O diagnóstico custa R$ 80,00 para notebook e R$ 60,00 para desktop. `PoliticasCobranca.para()` concentra a seleção por tipo, e `OrdemServico` guarda uma `PoliticaCobranca` para somar o diagnóstico aos itens adicionais. A ordem cria suas partes e expõe uma cópia não modificável da lista. O responsável técnico é opcional (`0..1`). A herança e o contrato de diagnóstico das etapas anteriores continuam no cenário integrado.
+O Java está organizado em três pacotes: `com.techfix.dominio` (entidades, regras, serviço, registro e contrato), `com.techfix.repositorio` (memória e arquivo) e `com.techfix.app` (montagem do cenário). A interface `RepositorioOrdens` fica no domínio e define `salvar` e `listar`; suas implementações dependem dela. Nenhuma classe de domínio importa implementações concretas. `ServicoOrdens` recebe a interface pelo construtor; `Main` escolhe o arquivo.
 
-Com Java 25 e Maven instalados, execute na raiz:
+**Regra guardada em cada registro:** o total da ordem na conclusão é o diagnóstico de R$ 80,00 para notebook ou R$ 60,00 para desktop, somado aos itens adicionais.
+
+`RegistroOrdem` guarda apenas número, cliente, tipo de equipamento, status e total. O arquivo TSV em UTF-8 usa `java.nio.file`. Erros de leitura e escrita são relançados como `UncheckedIOException` com mensagem e causa. O serviço só conclui ordens em atendimento, recusa números já registrados e preserva o estado quando salvar falha. O exemplo atende uma execução por vez.
+
+Com **JDK 25 e Maven**, execute na raiz (confira o JDK usado com `java -version` e `mvn -v`):
 
 ```sh
-mvn -f backend/pom.xml clean test
-java -cp backend/target/classes Main
+mvn -B -f backend/pom.xml clean test
+java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
+java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
 ```
 
-Os 19 testes incluem cinco da reciclagem: valores por tipo, soma de item adicional, lista não modificável, cópia independente e rejeição de valor negativo. `Main` abre a ordem, registra o serviço, consulta o roteiro, calcula R$ 120,00 para notebook com limpeza e conclui o atendimento; também demonstra R$ 60,00 para desktop sem técnico.
+Se `java -version` mostrar 17, ajuste `JAVA_HOME` para a instalação do JDK 25 e coloque seu diretório `bin` no início do `PATH`. Não basta ter o JDK instalado: Maven e `java` precisam usar essa versão.
 
-Registro gráfico gerado a partir da saída real do processo Java (também disponível como [texto](docs/atividade-11/saida-terminal-v11.txt)):
+**Validação:** 31 testes JUnit aprovados, sendo 19 preservados da v11 e 12 novos. Incluem serviço com memória, recuperação por uma nova instância com `@TempDir`, preservação de dados, caracteres especiais e falhas reais de leitura/escrita. [Resultado dos testes](docs/atividade-12/resultado-testes.txt).
 
-![Saída real de Main — TechFix v11](docs/atividade-11/terminal-v11.png)
+**Duas execuções seguidas:** a primeira parte de zero e salva a OS 1; a segunda recupera a OS 1, acrescenta a OS 2 e lista ambas. O print abaixo é uma representação gráfica da [saída real de duas JVMs](docs/atividade-12/saida-terminal-v12.txt), gerada em uma pasta temporária com o mesmo arquivo nas duas chamadas. Com um arquivo que já contenha registros, os números continuam a partir do histórico existente.
 
-Trabalho desenvolvido com apoio do OpenAI Codex na implementação, nos testes e na documentação.
+![Terminal - duas execuções reais com persistência](docs/atividade-12/terminal-v12.png)
 
+**UML atualizado:** [PNG](docs/uml.png) e [SVG editável](docs/uml.svg).
+
+![Pacotes, contrato e implementações do repositório](docs/uml.png)
+
+[Decisões, formato e testes](docs/atividade-12/README.md) · [Guia para a microdefesa](docs/atividade-12/microdefesa.md).
+
+Trabalho desenvolvido com apoio do OpenAI Codex na implementação, nos testes e na documentação, conforme declaração da ficha. A revisão, a compreensão e o envio na plataforma Aula cabem à equipe; o material não atesta submissão já realizada.
+
+A [entrega anterior da Atividade 11](docs/atividade-11/README.md) e a [tag v11](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v11) permanecem como histórico.
 
 O TechFix é um projeto acadêmico para organizar clientes, equipamentos, ordens de serviço, reparos e o trabalho da equipe de uma assistência técnica.
 
@@ -49,7 +63,7 @@ Essa autenticação existe apenas para demonstração acadêmica. Como é execut
 
 A implementação Java representa clientes, técnicos, equipamentos e ordens de serviço. A AP2 reúne coleções de ordens por cliente (A6), composição de itens (A7), herança entre Equipamento, Notebook e Desktop (A8) e interface/polimorfismo de roteiros de diagnóstico (A9). `Main` demonstra o cenário integrado entre os objetos Java.
 
-Esta etapa usa Java 25 e Maven para 19 testes JUnit. Não há Spring, banco de dados, API REST ou declarações de package. Java e TypeScript ainda não se comunicam.
+Esta etapa usa Java 25 e Maven para 31 testes JUnit, três pacotes e persistência em arquivo. Não há Spring, banco de dados ou API REST. Java e TypeScript ainda não se comunicam.
 
 Uma visão geral da área Java está em [`backend/README.md`](backend/README.md). As instruções de compilação e a descrição das classes estão em [`backend/src/README.md`](backend/src/README.md), e o esboço da Atividade 6 está em [`backend/docs/atividade-semanal-06-esboco.md`](backend/docs/atividade-semanal-06-esboco.md).
 
@@ -67,19 +81,13 @@ TechFix/
 │   ├── README.md
 │   └── src/
 │       ├── README.md
-│       ├── main/java/
-│       │   ├── Cliente.java
-│       │   ├── Desktop.java
-│       │   ├── Equipamento.java
-│       │   ├── Main.java
-│       │   ├── Notebook.java
-│       │   ├── OrdemServico.java
-│       │   ├── StatusOrdemServico.java
-│       │   ├── Tecnico.java
-│       │   └── TipoEquipamento.java
-│       └── test/java/
-│           ├── EquipamentoTest.java
-│           └── OrdemServicoTest.java
+│       ├── main/java/com/techfix/
+│       │   ├── app/           # Main
+│       │   ├── dominio/       # entidades, serviço, registro e interface
+│       │   └── repositorio/   # implementações em memória e arquivo
+│       └── test/java/com/techfix/
+│           ├── dominio/       # 24 testes
+│           └── repositorio/   # 7 testes
 ├── Diagrama-Classes/
 │   ├── DiagramaClasses.png
 │   └── README.md

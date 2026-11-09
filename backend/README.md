@@ -1,5 +1,23 @@
 # Backend Java — TechFix
 
+## Estado atual - Atividade 12
+
+O código está em três pacotes sob `com.techfix`: `dominio` (entidades, `ServicoOrdens`, `RegistroOrdem` e interface `RepositorioOrdens`), `repositorio` (memória e arquivo TSV) e `app` (`Main`). A escolha do repositório fica no `Main`; o serviço recebe a interface pelo construtor. São **31 testes JUnit**, incluindo 12 novos de serviço e persistência. Requer **JDK 25 e Maven**.
+
+Na raiz do repositório:
+
+```sh
+mvn -B -f backend/pom.xml clean test
+java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
+java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
+```
+
+[Documentação e evidências da A12](../docs/atividade-12/README.md) · [UML atual](../docs/uml.png).
+
+## Histórico das etapas anteriores
+
+As descrições e contagens abaixo registram as atividades anteriores. Os arquivos Java foram movidos para os pacotes da A12; a estrutura e os comandos vigentes estão acima.
+
 Esta pasta isola a atividade de Programação Orientada a Objetos do frontend do TechFix.
 
 Neste momento, o termo `backend` identifica apenas a área reservada ao código Java acadêmico. Ainda não existe um servidor: não há API REST, banco de dados, endpoints, Spring ou comunicação com o frontend TypeScript. O Maven é usado para compilar o projeto e executar os testes JUnit.
@@ -68,4 +86,4 @@ O uso de inteligência artificial durante a preparação está registrado em [IA
 
 A mesma chamada pela interface seleciona a implementação do objeto em tempo de execução, sem `instanceof` ou seleção por tipo no cliente. Essa substituição e ligação dinâmica caracterizam polimorfismo, além da reutilização de dados por herança.
 
-Execute `mvn test` e `java -cp target/classes Main` nesta pasta. São 14 testes aprovados, incluindo seis novos testes em `RoteiroDiagnosticoTest`. [Ficha final](../docs/Ficha_Padrao_Entrega_Atividade_09_Final.pdf) e [documentação completa](../docs/atividade-semanal-09-poo-entrega-final.md).
+Execute `mvn test` e `java -cp target/classes com.techfix.app.Main` nesta pasta. São 14 testes aprovados, incluindo seis novos testes em `RoteiroDiagnosticoTest`. [Ficha final](../docs/Ficha_Padrao_Entrega_Atividade_09_Final.pdf) e [documentação completa](../docs/atividade-semanal-09-poo-entrega-final.md).

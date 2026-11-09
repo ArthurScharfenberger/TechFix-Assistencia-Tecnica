@@ -32,7 +32,7 @@ $result = 1
 Push-Location $root
 try {
  foreach ($name in @('java','javac','mvn')) {
-  if (-not (Get-Command $name -ErrorAction SilentlyContinue)) { throw "Comando '$name' ausente. Confira JDK 17+ e Maven no PATH." }
+  if (-not (Get-Command $name -ErrorAction SilentlyContinue)) { throw "Comando '$name' ausente. Confira JDK 25 e Maven no PATH." }
  }
  $logDirectory = Join-Path $root 'tmp/testes-poo'
  New-Item -ItemType Directory -Path $logDirectory -Force | Out-Null
@@ -60,7 +60,7 @@ try {
  $total=0; $passed=0; $failures=0; $errors=0; $skipped=0
  foreach ($report in ($reports | Sort-Object Name)) {
   [xml]$xml = Get-Content -LiteralPath $report.FullName -Raw -Encoding UTF8
-  $suite=$xml.testsuite; $cases=@($suite.SelectNodes('testcase')); $title=$groups[[string]$suite.name]
+  $suite=$xml.testsuite; $cases=@($suite.SelectNodes('testcase')); $title=$groups[([string]$suite.name).Split('.')[-1]]
   if (-not $title) { $title=[string]$suite.name }
   Write-Host ''
   Write-Host "  $title" -ForegroundColor Cyan
@@ -88,7 +88,7 @@ try {
  Write-Host '    Código dos testes: backend/src/test/java/'
  Write-Host '    Relatórios JUnit: backend/target/surefire-reports/'
  Write-Host '    Log completo: tmp/testes-poo/ultima-execucao.log'
- Write-Host '  Demonstração: java -cp backend/target/classes Main'
+ Write-Host '  Demonstração: java -cp backend/target/classes com.techfix.app.Main'
  $result=0
 } catch {
  Write-Host "ATENÇÃO: $($_.Exception.Message)" -ForegroundColor Red

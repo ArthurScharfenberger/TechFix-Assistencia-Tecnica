@@ -312,3 +312,12 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 - Ajustado o roteiro para 6 minutos e 20 segundos, incluindo um minuto de execução ao vivo. Atualizado e conferido visualmente o PDF de três páginas; gerador incluído em `scripts/`.
 - Reexecutados build TypeScript/Vite, cinco testes do site, 14 testes JUnit offline e `Main`, com sucesso. Slides preservados: já cobrem A6–A9, com mídias intactas.
 - A entrega inclui o visual aprovado da oficina e será identificada por commit publicado e tag anotada `ap2`. A apresentação e a submissão no AVA permanecem sob responsabilidade da equipe.
+
+## 09/11/2026 - Atividade 12: arquitetura e reposit?rio
+
+- C?digo Java organizado em `com.techfix.dominio`, `com.techfix.repositorio` e `com.techfix.app`, mantendo a evolu??o da tag `v11`.
+- `ServicoOrdens` recebe `RepositorioOrdens` por construtor; `RegistroOrdem` guarda os dados da conclus?o, incluindo o total calculado.
+- Implementa??es em mem?ria e texto TSV via `java.nio.file`; erros propagados como `UncheckedIOException`.
+- 31 testes aprovados com JDK 25 (19 anteriores e 12 novos), incluindo recupera??o por nova inst?ncia com `@TempDir`. Duas JVMs comprovaram hist?rico 0 ? 1 e 1 ? 2.
+- UML em `docs/uml.png`, print no README, ficha de entrega e guia de microdefesa em `docs/atividade-12`. Apoio de implementa??o e documenta??o por OpenAI Codex declarado na ficha.
+- Altera??es locais anteriores de documentos e frontend foram preservadas fora dos commits da A12.
