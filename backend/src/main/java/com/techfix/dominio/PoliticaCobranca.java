@@ -1,3 +1,5 @@
+package com.techfix.dominio;
+
 import java.math.BigDecimal;
 
 /** Valor fixo do diagnóstico; reparos adicionais são itens separados. */

@@ -1,3 +1,5 @@
+package com.techfix.dominio;
+
 public class Tecnico {
     private String nome;
     private String especialidade;

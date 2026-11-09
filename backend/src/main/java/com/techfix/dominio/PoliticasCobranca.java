@@ -1,3 +1,5 @@
+package com.techfix.dominio;
+
 /** Único ponto que escolhe a política de cobrança pelo tipo. */
 public final class PoliticasCobranca {
     private PoliticasCobranca() { }

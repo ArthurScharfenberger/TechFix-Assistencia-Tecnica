@@ -1,3 +1,5 @@
+package com.techfix.dominio;
+
 public abstract class Equipamento implements RoteiroDiagnostico {
     private final TipoEquipamento tipo;
     private final String marca;

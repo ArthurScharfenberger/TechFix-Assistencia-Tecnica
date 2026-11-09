@@ -1,3 +1,5 @@
+package com.techfix.dominio;
+
 public class Desktop extends Equipamento {
     private final boolean placaVideoDedicada;
 

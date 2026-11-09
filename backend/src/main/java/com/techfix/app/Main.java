@@ -1,3 +1,7 @@
+package com.techfix.app;
+
+import com.techfix.dominio.*;
+
 import java.math.BigDecimal;
 import java.util.List;
 

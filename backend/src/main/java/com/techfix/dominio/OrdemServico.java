@@ -1,3 +1,5 @@
+package com.techfix.dominio;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,18 @@ public class OrdemServico {
 
     public StatusOrdemServico getStatus() {
         return status;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getNomeCliente() {
+        return cliente.getNome();
+    }
+
+    public TipoEquipamento getTipoEquipamento() {
+        return equipamento.getTipo();
     }
 
     public BigDecimal calcularTotal() {

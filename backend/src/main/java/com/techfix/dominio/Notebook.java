@@ -1,3 +1,5 @@
+package com.techfix.dominio;
+
 public class Notebook extends Equipamento {
     private final int memoriaRamGb;
 

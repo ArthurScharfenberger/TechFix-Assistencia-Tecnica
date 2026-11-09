@@ -1,3 +1,5 @@
+package com.techfix.dominio;
+
 import java.util.ArrayList;
 import java.util.List;
 
