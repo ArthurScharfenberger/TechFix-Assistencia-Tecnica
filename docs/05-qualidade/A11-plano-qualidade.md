@@ -53,6 +53,7 @@ Os critérios da A7 §2.5 continuam valendo. Foram acrescentados os critérios Q
 | Q3 | O revisor conferiu o item contra a meta da característica afetada neste plano | Em revisão | Registro do revisor com a meta conferida |
 | Q4 | Itens que alteram abertura, estado ou histórico passaram pela falha de gravação simulada sem OS parcial | Em verificação | Teste de integração com falha injetada |
 | Q5 | Itens ligados ao RNF1 têm a medição de p95 registrada no ambiente de ensaio | Em verificação, antes de Pronta tecnicamente | Relatório de carga |
+| Q6 | Documento entregue conferido contra a fonte versionada; requisito alterado atualiza critérios CA e matriz no mesmo commit (acrescentado pela A12) | Em revisão | Registro do revisor com o diff conferido |
 
 ## 2.7 Correções do esboço e da AP2
 
@@ -77,3 +78,4 @@ Os critérios da A7 §2.5 continuam valendo. Foram acrescentados os critérios Q
 | 11/11/2026 | A12, achado D16 | Meta de Segurança enumera as 14 tentativas negadas da matriz de perfis do RNF2 |
 | 11/11/2026 | A12, achado D17 e validação V2 | Meta de Capacidade de interação passa de ≤ 2 min para ≤ 1 min (cliente cadastrado) e ≤ 3 min (cliente novo), com participantes definidos |
 | 11/11/2026 | A12, achado D18 | Verificação de Confiabilidade indica o dublê de `RepositorioOrdens` |
+| 11/11/2026 | A12, síntese | Critério Q6 acrescentado à Definition of Done |

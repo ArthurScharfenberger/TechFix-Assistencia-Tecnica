@@ -12,9 +12,43 @@
     "decisoes": "Priorizar cinco características da ISO/IEC 25010:2023: Adequação funcional, Segurança, Confiabilidade, Eficiência de desempenho e Capacidade de interação. Adiar Compatibilidade, Flexibilidade, Manutenibilidade e Proteção. Integridade acima de desempenho e login individual com sessão de 30 min. Critérios Q1–Q5 acrescentados à Definition of Done da A7.",
     "pendencias": "Revisar o plano com critérios na A12. Transformar as metas em casos de teste na A13. Confirmar com o PO a disponibilidade de participantes para o teste de usabilidade. Revisar o conteúdo em dupla e assinar.",
     "ia": [
-      ["11/11/2026 — Claude (Claude Code)", "Elaborar o esboço e a entrega final do plano de qualidade a partir do dossiê A3–A10.", "Ler A3, A4, A5, A7, A8, A9, A10 e AP2; priorizar 3 a 5 características da ISO/IEC 25010:2023 justificadas por códigos; montar tabela com métrica, meta, verificação, responsável e momento; conflitos e DoD.", "Aproveitados a estrutura, as justificativas e as metas. Responsáveis seguem os donos dos riscos da A8. Não foram inventados feedback da AP2, reuniões ou aceite do PO."]
+      [
+        "11/11/2026 — Claude (Claude Code)",
+        "Elaborar o esboço e a entrega final do plano de qualidade a partir do dossiê A3–A10.",
+        "Ler A3, A4, A5, A7, A8, A9, A10 e AP2; priorizar 3 a 5 características da ISO/IEC 25010:2023 justificadas por códigos; montar tabela com métrica, meta, verificação, responsável e momento; conflitos e DoD.",
+        "Aproveitados a estrutura, as justificativas e as metas. Responsáveis seguem os donos dos riscos da A8. Não foram inventados feedback da AP2, reuniões ou aceite do PO."
+      ]
     ],
     "verificacao_ia": "Conferência dos códigos citados contra os PDFs da A3, A5, A8 e A10; conferência dos nomes da ISO/IEC 25010:2023; checagem de que toda meta tem número ou critério verificável. Uso registrado no DEVLOG.md.",
+    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
+  },
+  "A12": {
+    "titulo": "Entrega de Atividade Semanal - Atividade 12",
+    "atividade": "A12 — Revisar artefatos com critérios — Entrega final",
+    "etapa": "AS",
+    "equipe": "TechFix",
+    "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
+    "data": "11/11/2026 (revisão e elaboração; o prazo original do enunciado era 28/10/2026)",
+    "fonte": "docs/05-qualidade/A12-revisao-artefatos.md",
+    "saida": "docs/05-qualidade/A12-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/05-qualidade",
+    "decisoes": "Inspeção com checklists sim/não de requisitos (A4/A5), matriz (A10) e plano de qualidade (A11). Revisor simulado por IA, porque os dois integrantes escreveram juntos os artefatos. 18 achados aceitos e 4 sugestões rejeitadas. Crítico e maiores corrigidos nos commits 714ac8a, d62fbe6 e f092cb0. Fonte única dos requisitos em docs/dossie e critério Q6 na Definition of Done.",
+    "pendencias": "D08 (dividir RF2), D09 (grafia dos estados no código) e D13 (tela do técnico), previstos para o I2. Confirmar V1 e V2 com o PO Chico Mosca, já que o stakeholder da A3 é simulado. Revisar em dupla e assinar.",
+    "ia": [
+      [
+        "11/11/2026 — Claude (Claude Code)",
+        "Atuar como revisor simulado na inspeção dos três artefatos.",
+        "Prompt sugerido no enunciado, com cada artefato e seu checklist (CK-R, CK-M, CK-Q): responder sim/não por critério, apontar onde está o problema e não sugerir soluções.",
+        "22 possíveis achados; 18 aceitos (D01–D18) e 4 rejeitados, com justificativa na seção 2.4."
+      ],
+      [
+        "11/11/2026 — Claude (Claude Code)",
+        "Simular o stakeholder Marcos Almeida (A3) na validação V1 e V2 e redigir a ficha.",
+        "Interpretar o atendente da A3 e responder às perguntas sobre e-mail obrigatório e tempo aceitável de abertura; organizar planejamento, achados, evidências e síntese.",
+        "Respostas usadas para corrigir RF1 e criar o RNF3; texto da ficha aproveitado. A validação com o PO real continua pendente."
+      ]
+    ],
+    "verificacao_ia": "Cada achado aceito foi conferido no PDF de origem (A5 §2.2.1, A10 §2.5, A11) e no protótipo (classe Cliente). Diffs das correções nos commits citados. Conversa resumida no DEVLOG.md.",
     "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
   }
 }

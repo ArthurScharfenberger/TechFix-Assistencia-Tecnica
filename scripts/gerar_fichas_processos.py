@@ -90,13 +90,14 @@ class Escritor:
     def larguras(linhas, tamanho):
         """Garante a maior palavra de cada coluna e reparte o resto pelo volume de texto."""
         colunas = len(linhas[0])
-        por_caractere = tamanho * 11.5  # largura média aproximada, em dxa
+        por_caractere = tamanho * 9  # largura média aproximada, em dxa
         minimo = []
         volume = []
         for i in range(colunas):
             textos = [re.sub(r"[*`]", "", linha[i]).replace("<br>", " ") for linha in linhas]
             maior = max((len(p) for t in textos for p in t.split()), default=4)
-            minimo.append(min(maior + 2, 22) * por_caractere)
+            # + margens internas da célula (cerca de 115 dxa de cada lado)
+            minimo.append(max(min(maior, 11 if colunas >= 8 else 16) * por_caractere + 230, 560))
             volume.append(sum(len(t) for t in textos[1:]) / max(len(textos) - 1, 1) + 1)
         sobra = max(LARGURA_TABELA - sum(minimo), 0)
         larguras = [int(m + sobra * v / sum(volume)) for m, v in zip(minimo, volume)]
