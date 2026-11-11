@@ -68,7 +68,7 @@ Critérios Dado/Quando/Então da A5 §2.2.2, numerados e complementados na A12. 
 | CA15 | RNF3 | Dado o atendente com sessão aberta e sem ajuda, quando abrir uma OS para cliente já cadastrado, então conclui em até 1 min; para cliente novo, em até 3 min. |
 | CA16 | RN2, RF2, HU1 | Dado que a OS de origem está CONCLUÍDA há no máximo 90 dias, quando o atendente abrir o retorno em garantia para o mesmo equipamento, então o sistema cria uma OS ABERTA marcada "Garantia", vinculada à OS de origem, e a OS de origem continua CONCLUÍDA. |
 | CA17 | RN2 | Dado que a OS de origem foi concluída há 91 dias ou mais, quando o atendente pedir o retorno em garantia, então o sistema recusa com "Prazo de garantia encerrado em dd/mm/aaaa. Abra uma OS comum." e não cria OS. |
-| CA18 | RN2 | Dado que a OS de origem não está CONCLUÍDA ou é de outro equipamento, quando o atendente pedir o retorno em garantia, então o sistema recusa, informa o motivo e não cria OS. |
+| CA18 | RN2 | Dado que a OS de origem não está CONCLUÍDA ou é de outro equipamento, quando o atendente pedir o retorno em garantia, então o sistema recusa com "A OS n ainda não foi concluída." ou "A OS n é de outro equipamento." e não cria OS. |
 | CA19 | RF3, RN2 | Dado um retorno em garantia aberto, quando o usuário consultar a OS de garantia, então vê o número e o defeito da OS de origem; ao consultar a OS de origem, vê o número da OS de garantia. |
 
 ## Glossário
