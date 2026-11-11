@@ -2,6 +2,31 @@
 
 Mudanças do dossiê de Processos de Engenharia de Software do TechFix (requisitos, backlog, matriz, plano de qualidade e testes). O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/), e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/). As tags `v11` e `v12` são entregas de POO e não fazem parte desta numeração.
 
+## [1.1.0] - 2026-11-11
+
+Solicitação de mudança SM-01 (retorno de equipamento em garantia), aprovada parcialmente.
+
+### Adicionado
+
+- RN2: retorno em garantia vinculado a uma OS concluída do mesmo equipamento, em até 90 dias corridos após a conclusão; a OS de origem continua CONCLUÍDA.
+- Critérios CA16–CA19 e casos de teste CT19–CT22, com valor limite no 90º e no 91º dia.
+- Item de backlog A8R10 (I2), incremento I3 com A8R11 e item adiado A8R12 (confirmação da garantia pelo técnico).
+- Risco R5 (garantia marcada para defeito diferente) e registro da SM-01 em `docs/06-evolucao/`.
+
+### Alterado
+
+- RF2, RF3 e HU1 passam a tratar o retorno em garantia e a exibir o vínculo entre as OS.
+- A8R08 fica só com a busca por nome parcial (P); o filtro por equipamento (CA10, CT12) passa para o I3.
+- Matriz de rastreabilidade com as linhas afetadas marcadas com [SM-01]; meta de Adequação funcional da A11 inclui a RN2.
+
+### Corrigido
+
+- Nada nesta versão.
+
+### Removido
+
+- Nada nesta versão. Nenhum requisito foi retirado; o filtro por equipamento foi apenas reprogramado.
+
 ## [1.0.0] - 2026-11-11
 
 Linha de base do dossiê, antes da solicitação de mudança SM-01.
@@ -18,4 +43,5 @@ Linha de base do dossiê, antes da solicitação de mudança SM-01.
 - Tabela de requisitos validados da A5, que trazia registros de IA no lugar dos requisitos (A12, D01).
 - Transições da RN1, matriz de perfis do RNF2, e-mail opcional no RF1 e referências da matriz a arquivos removidos (A12, D02–D04 e D11).
 
+[1.1.0]: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v1.0.0

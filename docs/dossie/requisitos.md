@@ -1,6 +1,6 @@
 # Requisitos do TechFix — linha de base
 
-Fonte única versionada dos requisitos do dossiê. Consolida a A4 (redação e origem RE1–RE5) e a A5 (critérios de aceitação e priorização), com as correções da revisão da A12 (achados D01–D07 e D14; ver `docs/05-qualidade/A12-revisao-artefatos.md`). Os PDFs das entregas permanecem como histórico em `docs/entregas-processos/`.
+Fonte única versionada dos requisitos do dossiê. Consolida a A4 (redação e origem RE1–RE5) e a A5 (critérios de aceitação e priorização), com as correções da revisão da A12 (achados D01–D07 e D14; ver `docs/05-qualidade/A12-revisao-artefatos.md`) e a mudança aprovada parcialmente na SM-01 (v1.1.0; ver `docs/06-evolucao/SM-01-retorno-em-garantia.md`). Os PDFs das entregas permanecem como histórico em `docs/entregas-processos/`.
 
 Origem: A3 — entrevista semiestruturada simulada com Marcos Almeida, atendente (`Atividade_03_Levantamento_Requisitos_TechFix.pdf`).
 
@@ -13,6 +13,7 @@ Origem: A3 — entrevista semiestruturada simulada com Marcos Almeida, atendente
 | RE3 | Localizar ordens pelo cliente, equipamento ou número e consultar o histórico | RF3, HU1 |
 | RE4 | Dados administrativos e valores não devem ficar disponíveis para todos | RNF2 |
 | RE5 | O sistema deve ser simples e rápido, sem deixar o atendimento mais demorado | RNF1, RNF3 |
+| RE6 | SM-01: equipamento que volta com o mesmo defeito em até 90 dias deve ser atendido como garantia, ligado ao conserto anterior | RN2, RF2, RF3, HU1 |
 
 ## Requisitos validados
 
@@ -21,13 +22,14 @@ Versões validadas (substituem a tabela 2.2.1 da A5 local, que trazia registros 
 | ID | Versão validada | Origem | Prioridade |
 |---|---|---|---|
 | RF1 | O sistema deve cadastrar o cliente com nome e telefone (obrigatórios) e e-mail (opcional), e o equipamento com tipo (notebook ou desktop) e defeito relatado (obrigatórios), marca e observações de estado (opcionais), sempre vinculado a um cliente. | RE1; A3 RF01, RF02, RF14 | Must |
-| RF2 | O sistema deve abrir uma OS para cliente e equipamento vinculados, gerando número único sequencial, data/hora de abertura e estado ABERTA; deve permitir atribuir técnico e mudar o estado conforme RN1, registrando cada alteração no histórico. | RE2; A3 RF03–RF05, RF13, RF15, RF16 | Must |
-| RF3 | O sistema deve localizar OS pelo número exato, pelo nome parcial do cliente (sem diferenciar maiúsculas de minúsculas) e pelo equipamento, e exibir o histórico da OS em ordem cronológica com data, hora, usuário e alteração. | RE3; A3 RF06, RF07 | Must |
+| RF2 | O sistema deve abrir uma OS para cliente e equipamento vinculados, gerando número único sequencial, data/hora de abertura e estado ABERTA; deve permitir abrir uma OS de retorno em garantia vinculada a uma OS concluída, conforme RN2; deve permitir atribuir técnico e mudar o estado conforme RN1, registrando cada alteração no histórico. | RE2, RE6; A3 RF03–RF05, RF13, RF15, RF16; SM-01 | Must |
+| RF3 | O sistema deve localizar OS pelo número exato, pelo nome parcial do cliente (sem diferenciar maiúsculas de minúsculas) e pelo equipamento, e exibir o histórico da OS em ordem cronológica com data, hora, usuário e alteração; na OS de garantia, deve exibir o número e o defeito da OS de origem, e na OS de origem, o número da OS de garantia. | RE3, RE6; A3 RF06, RF07; SM-01 | Must |
 | RN1 | Uma OS está sempre em um dos estados ABERTA, EM ATENDIMENTO ou CONCLUÍDA. Transições permitidas: ABERTA → EM ATENDIMENTO, somente com técnico atribuído; EM ATENDIMENTO → CONCLUÍDA. Qualquer outra transição é rejeitada, inclusive ABERTA → CONCLUÍDA e qualquer saída de CONCLUÍDA, que é estado final. | RE2; A3 RF04 | Must |
+| RN2 | Uma OS de retorno em garantia só pode ser aberta vinculada a uma OS CONCLUÍDA do mesmo equipamento, até 90 dias corridos após a data de conclusão (o 90º dia ainda vale). A OS de origem continua CONCLUÍDA (RN1 não muda). A nova OS é marcada como "Garantia" e segue o ciclo da RN1. Fora do prazo, ou se a OS de origem não estiver concluída ou for de outro equipamento, o sistema recusa a garantia e informa o motivo. | RE6; SM-01 | Must |
 | RNF1 | As operações de cadastro, abertura de OS, mudança de estado e busca devem responder em até 2 s em pelo menos 95% das execuções de cada operação, com base de até 10.000 OS e 10 usuários simultâneos, medindo do comando à resposta. | RE5; A3 RNF03 | Should |
 | RNF2 | O sistema deve autenticar cada usuário e autorizar cada operação no servidor conforme a matriz de perfis abaixo, negando 100% das tentativas fora da matriz, inclusive por chamada direta à API ou sem sessão. Dados administrativos são usuários, perfis e permissões. Valores de serviço estão fora da linha de base até haver requisito aprovado (A3 RF09; risco R1). | RE4; A3 RF12, RF17, RNF04, RNF05 | Must |
 | RNF3 | O atendente deve conseguir abrir uma OS para cliente já cadastrado em até 1 min e para cliente novo (com cadastro) em até 3 min, sem ajuda, com a sessão aberta. | RE5; A3 RNF01, RNF02; validação V2 da A12 | Should |
-| HU1 | Como atendente, quero cadastrar cliente e equipamento, abrir a OS e localizá-la depois, para acompanhar o serviço sem depender de papel ou planilhas. | RE1, RE3 | Must |
+| HU1 | Como atendente, quero cadastrar cliente e equipamento, abrir a OS (inclusive o retorno em garantia ligado ao conserto anterior) e localizá-la depois, para acompanhar o serviço sem depender de papel ou planilhas. | RE1, RE3, RE6 | Must |
 | HU2 | Como técnico, quero ver somente as OS atribuídas a mim, iniciar e concluir o atendimento, para manter o andamento do serviço registrado. | RE2 | Must |
 
 ### Matriz de perfis (RNF2)
@@ -64,6 +66,10 @@ Critérios Dado/Quando/Então da A5 §2.2.2, numerados e complementados na A12. 
 | CA13 | RNF2 | Dado um perfil e uma operação fora da matriz de perfis, quando a requisição chegar ao servidor (pela interface, por chamada direta ou sem sessão), então o sistema nega e não retorna nem altera dados. |
 | CA14 | RNF1 | Dado o cenário de 10.000 OS e 10 usuários simultâneos, quando cada operação for executada pelo menos 100 vezes, então pelo menos 95% das execuções de cada operação respondem em até 2 s. |
 | CA15 | RNF3 | Dado o atendente com sessão aberta e sem ajuda, quando abrir uma OS para cliente já cadastrado, então conclui em até 1 min; para cliente novo, em até 3 min. |
+| CA16 | RN2, RF2, HU1 | Dado que a OS de origem está CONCLUÍDA há no máximo 90 dias, quando o atendente abrir o retorno em garantia para o mesmo equipamento, então o sistema cria uma OS ABERTA marcada "Garantia", vinculada à OS de origem, e a OS de origem continua CONCLUÍDA. |
+| CA17 | RN2 | Dado que a OS de origem foi concluída há 91 dias ou mais, quando o atendente pedir o retorno em garantia, então o sistema recusa com "Prazo de garantia encerrado em dd/mm/aaaa. Abra uma OS comum." e não cria OS. |
+| CA18 | RN2 | Dado que a OS de origem não está CONCLUÍDA ou é de outro equipamento, quando o atendente pedir o retorno em garantia, então o sistema recusa com "A OS n ainda não foi concluída." ou "A OS n é de outro equipamento." e não cria OS. |
+| CA19 | RF3, RN2 | Dado um retorno em garantia aberto, quando o usuário consultar a OS de garantia, então vê o número e o defeito da OS de origem; ao consultar a OS de origem, vê o número da OS de garantia. |
 
 ## Glossário
 

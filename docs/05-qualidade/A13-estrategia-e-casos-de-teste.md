@@ -43,7 +43,7 @@ Tabela de decisão da RN1, usada em CT05–CT09:
 | CT09 | RN1 · CA07 | Tabela de decisão T5 — negativo | OS 5 CONCLUÍDA | Ação: mudar para ABERTA | Abrir OS 5; Alterar estado para ABERTA | Rejeição "OS concluída não pode mudar de estado."; estado continua CONCLUÍDA | Alta | Executado: falhou (DT01) |
 | CT10 | RF3 · CA08 | Valor limite | OS de nº 1 a 25 existentes | Números 0, 1, 25 e 26 | Buscar cada número | 0: "Informe um número de OS válido."; 1 e 25: exibe cliente, equipamento, técnico e estado; 26: "Nenhuma OS encontrada com o número 26." | Alta | Não executado: busca por número prevista no I1 (A8R04) |
 | CT11 | RF3 · CA09 | Partição de equivalência (contém / não contém; maiúsculas) | Clientes Ana Souza, Carlos Souto e Bruno Lima com OS | Textos "sou" e "SOU" | Buscar por nome | Para os dois textos: OS de Ana Souza e Carlos Souto; nenhuma de Bruno Lima | Média | Não executado: I2 (A8R08) |
-| CT12 | RF3 · CA10 | Partição de equivalência (equipamento com e sem OS) | EQ-1 com OS 1 e 4; EQ-3 sem OS | Equipamentos EQ-1 e EQ-3 | Selecionar equipamento; Filtrar | EQ-1: somente OS 1 e 4; EQ-3: "Nenhuma OS para este equipamento." | Média | Não executado: I2 (A8R08) |
+| CT12 | RF3 · CA10 | Partição de equivalência (equipamento com e sem OS) | EQ-1 com OS 1 e 4; EQ-3 sem OS | Equipamentos EQ-1 e EQ-3 | Selecionar equipamento; Filtrar | EQ-1: somente OS 1 e 4; EQ-3: "Nenhuma OS para este equipamento." | Média | Não executado: I3 (A8R11, reprogramado pela SM-01) |
 | CT13 | RF3 · CA11 | Partição de equivalência (OS com vários eventos) | OS 4 aberta às 10:00, iniciada às 10:05 e concluída às 11:30 | OS 4 | Abrir o histórico | 3 eventos nessa ordem, cada um com data, hora, usuário e alteração | Alta | Não executado: histórico previsto no I1 (A8R05) |
 | CT14 | HU2 · CA12 | Partição de equivalência (OS do técnico / de outro técnico) | OS 3 e 5 de João; OS 4 de Maria Costa | Login de João | Abrir "Minhas OS" | Lista com OS 3 e 5 apenas; acesso direto à OS 4 é negado | Alta | Não executado: I2 (A8R06) |
 | CT15 | RNF2 · CA13 · meta de Segurança (A11) | Não funcional (segurança) — negativo | API com C3; um usuário por perfil | As 14 tentativas da matriz de perfis (requisitos.md) | Enviar cada requisição HTTP direta com o perfil indicado e sem token | 14 de 14 respostas negadas (403 ou 401), sem nenhum dado no corpo e sem alteração no banco | Alta | Não executado: depende de C3 no servidor (I1, A8R01) |
@@ -117,3 +117,18 @@ Caminho: origem (A3) → história de usuário → requisito → critério de ac
 | Sem matriz nem cobertura | Matriz origem → HU → requisito → CA → CT → componente; cobertura de 100% (requisitos e critérios) e 57% executada | Rastreabilidade até os testes |
 
 <!-- fim-da-ficha -->
+
+## Casos acrescentados pela SM-01 (v1.1.0)
+
+Casos novos da RN2 (retorno em garantia), derivados dos critérios CA16–CA19. A OS de origem é a OS 5, de Ana Souza, equipamento EQ-1, concluída em 01/08/2026; o 90º dia é 30/10/2026.
+
+| ID | Requisito ou critério | Técnica | Pré-condição | Entrada | Passos | Resultado esperado | Prioridade | Status |
+|---|---|---|---|---|---|---|---|---|
+| CT19 | RN2, RF2 · CA16 | Valor limite (90º dia, ainda dentro do prazo) | OS 5 CONCLUÍDA em 01/08/2026; data do sistema 30/10/2026 | OS de origem 5; equipamento EQ-1 | Nova OS; marcar "Retorno em garantia"; informar OS 5; Confirmar | Nova OS ABERTA marcada "Garantia", vinculada à OS 5; OS 5 continua CONCLUÍDA; evento "Retorno em garantia da OS 5" no histórico das duas | Alta | Não executado: I2 (A8R10) |
+| CT20 | RN2 · CA17 | Valor limite (91º dia) — negativo | OS 5 CONCLUÍDA em 01/08/2026; data do sistema 31/10/2026 | OS de origem 5; EQ-1 | Mesmos passos do CT19 | Recusa "Prazo de garantia encerrado em 30/10/2026. Abra uma OS comum."; nenhuma OS criada | Alta | Não executado: I2 (A8R10) |
+| CT21 | RN2 · CA18 | Partição de equivalência (origem inválida: não concluída; outro equipamento) — negativo | OS 4 EM ATENDIMENTO (EQ-1); OS 5 CONCLUÍDA (EQ-1); equipamento EQ-2 | (a) origem OS 4 com EQ-1; (b) origem OS 5 com EQ-2 | Mesmos passos do CT19 | (a) "A OS 4 ainda não foi concluída."; (b) "A OS 5 é de outro equipamento."; nenhuma OS criada nos dois casos | Alta | Não executado: I2 (A8R10) |
+| CT22 | RF3, RN2 · CA19 | Partição de equivalência (OS com e sem vínculo) | Retorno OS 26 aberto a partir da OS 5 | Números 26 e 5 | Buscar OS 26; buscar OS 5 | OS 26 mostra "Garantia da OS 5 — defeito: Não liga"; OS 5 mostra "Retorno em garantia: OS 26" | Média | Não executado: I2 (A8R10) |
+
+**Regressão a executar depois da SM-01:** CT04 e CT17 (abertura comum e gravação com falha, porque a abertura ganhou um ramo), CT05, CT08 e CT09 (a RN1 não pode ser afrouxada: a OS de origem continua CONCLUÍDA), CT13 (histórico com o novo evento), CT15 (o retorno usa a operação O2 e a mesma matriz de perfis) e CT16 (o fluxo de abertura medido inclui a consulta da OS de origem).
+
+**Cobertura após a SM-01:** requisitos Must com pelo menos um caso, 8 de 8 (RF1, RF2, RF3, RN1, RN2, RNF2, HU1, HU2) = 100%; critérios de aceitação, 19 de 19 = 100%.
