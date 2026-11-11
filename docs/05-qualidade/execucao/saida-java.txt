@@ -1,0 +1,8 @@
+CT01 | esperado: cliente com e-mail vazio é aceito (RF1/CA01) | obtido: rejeitado: Email inválido | FALHOU
+CT02 | esperado: bloquear e indicar Telefone e Defeito na mesma tentativa | obtido: bloqueado com uma única mensagem: Telefone inválido | FALHOU
+CT04 | esperado: OS criada em ABERTA | obtido: estado ABERTA | PASSOU
+CT05 | esperado: T1: ABERTA com técnico -> EM ATENDIMENTO | obtido: aceito: ABERTA -> EM_ATENDIMENTO | PASSOU
+CT06 | esperado: T2: ABERTA sem técnico, iniciar -> rejeitar e manter ABERTA | obtido: aceito: ABERTA -> EM_ATENDIMENTO | FALHOU
+CT07 | esperado: T3: ABERTA, concluir -> rejeitar e manter ABERTA | obtido: aceito: ABERTA -> CONCLUIDA | FALHOU
+CT08 | esperado: T4: EM ATENDIMENTO, concluir -> CONCLUÍDA | obtido: aceito: EM_ATENDIMENTO -> CONCLUIDA | PASSOU
+CT09 | esperado: T5: CONCLUÍDA -> ABERTA rejeitada; manter CONCLUÍDA | obtido: aceito: CONCLUIDA -> ABERTA | FALHOU

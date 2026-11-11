@@ -1,0 +1,3 @@
+CT03 | esperado: recusa "O equipamento selecionado não pertence ao cliente informado." e 0 OS gravadas | obtido: "O equipamento selecionado não pertence ao cliente informado."; OS gravadas: 0 | PASSOU
+CT04 | esperado: OS criada com identificador e estado inicial ABERTO | obtido: id CHD-mwckqued-7g2ui; estado ABERTO | PASSOU
+CT09 | esperado: CONCLUIDO -> ABERTO rejeitada; manter CONCLUIDO | obtido: aceito: CONCLUIDO -> ABERTO | FALHOU

@@ -50,5 +50,28 @@
     ],
     "verificacao_ia": "Cada achado aceito foi conferido no PDF de origem (A5 §2.2.1, A10 §2.5, A11) e no protótipo (classe Cliente). Diffs das correções nos commits citados. Conversa resumida no DEVLOG.md.",
     "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
+  },
+  "A13": {
+    "titulo": "Entrega de Atividade Semanal - Atividade 13",
+    "atividade": "A13 — Criar testes e ampliar rastreabilidade — Entrega final",
+    "etapa": "AS",
+    "equipe": "TechFix",
+    "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
+    "data": "11/11/2026 (elaboração e execução; o prazo original do enunciado era 04/11/2026)",
+    "fonte": "docs/05-qualidade/A13-estrategia-e-casos-de-teste.md",
+    "saida": "docs/05-qualidade/A13-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/05-qualidade",
+    "decisoes": "Mais testes na RN1 (R3) e na autorização (R2). 18 casos com partição, valor limite e tabela de decisão; 7 negativos e 4 não funcionais ligados às metas da A11. Execução real de 9 casos no protótipo Java e no frontend (4 passaram, 5 falharam). Defeitos DT01–DT05 vinculados aos itens A8R02, A8R06 e A8R07. Matriz ampliada até os casos de teste.",
+    "pendencias": "Corrigir DT01–DT05 nos itens do I1 e do I2 antes de fechar cada incremento. Executar CT10–CT18 quando houver API, autenticação no servidor e banco. Preparar o script k6 e a massa de 10.000 OS. Revisar em dupla e assinar.",
+    "ia": [
+      [
+        "11/11/2026 — Claude (Claude Code)",
+        "Elaborar estratégia, casos de teste, matriz ampliada e cobertura; preparar e executar scripts de teste no protótipo.",
+        "Derivar casos dos critérios CA01–CA15 e das metas da A11 com partição, valor limite e tabela de decisão; escrever scripts que exercitam o domínio Java e o ChamadoService; registrar resultados e defeitos.",
+        "Casos, estratégia e scripts aproveitados. Os resultados vêm da execução real (saídas versionadas em docs/05-qualidade/execucao). Nenhum resultado foi presumido para casos não executados."
+      ]
+    ],
+    "verificacao_ia": "Execução dos scripts com JDK 25 e Node 24 e conferência das saídas; conferência da matriz contra requisitos.md; recontagem de casos por técnica, negativos e cobertura. Uso registrado no DEVLOG.md.",
+    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
   }
 }
