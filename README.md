@@ -3,7 +3,7 @@
 ## Atividade 12 - Entrega final (`v12`)
 
 **Link de entrega:** [versão v12 no GitHub](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v12).
-**Ficha:** [PDF preenchido](docs/atividade-12/Ficha_Padrao_Entrega_Atividade_12_Final.pdf) e [texto](docs/atividade-12/ficha-entrega-v12.md).
+**Ficha:** [PDF preenchido](docs/poo/atividade-12/Ficha_Padrao_Entrega_Atividade_12_Final.pdf) e [texto](docs/poo/atividade-12/ficha-entrega-v12.md).
 
 O Java está organizado em três pacotes: `com.techfix.dominio` (entidades, regras, serviço, registro e contrato), `com.techfix.repositorio` (memória e arquivo) e `com.techfix.app` (montagem do cenário). A interface `RepositorioOrdens` fica no domínio e define `salvar` e `listar`; suas implementações dependem dela. Nenhuma classe de domínio importa implementações concretas. `ServicoOrdens` recebe a interface pelo construtor; `Main` escolhe o arquivo.
 
@@ -21,21 +21,21 @@ java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
 
 Se `java -version` mostrar 17, ajuste `JAVA_HOME` para a instalação do JDK 25 e coloque seu diretório `bin` no início do `PATH`. Não basta ter o JDK instalado: Maven e `java` precisam usar essa versão.
 
-**Validação:** 31 testes JUnit aprovados, sendo 19 preservados da v11 e 12 novos. Incluem serviço com memória, recuperação por uma nova instância com `@TempDir`, preservação de dados, caracteres especiais e falhas reais de leitura/escrita. [Resultado dos testes](docs/atividade-12/resultado-testes.txt).
+**Validação:** 31 testes JUnit aprovados, sendo 19 preservados da v11 e 12 novos. Incluem serviço com memória, recuperação por uma nova instância com `@TempDir`, preservação de dados, caracteres especiais e falhas reais de leitura/escrita. [Resultado dos testes](docs/poo/atividade-12/resultado-testes.txt).
 
-**Duas execuções seguidas:** a primeira parte de zero e salva a OS 1; a segunda recupera a OS 1, acrescenta a OS 2 e lista ambas. O print abaixo é uma representação gráfica da [saída real de duas JVMs](docs/atividade-12/saida-terminal-v12.txt), gerada em uma pasta temporária com o mesmo arquivo nas duas chamadas. Com um arquivo que já contenha registros, os números continuam a partir do histórico existente.
+**Duas execuções seguidas:** a primeira parte de zero e salva a OS 1; a segunda recupera a OS 1, acrescenta a OS 2 e lista ambas. O print abaixo é uma representação gráfica da [saída real de duas JVMs](docs/poo/atividade-12/saida-terminal-v12.txt), gerada em uma pasta temporária com o mesmo arquivo nas duas chamadas. Com um arquivo que já contenha registros, os números continuam a partir do histórico existente.
 
-![Terminal - duas execuções reais com persistência](docs/atividade-12/terminal-v12.png)
+![Terminal - duas execuções reais com persistência](docs/poo/atividade-12/terminal-v12.png)
 
-**UML atualizado:** [PNG](docs/uml.png) e [SVG editável](docs/uml.svg).
+**UML atualizado:** [PNG](docs/poo/uml.png) e [SVG editável](docs/poo/uml.svg).
 
-![Pacotes, contrato e implementações do repositório](docs/uml.png)
+![Pacotes, contrato e implementações do repositório](docs/poo/uml.png)
 
-[Decisões, formato e testes](docs/atividade-12/README.md) · [Guia para a microdefesa](docs/atividade-12/microdefesa.md).
+[Decisões, formato e testes](docs/poo/atividade-12/README.md) · [Guia para a microdefesa](docs/poo/atividade-12/microdefesa.md).
 
 Trabalho desenvolvido com apoio do OpenAI Codex na implementação, nos testes e na documentação, conforme declaração da ficha. A revisão, a compreensão e o envio na plataforma Aula cabem à equipe; o material não atesta submissão já realizada.
 
-A [entrega anterior da Atividade 11](docs/atividade-11/README.md) e a [tag v11](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v11) permanecem como histórico.
+A [entrega anterior da Atividade 11](docs/poo/atividade-11/README.md) e a [tag v11](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v11) permanecem como histórico.
 
 O TechFix é um projeto acadêmico para organizar clientes, equipamentos, ordens de serviço, reparos e o trabalho da equipe de uma assistência técnica.
 
@@ -65,12 +65,12 @@ A implementação Java representa clientes, técnicos, equipamentos e ordens de 
 
 Esta etapa usa Java 25 e Maven para 31 testes JUnit, três pacotes e persistência em arquivo. Não há Spring, banco de dados ou API REST. Java e TypeScript ainda não se comunicam.
 
-Uma visão geral da área Java está em [`backend/README.md`](backend/README.md). As instruções de compilação e a descrição das classes estão em [`backend/src/README.md`](backend/src/README.md), e o esboço da Atividade 6 está em [`backend/docs/atividade-semanal-06-esboco.md`](backend/docs/atividade-semanal-06-esboco.md).
+Uma visão geral da área Java está em [`backend/README.md`](backend/README.md). As instruções de compilação e a descrição das classes estão em [`backend/src/README.md`](backend/src/README.md), e o esboço da Atividade 6 está em [`docs/poo/atividade-06/atividade-semanal-06-esboco.md`](docs/poo/atividade-06/atividade-semanal-06-esboco.md).
 
 ## Diagramas
 
-- [`Diagrama-Classes`](Diagrama-Classes/README.md): diagrama correspondente às classes Java implementadas, com atributos, métodos e multiplicidades.
-- [`Diagrama-UML`](Diagrama-UML/README.md): registro da modelagem inicial do domínio.
+- [`docs/poo/diagrama-classes`](docs/poo/diagrama-classes/README.md): diagrama correspondente às classes Java implementadas, com atributos, métodos e multiplicidades.
+- [`docs/poo/diagrama-uml`](docs/poo/diagrama-uml/README.md): registro da modelagem inicial do domínio.
 
 ## Estrutura principal
 
@@ -88,11 +88,10 @@ TechFix/
 │       └── test/java/com/techfix/
 │           ├── dominio/       # 24 testes
 │           └── repositorio/   # 7 testes
-├── Diagrama-Classes/
-│   ├── DiagramaClasses.png
-│   └── README.md
-├── Diagrama-UML/
 ├── docs/
+│   ├── poo/             # entregas, fichas, UML e diagramas de POO
+│   ├── processos/       # entregas, dossiê, qualidade e evolução de Processos
+│   └── projeto/         # planejamento inicial
 ├── public/
 ├── src/                 # frontend TypeScript
 ├── DEVLOG.md
@@ -114,20 +113,15 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 
 A pasta `docs` reúne entregas, imagens e documentação das atividades:
 
+Índice completo, atividade por atividade: [docs/README.md](docs/README.md).
+
 | Pasta | Conteúdo |
 | --- | --- |
-| [Backlog do produto](docs/backlog/Backlog-TechFix.pdf) | Nove itens priorizados, critérios de aceitação, estimativas e incrementos I1/I2, separados da ficha A8. |
-| [Entregas de Processos](docs/entregas-processos/) | Atividades, modelos, esboços e versões finais em PDF. |
-| [Dossiê de Processos](docs/dossie/) | Fonte versionada de requisitos, backlog e matriz de rastreabilidade (v1.1.0). |
-| [Qualidade — A11 a A13](docs/05-qualidade/) | Plano de qualidade, revisão por inspeção, estratégia e casos de teste, com fichas em DOCX/PDF e scripts de execução. |
-| [Evolução — A14](docs/06-evolucao/) | Solicitação de mudança SM-01, revisão do PR e ficha. Versões do dossiê no [CHANGELOG](CHANGELOG.md). |
-| [AP2 de Processos — versão atual](docs/apresentacao-processos-ap2/gamma-revisada/) | Slides no visual do Gamma, roteiro e ficha de entrega. |
-| [Apresentações anteriores de Processos](docs/apresentacao-processos-ap2/versoes-anteriores/) | Referência original do Gamma e versões anteriores. |
-| [Entregas de POO](docs/entregas-poo/) | Ficha final da Atividade 9. |
-| [AP2 de POO](docs/apresentacao-poo-ap2/) | PowerPoint e roteiro da dupla. |
-| [Projeto](docs/projeto/) | Planejamento inicial da assistência técnica. |
+| [docs/poo/](docs/poo/) | Programação Orientada a Objetos: atividades 06, 09, 11 e 12, AP2, UML e diagramas de classes. |
+| [docs/processos/](docs/processos/) | Processos de Engenharia de Software: entregas A2–A10, AP2, backlog, dossiê, qualidade (A11–A13) e evolução (A14). |
+| [docs/projeto/](docs/projeto/) | Planejamento inicial da assistência técnica. |
 
-Documentação técnica: [área Java](backend/README.md), [execução e classes](backend/src/README.md), [diagrama](Diagrama-Classes/README.md), [planejamento](PLANEJAMENTO.md) e [histórico](DEVLOG.md).
+Documentação técnica: [área Java](backend/README.md), [execução e classes](backend/src/README.md), [diagrama](docs/poo/diagrama-classes/README.md), [planejamento](PLANEJAMENTO.md) e [histórico](DEVLOG.md).
 
 ## Integrante
 
@@ -136,7 +130,7 @@ Documentação técnica: [área Java](backend/README.md), [execução e classes]
 
 ## Entrega final de polimorfismo da Atividade 9
 
-A interface `RoteiroDiagnostico` define etapas ordenadas e imutáveis, com implementações distintas em `Notebook` e `Desktop`, integradas à ordem de serviço. Consulte a [ficha final em PDF](docs/entregas-poo/Ficha_Padrao_Entrega_Atividade_09_Final.pdf).
+A interface `RoteiroDiagnostico` define etapas ordenadas e imutáveis, com implementações distintas em `Notebook` e `Desktop`, integradas à ordem de serviço. Consulte a [ficha final em PDF](docs/poo/atividade-09/Ficha_Padrao_Entrega_Atividade_09_Final.pdf).
 
 ## Escopo de atendimento
 
@@ -150,9 +144,9 @@ Execute `npm test` para conferir datas civis, validações de equipamentos e a s
 
 ## Entrega AP2
 
-- [Slides atualizados](docs/apresentacao-poo-ap2/Apresentacao-POO-TechFix.pptx).
-- [Diagrama atual com multiplicidades](Diagrama-Classes/README.md) e [versão visual](Diagrama-Classes/Diagrama-AP2.svg).
-- [Roteiro de Arthur e Lucas em PDF](docs/apresentacao-poo-ap2/Roteiro-Apresentacao-POO-Arthur-Lucas.pdf).
+- [Slides atualizados](docs/poo/apresentacao-ap2/Apresentacao-POO-TechFix.pptx).
+- [Diagrama atual com multiplicidades](docs/poo/diagrama-classes/README.md) e [versão visual](docs/poo/diagrama-classes/Diagrama-AP2.svg).
+- [Roteiro de Arthur e Lucas em PDF](docs/poo/apresentacao-ap2/Roteiro-Apresentacao-POO-Arthur-Lucas.pdf).
 - [Registro de uso de IA na AP2](AI.md) e [histórico Java](backend/IA.md).
 - [Backlog e planejamento](PLANEJAMENTO.md), com funcionalidades futuras distinguidas da implementação atual.
 
@@ -164,4 +158,4 @@ A oficina usa cabeçalho preto, logo oficial, área branca e destaques ciano, co
 
 ## AP2 — Processos de Engenharia de Software
 
-Versão atual: [slides em PDF](docs/apresentacao-processos-ap2/gamma-revisada/TechFix-AP2-Gamma-Revisada.pdf), [PowerPoint editável](docs/apresentacao-processos-ap2/gamma-revisada/TechFix-AP2-Gamma.pptx), [roteiro](docs/apresentacao-processos-ap2/gamma-revisada/Roteiro-Arthur-Lucas-Gamma.pdf) e [ficha de entrega](docs/apresentacao-processos-ap2/gamma-revisada/Ficha-Entrega-AP2-Gamma.pdf). São 13 slides, com origem na A3 e conexão entre A7–A10; exposição planejada de 11 minutos e 4 minutos para perguntas.
+Versão atual: [slides em PDF](docs/processos/apresentacao-ap2/TechFix-AP2.pdf), [PowerPoint editável](docs/processos/apresentacao-ap2/TechFix-AP2.pptx), [roteiro](docs/processos/apresentacao-ap2/Roteiro-Arthur-Lucas.pdf) e [ficha de entrega](docs/processos/apresentacao-ap2/Ficha-Entrega-AP2.pdf). São 13 slides, com origem na A3 e conexão entre A7–A10; exposição planejada de 11 minutos e 4 minutos para perguntas.

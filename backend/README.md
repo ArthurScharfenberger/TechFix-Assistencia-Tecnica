@@ -12,7 +12,7 @@ java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
 java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
 ```
 
-[Documentação e evidências da A12](../docs/atividade-12/README.md) · [UML atual](../docs/uml.png).
+[Documentação e evidências da A12](../docs/poo/atividade-12/README.md) · [UML atual](../docs/poo/uml.png).
 
 ## Histórico das etapas anteriores
 
@@ -26,10 +26,6 @@ Neste momento, o termo `backend` identifica apenas a área reservada ao código 
 
 ```text
 backend/
-├── docs/
-│   ├── atividade-semanal-06-esboco.md
-│   ├── Ficha_Padrao_Entrega_Atividade_06_Esboco.docx
-│   └── Ficha_Padrao_Entrega_Atividade_06_Esboco.pdf
 ├── pom.xml
 ├── README.md
 └── src/
@@ -53,9 +49,9 @@ backend/
 
 Consulte a [documentação do código-fonte](src/README.md) para conhecer as classes e os comandos de compilação, teste e execução.
 
-O modelo visual correspondente está na [documentação do diagrama de classes](../Diagrama-Classes/README.md).
+O modelo visual correspondente está na [documentação do diagrama de classes](../docs/poo/diagrama-classes/README.md).
 
-O esboço e a Ficha Padrão da Atividade Semanal nº 6 estão em [`docs`](docs/atividade-semanal-06-esboco.md).
+O esboço e a Ficha Padrão da Atividade Semanal nº 6 estão em [`docs/poo/atividade-06`](../docs/poo/atividade-06/atividade-semanal-06-esboco.md).
 
 ## Associação da Atividade 6
 
@@ -86,4 +82,4 @@ O uso de inteligência artificial durante a preparação está registrado em [IA
 
 A mesma chamada pela interface seleciona a implementação do objeto em tempo de execução, sem `instanceof` ou seleção por tipo no cliente. Essa substituição e ligação dinâmica caracterizam polimorfismo, além da reutilização de dados por herança.
 
-Execute `mvn test` e `java -cp target/classes com.techfix.app.Main` nesta pasta. São 14 testes aprovados, incluindo seis novos testes em `RoteiroDiagnosticoTest`. [Ficha final em PDF](../docs/entregas-poo/Ficha_Padrao_Entrega_Atividade_09_Final.pdf).
+Execute `mvn test` e `java -cp target/classes com.techfix.app.Main` nesta pasta. São 14 testes aprovados, incluindo seis novos testes em `RoteiroDiagnosticoTest`. [Ficha final em PDF](../docs/poo/atividade-09/Ficha_Padrao_Entrega_Atividade_09_Final.pdf).

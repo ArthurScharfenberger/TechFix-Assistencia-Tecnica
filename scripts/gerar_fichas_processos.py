@@ -23,6 +23,13 @@ MODELO = RAIZ / "scripts" / "modelos" / "Documento_Padrao_Entrega_Atividades.doc
 CONFIG = RAIZ / "scripts" / "fichas_processos.json"
 FONTE = "Inter Tight"
 LARGURA_TABELA = 9645
+# Pastas reorganizadas em docs/processos depois da entrega das fichas.
+CAMINHOS_ANTIGOS = [
+    ("docs/05-qualidade", "docs/processos/05-qualidade"),
+    ("docs/06-evolucao", "docs/processos/06-evolucao"),
+    ("docs/dossie", "docs/processos/dossie"),
+    ("docs/entregas-processos", "docs/processos/entregas"),
+]
 
 
 def run(paragrafo, texto, negrito=False, italico=False, tamanho=None, mono=False):
@@ -224,7 +231,14 @@ def gerar(chave, cfg, exportar_pdf=True):
 
     ancora = ps[10]
     escritor = Escritor(doc, ancora, tabela_ia)
-    fonte = (RAIZ / cfg["fonte"]).read_text(encoding="utf-8")
+    if "fonte_commit" in cfg:
+        # Versão entregue da fonte, com os caminhos atualizados para a organização atual.
+        fonte = subprocess.run(["git", "show", cfg["fonte_commit"]], cwd=RAIZ, capture_output=True,
+                               check=True).stdout.decode("utf-8")
+        for antigo, novo in CAMINHOS_ANTIGOS:
+            fonte = re.sub(r"(?<![\w/-])" + re.escape(antigo), novo, fonte)
+    else:
+        fonte = (RAIZ / cfg["fonte"]).read_text(encoding="utf-8")
     fonte = re.sub(r"^# .*\n", "", fonte, count=1)
     fonte = re.split(r"\n<!-- fim-da-ficha -->", fonte)[0]
     p_repo = escritor.paragrafo()

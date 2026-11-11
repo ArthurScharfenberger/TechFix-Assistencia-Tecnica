@@ -6,9 +6,9 @@
     "equipe": "TechFix",
     "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
     "data": "11/11/2026 (elaboração; o prazo original do enunciado era 23/10/2026)",
-    "fonte": "docs/05-qualidade/A11-plano-qualidade.md",
-    "saida": "docs/05-qualidade/A11-Ficha-Entrega-Final.docx",
-    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/05-qualidade",
+    "fonte": "docs/processos/05-qualidade/A11-plano-qualidade.md",
+    "saida": "docs/processos/05-qualidade/A11-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/processos/05-qualidade",
     "decisoes": "Priorizar cinco características da ISO/IEC 25010:2023: Adequação funcional, Segurança, Confiabilidade, Eficiência de desempenho e Capacidade de interação. Adiar Compatibilidade, Flexibilidade, Manutenibilidade e Proteção. Integridade acima de desempenho e login individual com sessão de 30 min. Critérios Q1–Q5 acrescentados à Definition of Done da A7.",
     "pendencias": "Revisar o plano com critérios na A12. Transformar as metas em casos de teste na A13. Confirmar com o PO a disponibilidade de participantes para o teste de usabilidade. Revisar o conteúdo em dupla e assinar.",
     "ia": [
@@ -20,7 +20,8 @@
       ]
     ],
     "verificacao_ia": "Conferência dos códigos citados contra os PDFs da A3, A5, A8 e A10; conferência dos nomes da ISO/IEC 25010:2023; checagem de que toda meta tem número ou critério verificável. Uso registrado no DEVLOG.md.",
-    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
+    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva",
+    "fonte_commit": "6f0c865:docs/05-qualidade/A11-plano-qualidade.md"
   },
   "A12": {
     "titulo": "Entrega de Atividade Semanal - Atividade 12",
@@ -29,10 +30,10 @@
     "equipe": "TechFix",
     "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
     "data": "11/11/2026 (revisão e elaboração; o prazo original do enunciado era 28/10/2026)",
-    "fonte": "docs/05-qualidade/A12-revisao-artefatos.md",
-    "saida": "docs/05-qualidade/A12-Ficha-Entrega-Final.docx",
-    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/05-qualidade",
-    "decisoes": "Inspeção com checklists sim/não de requisitos (A4/A5), matriz (A10) e plano de qualidade (A11). Revisor simulado por IA, porque os dois integrantes escreveram juntos os artefatos. 18 achados aceitos e 4 sugestões rejeitadas. Crítico e maiores corrigidos nos commits 714ac8a, d62fbe6 e f092cb0. Fonte única dos requisitos em docs/dossie e critério Q6 na Definition of Done.",
+    "fonte": "docs/processos/05-qualidade/A12-revisao-artefatos.md",
+    "saida": "docs/processos/05-qualidade/A12-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/processos/05-qualidade",
+    "decisoes": "Inspeção com checklists sim/não de requisitos (A4/A5), matriz (A10) e plano de qualidade (A11). Revisor simulado por IA, porque os dois integrantes escreveram juntos os artefatos. 18 achados aceitos e 4 sugestões rejeitadas. Crítico e maiores corrigidos nos commits 714ac8a, d62fbe6 e f092cb0. Fonte única dos requisitos em docs/processos/dossie e critério Q6 na Definition of Done.",
     "pendencias": "D08 (dividir RF2), D09 (grafia dos estados no código) e D13 (tela do técnico), previstos para o I2. Confirmar V1 e V2 com o PO Chico Mosca, já que o stakeholder da A3 é simulado. Revisar em dupla e assinar.",
     "ia": [
       [
@@ -58,9 +59,9 @@
     "equipe": "TechFix",
     "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
     "data": "11/11/2026 (elaboração e execução; o prazo original do enunciado era 04/11/2026)",
-    "fonte": "docs/05-qualidade/A13-estrategia-e-casos-de-teste.md",
-    "saida": "docs/05-qualidade/A13-Ficha-Entrega-Final.docx",
-    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/05-qualidade",
+    "fonte": "docs/processos/05-qualidade/A13-estrategia-e-casos-de-teste.md",
+    "saida": "docs/processos/05-qualidade/A13-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/processos/05-qualidade",
     "decisoes": "Mais testes na RN1 (R3) e na autorização (R2). 18 casos com partição, valor limite e tabela de decisão; 7 negativos e 4 não funcionais ligados às metas da A11. Execução real de 9 casos no protótipo Java e no frontend (4 passaram, 5 falharam). Defeitos DT01–DT05 vinculados aos itens A8R02, A8R06 e A8R07. Matriz ampliada até os casos de teste.",
     "pendencias": "Corrigir DT01–DT05 nos itens do I1 e do I2 antes de fechar cada incremento. Executar CT10–CT18 quando houver API, autenticação no servidor e banco. Preparar o script k6 e a massa de 10.000 OS. Revisar em dupla e assinar.",
     "ia": [
@@ -68,11 +69,12 @@
         "11/11/2026 — Claude (Claude Code)",
         "Elaborar estratégia, casos de teste, matriz ampliada e cobertura; preparar e executar scripts de teste no protótipo.",
         "Derivar casos dos critérios CA01–CA15 e das metas da A11 com partição, valor limite e tabela de decisão; escrever scripts que exercitam o domínio Java e o ChamadoService; registrar resultados e defeitos.",
-        "Casos, estratégia e scripts aproveitados. Os resultados vêm da execução real (saídas versionadas em docs/05-qualidade/execucao). Nenhum resultado foi presumido para casos não executados."
+        "Casos, estratégia e scripts aproveitados. Os resultados vêm da execução real (saídas versionadas em docs/processos/05-qualidade/execucao). Nenhum resultado foi presumido para casos não executados."
       ]
     ],
     "verificacao_ia": "Execução dos scripts com JDK 25 e Node 24 e conferência das saídas; conferência da matriz contra requisitos.md; recontagem de casos por técnica, negativos e cobertura. Uso registrado no DEVLOG.md.",
-    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
+    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva",
+    "fonte_commit": "3fd3850:docs/05-qualidade/A13-estrategia-e-casos-de-teste.md"
   },
   "A14": {
     "titulo": "Entrega de Atividade Semanal - Atividade 14",
@@ -81,9 +83,9 @@
     "equipe": "TechFix",
     "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
     "data": "11/11/2026",
-    "fonte": "docs/06-evolucao/SM-01-retorno-em-garantia.md",
-    "saida": "docs/06-evolucao/A14-Ficha-Entrega-Final.docx",
-    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/06-evolucao — PR #1: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/pull/1 — releases v1.0.0 e v1.1.0",
+    "fonte": "docs/processos/06-evolucao/SM-01-retorno-em-garantia.md",
+    "saida": "docs/processos/06-evolucao/A14-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/processos/06-evolucao — PR #1: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/pull/1 — releases v1.0.0 e v1.1.0",
     "decisoes": "SM-01 aprovada parcialmente (alternativa B): OS de garantia vinculada à OS concluída, em até 90 dias, sem reabrir a OS (RN1 preservada). Para caber no I2, o filtro por equipamento passou para o I3 (A8R11); a confirmação da garantia pelo técnico e a isenção de valores ficaram adiadas (A8R12). Mudança versionada em branch própria, PR #1 revisado, merge e release v1.1.0.",
     "pendencias": "Ratificar a decisão com o PO Chico Mosca. Atualizar o fluxograma e o wireframe da A9 no refinamento do A8R10. Executar CT19–CT22 e a regressão no I2. Revisar em dupla e assinar.",
     "ia": [

@@ -2,6 +2,13 @@
 
 Este documento registra a evolução do projeto TechFix durante o semestre.
 
+## 11/11/2026 — Organização dos documentos por disciplina
+
+- A pedido do usuário, tudo o que é de POO foi para `docs/poo/` (atividades 06, 09, 11 e 12, AP2, UML, diagramas de classes e roadmap Java) e tudo o que é de Processos foi para `docs/processos/` (entregas A2–A10, AP2, backlog, dossiê, 05-qualidade e 06-evolucao). O índice por atividade está em `docs/README.md`.
+- Código, `CHANGELOG.md` e `Testar-POO.cmd` continuam onde estavam. Movimentos feitos com `git mv`, preservando o histórico.
+- Links atualizados em README, AI.md, PLANEJAMENTO, READMEs do backend e dos diagramas, scripts geradores e fichas. Conferência automática: todos os links locais dos Markdown resolvem. Também foram corrigidos links da AP2 que apontavam para a pasta `gamma-revisada/`, que não existe desde 07/10.
+- As fichas A11–A14 foram regeneradas com os novos caminhos. A11 e A13 usam a versão entregue da fonte (commits 6f0c865 e 3fd3850). Na ficha de POO da A11, só as URIs dos links foram trocadas; o texto foi conferido como idêntico.
+
 ## 11/11/2026 — Processos: A11 a A14 (etapa AS)
 
 - A11: plano de qualidade com cinco características da ISO/IEC 25010:2023, métricas e metas numéricas, características adiadas, dois conflitos e critérios Q1–Q5 na Definition of Done; esboço preservado. Ficha padrão gerada do `Documento_Padrao_Entrega_Atividades.docx` por `scripts/gerar_fichas_processos.py` e exportada pelo Word.

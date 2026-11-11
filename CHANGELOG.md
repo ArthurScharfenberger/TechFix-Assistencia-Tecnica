@@ -2,6 +2,12 @@
 
 Mudanças do dossiê de Processos de Engenharia de Software do TechFix (requisitos, backlog, matriz, plano de qualidade e testes). O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/), e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/). As tags `v11` e `v12` são entregas de POO e não fazem parte desta numeração.
 
+## [Não publicado]
+
+### Alterado
+
+- Documentos reorganizados por disciplina: o dossiê passa para `docs/processos/dossie/`, a qualidade para `docs/processos/05-qualidade/` e a evolução para `docs/processos/06-evolucao/`. O conteúdo não mudou; as fichas A11–A14 foram regeneradas com os novos caminhos.
+
 ## [1.1.0] - 2026-11-11
 
 Solicitação de mudança SM-01 (retorno de equipamento em garantia), aprovada parcialmente.

@@ -12,7 +12,7 @@ java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
 java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
 ```
 
-[Documentação e evidências da A12](../../docs/atividade-12/README.md) · [UML atual](../../docs/uml.png).
+[Documentação e evidências da A12](../../docs/poo/atividade-12/README.md) · [UML atual](../../docs/poo/uml.png).
 
 ## Histórico das etapas anteriores
 
@@ -69,8 +69,8 @@ A herança é adequada porque notebook e desktop são tipos de equipamento receb
 
 ## Documentação da atividade
 
-Consulte a [demonstração da herança](main/java/com/techfix/app/Main.java) e a [documentação do diagrama de classes](../../Diagrama-Classes/README.md).
+Consulte a [demonstração da herança](main/java/com/techfix/app/Main.java) e a [documentação do diagrama de classes](../../docs/poo/diagrama-classes/README.md).
 
 ## Incremento da Atividade 9
 
-`RoteiroDiagnostico.java` define o contrato de diagnóstico implementado por Notebook e Desktop. A OS consulta a interface sem verificar tipos, e Main demonstra uma coleção polimórfica. `RoteiroDiagnosticoTest.java` acrescenta seis testes: cada implementação com valores conhecidos, desktop com vídeo integrado, despacho pela interface, imutabilidade e integração. Total: 14 testes sem falhas. [Entrega final](../../docs/entregas-poo/Ficha_Padrao_Entrega_Atividade_09_Final.pdf).
+`RoteiroDiagnostico.java` define o contrato de diagnóstico implementado por Notebook e Desktop. A OS consulta a interface sem verificar tipos, e Main demonstra uma coleção polimórfica. `RoteiroDiagnosticoTest.java` acrescenta seis testes: cada implementação com valores conhecidos, desktop com vídeo integrado, despacho pela interface, imutabilidade e integração. Total: 14 testes sem falhas. [Entrega final](../../docs/poo/atividade-09/Ficha_Padrao_Entrega_Atividade_09_Final.pdf).

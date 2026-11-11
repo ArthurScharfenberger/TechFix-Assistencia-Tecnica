@@ -8,11 +8,11 @@ O backlog abaixo registra a evolução pretendida do produto; não representa a 
 
 ## Revisão atual — 30/09/2026
 
-A proposta revisada está em [A8 — planejamento completo em PDF](docs/entregas-processos/A8-Entrega-Final.pdf). Ela relaciona todos os requisitos priorizados da A5 aos itens A8R01–A8R09, define dois incrementos por valor e registra quatro riscos com mitigação. Estimativas e decisões propostas aguardam validação dos integrantes.
+A proposta revisada está em [A8 — planejamento completo em PDF](docs/processos/entregas/A8-Entrega-Final.pdf). Ela relaciona todos os requisitos priorizados da A5 aos itens A8R01–A8R09, define dois incrementos por valor e registra quatro riscos com mitigação. Estimativas e decisões propostas aguardam validação dos integrantes.
 
 O primeiro incremento cobre acesso, cadastro, abertura, consulta por número e histórico inicial. O segundo cobre atribuição ao técnico, andamento e conclusão, buscas complementares e desempenho. Pagamento online, avaliação e relatório gerencial não integram essa linha de base derivada da A5.
 
-As seções abaixo preservam o planejamento anterior B01–B10, para comparação histórica. Os novos modelos usam os IDs A8R da revisão. Consulte o [entregas de Processos](docs/entregas-processos/) para os modelos e as correções documentadas.
+As seções abaixo preservam o planejamento anterior B01–B10, para comparação histórica. Os novos modelos usam os IDs A8R da revisão. Consulte o [entregas de Processos](docs/processos/entregas/) para os modelos e as correções documentadas.
 
 ## Identificação
 
@@ -84,7 +84,7 @@ O backlog atribui B08, B09 e B10 ao I3. A Atividade 08 não detalha o valor entr
 
 O repositório contém um frontend TypeScript executado com Vite e uma implementação acadêmica orientada a objetos em Java/Maven. Essas partes ainda não se comunicam por API. O planejamento representa a evolução pretendida do produto e não significa que todos os itens do backlog estejam implementados.
 
-O documento original da atividade está em [Atividade A8 em PDF](docs/entregas-processos/Atividade_A8.pdf).
+O documento original da atividade está em [Atividade A8 em PDF](docs/processos/entregas/Atividade_A8.pdf).
 
 ## Repositório
 
