@@ -78,7 +78,7 @@ O uso de inteligência artificial durante a preparação está registrado em [IA
 
 ## Herança da Atividade 8
 
-`Equipamento` é a superclasse abstrata de `Notebook` e `Desktop`. As subclasses reutilizam as validações, os dados comuns, os getters e `exibirDados()`, e ambas sobrescrevem `descreverAtendimento()` para apresentar suas características específicas. A entrega completa está documentada em [`docs/atividade-semanal-08-poo-entrega-final.md`](../docs/atividade-semanal-08-poo-entrega-final.md).
+`Equipamento` é a superclasse abstrata de `Notebook` e `Desktop`. As subclasses reutilizam as validações, os dados comuns, os getters e `exibirDados()`, e ambas sobrescrevem `descreverAtendimento()` para apresentar suas características específicas. A demonstração está em [Main.java](src/main/java/com/techfix/app/Main.java), com exemplos de Notebook e Desktop.
 
 ## Polimorfismo da Atividade 9
 
@@ -86,4 +86,4 @@ O uso de inteligência artificial durante a preparação está registrado em [IA
 
 A mesma chamada pela interface seleciona a implementação do objeto em tempo de execução, sem `instanceof` ou seleção por tipo no cliente. Essa substituição e ligação dinâmica caracterizam polimorfismo, além da reutilização de dados por herança.
 
-Execute `mvn test` e `java -cp target/classes com.techfix.app.Main` nesta pasta. São 14 testes aprovados, incluindo seis novos testes em `RoteiroDiagnosticoTest`. [Ficha final](../docs/Ficha_Padrao_Entrega_Atividade_09_Final.pdf) e [documentação completa](../docs/atividade-semanal-09-poo-entrega-final.md).
+Execute `mvn test` e `java -cp target/classes com.techfix.app.Main` nesta pasta. São 14 testes aprovados, incluindo seis novos testes em `RoteiroDiagnosticoTest`. [Ficha final em PDF](../docs/entregas-poo/Ficha_Padrao_Entrega_Atividade_09_Final.pdf).

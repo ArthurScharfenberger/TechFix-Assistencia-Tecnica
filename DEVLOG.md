@@ -2,6 +2,23 @@
 
 Este documento registra a evolução do projeto TechFix durante o semestre.
 
+## 07/10/2026 — Correções dos feedbacks de Processos A8 e A10
+
+- Complemento solicitado pelo usuário: elaborar A7 (esboço e final), ignorar A1 nesta revisão e concluir A10 conforme enunciado, na ficha padrão com disciplina Processos de Engenharia de Software. O usuário esclareceu que A7 ainda não havia sido feita; os arquivos criados agora não são apresentados como entrega anterior, apesar da referência em sentido diferente no feedback inicial.
+- Novas fontes fornecidas e preservadas: atividade02-12-08.pdf e Atividade_06_Reflexao_Individual_Arthur_Scharfenberger.pdf. A2 escolhe incremental com práticas ágeis; o usuário confirmou ciclo iterativo e incremental. A6 fundamenta a revisão cruzada e a conclusão por evidências da A7.
+- A7: Scrum, Sprint semanal, papéis de Arthur/Lucas/Chico Mosca, fluxo com responsáveis e condições de passagem, DoD, validação de negócio separada da conclusão técnica e tabela de evolução entre esboço e final. Referência conceitual consultada: Scrum Guide 2020, https://scrumguides.org/scrum-guide.html. Não foram inventadas reuniões, Sprints realizadas, estimativas consensuais ou assinaturas.
+- A10: acrescentadas revisão de coerência A2–A9, correções do esboço, vínculos para as seções da nova A7, histórias de usuário na matriz e prazo de início do Encontro 11. A A1 permanece fora do escopo por orientação expressa.
+- Verificação final: conteúdo integral de cada fonte Markdown localizado no respectivo DOCX, disciplina conferida no cabeçalho, cinco seções institucionais presentes e diagrama incorporado à A10. PDFs revisados visualmente: A7 esboço com 2 páginas, A7 final com 5, A8 com 5 e A10 com 6. Não foram executados testes Java/TypeScript porque esta alteração é exclusivamente documental. Arquivo temporário de bloqueio do Word permaneceu após a limpeza ser recusada pela política da ferramenta; não integra as entregas.
+
+- Solicitação: corrigir os dois feedbacks da professora. Apoio de ChatGPT/Codex na leitura das fontes, revisão dos textos, organização das tabelas, desenho vetorial e atualização das fichas institucionais.
+- A8: MoSCoW com oito linhas e justificativas; rastreabilidade requisito/prioridade/backlog/incremento; escala P/M/G tabulada; RNF1 corrigido de 1.000 para até 10.000 OS. Mantidos nove itens A8R, dois incrementos e quatro riscos.
+- A10: nova ficha com cinco seções, arquitetura C1–C4 em SVG editável, matriz dos oito requisitos e ligações com a A7: revisão por outro integrante, divisão de componentes e saída de C1 validada pelo PO Chico Mosca. Esboço anterior preservado como histórico.
+- Fontes: feedbacks fornecidos em 07/10, A4, A5 local, A8 revisada e modelos. A professora confirma a entrega de A7 e A9. A3 original e arquivos entregues de A7/A9 dependem de indicação da equipe; não foram recriados como se fossem os originais.
+- Divergência comprovada: tanto Atividade05.docx quanto Atividade05.pdf locais apresentam registros de IA na tabela 2.2.1, diferentemente da versão avaliada descrita pela professora. A revisão reconhece a A5 entregue como linha de base e registra a necessidade de sincronizar o portfólio, preservando os arquivos locais.
+- Criado Registro-Revisao-Equipe.md para estimativas individuais, divergências, argumento do consenso, fontes e fechamento. Não foram inventados consenso, citações da entrevista, data de submissão, validação humana ou assinaturas.
+- Fontes Markdown passam a alimentar o gerador PowerShell das fichas A8/A10; o gerador antigo foi limitado à modelagem para não restaurar o conteúdo corrigido da A8. DOCX preenchidos pelo Word. O runtime de documentos/LibreOffice empacotado não está disponível neste ambiente Windows, e a exportação PDF nativa do Word travou inclusive em documento de teste. PDFs produzidos por ReportLab/svglib e conferidos visualmente; paginação dos DOCX não validada visualmente.
+- Código Java/TypeScript inalterado. Esta revisão é documental e não comprova implementação de API, autenticação no servidor ou banco. Responsáveis finais pelo conteúdo: Arthur Scharfenberger e Lucas Oliveira da Silva.
+
 ## 30/09/2026 — Preparação das entregas de Processos
 
 ### Consolidação da documentação e das alterações locais
@@ -312,6 +329,30 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 - Ajustado o roteiro para 6 minutos e 20 segundos, incluindo um minuto de execução ao vivo. Atualizado e conferido visualmente o PDF de três páginas; gerador incluído em `scripts/`.
 - Reexecutados build TypeScript/Vite, cinco testes do site, 14 testes JUnit offline e `Main`, com sucesso. Slides preservados: já cobrem A6–A9, com mídias intactas.
 - A entrega inclui o visual aprovado da oficina e será identificada por commit publicado e tag anotada `ap2`. A apresentação e a submissão no AVA permanecem sob responsabilidade da equipe.
+
+## 07/10/2026 — Apresentação AP2 de Processos de Engenharia de Software
+
+- A pedido do usuário, Codex preparou 13 slides principais e 3 de apoio em PowerPoint/PDF, com notas, roteiro de 11 minutos e reserva de 4 minutos para perguntas, dividido entre Arthur e Lucas.
+- Conteúdo: A7 processo/papéis/fluxo; A8 backlog/estimativas/riscos; A9 fluxo e wireframe; A10 componentes e rastreabilidade; AS com testes e evolução. Tabelas e diagramas editáveis.
+- A A3 adicionada pelo usuário foi lida: entrevista simulada com Marcos Almeida. As referências por página, seção e IDs RF03–RF05 passaram aos slides e à matriz A10, sem inventar respostas literais. A1 excluída conforme orientação.
+- Ficha institucional preparada em DOCX/PDF com link da apresentação e declaração de IA. Estimativas continuam propostas até consenso; revisão, validação de negócio e assinaturas não foram presumidas.
+- Verificação: exportação nativa no PowerPoint, inspeção visual de todos os slides e páginas PDF, verificadores de estrutura/geometria, 16 notas de fala, IDs/valores e exposição de 660 segundos. DOCX segue o modelo; paginação do Word não foi verificada visualmente devido à falha local de renderização. Código de aplicação não foi alterado por esta tarefa.
+- A apresentação está em `docs/apresentacao-processos-ap2/`; fontes consultadas e instruções de reprodução acompanham os arquivos. A publicação usa a branch `docs/ap2-processos-2026-10-07`.
+
+## 07/10/2026 — Revisão visual da AP2 a partir do Gamma
+
+- Reconstruídos 13 slides editáveis com as fontes, cores e disposição da apresentação fornecida. O PDF original foi preservado.
+- Corrigidas conexões do fluxo e acrescentados caminho A3 até arquitetura, matriz de oito requisitos/histórias e fechamento AS. Roteiro de 11 minutos dividido entre Arthur e Lucas, com quatro minutos para perguntas.
+- Gerados PowerPoint com fontes incorporadas, PDF, roteiro e ficha institucional com link da versão revisada. Inspeção visual e validação de geometria: 13 slides, nenhum problema ou aviso.
+- Uso de IA: Gamma gerou a referência e Codex reconstruiu e completou o material; revisão humana e assinaturas permanecem com a equipe.
+
+## 07/10/2026 — Organização dos documentos
+
+- A pedido do usuário, a pasta `docs` passou de 90 para 26 arquivos: 23 PDFs e três apresentações PowerPoint, preservados sem alteração de conteúdo.
+- Separadas entregas e apresentações de POO e Processos, planejamento inicial e versões anteriores. A apresentação Gamma revisada manteve seu caminho atual.
+- Arquivados 64 auxiliares de `docs` (Word, Markdown, scripts, fontes e imagens) e o gerador de roteiro sem fonte ativa. Backup integral conferido em `tmp/organizacao-documentos/documentos-antes-da-organizacao-20261007-172746.zip`; arquivos recuperáveis também em `tmp/organizacao-documentos/auxiliares-arquivados/`. O backup local não é versionado.
+- Atualizados os links de navegação no README, planejamento e documentação Java. Verificados os hashes dos 26 PDFs/PowerPoints e os destinos dos links locais. Código da aplicação não foi alterado.
+- Uso de IA: Codex organizou os arquivos. A remoção em lote foi bloqueada pela política da ferramenta; os auxiliares foram movidos para arquivo local reversível. Nenhuma exclusão definitiva ou publicação remota foi realizada nesta organização.
 
 ## 09/11/2026 - Atividade 12: arquitetura e reposit?rio
 

@@ -1,6 +1,6 @@
 # Uso de inteligência artificial — AP2
 
-Equipe: Arthur Scharfenberger e Lucas Oliveira da Silva. Atualização: 05/10/2026.
+Equipe: Arthur Scharfenberger e Lucas Oliveira da Silva. Atualização: 07/10/2026.
 
 OpenAI Codex participou diretamente da implementação e revisão do projeto, incluindo código Java e TypeScript, testes, correção do escopo para notebooks e PCs, documentação, diagramas, slides, roteiro e interface web. Portanto, sua participação incluiu geração e alteração de código, além de orientação.
 
@@ -10,7 +10,15 @@ A validação inclui recompilação e 14 testes JUnit, execução de `Main`, cin
 
 O histórico anterior de uso de IA está em [backend/IA.md](backend/IA.md) e [DEVLOG.md](DEVLOG.md). Este arquivo atende à nomenclatura `AI.md` solicitada para a avaliação, preservando o histórico existente.
 
+Em 07/10/2026, Codex também apoiou a revisão documental das atividades 8 e 10 de Processos conforme feedbacks da professora e a elaboração de esboço e final da A7 solicitada pelo usuário. A A2 fornecida e a confirmação do usuário fundamentam o ciclo iterativo e incremental; a A6 orienta revisão antes da conclusão. Foram produzidos processo Scrum, tabelas de planejamento, RNF1 com até 10.000 OS, matriz de rastreabilidade, diagrama vetorial e revisão de coerência de A2 a A9. A1 foi excluída por orientação do usuário. PDFs conferidos visualmente; paginação do Word sem verificação visual por falha na exportação nativa. A origem na A3 foi posteriormente incorporada como simulação por página/seção/ID; consenso, revisão humana e assinaturas dependem de registros reais. Detalhes em [entregas de Processos](docs/entregas-processos/).
+
 A equipe é responsável por revisar o material, compreender as decisões e defender o código ao vivo. A execução das verificações não comprova ensaio, apresentação ou submissão no ambiente acadêmico.
+
+Em 07/10/2026, Codex preparou também a apresentação AP2 de Processos: slides editáveis, notas de fala, roteiro da dupla, perguntas de ensaio e ficha institucional. Conferiu a A3 fornecida (entrevista simulada), completou a origem da matriz A10 por página/seção/ID e verificou os slides e PDFs. Revisão humana, consenso das estimativas, validação do PO e assinaturas não foram inventados. Materiais e fontes em [apresentação de Processos](docs/apresentacao-processos-ap2/).
+
+Em 07/10/2026, a pedido da equipe, Codex reconstruiu a versão visual do Gamma em 13 slides editáveis, corrigiu conexões do fluxo e acrescentou rastreabilidade explícita, matriz e fechamento AS. Atualizou roteiro e ficha, preservando o PDF original. Gamma foi usado pela equipe para criar a referência inicial. Materiais em [versão Gamma revisada](docs/apresentacao-processos-ap2/gamma-revisada/).
+
+Em 07/10/2026, Codex organizou `docs` a pedido do usuário, mantendo apenas os 23 PDFs e três PowerPoints. Separou as disciplinas e as versões anteriores, arquivou fontes e auxiliares em backup local fora de `docs` e atualizou os links de navegação. Os arquivos finais foram preservados byte a byte.
 
 ## Atividade 12 - 09/11/2026
 

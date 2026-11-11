@@ -112,21 +112,19 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 
 ## Documentação
 
-- [`docs/entregas-processos/README.md`](docs/entregas-processos/README.md): entregas de Processos em DOCX e PDF, modelos visuais e fontes editáveis.
-- [`docs/entregas-processos/Arquitetura-Rastreabilidade-Esboco.pdf`](docs/entregas-processos/Arquitetura-Rastreabilidade-Esboco.pdf): esboço da arquitetura conceitual e matriz inicial com três requisitos rastreados; versões Word e Markdown na mesma pasta.
-- [`docs/entregas-processos/A8-Entrega-Final-Revisada.md`](docs/entregas-processos/A8-Entrega-Final-Revisada.md): revisão da A8 vinculada à A5, com nove itens, dois incrementos e quatro riscos; estimativas propostas para validação da equipe.
+A pasta `docs` reúne entregas, imagens e documentação das atividades:
 
-- [`DEVLOG.md`](DEVLOG.md): histórico das alterações e verificações do projeto.
-- [`PLANEJAMENTO.md`](PLANEJAMENTO.md): referência para o planejamento revisado e registro histórico da A8 original.
-- [`docs/atividade-semanal-08.md`](docs/atividade-semanal-08.md): versão consultável da Atividade 08.
-- [`docs/Atividade_A8.pdf`](docs/Atividade_A8.pdf): documento original entregue na Atividade 08.
-- [`docs/atividade-semanal-08-poo-entrega-final.md`](docs/atividade-semanal-08-poo-entrega-final.md): implementação, demonstração, testes e justificativa da herança.
-- [`docs/Apresentacao-POO-TechFix.pptx`](docs/Apresentacao-POO-TechFix.pptx): apresentação revisada de POO, com exemplos de Notebook e Desktop e mídias preservadas.
-- [`docs/Roteiro-Apresentacao-POO-Arthur-Lucas.md`](docs/Roteiro-Apresentacao-POO-Arthur-Lucas.md): roteiro por apresentador e slide, planejado para aproximadamente seis minutos.
-- [`backend/README.md`](backend/README.md): limites e organização da área Java.
-- [`backend/src/README.md`](backend/src/README.md): documentação e execução do código Java.
-- [`docs/atividade-semanal-03.md`](docs/atividade-semanal-03.md): registro da Atividade Semanal nº 3.
-- [`Diagrama-Classes/README.md`](Diagrama-Classes/README.md): explicação do diagrama implementado.
+| Pasta | Conteúdo |
+| --- | --- |
+| [Backlog do produto](docs/backlog/Backlog-TechFix.pdf) | Nove itens priorizados, critérios de aceitação, estimativas e incrementos I1/I2, separados da ficha A8. |
+| [Entregas de Processos](docs/entregas-processos/) | Atividades, modelos, esboços e versões finais em PDF. |
+| [AP2 de Processos — versão atual](docs/apresentacao-processos-ap2/gamma-revisada/) | Slides no visual do Gamma, roteiro e ficha de entrega. |
+| [Apresentações anteriores de Processos](docs/apresentacao-processos-ap2/versoes-anteriores/) | Referência original do Gamma e versões anteriores. |
+| [Entregas de POO](docs/entregas-poo/) | Ficha final da Atividade 9. |
+| [AP2 de POO](docs/apresentacao-poo-ap2/) | PowerPoint e roteiro da dupla. |
+| [Projeto](docs/projeto/) | Planejamento inicial da assistência técnica. |
+
+Documentação técnica: [área Java](backend/README.md), [execução e classes](backend/src/README.md), [diagrama](Diagrama-Classes/README.md), [planejamento](PLANEJAMENTO.md) e [histórico](DEVLOG.md).
 
 ## Integrante
 
@@ -135,7 +133,7 @@ Os scripts disponíveis e as dependências estão definidos em `package.json`.
 
 ## Entrega final de polimorfismo da Atividade 9
 
-A interface `RoteiroDiagnostico` define etapas ordenadas e imutáveis, com implementações distintas em `Notebook` e `Desktop`, integradas à ordem de serviço. [Ficha final PDF](docs/Ficha_Padrao_Entrega_Atividade_09_Final.pdf) e [documentação](docs/atividade-semanal-09-poo-entrega-final.md). Para reproduzir o PDF: `python docs/gerar_entrega_polimorfismo.py` (requer `reportlab`).
+A interface `RoteiroDiagnostico` define etapas ordenadas e imutáveis, com implementações distintas em `Notebook` e `Desktop`, integradas à ordem de serviço. Consulte a [ficha final em PDF](docs/entregas-poo/Ficha_Padrao_Entrega_Atividade_09_Final.pdf).
 
 ## Escopo de atendimento
 
@@ -143,17 +141,24 @@ A TechFix realiza manutenção exclusivamente de notebooks e PCs (desktops). Os 
 
 ## Verificações da interface web
 
-Para executar os testes Java durante a apresentação, use `Testar-POO.cmd` na raiz do projeto. O resultado fica visível no terminal, e o Maven roda em modo offline. Veja a [preparação para a aula](docs/Executar-Testes-Na-Apresentacao.md), incluindo os requisitos de JDK/Maven e a distinção entre os 14 testes de POO e os cinco testes do site.
+Para executar os testes Java durante a apresentação, use `Testar-POO.cmd` na raiz do projeto. O resultado fica visível no terminal, e o Maven roda em modo offline. São necessários JDK 25 e Maven no PATH. Antes da aula, prepare as dependências no computador da apresentação com `mvn -B -f backend/pom.xml clean test` e confira `Testar-POO.cmd --sem-pausa`. Os 31 testes de POO são separados dos cinco testes do site.
 
 Execute `npm test` para conferir datas civis, validações de equipamentos e a sincronização do status quando há reparos simultâneos, troca de equipamento, cancelamento ou exclusão. Execute `npm run build` para verificar os tipos e gerar a versão de produção.
 
 ## Entrega AP2
 
-- [Conferência dos requisitos e demonstração](docs/Entrega-AP2.md).
-- [Slides atualizados](docs/Apresentacao-POO-TechFix.pptx).
+- [Slides atualizados](docs/apresentacao-poo-ap2/Apresentacao-POO-TechFix.pptx).
 - [Diagrama atual com multiplicidades](Diagrama-Classes/README.md) e [versão visual](Diagrama-Classes/Diagrama-AP2.svg).
-- [Roteiro de Arthur e Lucas](docs/Roteiro-Apresentacao-POO-Arthur-Lucas.md), também em [PDF](docs/Roteiro-Apresentacao-POO-Arthur-Lucas.pdf).
+- [Roteiro de Arthur e Lucas em PDF](docs/apresentacao-poo-ap2/Roteiro-Apresentacao-POO-Arthur-Lucas.pdf).
 - [Registro de uso de IA na AP2](AI.md) e [histórico Java](backend/IA.md).
 - [Backlog e planejamento](PLANEJAMENTO.md), com funcionalidades futuras distinguidas da implementação atual.
 
-A versão de entrega é identificada pela tag Git `ap2`. A interface segue o [layout da oficina](docs/Interface-Oficina.md); usa armazenamento local e não se comunica com o Java.
+A versão de entrega é identificada pela tag Git `ap2`. Para a demonstração Java, execute `java -cp backend/target/classes com.techfix.app.Main` após os testes. A interface usa armazenamento local e não se comunica com o Java.
+
+### Interface da oficina
+
+A oficina usa cabeçalho preto, logo oficial, área branca e destaques ciano, com estilos em `src/styles/workshop.css`. Os indicadores usam dados reais: custos são custos dos reparos, abertura é a data de criação e conclusão não significa retirada do equipamento. Busca, filtros, paginação e formulários reutilizam os módulos existentes.
+
+## AP2 — Processos de Engenharia de Software
+
+Versão atual: [slides em PDF](docs/apresentacao-processos-ap2/gamma-revisada/TechFix-AP2-Gamma-Revisada.pdf), [PowerPoint editável](docs/apresentacao-processos-ap2/gamma-revisada/TechFix-AP2-Gamma.pptx), [roteiro](docs/apresentacao-processos-ap2/gamma-revisada/Roteiro-Arthur-Lucas-Gamma.pdf) e [ficha de entrega](docs/apresentacao-processos-ap2/gamma-revisada/Ficha-Entrega-AP2-Gamma.pdf). São 13 slides, com origem na A3 e conexão entre A7–A10; exposição planejada de 11 minutos e 4 minutos para perguntas.
