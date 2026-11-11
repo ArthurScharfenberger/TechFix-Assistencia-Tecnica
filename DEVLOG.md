@@ -2,6 +2,15 @@
 
 Este documento registra a evolução do projeto TechFix durante o semestre.
 
+## 11/11/2026 — Processos: A11 a A14 (etapa AS)
+
+- A11: plano de qualidade com cinco características da ISO/IEC 25010:2023, métricas e metas numéricas, características adiadas, dois conflitos e critérios Q1–Q5 na Definition of Done; esboço preservado. Ficha padrão gerada do `Documento_Padrao_Entrega_Atividades.docx` por `scripts/gerar_fichas_processos.py` e exportada pelo Word.
+- Requisitos, backlog e matriz passaram a ter fonte versionada em `docs/dossie/`, transcrita sem correções (commit 151f419) para servir de "antes" na revisão.
+- A12: inspeção de requisitos, matriz e plano com checklists sim/não. Revisor simulado com IA (Claude), com o prompt do enunciado aplicado por artefato: 22 possíveis achados, 18 aceitos (1 crítico, 9 maiores, 6 menores, 2 sugestões) e 4 rejeitados com justificativa. O crítico D01 confirmou a divergência da A5 anotada em 07/10: a tabela 2.2.1 tem registros de IA no lugar dos requisitos. Correções nos commits 714ac8a, d62fbe6 e f092cb0. Validação V1 (e-mail opcional) e V2 (tempo de abertura) com o stakeholder simulado Marcos Almeida, interpretado por IA; ratificação pelo PO pendente. Critério Q6 acrescentado à DoD.
+- A13: estratégia e 18 casos (partição, valor limite e tabela de decisão; 7 negativos; 4 não funcionais). Execução real de 9 casos com `docs/05-qualidade/execucao/`: domínio Java (JDK 25) e `ChamadoService` do frontend (Node 24). 4 passaram e 5 falharam, gerando os defeitos DT01–DT05 (OS concluída volta a ABERTA no Java e no frontend; início sem técnico; ABERTA → CONCLUIDA; e-mail obrigatório; só o primeiro campo pendente é indicado). O código não foi alterado para preservar as entregas de POO v11/v12; os defeitos foram vinculados a A8R02, A8R06 e A8R07.
+- A14: release v1.0.0 como linha de base; SM-01 (retorno em garantia) pedida pelo stakeholder simulado com IA; análise de impacto até testes, backlog e riscos; aprovação parcial (OS de garantia vinculada, RN1 preservada; filtro por equipamento para o I3). Branch `sm-01-garantia`, PR #1 com revisão do revisor simulado (achado R-01 corrigido antes do merge), merge f122e24, release v1.1.0 e CHANGELOG.md.
+- Uso de IA: Claude (Claude Code) elaborou documentos, checklists e casos, simulou revisor e stakeholder, escreveu os scripts de execução e o gerador de fichas e executou os comandos git. Commits feitos pela conta do usuário, a pedido dele. Revisão humana, decisão do PO e assinaturas continuam com a dupla.
+
 ## 07/10/2026 — Correções dos feedbacks de Processos A8 e A10
 
 - Complemento solicitado pelo usuário: elaborar A7 (esboço e final), ignorar A1 nesta revisão e concluir A10 conforme enunciado, na ficha padrão com disciplina Processos de Engenharia de Software. O usuário esclareceu que A7 ainda não havia sido feita; os arquivos criados agora não são apresentados como entrega anterior, apesar da referência em sentido diferente no feedback inicial.

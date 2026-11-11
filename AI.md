@@ -23,3 +23,7 @@ Em 07/10/2026, Codex organizou `docs` a pedido do usuário, mantendo apenas os 2
 ## Atividade 12 - 09/11/2026
 
 OpenAI Codex implementou a separa??o em pacotes, a interface de reposit?rio, o registro imut?vel, o servi?o com inje??o por construtor e as implementa??es em mem?ria e arquivo. Tamb?m criou 12 testes novos, executou os 31 testes JUnit, verificou duas execu??es consecutivas do Main e preparou UML, README, ficha em PDF e guia de microdefesa. A participa??o incluiu gera??o de c?digo e documentos. A equipe ainda deve revisar e compreender o material, confirmar sua responsabilidade e realizar o envio na plataforma Aula. Evid?ncias em [Atividade 12](docs/atividade-12/README.md).
+
+## Processos — etapa AS (11/11/2026)
+
+Nas atividades A11 a A14 de Processos de Engenharia de Software, Claude (Claude Code) elaborou o plano de qualidade, a revisão por inspeção, a estratégia e os casos de teste e a análise da solicitação de mudança SM-01. Também atuou como revisor simulado (A12 e PR #1) e como stakeholder simulado (Marcos Almeida, da A3), escreveu os scripts que executaram 9 casos de teste no protótipo e gerou as fichas a partir do modelo padrão. Os resultados de teste vêm de execução real; nenhuma reunião, aceite do PO ou assinatura foi presumido. Detalhes em [DEVLOG.md](DEVLOG.md), [docs/05-qualidade](docs/05-qualidade/) e [docs/06-evolucao](docs/06-evolucao/).

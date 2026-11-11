@@ -118,6 +118,9 @@ A pasta `docs` reúne entregas, imagens e documentação das atividades:
 | --- | --- |
 | [Backlog do produto](docs/backlog/Backlog-TechFix.pdf) | Nove itens priorizados, critérios de aceitação, estimativas e incrementos I1/I2, separados da ficha A8. |
 | [Entregas de Processos](docs/entregas-processos/) | Atividades, modelos, esboços e versões finais em PDF. |
+| [Dossiê de Processos](docs/dossie/) | Fonte versionada de requisitos, backlog e matriz de rastreabilidade (v1.1.0). |
+| [Qualidade — A11 a A13](docs/05-qualidade/) | Plano de qualidade, revisão por inspeção, estratégia e casos de teste, com fichas em DOCX/PDF e scripts de execução. |
+| [Evolução — A14](docs/06-evolucao/) | Solicitação de mudança SM-01, revisão do PR e ficha. Versões do dossiê no [CHANGELOG](CHANGELOG.md). |
 | [AP2 de Processos — versão atual](docs/apresentacao-processos-ap2/gamma-revisada/) | Slides no visual do Gamma, roteiro e ficha de entrega. |
 | [Apresentações anteriores de Processos](docs/apresentacao-processos-ap2/versoes-anteriores/) | Referência original do Gamma e versões anteriores. |
 | [Entregas de POO](docs/entregas-poo/) | Ficha final da Atividade 9. |

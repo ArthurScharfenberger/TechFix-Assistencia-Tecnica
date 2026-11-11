@@ -73,5 +73,34 @@
     ],
     "verificacao_ia": "Execução dos scripts com JDK 25 e Node 24 e conferência das saídas; conferência da matriz contra requisitos.md; recontagem de casos por técnica, negativos e cobertura. Uso registrado no DEVLOG.md.",
     "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
+  },
+  "A14": {
+    "titulo": "Entrega de Atividade Semanal - Atividade 14",
+    "atividade": "A14 — Analisar uma solicitação de mudança — Entrega final",
+    "etapa": "AS",
+    "equipe": "TechFix",
+    "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
+    "data": "11/11/2026",
+    "fonte": "docs/06-evolucao/SM-01-retorno-em-garantia.md",
+    "saida": "docs/06-evolucao/A14-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/06-evolucao — PR #1: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/pull/1 — releases v1.0.0 e v1.1.0",
+    "decisoes": "SM-01 aprovada parcialmente (alternativa B): OS de garantia vinculada à OS concluída, em até 90 dias, sem reabrir a OS (RN1 preservada). Para caber no I2, o filtro por equipamento passou para o I3 (A8R11); a confirmação da garantia pelo técnico e a isenção de valores ficaram adiadas (A8R12). Mudança versionada em branch própria, PR #1 revisado, merge e release v1.1.0.",
+    "pendencias": "Ratificar a decisão com o PO Chico Mosca. Atualizar o fluxograma e o wireframe da A9 no refinamento do A8R10. Executar CT19–CT22 e a regressão no I2. Revisar em dupla e assinar.",
+    "ia": [
+      [
+        "11/11/2026 — Claude (Claude Code)",
+        "Simular o solicitante da mudança (Marcos Almeida, A3) com o prompt do enunciado.",
+        "Contexto da A3, RF1–RF3, RN1 e RNF1–RNF3; pedido inicial e respostas às 4 perguntas de esclarecimento (seção 2).",
+        "Pedido e respostas usados como registro da SM-01; trecho principal da conversa transcrito na ficha."
+      ],
+      [
+        "11/11/2026 — Claude (Claude Code)",
+        "Analisar o impacto, redigir alternativas, alterar os artefatos e revisar o PR como revisor simulado.",
+        "Seguir a matriz até testes, backlog e riscos; alterar requisitos, backlog, matriz e casos em branch própria; aplicar o checklist de revisão do PR.",
+        "Análise, alterações e revisão aproveitadas; o achado R-01 foi corrigido antes do merge. A decisão de PO aguarda ratificação de Chico Mosca."
+      ]
+    ],
+    "verificacao_ia": "Conferência do diff v1.0.0...v1.1.0 contra a análise de impacto; conferência de que a RN1 não foi alterada; conferência dos links do PR e das releases. Uso registrado no DEVLOG.md.",
+    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
   }
 }

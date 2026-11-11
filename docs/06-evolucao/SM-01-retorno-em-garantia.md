@@ -2,7 +2,7 @@
 
 ## 1. Linha de base
 
-Antes de qualquer alteração foi criada a release **v1.0.0** do dossiê: tag anotada `v1.0.0` sobre o commit 8f3178b, em https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v1.0.0. Ela contém requisitos, backlog e matriz em `docs/dossie/`, além do plano de qualidade, da revisão e dos casos de teste em `docs/05-qualidade/`.
+Antes de qualquer alteração foi criada a release **v1.0.0** do dossiê (tag anotada `v1.0.0` sobre o commit 8f3178b): https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v1.0.0. Ela contém requisitos, backlog e matriz em `docs/dossie/`, além do plano de qualidade, da revisão e dos casos de teste em `docs/05-qualidade/`.
 
 ## 2. Registro da solicitação
 
@@ -79,7 +79,12 @@ Feita seguindo a matriz (`docs/dossie/matriz-rastreabilidade.md`) da origem até
 
 - Branch: `sm-01-garantia`, criada a partir da v1.0.0.
 - Commits: 4aef4b9 (requisitos), 43149fb (backlog), 553a393 (matriz, casos de teste e plano) e o commit deste registro e do CHANGELOG. Todos citam "Refs: SM-01".
-- Pull request para o `main` citando a SM-01, com revisão registrada em `docs/06-evolucao/SM-01-revisao-pr.md`, seguido de merge e da release **v1.1.0**.
+- Commit de correção após a revisão: d547efd (mensagens do CA18, achado R-01).
+- Pull request: **#1**, "SM-01: retorno de equipamento em garantia (RN2)", que cita a SM-01 na descrição — https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/pull/1
+- Revisão: revisor simulado com IA, que aplicou o checklist da equipe. Encontrou 1 achado menor (R-01), corrigido no commit d547efd, e aprovou o PR. Parecer publicado como comentário no PR e em `docs/06-evolucao/SM-01-revisao-pr.md`.
+- Merge no `main`: commit f122e24.
+- Release nova: **v1.1.0** — https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v1.1.0
+- Mensagens de commit no padrão "tipo(escopo): o que mudou", com o porquê no corpo e "Refs: SM-01".
 
 **Antes e depois de dois artefatos alterados**
 
@@ -95,3 +100,11 @@ Feita seguindo a matriz (`docs/dossie/matriz-rastreabilidade.md`) da origem até
 - Casos novos: CT19 (90º dia, aceita), CT20 (91º dia, recusa), CT21 (origem não concluída ou de outro equipamento), CT22 (vínculo exibido nas duas OS). Caso alterado: CT12, reprogramado para o I3.
 - Regressão: CT04, CT05, CT08, CT09, CT13, CT15, CT16 e CT17. Detalhes em `docs/05-qualidade/A13-estrategia-e-casos-de-teste.md`, seção "Casos acrescentados pela SM-01".
 - CHANGELOG.md com a versão 1.1.0.
+
+## 8. Links
+
+- Release da linha de base v1.0.0: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v1.0.0
+- Pull request #1 (SM-01): https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/pull/1
+- Release v1.1.0: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v1.1.0
+- Diferenças entre as versões: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/compare/v1.0.0...v1.1.0
+- CHANGELOG: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/blob/main/CHANGELOG.md
