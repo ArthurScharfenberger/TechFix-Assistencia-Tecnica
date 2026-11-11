@@ -1,0 +1,20 @@
+{
+  "A11": {
+    "titulo": "Entrega de Atividade Semanal - Atividade 11",
+    "atividade": "A11 — Construir plano inicial de qualidade — Entrega final",
+    "etapa": "AS",
+    "equipe": "TechFix",
+    "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
+    "data": "11/11/2026 (elaboração; o prazo original do enunciado era 23/10/2026)",
+    "fonte": "docs/05-qualidade/A11-plano-qualidade.md",
+    "saida": "docs/05-qualidade/A11-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/main/docs/05-qualidade",
+    "decisoes": "Priorizar cinco características da ISO/IEC 25010:2023: Adequação funcional, Segurança, Confiabilidade, Eficiência de desempenho e Capacidade de interação. Adiar Compatibilidade, Flexibilidade, Manutenibilidade e Proteção. Integridade acima de desempenho e login individual com sessão de 30 min. Critérios Q1–Q5 acrescentados à Definition of Done da A7.",
+    "pendencias": "Revisar o plano com critérios na A12. Transformar as metas em casos de teste na A13. Confirmar com o PO a disponibilidade de participantes para o teste de usabilidade. Revisar o conteúdo em dupla e assinar.",
+    "ia": [
+      ["11/11/2026 — Claude (Claude Code)", "Elaborar o esboço e a entrega final do plano de qualidade a partir do dossiê A3–A10.", "Ler A3, A4, A5, A7, A8, A9, A10 e AP2; priorizar 3 a 5 características da ISO/IEC 25010:2023 justificadas por códigos; montar tabela com métrica, meta, verificação, responsável e momento; conflitos e DoD.", "Aproveitados a estrutura, as justificativas e as metas. Responsáveis seguem os donos dos riscos da A8. Não foram inventados feedback da AP2, reuniões ou aceite do PO."]
+    ],
+    "verificacao_ia": "Conferência dos códigos citados contra os PDFs da A3, A5, A8 e A10; conferência dos nomes da ISO/IEC 25010:2023; checagem de que toda meta tem número ou critério verificável. Uso registrado no DEVLOG.md.",
+    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
+  }
+}
