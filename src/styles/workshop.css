@@ -96,11 +96,12 @@ a { color: var(--accent); }
 .login-brand-panel { background: #101318; color: #fff; }
 .login-brand-content h2, .login-brand-content p { color: #fff; }
 .login-card-icon { background: none; color: var(--accent); width: auto; height: auto; }
-.login-mobile-logo { background: #101318; }
+.login-mobile-logo { background: transparent; }
 .login-brand-logo.official-logo-crop { width: 260px; max-width: 100%; height: 76px; }
 .login-brand-logo.official-logo-crop img { width: 270px; top: -71px; }
-.login-mobile-logo.official-logo-crop { height: 50px; }
-.login-mobile-logo.official-logo-crop img { width: 166px; top: -43px; left: -4px; }
+.login-mobile-logo.official-logo-crop { width: 160px; max-width: 100%; height: 50px; }
+.login-mobile-logo.official-logo-crop img { width: 166px; top: -43px; left: -4px; filter: invert(1) hue-rotate(180deg); }
+[data-theme='dark'] .login-mobile-logo.official-logo-crop img { filter: none; }
 .module-title { font-size: 32px; letter-spacing: -1px; margin: 12px 0 24px; }
 .workshop-search-row { display: grid; grid-template-columns: minmax(0,1fr) 240px; gap: 16px; align-items: stretch; }
 .workshop-search { display: flex; align-items: center; gap: 16px; padding: 10px 16px; min-height: 48px; border: 1px solid var(--border-light); }
