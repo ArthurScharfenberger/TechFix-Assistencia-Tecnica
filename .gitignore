@@ -68,3 +68,7 @@ Desktop.ini
 # Histórico local do cenário Java (Atividade 12)
 /dados/
 /backend/dados/
+
+# Cache do Python
+__pycache__/
+*.pyc
