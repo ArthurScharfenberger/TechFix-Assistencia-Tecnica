@@ -2,9 +2,9 @@
 
 ## 2.1 Links da entrega
 
-**Apresentação em PDF:** https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/blob/main/docs/processos/apresentacao-as/TechFix-AS.pdf
+**Apresentação em PDF:** https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/blob/main/docs/processos/apresentacao-as/TechFix-AS-Modelo-Professora.pdf
 
-**Apresentação editável:** https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/blob/main/docs/processos/apresentacao-as/TechFix-AS.pptx
+**Apresentação editável:** https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/blob/main/docs/processos/apresentacao-as/TechFix-AS-Modelo-Professora.pptx
 
 **Release final do dossiê:** https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v2.0.0
 
@@ -12,7 +12,7 @@
 
 **Protótipo em capturas (plano B):** https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/blob/main/docs/04-modelagem/as/README.md
 
-O protótipo executa no computador da equipe. O link localhost não é uma hospedagem pública. As capturas no repositório permitem acompanhar a demonstração sem iniciar o sistema. Os slides 1–13 cobrem 12 minutos e os slides 14–15 apoiam os cinco minutos de perguntas.
+O protótipo executa no computador da equipe. O link localhost não é uma hospedagem pública. As capturas no repositório permitem acompanhar a demonstração sem iniciar o sistema. A apresentação segue o estilo do exemplo da professora. O percurso cronometrado usa os slides 1, 3–17 e 20. Os slides 2, 18 e 19 são apoio fora dos 12 minutos.
 
 ## 2.2 Matriz de responsabilidades do semestre
 
@@ -39,9 +39,9 @@ Caminhos abreviados na coluna Evidência são relativos a docs/processos, exceto
 | A15 | Arthur | Lucas | Lucas | docs/06-evolucao/A15-Ficha-Entrega-Final.pdf; commit bccb28c |
 | AP1 | Arthur | Lucas | Lucas | DEVLOG, A5: resumo do fluxo para AP1. Slides específicos não localizados. |
 | AP2 | Arthur | Lucas | Lucas | apresentacao-ap2/TechFix-AP2.pptx; Roteiro-Arthur-Lucas.pdf |
-| AS | Arthur | Lucas | Lucas | apresentacao-as/TechFix-AS.pptx; Roteiro-Arthur-Lucas.pdf; DEVLOG 18/11. |
+| AS | Arthur | Lucas | Lucas | apresentacao-as/TechFix-AS-Modelo-Professora.pptx; Roteiro-Arthur-Lucas.pdf; DEVLOG 18/11. |
 
-A liderança indicada para AP1 segue a declaração geral da equipe, com evidência indireta na A5. Na AS, ambos apresentam: Arthur nos slides 1–5 e 13, Lucas nos slides 6–12; cada um dispõe de seis minutos. Qualquer integrante responde sobre todo o projeto.
+A liderança indicada para AP1 segue a declaração geral da equipe, com evidência indireta na A5. Na AS, ambos apresentam: Arthur nos slides 1, 3–8, 17 e 20, Lucas nos slides 9–16; cada um dispõe de seis minutos. Qualquer integrante responde sobre todo o projeto.
 
 ## 2.3 Demonstração e situação do produto
 

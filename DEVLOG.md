@@ -2,6 +2,13 @@
 
 Este documento registra a evolução do projeto TechFix durante o semestre.
 
+## 18/11/2026 — AS adaptada ao exemplo da professora
+
+- A equipe forneceu capturas do exemplo “AS: Sistema de Estacionamento”, de Caroline Pacheco da Rosa, após o link do Gamma não abrir. A apresentação do TechFix foi refeita com fundo branco, faixas lilás, títulos e organização semelhantes, preservando conteúdo e evidências próprios.
+- Nova versão `TechFix-AS-Modelo-Professora.pptx` e PDF com 20 slides: percurso principal 1, 3–17 e 20 (720 segundos), agenda 2 e apoio 18/19. Arthur e Lucas têm 360 segundos cada. Histórico de versões, cobertura Must 8/8 com casos e 4/8 com cenário exercitado, quadrantes da dívida e riscos aparecem em seções próprias.
+- Gráficos de cobertura e tabelas editáveis. A ilustração lateral de notebook foi gerada com IA, com o pedido de traço técnico fino sobre fundo lilás; é decorativa e não constitui evidência de implementação. Capturas do produto e resultados da A13 foram preservados.
+- Roteiro e ficha padrão atualizados com a nova numeração e os links. As versões anteriores dos slides permanecem disponíveis como histórico. OpenAI Codex apoiou redação, adaptação visual, imagem, exportação e revisão dos arquivos.
+
 ## 18/11/2026 — Apresentação final AS de Processos
 
 - Preparados 15 slides em PPTX e PDF: 13 para os 12 minutos do enunciado e dois de apoio ao desafio de rastreabilidade. Roteiro com seis minutos para Arthur e seis para Lucas, ficha padrão com matriz A1–A15/AP1/AP2/AS e guia de evidências em `docs/processos/apresentacao-as/`.
