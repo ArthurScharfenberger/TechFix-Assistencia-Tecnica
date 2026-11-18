@@ -2,6 +2,19 @@
 
 Este documento registra a evolução do projeto TechFix durante o semestre.
 
+## 18/11/2026 — Apresentação AS em vídeos e acabamento dos slides
+
+- A pedido da equipe, a apresentação passa a ser gravada em dois vídeos: Arthur apresenta os slides 1–11 (cerca de 7 min 30 s) e Lucas os slides 12–21 (cerca de 4 min 30 s), mantendo os 12 minutos do enunciado. Roteiro, notas de fala, README da pasta, ficha e conferência atualizados.
+- Revisão de acabamento da `TechFix-AS-Revisada` com apoio do Claude (Anthropic): etiquetas, espaçamentos, legendas da demonstração, meta de Capacidade de interação conforme a A11, siglas de custo e faixa do slide de riscos. Conteúdo, IDs e resultados não foram alterados.
+- Versões intermediárias da apresentação (`TechFix-AS` e `TechFix-AS-Modelo-Professora`) removidas da pasta; continuam no histórico do Git.
+
+## 18/11/2026 — Conferência final da apresentação AS
+
+- Revisão com apoio do OpenAI Codex, solicitada pela equipe, contra o enunciado completo: apresentação, ficha, roteiro, fontes A11–A15 e evidências de execução. Resultado detalhado em `docs/processos/apresentacao-as/revisao-final-as.md`.
+- Checklist marcado para o conteúdo conferido; ações da dupla e lacunas de evidência mantidas explícitas. Não foram inventados envio, ensaio, aprovação do PO ou autoria da A1.
+- Demonstração ampliada para telas em sequência; estratégia de testes visível; indicador de execução definido como 9/22 casos, preservando parciais e falhas; manutenção com quatro exemplos, responsáveis, fluxo e comunicação.
+- Roadmap com IDs e motivos. Nova versão `TechFix-AS-Revisada`, com 21 slides, 18 no percurso principal e 720 segundos previstos (360 por integrante). Ficha e roteiro alinhados à nova numeração.
+
 ## 18/11/2026 — AS adaptada ao exemplo da professora
 
 - A equipe forneceu capturas do exemplo “AS: Sistema de Estacionamento”, de Caroline Pacheco da Rosa, após o link do Gamma não abrir. A apresentação do TechFix foi refeita com fundo branco, faixas lilás, títulos e organização semelhantes, preservando conteúdo e evidências próprios.
