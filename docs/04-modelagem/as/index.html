@@ -1,0 +1,11 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TechFix — demonstração AS</title>
+<style>body{margin:0;background:#101b26;color:#fff;font:20px Arial,sans-serif}main{max-width:1200px;margin:auto;padding:28px}h1{font-size:30px;margin:0 0 12px}p{line-height:1.5}img{display:block;max-width:100%;height:62vh;object-fit:contain;margin:15px auto;background:white}button{font:inherit;padding:10px 20px;background:#009fe3;color:white;border:0;cursor:pointer}nav{display:flex;justify-content:space-between}small{color:#bcd3df}a{color:#70d3ff}</style>
+<main><h1 id="title"></h1><small id="ids"></small><p id="desc"></p><img id="screen" alt=""><nav><button onclick="move(-1)">Anterior</button><span id="count"></span><button onclick="move(1)">Próximo</button></nav><p><small>Capturas reais de 18/11/2026. Plano B sem internet. Use as setas do teclado. <a href="README.md">Evidências e limites</a></small></p></main>
+<script>
+const frames=[
+['Abrir a ordem','HU1 / RF2 (Must) / CA04 / CT04','Ana Souza, EQ-1 (código TFX-EQP-000001), defeito “Não liga”. Selecionar os dados e clicar em Salvar.','01-abertura.png'],
+['Confirmação da gravação','HU1 / RF2 / CA04 / CT04','A nova ordem aparece na lista. Abrir o ícone de visualização para consultar os detalhes.','02-confirmacao.png'],
+['Consultar a ordem','HU1 / RF2 / CA04 / CT04 parcial','Abertura e consulta locais funcionam. O ID CHD e a ausência de evento histórico mantêm CT04 parcial: a expectativa integral de OS 25 não foi atendida.','03-consulta.png'],
+['Recusa de vínculo inválido','RF1 / RF2 / CA03 / CT03','Chamada direta ao serviço: Ana Souza + EQ-2 de Bruno Lima. Recusa real e zero novas OS. A interface já filtra os equipamentos por cliente.','05-mensagem-erro.png']];let i=0;
+function show(){let f=frames[i];document.querySelector('#title').textContent=f[0];document.querySelector('#ids').textContent=f[1];document.querySelector('#desc').textContent=f[2];document.querySelector('#screen').src=f[3];document.querySelector('#screen').alt=f[0]+' — '+f[1];document.querySelector('#count').textContent=(i+1)+' / '+frames.length}function move(d){i=Math.max(0,Math.min(frames.length-1,i+d));show()}document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')move(1);if(e.key==='ArrowLeft')move(-1)});show();
+</script></html>

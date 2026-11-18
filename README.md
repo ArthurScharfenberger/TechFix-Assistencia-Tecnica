@@ -6,6 +6,8 @@ O TechFix organiza o atendimento de notebooks e desktops de uma assistência té
 
 **Dossiê final:** [release v2.0.0 — Versão final AS](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v2.0.0) · [CHANGELOG](CHANGELOG.md) · [ficha A15 em PDF](docs/06-evolucao/A15-Ficha-Entrega-Final.pdf) · [DOCX](docs/06-evolucao/A15-Ficha-Entrega-Final.docx).
 
+**Apresentação AS (18/11):** [slides e ficha de entrega](docs/processos/apresentacao-as/README.md), [roteiro da dupla](docs/processos/apresentacao-as/Roteiro-Arthur-Lucas.pdf) e [capturas do protótipo como plano B](docs/04-modelagem/as/README.md).
+
 **Equipe e papéis:** Arthur Scharfenberger cuida da interface, requisitos, acesso e entregas; Lucas Oliveira da Silva, das regras, persistência e testes. A revisão é cruzada. Chico Mosca é o PO indicado na A7 para priorização e aceite; a ratificação das validações simuladas continua pendente.
 
 | Pasta do dossiê | Conteúdo |

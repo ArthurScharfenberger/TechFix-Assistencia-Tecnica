@@ -4,6 +4,7 @@
 - [A10 Arquitetura e rastreabilidade](../processos/entregas/A10-Arquitetura-Rastreabilidade-Final.pdf): componentes C1–C4 e fluxo planejado.
 - [Fluxo planejado de retorno em garantia](fluxo-garantia.md): complemento AS da RN2 e da SM-01.
 - [Protótipo local e fluxo da demonstração](prototipo-local.md).
+- [Capturas da demonstração AS e sequência offline](as/README.md): abertura, consulta e rejeição de vínculo inválido, com requisitos e CT identificados.
 - [Diagrama de classes Java de POO](../poo/diagrama-classes/README.md), separado da arquitetura planejada de Processos.
 
 C1 = interface web; C2 = API e lógica de negócio; C3 = autenticação e autorização; C4 = persistência e banco. C2–C4 são a arquitetura pretendida de Processos; o site atual usa armazenamento local e não está integrado ao Java. A tela do técnico (D13) e o wireframe da garantia serão refinados antes dos itens de código (DIV06).

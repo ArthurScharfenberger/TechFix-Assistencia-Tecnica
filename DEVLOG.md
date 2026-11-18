@@ -2,6 +2,15 @@
 
 Este documento registra a evolução do projeto TechFix durante o semestre.
 
+## 18/11/2026 — Apresentação final AS de Processos
+
+- Preparados 15 slides em PPTX e PDF: 13 para os 12 minutos do enunciado e dois de apoio ao desafio de rastreabilidade. Roteiro com seis minutos para Arthur e seis para Lucas, ficha padrão com matriz A1–A15/AP1/AP2/AS e guia de evidências em `docs/processos/apresentacao-as/`.
+- O usuário confirmou a divisão geral: Arthur liderou grande parte e Lucas apoiou, revisou e aperfeiçoou. A matriz registra esse padrão declarado, preserva A6 individual e explicita as limitações de evidência de A1 e dos slides próprios de AP1. Nenhuma autoria de commit foi transferida entre integrantes.
+- Capturas reais do frontend em navegador isolado, com Ana Souza/EQ-1 e Bruno Lima/EQ-2. Abertura e consulta locais demonstradas, mantendo CT04 parcial. Chamada direta ao serviço para CT03 recusou o vínculo Ana/EQ-2 e manteve uma OS antes/depois, zero novas OS. O erro real foi exibido pelo Toast do aplicativo. Massa fictícia sem alteração no navegador do usuário.
+- Plano B em `docs/04-modelagem/as/`, incluindo sequência HTML offline. README liga slides, ficha e capturas. O pacote da apresentação complementa a release final do dossiê v2.0.0, sem mover essa tag ou alterar os resultados históricos da A13.
+- OpenAI Codex apoiou a leitura do enunciado, organização, redação, captura, exportação e conferência visual. Slides com notas de fala e fontes, tabelas editáveis e resultados com limites explícitos. Ficha gerada a partir do modelo institucional e renderizada para revisão. IA declarada na ficha.
+- Envio no AVA e formulário individual sigiloso continuam a cargo dos integrantes. O material não declara submissão realizada nem preenche percentuais individuais.
+
 ## 11/11/2026 — Organização dos documentos por disciplina
 
 - A pedido do usuário, tudo o que é de POO foi para `docs/poo/` (atividades 06, 09, 11 e 12, AP2, UML, diagramas de classes e roadmap Java) e tudo o que é de Processos foi para `docs/processos/` (entregas A2–A10, AP2, backlog, dossiê, 05-qualidade e 06-evolucao). O índice por atividade está em `docs/README.md`.
