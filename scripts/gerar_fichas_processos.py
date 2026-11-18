@@ -1,4 +1,4 @@
-"""Gera as fichas padrão de Processos (A11 a A14) a partir das fontes Markdown.
+"""Gera as fichas padrão de Processos (A11 a A15) a partir das fontes Markdown.
 
 Uso: python scripts/gerar_fichas_processos.py A11 [A12 ...] [--sem-pdf]
 
@@ -13,8 +13,12 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from zipfile import ZipFile, ZIP_DEFLATED
+from io import BytesIO
 
 import docx
+from docx.oxml import OxmlElement
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
 from docx.oxml.ns import qn
 from docx.shared import Pt
 
@@ -58,16 +62,38 @@ def inline(paragrafo, texto, tamanho=None, negrito_base=False):
         elif parte.startswith("*") and parte.endswith("*") and len(parte) > 2:
             run(paragrafo, parte[1:-1], italico=True, tamanho=tamanho, negrito=negrito_base)
         else:
-            run(paragrafo, parte, tamanho=tamanho, negrito=negrito_base)
+            # URLs explícitas permanecem legíveis e clicáveis no DOCX e no PDF.
+            for pedaco in re.split(r"(https?://[^\s]+)", parte):
+                if pedaco.startswith(("https://", "http://")):
+                    url = pedaco.rstrip(".,;")
+                    link = OxmlElement("w:hyperlink")
+                    link.set(qn("r:id"), paragrafo.part.relate_to(url, RT.HYPERLINK, is_external=True))
+                    r = OxmlElement("w:r")
+                    pr = OxmlElement("w:rPr")
+                    fontes = OxmlElement("w:rFonts")
+                    fontes.set(qn("w:ascii"), FONTE)
+                    fontes.set(qn("w:hAnsi"), FONTE)
+                    pr.append(fontes)
+                    r.append(pr)
+                    t = OxmlElement("w:t")
+                    t.text = url
+                    r.append(t)
+                    link.append(r)
+                    paragrafo._p.append(link)
+                    if len(url) < len(pedaco):
+                        run(paragrafo, pedaco[len(url):], tamanho=tamanho)
+                else:
+                    run(paragrafo, pedaco, tamanho=tamanho, negrito=negrito_base)
 
 
 class Escritor:
     """Insere blocos antes de um parágrafo âncora do modelo."""
 
-    def __init__(self, documento, ancora, tabela_modelo):
+    def __init__(self, documento, ancora, tabela_modelo, a15=False):
         self.doc = documento
         self.ancora = ancora
         self.tabela_modelo = tabela_modelo
+        self.a15 = a15
 
     def paragrafo(self, estilo="normal"):
         p = self.ancora.insert_paragraph_before(style=estilo)
@@ -76,6 +102,8 @@ class Escritor:
     def titulo(self, texto, nivel):
         p = self.paragrafo(f"Heading {nivel}")
         p.paragraph_format.keep_with_next = True
+        if self.a15 and texto.startswith(("2.2 ", "2.3 ", "2.4 ", "2.5 ", "2.6 ")):
+            p.paragraph_format.page_break_before = True
         inline(p, texto)
         return p
 
@@ -91,6 +119,8 @@ class Escritor:
         else:
             inline(p, texto)
         p.paragraph_format.space_after = Pt(4)
+        if self.a15:
+            p.paragraph_format.keep_together = True
         return p
 
     @staticmethod
@@ -116,17 +146,23 @@ class Escritor:
     def tabela(self, linhas):
         colunas = len(linhas[0])
         tamanho = 9 if colunas <= 4 else (8 if colunas <= 6 else 7)
+        if self.a15 and colunas == 9:
+            tamanho = 8
         tbl = self.doc.add_table(rows=len(linhas), cols=colunas)
         # Reaproveita bordas e propriedades da tabela do próprio modelo.
         tbl._tbl.remove(tbl._tbl.tblPr)
         tbl._tbl.insert(0, copy.deepcopy(self.tabela_modelo._tbl.tblPr))
         larguras = self.larguras(linhas, tamanho)
+        if self.a15 and colunas == 9:
+            larguras = [650, 1450, 1000, 1100, 1200, 1150, 900, 1250, 945]
         grade = tbl._tbl.tblGrid
         for i, col in enumerate(grade.findall(qn("w:gridCol"))):
             col.set(qn("w:w"), str(larguras[i]))
         cabecalho_modelo = self.tabela_modelo.rows[0].cells[0]._tc.tcPr
         for i, linha in enumerate(linhas):
             row = tbl.rows[i]
+            if self.a15:
+                row._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
             if i == 0:
                 trPr = row._tr.get_or_add_trPr()
                 h = trPr.makeelement(qn("w:tblHeader"), {qn("w:val"): "1"})
@@ -230,7 +266,9 @@ def gerar(chave, cfg, exportar_pdf=True):
         preencher_campo(ps[indice], cfg[campo])
 
     ancora = ps[10]
-    escritor = Escritor(doc, ancora, tabela_ia)
+    escritor = Escritor(doc, ancora, tabela_ia, a15=(chave == "A15"))
+    if chave == "A15":
+        ps[15].paragraph_format.page_break_before = True
     if "fonte_commit" in cfg:
         # Versão entregue da fonte, com os caminhos atualizados para a organização atual.
         fonte = subprocess.run(["git", "show", cfg["fonte_commit"]], cwd=RAIZ, capture_output=True,
@@ -260,14 +298,28 @@ def gerar(chave, cfg, exportar_pdf=True):
     preencher_campo(ps[20], cfg["verificacao_ia"])
     preencher_campo(ps[21], cfg["responsavel_ia"])
 
-    nomes = ["Arthur Scharfenberger: ", "Lucas Oliveira da Silva: "]
+    nomes = ["Arthur Scharfenberger", "Lucas Oliveira da Silva"]
     for p, nome in zip(ps[25:27], nomes):
-        p.runs[0].text = nome + p.runs[0].text
+        p.runs[0].text = nome if cfg.get("assinaturas_digitadas") else nome + ": " + p.runs[0].text
     ps[27]._p.getparent().remove(ps[27]._p)
 
     destino = RAIZ / cfg["saida"]
     destino.parent.mkdir(parents=True, exist_ok=True)
     doc.save(destino)
+    # A15 altera apenas corpo e seus hyperlinks. Preserva byte a byte os
+    # demais componentes institucionais, incluindo fontes, cabeçalho e estilos.
+    if chave == "A15":
+        with ZipFile(destino) as gerado:
+            partes_editadas = {
+                nome: gerado.read(nome)
+                for nome in ("word/document.xml", "word/_rels/document.xml.rels")
+            }
+        pacote = BytesIO()
+        with ZipFile(MODELO) as original, ZipFile(pacote, "w", ZIP_DEFLATED) as final:
+            for item in original.infolist():
+                nome_normalizado = item.filename.replace("\\", "/")
+                final.writestr(item, partes_editadas.get(nome_normalizado, original.read(item.filename)))
+        destino.write_bytes(pacote.getvalue())
     print("DOCX:", destino.relative_to(RAIZ))
     if exportar_pdf:
         pdf = destino.with_suffix(".pdf")

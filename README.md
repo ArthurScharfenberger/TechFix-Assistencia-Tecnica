@@ -1,5 +1,26 @@
 # TechFix — Sistema de Assistência Técnica
 
+## Versão final AS de Processos — A15
+
+O TechFix organiza o atendimento de notebooks e desktops de uma assistência técnica que depende de papel e planilhas: cadastro de cliente/equipamento, abertura, acompanhamento e consulta de ordens de serviço.
+
+**Dossiê final:** [release v2.0.0 — Versão final AS](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v2.0.0) · [CHANGELOG](CHANGELOG.md) · [ficha A15 em PDF](docs/06-evolucao/A15-Ficha-Entrega-Final.pdf) · [DOCX](docs/06-evolucao/A15-Ficha-Entrega-Final.docx).
+
+**Equipe e papéis:** Arthur Scharfenberger cuida da interface, requisitos, acesso e entregas; Lucas Oliveira da Silva, das regras, persistência e testes. A revisão é cruzada. Chico Mosca é o PO indicado na A7 para priorização e aceite; a ratificação das validações simuladas continua pendente.
+
+| Pasta do dossiê | Conteúdo |
+|---|---|
+| [docs/01-contexto](docs/01-contexto/README.md) | Problema, stakeholders, processo e papéis |
+| [docs/02-requisitos](docs/02-requisitos/README.md) | Fonte única de requisitos, critérios e matriz |
+| [docs/03-planejamento](docs/03-planejamento/README.md) | Backlog, incrementos e riscos |
+| [docs/04-modelagem](docs/04-modelagem/README.md) | Modelos, arquitetura planejada e protótipo |
+| [docs/05-qualidade](docs/05-qualidade/README.md) | Plano, revisão, casos e evidências de teste |
+| [docs/06-evolucao](docs/06-evolucao/README.md) | Mudanças, dívidas, manutenção, riscos, roadmap e lições |
+
+**Protótipo:** [demonstração local](http://localhost:5173), no computador que executa `npm ci` e `npm run dev -- --host 127.0.0.1 --port 5173 --strictPort`. Login demonstrativo: `admin` / `admin`. Fluxo: entrar → cadastrar cliente fictício → vincular notebook/desktop → abrir OS → localizar e consultar detalhes. [Roteiro e limitações](docs/04-modelagem/prototipo-local.md).
+
+**Situação da entrega:** v2.0.0 fecha o dossiê, não o produto para produção. O site usa armazenamento local e o Java de POO é independente. A RN2 de garantia está especificada; CT19–CT22 ainda não foram executados. As falhas DT01–DT05 e as execuções parciais da A13 estão preservadas na [matriz](docs/processos/dossie/matriz-rastreabilidade.md) e no [plano de evolução](docs/06-evolucao/A15-dossie-e-plano-evolucao.md). Tags `v11` e `v12` pertencem à POO.
+
 ## Atividade 12 - Entrega final (`v12`)
 
 **Link de entrega:** [versão v12 no GitHub](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v12).

@@ -378,3 +378,9 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 - 31 testes aprovados com JDK 25 (19 anteriores e 12 novos), incluindo recupera??o por nova inst?ncia com `@TempDir`. Duas JVMs comprovaram hist?rico 0 ? 1 e 1 ? 2.
 - UML em `docs/uml.png`, print no README, ficha de entrega e guia de microdefesa em `docs/atividade-12`. Apoio de implementa??o e documenta??o por OpenAI Codex declarado na ficha.
 - Altera??es locais anteriores de documentos e frontend foram preservadas fora dos commits da A12.
+
+## 18/11/2026 - A15 - Integração final AS
+
+OpenAI Codex apoiou a integração do mapa docs/01 a docs/06, revisão dos IDs, atualização da situação dos testes, registro DIV01–DIV08, plano de manutenção, riscos R1–R6, roadmap e lições. A ficha padrão A15 contém o conteúdo no corpo e os links da release e do protótipo local. O usuário confirmou apresentação local e autorizou nomes digitados de Arthur Scharfenberger e Lucas Oliveira da Silva no campo de assinaturas.
+
+Verificações: confronto das fontes com a A8 e com os resultados preservados da A13; commits 714ac8a/d62fbe6 para dívidas documentais pagas; links locais e IDs conferidos; ficha renderizada para inspeção visual. A15 não corrige DT01–DT05 nem atesta aceite do PO, execução de CT10–CT22 ou envio na plataforma. v2.0.0 é a versão final do dossiê de Processos; v12 continua sendo a entrega de POO.

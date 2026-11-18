@@ -6,6 +6,8 @@ Referências versionadas: A3 `docs/processos/entregas/Atividade_03_Levantamento_
 
 Caminho: origem → história → requisito → critério de aceitação → caso(s) de teste → componente, seguido de backlog e modelo.
 
+Atualização AS (A15, 18/11/2026): os IDs da tabela permanecem estáveis. C1–C4 descrevem a arquitetura planejada; o Java de POO não é a API do site. [Complemento do fluxo da RN2](../../04-modelagem/fluxo-garantia.md), [revisão de coerência](../../06-evolucao/A15-revisao-coerencia.md) e [dívidas e riscos](../../06-evolucao/A15-dossie-e-plano-evolucao.md).
+
 | Origem (A3 → A4) | História | Requisito | Critérios de aceitação | Casos de teste | Componentes | Backlog e incremento | Modelo ou decisão arquitetural |
 |---|---|---|---|---|---|---|---|
 | A3 §4.1 p. 2 RF01/RF02; §4.3 p. 3 RF14 → RE1 | HU1 | RF1 — Cadastro | CA01, CA02, CA03 | CT01, CT02, CT03 | C1 recebe; C2 valida campos e vínculo; C4 grava | A8R02; I1 | A9 §2.2/§2.3: seleção, cadastro rápido, obrigatórios |
@@ -18,3 +20,24 @@ Caminho: origem → história → requisito → critério de aceitação → cas
 | A3 §4.2 p. 2 RNF01/RNF02 → RE5 | HU1 | RNF3 — Operabilidade da abertura | CA15 | CT18 | C1 | A8R02, A8R03; I1 (medição na Review) | A9 §2.3: tela única com cadastro rápido |
 | A3 §3 e §4.1 p. 2 RF01–RF03, RF06, RF07 → RE1, RE3; SM-01 → RE6 | HU1 — Atendente cadastra e localiza OS **[SM-01]** | RF1, RF2, RF3, RN1, RN2, RNF3 | CA01–CA04, CA08–CA11, CA15–CA19 | CT01–CT04, CT10–CT13, CT18–CT22 | C1 apoia; C2/C4 realizam; C3 autoriza | A8R02–A8R05 (I1); A8R08, A8R10 (I2); A8R11 (I3) | A9 §2.2/§2.3: recepção e abertura; A10 §2.6: consulta |
 | A3 §4.1 p. 2 RF04, RF05, RF12 → RE2 | HU2 — Técnico acompanha suas OS | RF2, RN1, RNF2 | CA05, CA11, CA12 | CT05, CT08, CT13, CT14 | C1 apoia; C2 filtra e controla; C3 autoriza; C4 registra | A8R05 (I1); A8R06, A8R07 (I2) | A10 §2.3/§2.6: lista atribuída, início e conclusão; tela do técnico a modelar no I2 (D13) |
+
+## Situação consolidada para a AS
+
+Evidência: saídas Java/frontend da A13 de 11/11/2026. Não foi declarada nova execução na A15.
+
+| Testes | Situação da evidência | Defeito ou dívida | Mudança e planejamento |
+|---|---|---|---|
+| CT01–CT02 | Falharam no domínio Java | DT03/DT02, DIV05 | A8R02 no I1; correção ainda aberta |
+| CT03 | Passou no cenário de vínculo inválido do frontend | Sem defeito nesse cenário | A8R02/A8R03; não comprova aceite integral |
+| CT04 | Parcial: estado e identificador; sem comprovar número sequencial e evento | DIV07 | A8R03/A8R05; repetir após integração e na regressão SM-01 |
+| CT05 e CT08 | Parciais: transição de estado, sem verificar evento | DIV04/DIV07 | A8R06/A8R07; regressão SM-01 |
+| CT06, CT07 e CT09 | Falharam; transições indevidas aceitas | DT04, DT05, DT01; DIV04 | A8R06/A8R07; CT09 integra regressão SM-01 |
+| CT10–CT11 e CT13 | Não executados | DIV07 | A8R04/A8R08/A8R05; CT13 integra regressão SM-01 |
+| CT12 | Não executado | Sem nova dívida específica | A8R11 adiado para I3 pela SM-01 |
+| CT14–CT15 | Não executados | DIV03/DIV06 | A8R01/A8R06; CT15 integra regressão SM-01 |
+| CT16 | Não executado; sem medição de carga | R4 | A8R09; regressão SM-01 |
+| CT17 | Não executado; sem ensaio integrado de falha | DIV07, R3/R6 | A8R03/A8R05; regressão SM-01 |
+| CT18 | Não executado com participantes | Validação do PO pendente | A8R02/A8R03; não presumir usabilidade comprovada |
+| CT19–CT22 | Especificados, não executados | DIV06/DIV07 | RN2, CA16–CA19, A8R10 no I2; originados pela SM-01 |
+
+SM-01 altera RF2, RF3, RN2 e HU1; mantém RN1, inclui A8R10, reprograma A8R11/CT12 e adia A8R12. [PR #1](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/pull/1) é evidência da mudança documental, não implementação da garantia. A A15 não renumera requisitos nem introduz nova regra de produto.

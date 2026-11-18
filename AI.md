@@ -27,3 +27,9 @@ OpenAI Codex implementou a separa??o em pacotes, a interface de reposit?rio, o r
 ## Processos — etapa AS (11/11/2026)
 
 Nas atividades A11 a A14 de Processos de Engenharia de Software, Claude (Claude Code) elaborou o plano de qualidade, a revisão por inspeção, a estratégia e os casos de teste e a análise da solicitação de mudança SM-01. Também atuou como revisor simulado (A12 e PR #1) e como stakeholder simulado (Marcos Almeida, da A3), escreveu os scripts que executaram 9 casos de teste no protótipo e gerou as fichas a partir do modelo padrão. Os resultados de teste vêm de execução real; nenhuma reunião, aceite do PO ou assinatura foi presumido. Detalhes em [DEVLOG.md](DEVLOG.md), [docs/processos/05-qualidade](docs/processos/05-qualidade/) e [docs/processos/06-evolucao](docs/processos/06-evolucao/).
+
+## 18/11/2026 - A15 - Integração final AS
+
+OpenAI Codex apoiou a integração do mapa docs/01 a docs/06, revisão dos IDs, atualização da situação dos testes, registro DIV01–DIV08, plano de manutenção, riscos R1–R6, roadmap e lições. A ficha padrão A15 contém o conteúdo no corpo e os links da release e do protótipo local. O usuário confirmou apresentação local e autorizou nomes digitados de Arthur Scharfenberger e Lucas Oliveira da Silva no campo de assinaturas.
+
+Verificações: confronto das fontes com a A8 e com os resultados preservados da A13; commits 714ac8a/d62fbe6 para dívidas documentais pagas; links locais e IDs conferidos; ficha renderizada para inspeção visual. A15 não corrige DT01–DT05 nem atesta aceite do PO, execução de CT10–CT22 ou envio na plataforma. v2.0.0 é a versão final do dossiê de Processos; v12 continua sendo a entrega de POO.

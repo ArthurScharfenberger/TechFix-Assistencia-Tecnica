@@ -2,6 +2,8 @@
 
 Base: requisitos e critérios CA01–CA15 em `docs/processos/dossie/requisitos.md` (corrigidos na A12), metas da A11 (`docs/processos/05-qualidade/A11-plano-qualidade.md`), prioridades da A5 e riscos R1–R4 da A8.
 
+**Consolidação AS em 18/11/2026:** esta fonte mantém a execução de 11/11; CT04, CT05 e CT08 são parciais, pois não verificaram todo o resultado esperado. CT03 passou no cenário exercitado; cinco IDs falharam. CT10–CT22 não têm execução registrada. As tabelas das seções 2.4 e 2.5 retratam a linha de base anterior à SM-01; a matriz viva e a seção final incorporam RN2/CT19–CT22.
+
 ## 2.1 Estratégia de testes
 
 **Escopo.** Entram os fluxos dos incrementos I1 e I2 (A8R01–A8R09): cadastro de cliente e equipamento, abertura da OS, ciclo de estados, buscas, histórico e autorização por perfil, além das metas não funcionais da A11 (desempenho, tolerância a falhas e operabilidade). Ficam de fora: valores, painel e relatórios (A3 RF08–RF11), porque estão fora da linha de base (A8 R1); integrações externas, que não existem (A10 §2.2); compatibilidade entre navegadores além do Chrome e do Edge atuais (Flexibilidade foi adiada na A11 §2.4); e os módulos herdados do protótipo (manutenções, indicativos, relatórios), sem requisito na linha de base.
@@ -35,11 +37,11 @@ Tabela de decisão da RN1, usada em CT05–CT09:
 | CT01 | RF1 · CA01 | Partição de equivalência (classe válida, e-mail vazio) | Atendente autenticado; Ana Souza não cadastrada | Nome "Ana Souza"; telefone "(51) 99999-0000"; e-mail vazio; tipo NOTEBOOK; defeito "Não liga" | Abrir Nova OS; Cadastro rápido; preencher; Confirmar | Cliente e equipamento salvos e vinculados; mensagem "Cadastro realizado"; Ana Souza selecionada no formulário | Alta | Executado: falhou (DT03) |
 | CT02 | RF1 · CA02 | Partição de equivalência (classe inválida: 2 obrigatórios vazios) — negativo | Atendente autenticado | Nome "Bruno Lima"; telefone vazio; tipo DESKTOP; defeito vazio | Cadastro rápido; preencher; Confirmar | Nada é salvo; "Campo obrigatório" junto a Telefone e a Defeito na mesma tentativa; dados digitados mantidos | Alta | Executado: falhou (DT02) |
 | CT03 | RF1, RF2 · CA03 | Partição de equivalência (equipamento de outro cliente) — negativo | Ana com EQ-1; Bruno com EQ-2 | Cliente Ana Souza; equipamento EQ-2 | Abrir OS; Confirmar | Recusa com "O equipamento selecionado não pertence ao cliente informado."; 0 OS gravadas | Alta | Executado: passou |
-| CT04 | RF2, RN1 · CA04 | Partição de equivalência (cliente e equipamento válidos) | Última OS nº 24; Ana com EQ-1 | Ana Souza; EQ-1 | Abrir OS; Confirmar | OS nº 25; data/hora da abertura; estado ABERTA; técnico "não atribuído"; evento "OS aberta" com o usuário | Alta | Executado: passou no estado ABERTA; número sequencial e evento ainda não existem no protótipo |
-| CT05 | RN1 · CA05 | Tabela de decisão T1 | OS 1 ABERTA com técnico João Pereira | Ação Iniciar | Abrir OS 1; Iniciar atendimento | Estado EM ATENDIMENTO; histórico com "Atendimento iniciado", João Pereira, data e hora | Alta | Executado: passou (estado) |
+| CT04 | RF2, RN1 · CA04 | Partição de equivalência (cliente e equipamento válidos) | Última OS nº 24; Ana com EQ-1 | Ana Souza; EQ-1 | Abrir OS; Confirmar | OS nº 25; data/hora da abertura; estado ABERTA; técnico "não atribuído"; evento "OS aberta" com o usuário | Alta | Parcial: somente estado ABERTA; número sequencial e evento não verificados |
+| CT05 | RN1 · CA05 | Tabela de decisão T1 | OS 1 ABERTA com técnico João Pereira | Ação Iniciar | Abrir OS 1; Iniciar atendimento | Estado EM ATENDIMENTO; histórico com "Atendimento iniciado", João Pereira, data e hora | Alta | Parcial: estado verificado, evento do histórico não verificado |
 | CT06 | RN1 · CA06 | Tabela de decisão T2 — negativo | OS 2 ABERTA sem técnico | Ação Iniciar | Abrir OS 2; Iniciar atendimento | Rejeição "Atribua um técnico antes de iniciar o atendimento."; estado continua ABERTA | Alta | Executado: falhou (DT04) |
 | CT07 | RN1 (transição ABERTA → CONCLUÍDA proibida) | Tabela de decisão T3 — negativo | OS 3 ABERTA com técnico | Ação Concluir | Abrir OS 3; Concluir | Rejeição "Só é possível concluir uma OS em atendimento."; estado continua ABERTA | Alta | Executado: falhou (DT05) |
-| CT08 | RN1 · CA05 | Tabela de decisão T4 | OS 4 EM ATENDIMENTO com João | Ação Concluir | Abrir OS 4; Concluir | Estado CONCLUÍDA; evento "Atendimento concluído" no histórico | Alta | Executado: passou (estado) |
+| CT08 | RN1 · CA05 | Tabela de decisão T4 | OS 4 EM ATENDIMENTO com João | Ação Concluir | Abrir OS 4; Concluir | Estado CONCLUÍDA; evento "Atendimento concluído" no histórico | Alta | Parcial: estado verificado, evento do histórico não verificado |
 | CT09 | RN1 · CA07 | Tabela de decisão T5 — negativo | OS 5 CONCLUÍDA | Ação: mudar para ABERTA | Abrir OS 5; Alterar estado para ABERTA | Rejeição "OS concluída não pode mudar de estado."; estado continua CONCLUÍDA | Alta | Executado: falhou (DT01) |
 | CT10 | RF3 · CA08 | Valor limite | OS de nº 1 a 25 existentes | Números 0, 1, 25 e 26 | Buscar cada número | 0: "Informe um número de OS válido."; 1 e 25: exibe cliente, equipamento, técnico e estado; 26: "Nenhuma OS encontrada com o número 26." | Alta | Não executado: busca por número prevista no I1 (A8R04) |
 | CT11 | RF3 · CA09 | Partição de equivalência (contém / não contém; maiúsculas) | Clientes Ana Souza, Carlos Souto e Bruno Lima com OS | Textos "sou" e "SOU" | Buscar por nome | Para os dois textos: OS de Ana Souza e Carlos Souto; nenhuma de Bruno Lima | Média | Não executado: I2 (A8R08) |
@@ -62,11 +64,11 @@ O protótipo tem duas partes separadas: o domínio Java (tag v12, sem API) e o f
 | CT01 | Java, `Cliente` | Rejeitado com "Email inválido" | Falhou |
 | CT02 | Java, `Cliente` e `Notebook` | Bloqueado com uma única mensagem: "Telefone inválido"; o defeito vazio não foi indicado | Falhou |
 | CT03 | Frontend, `ChamadoService.create` | "O equipamento selecionado não pertence ao cliente informado."; 0 OS gravadas | Passou |
-| CT04 | Java e frontend | Estado inicial ABERTA (Java) / ABERTO (frontend), com identificador | Passou (número sequencial e evento fora do protótipo) |
-| CT05 | Java, `OrdemServico.alterarStatus` | ABERTA → EM_ATENDIMENTO | Passou |
+| CT04 | Java e frontend | Estado inicial ABERTA (Java) / ABERTO (frontend), com identificador | Parcial: estado/identificador; sem numeração sequencial e evento |
+| CT05 | Java, `OrdemServico.alterarStatus` | ABERTA → EM_ATENDIMENTO | Parcial: sem evento |
 | CT06 | Java | Sem técnico, ABERTA → EM_ATENDIMENTO aceito | Falhou |
 | CT07 | Java | ABERTA → CONCLUIDA aceito | Falhou |
-| CT08 | Java | EM_ATENDIMENTO → CONCLUIDA | Passou |
+| CT08 | Java | EM_ATENDIMENTO → CONCLUIDA | Parcial: sem evento |
 | CT09 | Java e frontend | CONCLUIDA → ABERTA aceito (Java); CONCLUIDO → ABERTO aceito (frontend) | Falhou |
 
 Defeitos encontrados (mesmo formato da A12):

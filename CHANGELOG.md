@@ -2,7 +2,20 @@
 
 Mudanças do dossiê de Processos de Engenharia de Software do TechFix (requisitos, backlog, matriz, plano de qualidade e testes). O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/), e as versões seguem o [Versionamento Semântico](https://semver.org/lang/pt-BR/). As tags `v11` e `v12` são entregas de POO e não fazem parte desta numeração.
 
-## [Não publicado]
+## [2.0.0] - 2026-11-18
+
+Versão final AS do dossiê de Processos (A15). Não representa conclusão ou implantação do produto. A numeração major identifica o fechamento integrado do dossiê.
+
+### Adicionado
+
+- README como mapa das seis pastas `docs/01-contexto` a `docs/06-evolucao`, com equipe, papéis, release e protótipo local.
+- A15 completa e ficha padrão em DOCX/PDF: oito dívidas DIV01–DIV08, com DIV01/DIV02 pagas antes da AS e evidências de commit; quatro tipos de manutenção; riscos R1–R6; roadmap e lições.
+- Complemento do fluxo planejado da garantia, roteiro reproduzível do protótipo e revisão de coerência.
+
+### Corrigido
+
+- Consolidação da situação dos testes: CT04/CT05/CT08 são execuções parciais, sem comprovar todos os resultados esperados. CT10–CT22 permanecem sem execução registrada; DT01–DT05 continuam abertos.
+- Matriz complementada com situação dos testes, mudança SM-01, dívidas e dependências; distinção entre diagramas Java e arquitetura planejada de Processos.
 
 ### Alterado
 
@@ -50,4 +63,5 @@ Linha de base do dossiê, antes da solicitação de mudança SM-01.
 - Transições da RN1, matriz de perfis do RNF2, e-mail opcional no RF1 e referências da matriz a arquivos removidos (A12, D02–D04 e D11).
 
 [1.1.0]: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/compare/v1.0.0...v1.1.0
+[2.0.0]: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v2.0.0
 [1.0.0]: https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/releases/tag/v1.0.0

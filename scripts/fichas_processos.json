@@ -104,5 +104,29 @@
     ],
     "verificacao_ia": "Conferência do diff v1.0.0...v1.1.0 contra a análise de impacto; conferência de que a RN1 não foi alterada; conferência dos links do PR e das releases. Uso registrado no DEVLOG.md.",
     "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva"
+  },
+  "A15": {
+    "titulo": "Entrega de Atividade Semanal - Atividade 15",
+    "atividade": "A15 - Integrar o dossiê e planejar evolução - ENTREGA FINAL",
+    "etapa": "AS",
+    "equipe": "TechFix",
+    "integrantes": "Arthur Scharfenberger e Lucas Oliveira da Silva",
+    "data": "18/11/2026",
+    "fonte": "docs/06-evolucao/A15-dossie-e-plano-evolucao.md",
+    "saida": "docs/06-evolucao/A15-Ficha-Entrega-Final.docx",
+    "repositorio": "https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica",
+    "decisoes": "Consolidar o dossiê v2.0.0 com mapa docs/01 a docs/06; preservar IDs, fontes e evidências históricas; registrar oito dívidas, duas pagas documentalmente com commits de 11/11; planejar quatro tipos de manutenção e priorizar segurança, integridade e migração. Demonstrar o protótipo local. Assinaturas digitadas autorizadas pelo usuário nesta preparação.",
+    "pendencias": "Produto: DIV03–DIV08 e DT01–DT05 permanecem abertos; CT10–CT22 sem execução registrada; refinar wireframes antes do I2 e validar migração. Ratificar com Chico Mosca as validações e a SM-01. A equipe deve conferir a ficha e efetuar o envio na plataforma; nenhum envio é atestado por este documento.",
+    "ia": [
+      [
+        "18/11/2026 - OpenAI Codex",
+        "Integrar o dossiê, elaborar a A15 e preparar a ficha padrão.",
+        "Conferir requisitos, backlog, matriz, A8 e A11–A14; registrar dívidas reais com evidências, manutenção, riscos, roadmap e lições; gerar e revisar a ficha.",
+        "Texto e organização produzidos com apoio de IA. Resultados de testes preservados das evidências; nenhum aceite do PO ou implementação pendente foi inventado. Protótipo local e nomes digitados confirmados pelo usuário."
+      ]
+    ],
+    "verificacao_ia": "Conferência dos IDs e dos commits citados, comparação com as saídas da A13, validação dos links locais e inspeção visual da ficha renderizada. A decisão de uso e a revisão final cabem à equipe.",
+    "responsavel_ia": "Arthur Scharfenberger e Lucas Oliveira da Silva",
+    "assinaturas_digitadas": true
   }
 }

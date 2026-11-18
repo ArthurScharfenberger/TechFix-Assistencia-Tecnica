@@ -1,5 +1,11 @@
 # Documentação do TechFix — onde está cada coisa
 
+## Mapa final AS de Processos
+
+[01 Contexto](01-contexto/README.md) · [02 Requisitos](02-requisitos/README.md) · [03 Planejamento](03-planejamento/README.md) · [04 Modelagem](04-modelagem/README.md) · [05 Qualidade](05-qualidade/README.md) · [06 Evolução](06-evolucao/README.md).
+
+A [A15](06-evolucao/A15-dossie-e-plano-evolucao.md) integra a versão final do dossiê, as dívidas, a manutenção, os riscos, o roadmap e as lições. [Ficha PDF](06-evolucao/A15-Ficha-Entrega-Final.pdf) e [DOCX](06-evolucao/A15-Ficha-Entrega-Final.docx). As fontes anteriores continuam em `processos/`; os índices evitam duplicação.
+
 ## Programação Orientada a Objetos — [`poo/`](poo/)
 
 | Atividade | Onde está |
@@ -30,9 +36,10 @@ O código Java fica em [`backend/`](../backend/README.md) e os testes rodam com 
 | A12 — Revisão de artefatos | [ficha PDF](processos/05-qualidade/A12-Ficha-Entrega-Final.pdf) e [revisão](processos/05-qualidade/A12-revisao-artefatos.md) |
 | A13 — Testes e rastreabilidade | [ficha PDF](processos/05-qualidade/A13-Ficha-Entrega-Final.pdf), [estratégia e casos](processos/05-qualidade/A13-estrategia-e-casos-de-teste.md), [esboço](processos/05-qualidade/A13-estrategia-testes-esboco.md) e [execução](processos/05-qualidade/execucao/) |
 | A14 — Solicitação de mudança | [ficha PDF](processos/06-evolucao/A14-Ficha-Entrega-Final.pdf), [SM-01](processos/06-evolucao/SM-01-retorno-em-garantia.md), [revisão do PR](processos/06-evolucao/SM-01-revisao-pr.md) e [CHANGELOG](../CHANGELOG.md) |
-| Dossiê vivo (v1.1.0) | [requisitos](processos/dossie/requisitos.md), [backlog](processos/dossie/backlog.md) e [matriz de rastreabilidade](processos/dossie/matriz-rastreabilidade.md) |
+| A15 — Dossiê e evolução final AS | [ficha PDF](06-evolucao/A15-Ficha-Entrega-Final.pdf), [conteúdo completo](06-evolucao/A15-dossie-e-plano-evolucao.md) e [revisão](06-evolucao/A15-revisao-coerencia.md) |
+| Dossiê vivo (v2.0.0) | [requisitos](processos/dossie/requisitos.md), [backlog](processos/dossie/backlog.md) e [matriz de rastreabilidade](processos/dossie/matriz-rastreabilidade.md) |
 
-As fichas de A11 a A14 são geradas a partir do modelo padrão por `scripts/gerar_fichas_processos.py`.
+As fichas de A11 a A15 são geradas a partir do modelo padrão por `scripts/gerar_fichas_processos.py`. A15 utiliza o caminho `docs/06-evolucao` solicitado no enunciado.
 
 ## Geral
 

@@ -29,6 +29,8 @@ Fonte versionada do backlog revisado na A8 (`docs/processos/backlog/Backlog-Tech
 
 ## Riscos (A8 §2.5)
 
+**Atualização AS de 18/11/2026:** situação de R1–R5 e novo risco R6 em [A15, seção 2.5](../../06-evolucao/A15-dossie-e-plano-evolucao.md#25-riscos-atualizados). A tabela abaixo preserva a linha de base A8/SM-01; a A15 registra os status atuais e o roadmap Agora/Próximo/Depois. Os incrementos são planejamento e ainda não têm aceite integral registrado.
+
 | ID | Risco | P × I | Mitigação / responsável |
 |---|---|---|---|
 | R1 | Divergência de escopo causa retrabalho | 3 × 3 = 9 | Arthur: revisar mapa A5 → A8R; manter pagamento, avaliação e relatório fora da linha de base |
