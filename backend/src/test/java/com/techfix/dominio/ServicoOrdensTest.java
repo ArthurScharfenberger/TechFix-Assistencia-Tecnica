@@ -25,7 +25,7 @@ class ServicoOrdensTest {
 
     private OrdemServico ordem(int numero) {
         var ordem = new OrdemServico(numero, new Cliente("Ana", "51999999999", "ana@example.com"),
-            null, new Notebook("Dell", "Aquece", 8));
+            new Tecnico("Carlos", "Computadores"), new Notebook("Dell", "Aquece", 8));
         ordem.adicionarItemServico("Limpeza", new BigDecimal("40.00"));
         return ordem;
     }

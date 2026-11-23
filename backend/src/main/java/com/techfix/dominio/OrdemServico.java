@@ -44,8 +44,26 @@ public class OrdemServico {
         if (novoStatus == null) {
             throw new DadosInvalidosException("Status inválido. Revise os dados informados e tente novamente.");
         }
-
+        if (status == StatusOrdemServico.CONCLUIDA && novoStatus != status) {
+            throw new EstadoOrdemException("Ordem concluída não pode mudar de estado. Abra uma nova ordem para outro atendimento.");
+        }
+        if (novoStatus == StatusOrdemServico.EM_ATENDIMENTO && tecnico == null) {
+            throw new EstadoOrdemException("Atendimento exige um técnico. Atribua um técnico antes de iniciar.");
+        }
+        if (novoStatus == StatusOrdemServico.CONCLUIDA && status == StatusOrdemServico.ABERTA) {
+            throw new EstadoOrdemException("A ordem não está em atendimento. Inicie o atendimento antes de concluir.");
+        }
         this.status = novoStatus;
+    }
+
+    public void atribuirTecnico(Tecnico novoTecnico) {
+        if (novoTecnico == null) {
+            throw new DadosInvalidosException("Técnico inválido. Informe um técnico para o atendimento.");
+        }
+        if (status == StatusOrdemServico.CONCLUIDA) {
+            throw new EstadoOrdemException("Ordem concluída não pode trocar de técnico. Abra uma nova ordem para outro atendimento.");
+        }
+        this.tecnico = novoTecnico;
     }
 
     public StatusOrdemServico getStatus() {
