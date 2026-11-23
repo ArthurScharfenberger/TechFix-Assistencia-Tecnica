@@ -26,6 +26,14 @@ Antes, `CobrancaNotebook` e `CobrancaDesktop` criavam `BigDecimal` de literais a
 
 Antes: [testes-correcoes.txt](poo/atividade-14/testes-correcoes.txt), 47 testes verdes. Depois: [testes-refatora-tarifas.txt](poo/atividade-14/testes-refatora-tarifas.txt), os mesmos 47 verdes. Não houve alteração de comportamento.
 
+Commit da refatoração 1: `0c996b1`.
+
+### Refatoração 2 — Separar o formato do armazenamento
+
+Antes, `RepositorioOrdensEmArquivo` acumulava acesso a arquivos, campos TSV, parsing e escapes. Depois, `FormatoRegistroTsv` concentra as conversões puras; o repositório mantém leitura, gravação atômica e tradução de falhas. O formato e as mensagens são idênticos; os testes preservam acentos, tabulação, quebras de linha, barras e falhas de leitura/escrita. Commit com mensagem `refatora: separa formato TSV do acesso ao arquivo`.
+
+Antes: [testes-refatora-tarifas.txt](poo/atividade-14/testes-refatora-tarifas.txt), 47 verdes. Depois: [testes-refatora-formato.txt](poo/atividade-14/testes-refatora-formato.txt), os mesmos 47 verdes. Nenhuma regra foi alterada neste commit.
+
 ## Teste que protege de verdade
 
 O experimento de mutação e o commit de restauração serão registrados após sua execução, com o trecho real da falha.

@@ -2,10 +2,7 @@ package com.techfix.repositorio;
 
 import com.techfix.dominio.RegistroOrdem;
 import com.techfix.dominio.RepositorioOrdens;
-import com.techfix.dominio.StatusOrdemServico;
-import com.techfix.dominio.TipoEquipamento;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -33,9 +30,7 @@ public class RepositorioOrdensEmArquivo implements RepositorioOrdens {
             registros.add(registro);
             var conteudo = new StringBuilder();
             for (var item : registros) {
-                conteudo.append(item.numero()).append('\t').append(escapar(item.cliente())).append('\t')
-                    .append(item.equipamento()).append('\t').append(item.status()).append('\t')
-                    .append(item.total().toPlainString()).append('\n');
+                conteudo.append(FormatoRegistroTsv.codificar(item));
             }
             temporario = Files.createTempFile(arquivo.getParent(), "ordens-", ".tmp");
             Files.writeString(temporario, conteudo, StandardCharsets.UTF_8);
@@ -67,13 +62,7 @@ public class RepositorioOrdensEmArquivo implements RepositorioOrdens {
         var registros = new ArrayList<RegistroOrdem>();
         for (int i = 0; i < linhas.size(); i++) {
             try {
-                String[] campos = linhas.get(i).split("\t", -1);
-                if (campos.length != 5) {
-                    throw new IllegalArgumentException("Esperados cinco campos separados por tabulação");
-                }
-                registros.add(new RegistroOrdem(Integer.parseInt(campos[0]), desescapar(campos[1]),
-                    TipoEquipamento.valueOf(campos[2]), StatusOrdemServico.valueOf(campos[3]),
-                    new BigDecimal(campos[4])));
+                registros.add(FormatoRegistroTsv.decodificar(linhas.get(i)));
             } catch (IllegalArgumentException erro) {
                 throw new RepositorioException("Registro inválido na linha " + (i + 1) + " de " + arquivo + ". Corrija o arquivo ou restaure um backup antes de tentar novamente.",
                     new IOException("Formato de registro inválido", erro));
@@ -82,29 +71,4 @@ public class RepositorioOrdensEmArquivo implements RepositorioOrdens {
         return List.copyOf(registros);
     }
 
-    private static String escapar(String texto) {
-        return texto.replace("\\", "\\\\").replace("\t", "\\t")
-            .replace("\n", "\\n").replace("\r", "\\r");
-    }
-
-    private static String desescapar(String texto) {
-        var resultado = new StringBuilder();
-        for (int i = 0; i < texto.length(); i++) {
-            char caractere = texto.charAt(i);
-            if (caractere == '\\') {
-                if (++i == texto.length()) {
-                    throw new IllegalArgumentException("Escape incompleto");
-                }
-                caractere = switch (texto.charAt(i)) {
-                    case '\\' -> '\\';
-                    case 't' -> '\t';
-                    case 'n' -> '\n';
-                    case 'r' -> '\r';
-                    default -> throw new IllegalArgumentException("Escape desconhecido");
-                };
-            }
-            resultado.append(caractere);
-        }
-        return resultado.toString();
-    }
 }
