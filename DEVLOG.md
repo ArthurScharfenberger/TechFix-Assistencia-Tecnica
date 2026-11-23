@@ -417,3 +417,7 @@ Verificações: confronto das fontes com a A8 e com os resultados preservados da
 ## 23/11/2026 — Auditoria e conclusão técnica de POO
 
 A11 conferida na tag original, com 19 testes. A10 revisada com 31 testes e ajuste de Java 25 para 17; falta o relato real da defesa AP2. A13 criada com serviço separado, exceções e 40 testes. A14 corrige DT01/DT04/DT05 no Java, separa duas refatorações, comprova teste com tarifa deliberadamente errada e restaura o código, com 47 testes verdes. Fichas e imagens foram geradas a partir das evidências reais. Commits têm data atual; submissão e feedback não foram inventados. As entregas de Processos e o frontend permanecem independentes.
+
+## 23/11/2026 — Apresentação AS de POO
+
+Slides (9, fonte mínima 24), roteiro dividido entre Arthur e Lucas e preparação para a defesa em `docs/poo/apresentacao-as`. Cobrem UML, camadas, demonstração com erro tratado, `mvn test` verde, teste em AAA e decisão de projeto. 47 testes reexecutados antes da montagem. Codex iniciou e Claude Code concluiu o material; código Java inalterado. Tag `as` aponta para este commit.

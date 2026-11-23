@@ -39,3 +39,9 @@ Verificações: confronto das fontes com a A8 e com os resultados preservados da
 OpenAI Codex participou diretamente da auditoria das entregas e da implementação de código, testes, refatorações, diagramas e fichas. Na A10, verificou testes e configuração do compilador; na A13, separou serviço e apresentação, implementou exceções e persistência com troca atômica. A A14 acrescenta regressões, teste parametrizado, mutação controlada e verificação em clone limpo. O histórico e os logs registram as verificações realmente executadas.
 
 Não foram inventados feedbacks da professora, assinaturas, microdefesas, autoria exclusivamente humana nem submissões. O feedback específico da defesa AP2 permanece dependente do relato da dupla. A equipe precisa revisar, compreender e assumir a responsabilidade pelo conteúdo antes de enviar as fichas.
+
+## AS de POO — apresentação final — 23/11/2026
+
+OpenAI Codex iniciou a preparação: leu o enunciado e renderizou a apresentação AS de Processos como referência visual. Claude Code (Anthropic) montou os 9 slides (PDF e PowerPoint, fonte mínima de 24 pt), o roteiro de 8 minutos e as respostas de preparação para a defesa, a partir do código, do UML e dos logs reais da v14. Antes da montagem, `mvn clean test` foi reexecutado: 47 testes, 0 falhas, 0 erros. O código Java não foi alterado nesta etapa.
+
+Ensaio, apresentação, respostas na defesa e envio da ficha são responsabilidade da dupla e não estão atestados aqui. Materiais em [docs/poo/apresentacao-as](docs/poo/apresentacao-as/README.md).

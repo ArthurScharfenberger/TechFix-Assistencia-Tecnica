@@ -4,6 +4,8 @@ Projeto acadêmico de Arthur Scharfenberger e Lucas Oliveira da Silva para atend
 
 ## Entrega atual de POO
 
+**AS — Apresentação final:** [slides PDF](docs/poo/apresentacao-as/TechFix-POO-AS.pdf), [roteiro e preparação para a defesa](docs/poo/apresentacao-as/roteiro.md) e tag `as`. O código é o mesmo da `v14`.
+
 **Atividade 14 — Testes e preparação da entrega final:** [tag v14](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v14), [ficha PDF](docs/poo/atividade-14/Ficha_Padrao_Entrega_Atividade_14_Final.pdf) e [evidências](docs/poo/atividade-14/README.md). Preparada em 23/11/2026, com prazo informado de hoje às 19h30. Não atesta envio na plataforma Aula.
 
 A [A11](docs/poo/atividade-11/README.md) está pronta na tag `v11`. A [A10 de POO](docs/poo/atividade-10/README.md) recebeu revisão técnica; o relato real da defesa AP2 continua pendente de informação da dupla. O histórico registra as datas reais dos commits.
@@ -104,6 +106,7 @@ O primeiro painel mostra herança, interfaces, composição e multiplicidades; o
 | `v12` | Pacotes, repositório e persistência; 31 testes |
 | `v13` | Serviço separado, exceções, recuperação e 40 testes |
 | `v14` | Três defeitos corrigidos, duas refatorações isoladas, teste de mutação e 47 testes |
+| `as` | Apresentação final: slides, roteiro e defesa; mesmo código da `v14` |
 
 As tags `v11` e `v12` preservam o POM antigo de Java 25. Para verificá-las com JDK 17, use `mvn "-Dmaven.compiler.release=17" clean test`; o comando é uma sobrescrita de configuração e não altera as tags. [Declaração de IA](AI.md).
 
