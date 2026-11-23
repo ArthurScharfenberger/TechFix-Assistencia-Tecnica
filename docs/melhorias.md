@@ -12,7 +12,7 @@ A origem verificável é a tabela de defeitos de [A13 de Processos](processos/05
 | DT04: atendimento começava sem técnico | mesmo método | Exige técnico antes de iniciar; `dt04AtendimentoExigeTecnicoEPreservaOrdemAberta`; atribuição posterior tem teste de sucesso. |
 | DT05: ABERTA ia direto a CONCLUIDA | mesmo método | Rejeita conclusão sem atendimento; `dt05OrdemAbertaNaoPodePularAtendimento` verifica mensagem e estado preservado. |
 
-As três correções pertencem ao commit identificado abaixo. A preparação dos testes antigos de serviço passou a fornecer um técnico, mantendo os mesmos cenários e asserções. O frontend independente e os defeitos DT02/DT03 não foram alterados nesta atividade.
+As três correções pertencem ao commit `6f6c0d3`. A preparação dos testes antigos de serviço passou a fornecer um técnico, mantendo os mesmos cenários e asserções. O frontend independente e os defeitos DT02/DT03 não foram alterados nesta atividade.
 
 ## Suíte final
 
@@ -20,7 +20,11 @@ As três correções pertencem ao commit identificado abaixo. A preparação dos
 
 ## Refatorações seguras
 
-Os registros de antes/depois e seus commits são acrescentados após cada execução real.
+### Refatoração 1 — Tarifas nomeadas
+
+Antes, `CobrancaNotebook` e `CobrancaDesktop` criavam `BigDecimal` de literais a cada chamada; os preços ficavam como números sem nome. Depois, cada política declara `TARIFA_DIAGNOSTICO`, constante imutável. O preço e a escala decimal são idênticos. O nome explicita a regra e dispensa recriação do valor. Commit com mensagem `refatora: nomeia tarifas imutaveis de diagnostico`.
+
+Antes: [testes-correcoes.txt](poo/atividade-14/testes-correcoes.txt), 47 testes verdes. Depois: [testes-refatora-tarifas.txt](poo/atividade-14/testes-refatora-tarifas.txt), os mesmos 47 verdes. Não houve alteração de comportamento.
 
 ## Teste que protege de verdade
 
