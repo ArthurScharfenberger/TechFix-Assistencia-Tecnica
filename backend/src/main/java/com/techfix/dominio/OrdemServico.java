@@ -15,13 +15,13 @@ public class OrdemServico {
 
     public OrdemServico(int numero, Cliente cliente, Tecnico tecnico, Equipamento equipamento) {
         if (numero <= 0) {
-            throw new IllegalArgumentException("Número inválido");
+            throw new DadosInvalidosException("Número inválido. Revise os dados informados e tente novamente.");
         }
         if (cliente == null) {
-            throw new IllegalArgumentException("Cliente inválido");
+            throw new DadosInvalidosException("Cliente inválido. Revise os dados informados e tente novamente.");
         }
         if (equipamento == null) {
-            throw new IllegalArgumentException("Equipamento inválido");
+            throw new DadosInvalidosException("Equipamento inválido. Revise os dados informados e tente novamente.");
         }
 
         this.numero = numero;
@@ -42,7 +42,7 @@ public class OrdemServico {
 
     public void alterarStatus(StatusOrdemServico novoStatus) {
         if (novoStatus == null) {
-            throw new IllegalArgumentException("Status inválido");
+            throw new DadosInvalidosException("Status inválido. Revise os dados informados e tente novamente.");
         }
 
         this.status = novoStatus;
@@ -108,10 +108,10 @@ public class OrdemServico {
 
         private ItemServico(String descricao, BigDecimal valor) {
             if (descricao == null || descricao.isBlank()) {
-                throw new IllegalArgumentException("Descrição inválida");
+                throw new DadosInvalidosException("Descrição inválida. Revise os dados informados e tente novamente.");
             }
             if (valor == null || valor.signum() < 0) {
-                throw new IllegalArgumentException("Valor inválido");
+                throw new DadosInvalidosException("Valor inválido. Revise os dados informados e tente novamente.");
             }
 
             this.descricao = descricao;

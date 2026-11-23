@@ -7,13 +7,13 @@ public abstract class Equipamento implements RoteiroDiagnostico {
 
     protected Equipamento(TipoEquipamento tipo, String marca, String defeito) {
         if (tipo == null) {
-            throw new IllegalArgumentException("Tipo inválido");
+            throw new DadosInvalidosException("Tipo inválido. Revise os dados informados e tente novamente.");
         }
         if (marca == null || marca.isBlank()) {
-            throw new IllegalArgumentException("Marca inválida");
+            throw new DadosInvalidosException("Marca inválida. Revise os dados informados e tente novamente.");
         }
         if (defeito == null || defeito.isBlank()) {
-            throw new IllegalArgumentException("Defeito inválido");
+            throw new DadosInvalidosException("Defeito inválido. Revise os dados informados e tente novamente.");
         }
 
         this.tipo = tipo;

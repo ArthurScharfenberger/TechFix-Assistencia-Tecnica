@@ -1,6 +1,7 @@
 package com.techfix.dominio;
 
 import com.techfix.repositorio.RepositorioOrdensEmMemoria;
+import com.techfix.servico.ServicoOrdens;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,7 +50,7 @@ class ServicoOrdensTest {
         var servico = new ServicoOrdens(new RepositorioOrdensEmMemoria());
         var ordem = ordem(1);
 
-        assertThrows(IllegalStateException.class, () -> servico.concluir(ordem));
+        assertThrows(EstadoOrdemException.class, () -> servico.concluir(ordem));
 
         assertTrue(servico.listar().isEmpty());
         assertEquals(StatusOrdemServico.ABERTA, ordem.getStatus());

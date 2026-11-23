@@ -1,4 +1,6 @@
-package com.techfix.dominio;
+package com.techfix.servico;
+
+import com.techfix.dominio.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,10 +16,10 @@ public class ServicoOrdens {
     public RegistroOrdem concluir(OrdemServico ordem) {
         Objects.requireNonNull(ordem, "Ordem deve ser informada");
         if (ordem.getStatus() != StatusOrdemServico.EM_ATENDIMENTO) {
-            throw new IllegalStateException("Somente uma ordem em atendimento pode ser concluída");
+            throw new EstadoOrdemException("A ordem não está em atendimento. Inicie o atendimento antes de concluir.");
         }
         if (listar().stream().anyMatch(registro -> registro.numero() == ordem.getNumero())) {
-            throw new IllegalArgumentException("Ordem já registrada: " + ordem.getNumero());
+            throw new OrdemDuplicadaException(ordem.getNumero());
         }
         RegistroOrdem registro = new RegistroOrdem(ordem.getNumero(), ordem.getNomeCliente(),
             ordem.getTipoEquipamento(), StatusOrdemServico.CONCLUIDA, ordem.calcularTotal());

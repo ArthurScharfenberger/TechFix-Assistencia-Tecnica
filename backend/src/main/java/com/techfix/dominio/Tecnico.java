@@ -6,10 +6,10 @@ public class Tecnico {
 
     public Tecnico(String nome, String especialidade) {
         if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome inválido");
+            throw new DadosInvalidosException("Nome inválido. Revise os dados informados e tente novamente.");
         }
         if (especialidade == null || especialidade.isBlank()) {
-            throw new IllegalArgumentException("Especialidade inválida");
+            throw new DadosInvalidosException("Especialidade inválida. Revise os dados informados e tente novamente.");
         }
 
         this.nome = nome;

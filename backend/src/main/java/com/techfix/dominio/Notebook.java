@@ -7,7 +7,7 @@ public class Notebook extends Equipamento {
         super(TipoEquipamento.NOTEBOOK, marca, defeito);
 
         if (memoriaRamGb <= 0) {
-            throw new IllegalArgumentException("Memória RAM inválida");
+            throw new DadosInvalidosException("Memória RAM inválida. Revise os dados informados e tente novamente.");
         }
 
         this.memoriaRamGb = memoriaRamGb;

@@ -13,7 +13,7 @@ Não foi localizado um registro do feedback da defesa AP2 de POO. A equipe preci
 - A seleção da política por tipo já está concentrada em `PoliticasCobranca`; as implementações têm `@Override`. Não foi encontrado `instanceof` usado para decidir preços.
 - O README continha instruções de versões antigas. A documentação final será consolidada na A14, preservando a A11 e a A12 nas respectivas tags.
 - `ServicoOrdens` ainda estava no pacote `dominio`; o `Main` concentrava o cenário, e as falhas eram exceções genéricas. As correções de camadas e tratamento serão entregues na A13.
-- Os defeitos anteriores DT01 (reabertura indevida), DT02 (início sem técnico) e DT03 (conclusão sem atendimento) constam na revisão de Processos e também atingem o Java; serão corrigidos com testes na A14, sem atribuir esses achados à defesa de POO.
+- Os defeitos anteriores DT01 (reabertura indevida), DT04 (início sem técnico) e DT05 (conclusão sem atendimento) constam na revisão de Processos e também atingem o Java; serão corrigidos com testes na A14, sem atribuir esses achados à defesa de POO.
 
 ## Evidências e limites
 

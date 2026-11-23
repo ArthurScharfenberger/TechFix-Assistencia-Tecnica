@@ -11,13 +11,13 @@ public class Cliente {
 
     public Cliente(String nome, String telefone, String email) {
         if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome inválido");
+            throw new DadosInvalidosException("Nome inválido. Revise os dados informados e tente novamente.");
         }
         if (telefone == null || telefone.isBlank()) {
-            throw new IllegalArgumentException("Telefone inválido");
+            throw new DadosInvalidosException("Telefone inválido. Revise os dados informados e tente novamente.");
         }
         if (email == null || email.isBlank()) {
-            throw new IllegalArgumentException("Email inválido");
+            throw new DadosInvalidosException("Email inválido. Revise os dados informados e tente novamente.");
         }
 
         this.nome = nome;
@@ -27,7 +27,7 @@ public class Cliente {
 
     public void adicionarOrdemServico(OrdemServico ordemServico) {
         if (ordemServico == null) {
-            throw new IllegalArgumentException("Ordem de serviço não pode ser nula");
+            throw new DadosInvalidosException("Ordem de serviço não pode ser nula. Revise os dados informados e tente novamente.");
         }
 
         ordensServico.add(ordemServico);

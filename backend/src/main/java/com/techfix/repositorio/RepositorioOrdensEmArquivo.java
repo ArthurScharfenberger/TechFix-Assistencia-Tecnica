@@ -5,13 +5,12 @@ import com.techfix.dominio.RepositorioOrdens;
 import com.techfix.dominio.StatusOrdemServico;
 import com.techfix.dominio.TipoEquipamento;
 import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,15 +26,30 @@ public class RepositorioOrdensEmArquivo implements RepositorioOrdens {
     @Override
     public void salvar(RegistroOrdem registro) {
         Objects.requireNonNull(registro, "Registro deve ser informado");
-        String linha = registro.numero() + "\t" + escapar(registro.cliente()) + "\t"
-            + registro.equipamento() + "\t" + registro.status() + "\t"
-            + registro.total().toPlainString() + "\n";
+        Path temporario = null;
         try {
             Files.createDirectories(arquivo.getParent());
-            Files.writeString(arquivo, linha, StandardCharsets.UTF_8,
-                StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            var registros = new ArrayList<>(listar());
+            registros.add(registro);
+            var conteudo = new StringBuilder();
+            for (var item : registros) {
+                conteudo.append(item.numero()).append('\t').append(escapar(item.cliente())).append('\t')
+                    .append(item.equipamento()).append('\t').append(item.status()).append('\t')
+                    .append(item.total().toPlainString()).append('\n');
+            }
+            temporario = Files.createTempFile(arquivo.getParent(), "ordens-", ".tmp");
+            Files.writeString(temporario, conteudo, StandardCharsets.UTF_8);
+            // A troca atômica evita publicar um arquivo parcialmente escrito.
+            Files.move(temporario, arquivo, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException erro) {
-            throw new UncheckedIOException("Não foi possível gravar as ordens em " + arquivo, erro);
+            if (temporario != null) {
+                try {
+                    Files.deleteIfExists(temporario);
+                } catch (IOException limpeza) {
+                    erro.addSuppressed(limpeza);
+                }
+            }
+            throw new RepositorioException("Não foi possível gravar as ordens em " + arquivo + ". Verifique o caminho e as permissões e tente novamente.", erro);
         }
     }
 
@@ -48,7 +62,7 @@ public class RepositorioOrdensEmArquivo implements RepositorioOrdens {
             // Na primeira execução ainda não há histórico; outros erros não são ignorados.
             return List.of();
         } catch (IOException erro) {
-            throw new UncheckedIOException("Não foi possível ler as ordens de " + arquivo, erro);
+            throw new RepositorioException("Não foi possível ler as ordens de " + arquivo + ". Verifique o caminho e as permissões e tente novamente.", erro);
         }
         var registros = new ArrayList<RegistroOrdem>();
         for (int i = 0; i < linhas.size(); i++) {
@@ -61,7 +75,7 @@ public class RepositorioOrdensEmArquivo implements RepositorioOrdens {
                     TipoEquipamento.valueOf(campos[2]), StatusOrdemServico.valueOf(campos[3]),
                     new BigDecimal(campos[4])));
             } catch (IllegalArgumentException erro) {
-                throw new UncheckedIOException("Registro inválido na linha " + (i + 1) + " de " + arquivo,
+                throw new RepositorioException("Registro inválido na linha " + (i + 1) + " de " + arquivo + ". Corrija o arquivo ou restaure um backup antes de tentar novamente.",
                     new IOException("Formato de registro inválido", erro));
             }
         }

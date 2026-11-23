@@ -6,7 +6,7 @@ public final class PoliticasCobranca {
 
     public static PoliticaCobranca para(Equipamento equipamento) {
         if (equipamento == null) {
-            throw new IllegalArgumentException("Equipamento inválido");
+            throw new DadosInvalidosException("Equipamento inválido. Revise os dados informados e tente novamente.");
         }
         return switch (equipamento.getTipo()) {
             case NOTEBOOK -> new CobrancaNotebook();
