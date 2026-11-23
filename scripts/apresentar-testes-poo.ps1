@@ -32,7 +32,7 @@ $result = 1
 Push-Location $root
 try {
  foreach ($name in @('java','javac','mvn')) {
-  if (-not (Get-Command $name -ErrorAction SilentlyContinue)) { throw "Comando '$name' ausente. Confira JDK 25 e Maven no PATH." }
+  if (-not (Get-Command $name -ErrorAction SilentlyContinue)) { throw "Comando '$name' ausente. Confira JDK 17 ou superior e Maven no PATH." }
  }
  $logDirectory = Join-Path $root 'tmp/testes-poo'
  New-Item -ItemType Directory -Path $logDirectory -Force | Out-Null

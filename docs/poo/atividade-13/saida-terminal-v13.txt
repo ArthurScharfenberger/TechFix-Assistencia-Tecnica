@@ -1,0 +1,37 @@
+> java -cp backend/target/classes com.techfix.app.Main dados/ordens.tsv
+TECHFIX | Atendimento com tratamento de erros
+
+Cliente sem nome
+Regra de negócio: Nome inválido. Revise os dados informados e tente novamente.
+
+Item com valor negativo
+Regra de negócio: Valor inválido. Revise os dados informados e tente novamente.
+
+Conclusão antes do atendimento
+Regra de negócio: A ordem não está em atendimento. Inicie o atendimento antes de concluir.
+
+Atendimento completo
+OS 1 | Ana | CONCLUIDA | R$ 120.00
+
+Histórico
+Ordens salvas: 1
+Programa continuou após os erros previsíveis.
+
+SEGUNDA EXECUÇÃO
+TECHFIX | Atendimento com tratamento de erros
+
+Cliente sem nome
+Regra de negócio: Nome inválido. Revise os dados informados e tente novamente.
+
+Item com valor negativo
+Regra de negócio: Valor inválido. Revise os dados informados e tente novamente.
+
+Conclusão antes do atendimento
+Regra de negócio: A ordem não está em atendimento. Inicie o atendimento antes de concluir.
+
+Atendimento completo
+OS 2 | Ana | CONCLUIDA | R$ 120.00
+
+Histórico
+Ordens salvas: 2
+Programa continuou após os erros previsíveis.

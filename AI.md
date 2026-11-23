@@ -33,3 +33,9 @@ Nas atividades A11 a A14 de Processos de Engenharia de Software, Claude (Claude 
 OpenAI Codex apoiou a integração do mapa docs/01 a docs/06, revisão dos IDs, atualização da situação dos testes, registro DIV01–DIV08, plano de manutenção, riscos R1–R6, roadmap e lições. A ficha padrão A15 contém o conteúdo no corpo e os links da release e do protótipo local. O usuário confirmou apresentação local e autorizou nomes digitados de Arthur Scharfenberger e Lucas Oliveira da Silva no campo de assinaturas.
 
 Verificações: confronto das fontes com a A8 e com os resultados preservados da A13; commits 714ac8a/d62fbe6 para dívidas documentais pagas; links locais e IDs conferidos; ficha renderizada para inspeção visual. A15 não corrige DT01–DT05 nem atesta aceite do PO, execução de CT10–CT22 ou envio na plataforma. v2.0.0 é a versão final do dossiê de Processos; v12 continua sendo a entrega de POO.
+
+## POO A10, A13 e A14 — 23/11/2026
+
+OpenAI Codex participou diretamente da auditoria das entregas e da implementação de código, testes, refatorações, diagramas e fichas. Na A10, verificou testes e configuração do compilador; na A13, separou serviço e apresentação, implementou exceções e persistência com troca atômica. A A14 acrescenta regressões, teste parametrizado, mutação controlada e verificação em clone limpo. O histórico e os logs registram as verificações realmente executadas.
+
+Não foram inventados feedbacks da professora, assinaturas, microdefesas, autoria exclusivamente humana nem submissões. O feedback específico da defesa AP2 permanece dependente do relato da dupla. A equipe precisa revisar, compreender e assumir a responsabilidade pelo conteúdo antes de enviar as fichas.
