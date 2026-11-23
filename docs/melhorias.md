@@ -32,12 +32,30 @@ Commit da refatoração 1: `0c996b1`.
 
 Antes, `RepositorioOrdensEmArquivo` acumulava acesso a arquivos, campos TSV, parsing e escapes. Depois, `FormatoRegistroTsv` concentra as conversões puras; o repositório mantém leitura, gravação atômica e tradução de falhas. O formato e as mensagens são idênticos; os testes preservam acentos, tabulação, quebras de linha, barras e falhas de leitura/escrita. Commit com mensagem `refatora: separa formato TSV do acesso ao arquivo`.
 
-Antes: [testes-refatora-tarifas.txt](poo/atividade-14/testes-refatora-tarifas.txt), 47 verdes. Depois: [testes-refatora-formato.txt](poo/atividade-14/testes-refatora-formato.txt), os mesmos 47 verdes. Nenhuma regra foi alterada neste commit.
+Antes: [testes-refatora-tarifas.txt](poo/atividade-14/testes-refatora-tarifas.txt), 47 verdes. Depois: [testes-refatora-formato.txt](poo/atividade-14/testes-refatora-formato.txt), os mesmos 47 verdes. Nenhuma regra foi alterada neste commit. Commit da refatoração 2: `6ab8b8d`.
 
 ## Teste que protege de verdade
 
-O experimento de mutação e o commit de restauração serão registrados após sua execução, com o trecho real da falha.
+Teste escolhido: `EntregaFinalTest.diagnosticoRespeitaTarifaDoTipo`, que compara o total com a tarifa esperada por tipo. No commit `0522622`, a constante de notebook foi alterada de `80.00` para `81.00`, mantendo o teste intacto.
+
+Comando: `mvn -B -f backend/pom.xml clean test "-Dtest=EntregaFinalTest#diagnosticoRespeitaTarifaDoTipo"`.
+
+Trecho real de [falha-proposital.txt](poo/atividade-14/falha-proposital.txt):
+
+```text
+[ERROR] EntregaFinalTest.diagnosticoRespeitaTarifaDoTipo:82 expected: <80.00> but was: <81.00>
+[INFO] Tests run: 2, Failures: 1, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE
+```
+
+O commit **`9eba815`** desfez a alteração, voltando a `80.00`; a suíte completa voltou a 47 testes aprovados em [testes-v14.txt](poo/atividade-14/testes-v14.txt). A falha é uma asserção de regra de negócio, não uma falha de compilação. O caso desktop continuou passando.
+
+Uma primeira tentativa sem `clean` encontrou classes de Java 25 no diretório de saída da IDE. Ela não foi contada como evidência da mutação: a prova acima veio da recompilação limpa com falha de asserção. Por isso o passo a passo usa `mvn clean test`.
 
 ## Reprodução em clone limpo
 
-O clone separado e a execução das instruções serão registrados após a verificação real.
+Em 23/11/2026 foi criado um clone separado com `git clone --no-local . tmp/poo-auditoria/clone-limpo`, no commit `764c0b6` (mesmo código Java da entrega final, antes da consolidação documental). O Maven usou um diretório de dependências temporário inicialmente vazio, baixando plugins e JUnit pela internet. Foram executados `mvn clean test` e duas chamadas de `java -Dfile.encoding=UTF-8 -cp target/classes com.techfix.app.Main`, dentro de `backend`, conforme o README.
+
+Resultado: **47 testes, zero falhas, zero erros e zero ignorados**; a primeira execução gravou a OS 1 e a segunda preservou a OS 1 e gravou a OS 2. Logs: [compilação e testes](poo/atividade-14/clone-limpo-testes.txt) e [execução](poo/atividade-14/clone-limpo-execucao.txt). Ambiente: Windows, Oracle JDK 17.0.10 e Maven 3.9.16. Não se trata de instalação de um sistema operacional novo; foi um clone sem build ou histórico de dados e com cache Maven vazio.
+
+O compilador foi executado com `-Xlint:all`, sem warnings no código do projeto. A organização foi conferida: nenhum import de `repositorio`, `servico` ou `app` dentro de `dominio`; o `Main` só monta as dependências. Após publicar a tag, o usuário pode seguir o comando de clone GitHub e checkout `v14` do README.

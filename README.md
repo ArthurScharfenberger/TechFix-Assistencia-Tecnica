@@ -4,7 +4,7 @@ Projeto acadêmico de Arthur Scharfenberger e Lucas Oliveira da Silva para atend
 
 ## Entrega atual de POO
 
-**Atividade 13 — Robustez:** [tag v13](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v13), [ficha PDF](docs/poo/atividade-13/Ficha_Padrao_Entrega_Atividade_13_Final.pdf) e [evidências](docs/poo/atividade-13/README.md). Preparada em 23/11/2026. Não atesta envio na plataforma Aula.
+**Atividade 14 — Testes e preparação da entrega final:** [tag v14](https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica/tree/v14), [ficha PDF](docs/poo/atividade-14/Ficha_Padrao_Entrega_Atividade_14_Final.pdf) e [evidências](docs/poo/atividade-14/README.md). Preparada em 23/11/2026, com prazo informado de hoje às 19h30. Não atesta envio na plataforma Aula.
 
 A [A11](docs/poo/atividade-11/README.md) está pronta na tag `v11`. A [A10 de POO](docs/poo/atividade-10/README.md) recebeu revisão técnica; o relato real da defesa AP2 continua pendente de informação da dupla. O histórico registra as datas reais dos commits.
 
@@ -14,6 +14,7 @@ A [A11](docs/poo/atividade-11/README.md) está pronta na tag `v11`. A [A10 de PO
 - O diagnóstico custa R$ 80,00 para notebook e R$ 60,00 para desktop; `PoliticasCobranca` seleciona a política em um único ponto.
 - A ordem cria itens com descrição preenchida e valor não negativo. Sua lista é uma cópia não modificável.
 - O total é diagnóstico mais itens adicionais, usando `BigDecimal`.
+- Para iniciar atendimento é obrigatório atribuir um técnico; uma ordem ABERTA não pode ir direto para CONCLUIDA, e uma ordem concluída não pode ser reaberta.
 - O serviço conclui somente ordens EM_ATENDIMENTO, rejeita números já registrados e salva antes de mudar o estado. O registro é uma fotografia imutável da conclusão.
 
 [Mini-especificação RN1–RN5](docs/especificacao.md). Tarifas são regras acadêmicas, não uma tabela comercial real.
@@ -25,13 +26,15 @@ Pré-requisitos: **JDK 17 ou superior**, **Maven 3.9.x**, Git e internet na prim
 ```sh
 git clone https://github.com/ArthurScharfenberger/TechFix-Assistencia-Tecnica.git
 cd TechFix-Assistencia-Tecnica
-git checkout v13
+git checkout v14
 cd backend
 mvn clean test
 java -Dfile.encoding=UTF-8 -cp target/classes com.techfix.app.Main
 ```
 
 Na raiz do repositório, os comandos equivalentes são `mvn -f backend/pom.xml clean test` e `java -Dfile.encoding=UTF-8 -cp backend/target/classes com.techfix.app.Main`.
+
+O passo a passo foi verificado em clone separado, sem build prévio e com cache Maven inicialmente vazio: [testes no clone](docs/poo/atividade-14/clone-limpo-testes.txt) e [duas execuções](docs/poo/atividade-14/clone-limpo-execucao.txt), com JDK 17 e Maven 3.9.16.
 
 O cenário demonstra três erros tratados e depois conclui uma ordem de R$ 120,00. `dados/ordens.tsv` é criado relativo à pasta em que o Java foi iniciado; uma segunda execução com o mesmo arquivo salva o próximo número. Para escolher outro arquivo: `java -cp target/classes com.techfix.app.Main dados/demo.tsv`. Não apague um histórico que queira conservar.
 
@@ -55,6 +58,8 @@ O domínio não importa as outras camadas. O serviço depende do contrato do dom
 | Cliente sem nome | `DadosInvalidosException` | domínio | app | Nome inválido. Revise os dados informados e tente novamente. |
 | Item negativo | `DadosInvalidosException` | domínio | app | Valor inválido. Revise os dados informados e tente novamente. |
 | Conclusão antes do atendimento | `EstadoOrdemException` | serviço | app | A ordem não está em atendimento. Inicie o atendimento antes de concluir. |
+| Início sem técnico | `EstadoOrdemException` | domínio | app | Atendimento exige um técnico. Atribua um técnico antes de iniciar. |
+| Reabrir concluída | `EstadoOrdemException` | domínio | app | Ordem concluída não pode mudar de estado. Abra uma nova ordem para outro atendimento. |
 | Número repetido | `OrdemDuplicadaException` | serviço | app | Ordem N já registrada. Abra uma ordem com outro número. |
 | Falha de leitura/escrita | `RepositorioException` | repositório | app | Não foi possível ler/gravar as ordens no caminho indicado. Verifique o caminho e as permissões e tente novamente. |
 | Linha inválida no arquivo | `RepositorioException` | repositório | app | Registro inválido na linha N. Corrija o arquivo ou restaure um backup antes de tentar novamente. |
@@ -67,17 +72,19 @@ O arquivo é escrito em temporário e substituído atomicamente. Se o sistema de
 
 ## Testes e execução comprovada
 
-**40 testes aprovados**, incluindo os 31 casos anteriores e 9 novos de robustez. Os casos anteriores foram preservados; a expectativa de `IllegalStateException` foi atualizada para a exceção específica de negócio. Arquivos de teste usam `@TempDir`; a apresentação recebe saída injetada.
+**47 testes aprovados**, incluindo 31 cenários da A12, 9 novos da A13 e 7 execuções novas da A14. Há regras de negócio, `assertThrows` com tipo e mensagem, limite zero e `@ParameterizedTest` com dois tipos de equipamento. Arquivos de teste usam `@TempDir`; a apresentação recebe saída injetada. Não dependem de ordem ou relógio.
 
-As imagens abaixo são representações gráficas dos logs reais, geradas por `scripts/gerar-evidencias-poo.py`; não são capturas de uma janela de terminal. [Log completo](docs/poo/atividade-13/testes-v13.txt) e [duas execuções reais](docs/poo/atividade-13/saida-terminal-v13.txt).
+Os cenários anteriores foram preservados: a expectativa de `IllegalStateException` virou a exceção específica, e os testes de conclusão passaram a criar um técnico para satisfazer a regra corrigida. [Melhorias, commits das duas refatorações e falha proposital do teste](docs/melhorias.md). O experimento alterou R$ 80,00 para R$ 81,00 e produziu `expected: <80.00> but was: <81.00>`; a tarifa foi restaurada no commit `9eba815`.
 
-![Maven com testes aprovados](docs/poo/atividade-13/testes.png)
+As imagens abaixo são representações gráficas dos logs reais, geradas por `scripts/gerar-evidencias-poo.py`; não são capturas de uma janela de terminal. [Log completo](docs/poo/atividade-14/testes-v14.txt) e [duas execuções reais](docs/poo/atividade-14/saida-terminal-v14.txt).
 
-![Cenário com três erros tratados e uma ordem concluída](docs/poo/atividade-13/terminal-v13.png)
+![Maven com testes aprovados](docs/poo/atividade-14/testes.png)
+
+![Cenário com três erros tratados e uma ordem concluída](docs/poo/atividade-14/terminal-v14.png)
 
 ## Diagrama de classes
 
-O primeiro painel mostra herança, interfaces, composição e multiplicidades; o segundo detalha serviço, repositórios e exceções.
+O primeiro painel mostra herança, interfaces, composição e multiplicidades; o segundo detalha serviço, repositórios e exceções. `atribuirTecnico(Tecnico)` permite completar a atribuição antes do atendimento; `FormatoRegistroTsv` separa o formato do armazenamento.
 
 ![UML do código atual](docs/uml.png)
 
@@ -96,6 +103,7 @@ O primeiro painel mostra herança, interfaces, composição e multiplicidades; o
 | `v11` | Políticas de diagnóstico, composição encapsulada e 19 testes |
 | `v12` | Pacotes, repositório e persistência; 31 testes |
 | `v13` | Serviço separado, exceções, recuperação e 40 testes |
+| `v14` | Três defeitos corrigidos, duas refatorações isoladas, teste de mutação e 47 testes |
 
 As tags `v11` e `v12` preservam o POM antigo de Java 25. Para verificá-las com JDK 17, use `mvn "-Dmaven.compiler.release=17" clean test`; o comando é uma sobrescrita de configuração e não altera as tags. [Declaração de IA](AI.md).
 

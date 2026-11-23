@@ -11,12 +11,14 @@ Não foi localizado um registro do feedback da defesa AP2 de POO. A equipe preci
 - Os 31 testes herdados da A12 passaram no JDK 17, usando inicialmente `mvn -B -f backend/pom.xml "-Dmaven.compiler.release=17" clean test`.
 - O POM exigia Java 25, mas o código utiliza recursos disponíveis no Java 17 e a máquina tinha JDK 17. A versão mínima foi ajustada para 17 e o compilador Maven fixado em 3.13.0, com `-Xlint:all` para inspecionar avisos.
 - A seleção da política por tipo já está concentrada em `PoliticasCobranca`; as implementações têm `@Override`. Não foi encontrado `instanceof` usado para decidir preços.
-- O README continha instruções de versões antigas. A documentação final será consolidada na A14, preservando a A11 e a A12 nas respectivas tags.
-- `ServicoOrdens` ainda estava no pacote `dominio`; o `Main` concentrava o cenário, e as falhas eram exceções genéricas. As correções de camadas e tratamento serão entregues na A13.
-- Os defeitos anteriores DT01 (reabertura indevida), DT04 (início sem técnico) e DT05 (conclusão sem atendimento) constam na revisão de Processos e também atingem o Java; serão corrigidos com testes na A14, sem atribuir esses achados à defesa de POO.
+- O README continha instruções de versões antigas. A documentação final foi consolidada na A14, preservando a A11 e a A12 nas respectivas tags.
+- `ServicoOrdens` estava no pacote `dominio`; o `Main` concentrava o cenário, e as falhas eram exceções genéricas. As correções de camadas e tratamento foram entregues na A13, commit `2eadaa9`.
+- Os defeitos anteriores DT01 (reabertura indevida), DT04 (início sem técnico) e DT05 (conclusão sem atendimento) constam na revisão de Processos e também atingem o Java; foram corrigidos com testes na A14, commit `6f6c0d3`, sem atribuir esses achados à defesa de POO.
 
 ## Evidências e limites
 
 O log `testes-revisao.txt` registra a recompilação e a suíte desta revisão. A A11 já possui três commits de implementação/testes/documentação, tag `v11`, especificação, UML e cenário documentado. As tags históricas não foram reescritas.
+
+Não houve warnings de compilação com `-Xlint:all`. [Ficha preenchida com a pendência explicitada](Ficha_Padrao_Entrega_Atividade_10_Final.pdf). Commit da revisão técnica inicial: `aa5fd6b`.
 
 Esta revisão não comprova envio na plataforma Aula nem resolve o requisito de commit antes do prazo original. O histórico registra a data real.

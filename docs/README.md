@@ -14,6 +14,9 @@ A [A15](06-evolucao/A15-dossie-e-plano-evolucao.md) integra a versão final do d
 | A9 — Polimorfismo (final) | [atividade-09/](poo/atividade-09/): [ficha PDF](poo/atividade-09/Ficha_Padrao_Entrega_Atividade_09_Final.pdf) |
 | A11 — Políticas de diagnóstico (tag `v11`) | [atividade-11/](poo/atividade-11/README.md): ficha, especificação, UML e evidências |
 | A12 — Pacotes e persistência (tag `v12`) | [atividade-12/](poo/atividade-12/README.md): ficha, evidências e microdefesa |
+| A10 — Revisão técnica (feedback da defesa pendente) | [atividade-10/](poo/atividade-10/) |
+| A13 — Robustez (tag `v13`) | [atividade-13/](poo/atividade-13/README.md): ficha, UML e 40 testes |
+| A14 — Preparação final (tag `v14`) | [atividade-14/](poo/atividade-14/README.md): ficha, melhorias, UML e 47 testes |
 | AP2 de POO | [apresentacao-ap2/](poo/apresentacao-ap2/): slides e roteiro |
 | Diagramas | [UML atual](poo/uml.png), [diagrama de classes](poo/diagrama-classes/README.md), [modelagem inicial](poo/diagrama-uml/README.md), [roadmap Java](poo/ROADMAP_BACKEND_JAVA.md) |
 

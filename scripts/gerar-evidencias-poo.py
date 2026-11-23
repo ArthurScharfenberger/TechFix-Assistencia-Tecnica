@@ -66,8 +66,17 @@ def box(x,y,w,title,lines,fill='#f4f7fb'):
     d.line([(x,y+47),(x+w,y+47)],fill=ink,width=2)
     for i,s in enumerate(lines): d.text((x+12,y+55+31*i),s,font=font,fill=ink)
     return h
-def arrow(points,triangle=False):
-    d.line(points,fill=ink,width=3)
+def arrow(points,triangle=False,dashed=False):
+    if dashed:
+        for start,end in zip(points,points[1:]):
+            length=math.dist(start,end)
+            for offset in range(0,int(length),15):
+                def at(distance):
+                    return (start[0]+(end[0]-start[0])*distance/length,
+                            start[1]+(end[1]-start[1])*distance/length)
+                d.line([at(offset),at(min(offset+9,length))],fill=ink,width=3)
+    else:
+        d.line(points,fill=ink,width=3)
     a,b=points[-2:]; angle=math.atan2(b[1]-a[1],b[0]-a[0])
     sides=[(b[0]-19*math.cos(angle)+s*9*math.sin(angle),b[1]-19*math.sin(angle)-s*9*math.cos(angle)) for s in [-1,1]]
     if triangle:d.polygon([b,*sides],fill='white',outline=ink,width=2)
@@ -82,8 +91,8 @@ arrow([(1270,1720),(1370,1720)]); label(1282,1680,'usa')
 box(60,1970,560,'dominio.RegistroOrdem',['«record» imutável', 'numero, cliente, equipamento,', 'status, total'])
 box(720,1970,550,'repositorio',['RepositorioOrdensEmMemoria', 'List<RegistroOrdem>', 'listagem não modificável'])
 box(1370,1970,560,'repositorio',['RepositorioOrdensEmArquivo', 'arquivo TSV UTF-8', 'escrita em temporário e troca atômica'])
-arrow([(995,1970),(995,1910),(1580,1910),(1580,1798)],True)
-arrow([(1650,1970),(1650,1798)],True)
+arrow([(995,1970),(995,1910),(1580,1910),(1580,1798)],True,True)
+arrow([(1650,1970),(1650,1798)],True,True)
 label(1070,1870,'realizam a interface (triângulo)')
 arrow([(800,1830),(800,1925),(335,1925),(335,1970)])
 label(80,1890,'serviço cria o registro após validar')
@@ -113,7 +122,7 @@ box(610,90,380,'servico',['casos de uso'])
 box(1130,90,410,'repositorio',['arquivo e memória'])
 box(610,440,380,'dominio',['entidades e contratos'])
 arrow([(420,150),(610,150)])
-arrow([(420,210),(490,210),(490,40),(1340,40),(1340,90)])
+arrow([(420,130),(490,130),(490,40),(1340,40),(1340,90)])
 arrow([(790,176),(790,440)])
 arrow([(1340,176),(1340,480),(990,480)])
 arrow([(240,176),(240,480),(610,480)])

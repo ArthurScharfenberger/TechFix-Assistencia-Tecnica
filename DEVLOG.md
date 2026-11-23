@@ -413,3 +413,7 @@ Verificações: `mvn test` com 14 testes, zero falhas, erros ou ignorados; execu
 OpenAI Codex apoiou a integração do mapa docs/01 a docs/06, revisão dos IDs, atualização da situação dos testes, registro DIV01–DIV08, plano de manutenção, riscos R1–R6, roadmap e lições. A ficha padrão A15 contém o conteúdo no corpo e os links da release e do protótipo local. O usuário confirmou apresentação local e autorizou nomes digitados de Arthur Scharfenberger e Lucas Oliveira da Silva no campo de assinaturas.
 
 Verificações: confronto das fontes com a A8 e com os resultados preservados da A13; commits 714ac8a/d62fbe6 para dívidas documentais pagas; links locais e IDs conferidos; ficha renderizada para inspeção visual. A15 não corrige DT01–DT05 nem atesta aceite do PO, execução de CT10–CT22 ou envio na plataforma. v2.0.0 é a versão final do dossiê de Processos; v12 continua sendo a entrega de POO.
+
+## 23/11/2026 — Auditoria e conclusão técnica de POO
+
+A11 conferida na tag original, com 19 testes. A10 revisada com 31 testes e ajuste de Java 25 para 17; falta o relato real da defesa AP2. A13 criada com serviço separado, exceções e 40 testes. A14 corrige DT01/DT04/DT05 no Java, separa duas refatorações, comprova teste com tarifa deliberadamente errada e restaura o código, com 47 testes verdes. Fichas e imagens foram geradas a partir das evidências reais. Commits têm data atual; submissão e feedback não foram inventados. As entregas de Processos e o frontend permanecem independentes.
